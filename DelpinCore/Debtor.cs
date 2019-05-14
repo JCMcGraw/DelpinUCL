@@ -16,7 +16,7 @@ namespace DelpinCore
 
         public int postcode { get; private set; }
 
-        public string citty { get; private set; }
+        public string city { get; private set; }
 
         public string phone { get; private set; }
 
