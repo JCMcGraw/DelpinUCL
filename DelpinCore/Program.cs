@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DelpinUCL
+namespace DelpinCore
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //test2
         }
     }
 }

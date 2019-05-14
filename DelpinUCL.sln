@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelpinUCL", "DelpinUCL\Delp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelpinUI", "DelpinUI\DelpinUI.csproj", "{5F916F7D-9673-4D20-A060-B11AB0D17DF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelpinCore", "DelpinCore\DelpinCore.csproj", "{D4BA23EE-6497-4E36-B68A-608572181212}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5F916F7D-9673-4D20-A060-B11AB0D17DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F916F7D-9673-4D20-A060-B11AB0D17DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F916F7D-9673-4D20-A060-B11AB0D17DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BA23EE-6497-4E36-B68A-608572181212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BA23EE-6497-4E36-B68A-608572181212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BA23EE-6497-4E36-B68A-608572181212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BA23EE-6497-4E36-B68A-608572181212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
