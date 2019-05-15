@@ -11,29 +11,43 @@ namespace DelpinCore
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
 
-        public void CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CPR)
+        public void ReadDebtor()
         {
-            debtorManager.CreatePersonalDebtor(debtorID, name, adress, postalCode, city, phone, email, CPR);
+            debtorManager.ReadDebtor();
         }
 
-        //public void ReadDebtor()
-        //{
-        //    debtorManager.ReadPersonalDebtor();
-        //}
+        public void CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        {
+            debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+        }
 
-        //public void UpdateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
-        //{
-        //    debtorManager.UpdatePersonalDebtor(debtorID,name,adress,postalCode,city,phone,email,CPR);
-        //}
+        public void ReadPersonalDebtor()
+        {
+            debtorManager.ReadPersonalDebtor();
+        }
 
-        //public void DeteteDebtor(int debtorID)
-        //{
-        //    debtorManager.DeletePersonalDebtor(debtorID);
-        //}
+        public void UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        {
+            debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+        }
+
+        public void DetetePersonalDebtor(int debtorID)
+        {
+            debtorManager.DeletePersonalDebtor(debtorID);
+        }
+
+        public void CreateBusinessDebtor()
+        {
+
+
+        }
+
+
+
 
         public void CreateResource(int resourceID, string modelName, double listPrice)
         {
-            resourceManager.CreateResource(resourceID,modelName,listPrice);
+            resourceManager.CreateResource(resourceID, modelName, listPrice);
         }
 
         public void ReadResource()
@@ -43,7 +57,7 @@ namespace DelpinCore
 
         public void UpdateResource(int resourceID, string modelName, double listPrice)
         {
-            resourceManager.UpdateResource(resourceID,modelName,listPrice);
+            resourceManager.UpdateResource(resourceID, modelName, listPrice);
         }
 
         public void DeleteResource(int resourceID)
