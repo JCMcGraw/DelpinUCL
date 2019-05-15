@@ -20,9 +20,9 @@ namespace DelpinCore
             //activeResource.AddResource(resourceID);
         }
 
-        public void CreateResource(int debtorID)
+        public void CreateResource(int resourceID)
         {
-            //activeResource = new Resource(debtorID);
+            activeResource = new Resource(resourceID);
         }
 
         public void AddResourceToResource(Resource accesories)
