@@ -104,8 +104,5 @@ namespace DelpinCore
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
-
-
-
     }
 }

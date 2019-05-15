@@ -21,6 +21,5 @@ namespace DelpinCore
             this.firstName = firstName;
             this.lastName = lastName;
         }
-
     }
 }

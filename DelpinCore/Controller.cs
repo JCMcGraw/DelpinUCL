@@ -75,6 +75,5 @@ namespace DelpinCore
         {
             resourceManager.DeleteResource(resourceID);
         }
-
     }
 }
