@@ -11,10 +11,10 @@ namespace DelpinCore
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
 
-        //public void CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
-        //{
-        //    debtorManager.CreatePersonalDebtor(debtorID,name,adress,postalCode,city,phone,email,CPR);
-        //}
+        public void CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CPR)
+        {
+            debtorManager.CreatePersonalDebtor(debtorID, name, adress, postalCode, city, phone, email, CPR);
+        }
 
         //public void ReadDebtor()
         //{

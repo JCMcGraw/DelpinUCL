@@ -8,19 +8,19 @@ namespace DelpinCore
 {
     class DebtorManager
     {
-        
+
         //Personal personal = new Personal();
         ////Debtor busimess = new Business();
 
-        //public string CreatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
-        //{
-        //    string SQL;
+        public string CreatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CPR)
+        {
+            string SQL;
 
-        //    SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email,CPR) " +
-        //          $"values ({personal.debtorID},'{personal.name}','{personal.adress}','{personal.postalCode}','{personal.city}','{personal.phone}','{personal.email}','{personal.CPR})";
+            SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email,CPR) " +
+                  $"values ({debtorID},'{name}','{adress}','{postalCode}','{city}','{phone}','{email}','{CPR})";
 
-        //    return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
-        //}
+            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+        }
 
         //public string ReadPersonalDebtor()
         //{
