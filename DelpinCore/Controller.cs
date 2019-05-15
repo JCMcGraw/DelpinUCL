@@ -36,14 +36,25 @@ namespace DelpinCore
             debtorManager.DeletePersonalDebtor(debtorID);
         }
 
-        public void CreateBusinessDebtor()
+        public void CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
-
-
+            debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
         }
 
+        public void ReadBusinessDebtor()
+        {
+            debtorManager.ReadBusinessDebtor();
+        }
 
+        public void UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        {
+            debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+        }
 
+        public void DeleteBusinessDebter(int debtorID)
+        {
+            debtorManager.DeleteBusinessDebtor(debtorID);
+        }
 
         public void CreateResource(int resourceID, string modelName, double listPrice)
         {
