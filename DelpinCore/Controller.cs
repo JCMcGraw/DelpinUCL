@@ -11,25 +11,25 @@ namespace DelpinCore
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
 
-        public void CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
-        {
-            debtorManager.CreateDebtor(debtorID,name,adress,postalCode,city,phone,email);
-        }
+        //public void CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
+        //{
+        //    debtorManager.CreatePersonalDebtor(debtorID,name,adress,postalCode,city,phone,email,CPR);
+        //}
 
-        public void ReadDebtor()
-        {
-            debtorManager.ReadDebtor();
-        }
+        //public void ReadDebtor()
+        //{
+        //    debtorManager.ReadPersonalDebtor();
+        //}
 
-        public void UpdateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
-        {
-            debtorManager.UpdateDebtor(debtorID,name,adress,postalCode,city,phone,email);
-        }
+        //public void UpdateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
+        //{
+        //    debtorManager.UpdatePersonalDebtor(debtorID,name,adress,postalCode,city,phone,email,CPR);
+        //}
 
-        public void DeteteDebtor(int debtorID)
-        {
-            debtorManager.DeleteDebtor(debtorID);
-        }
+        //public void DeteteDebtor(int debtorID)
+        //{
+        //    debtorManager.DeletePersonalDebtor(debtorID);
+        //}
 
         public void CreateResource(int resourceID, string modelName, double listPrice)
         {

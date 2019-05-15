@@ -10,7 +10,7 @@ namespace DelpinCore
     {
         public int CPR { get; private set; }
 
-        public Personal(int debtorID, string name, string adress, int postalCode, string city, string phone, string email) : base(debtorID, name, adress, postalCode, city, phone, email)
+        public Personal(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR) : base(debtorID, name, adress, postalCode, city, phone, email)
         {
             this.CPR = CPR;
         }

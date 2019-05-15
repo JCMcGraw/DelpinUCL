@@ -8,46 +8,46 @@ namespace DelpinCore
 {
     class DebtorManager
     {
-        Debtor debtor = new Debtor(0);
+        
+        //Personal personal = new Personal();
+        ////Debtor busimess = new Business();
 
-        public string CreateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
-        {
-            string SQL;
+        //public string CreatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
+        //{
+        //    string SQL;
 
-            SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email) " +
-                                         $"values ({debtor.debtorID},'{debtor.name}','{debtor.adress}','{debtor.postalCode}','{debtor.city}','{debtor.phone}','{debtor.email})";
+        //    SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email,CPR) " +
+        //          $"values ({personal.debtorID},'{personal.name}','{personal.adress}','{personal.postalCode}','{personal.city}','{personal.phone}','{personal.email}','{personal.CPR})";
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
-        }
+        //    return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+        //}
 
-        public string ReadDebtor()
-        {
-            string SQL;
+        //public string ReadPersonalDebtor()
+        //{
+        //    string SQL;
 
-            SQL = "Select * from Debtor";
+        //    SQL = "Select * from Debtor";
 
+        //    return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+        //}
 
+        //public string UpdatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email,int CPR)
+        //{
+        //    string SQL;
 
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
-        }
+        //    SQL = $"update Debtor set debtorID={personal.debtorID},name='{personal.name}',adress='{personal.adress}" +
+        //        $",postalCode='{personal.postalCode},city='{personal.city},phone='{personal.phone},email='{personal.email},CPR='{personal.CPR}";
 
-        public string UpdateDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
-        {
-            string SQL;
+        //    return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+        //}
 
-            SQL = $"update Debtor set debtorID={debtor.debtorID},name='{debtor.name}',adress='{debtor.adress}" +
-                $",postalCode='{debtor.postalCode},city='{debtor.city},phone='{debtor.phone},email='{debtor.email}";
+        //public string DeletePersonalDebtor(int debtorID)
+        //{
+        //    string SQL;
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
-        }
+        //    SQL = $"Delete from Debtor where debtorID={personal.debtorID}";
 
-        public string DeleteDebtor(int debtorID)
-        {
-            string SQL;
-
-            SQL = $"Delete from Debtor where debtorID={debtor.debtorID}";
-
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
-        }
+        //    return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+        //}
     }
 }
