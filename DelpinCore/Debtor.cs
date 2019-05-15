@@ -37,5 +37,7 @@ namespace DelpinCore
             this.phone = phone;
             this.email = email;
         }
+
+        //se
     }
 }

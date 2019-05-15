@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="Debtor.cs" />
     <Compile Include="DebtorManager.cs" />
