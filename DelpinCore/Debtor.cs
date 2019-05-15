@@ -22,6 +22,11 @@ namespace DelpinCore
 
         public string email { get; private set; }
 
+        public Debtor(int debtorID)
+        {
+            this.debtorID = debtorID;
+        }
+
         public Debtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
         {
             this.debtorID = debtorID;
