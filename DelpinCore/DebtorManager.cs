@@ -61,15 +61,15 @@ namespace DelpinCore
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
 
-        public string CreateBusinessDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CVR)
+        public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
             string SQL;
 
-            SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email) " +
-                  $"values ({debtorID},'{name}','{adress}','{postalCode}','{city}','{phone}','{email})" +
+            SQL = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
+                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})" +
 
-                  "Insert into Business(debtorID, name, adress,postalCode,city,phone,email,CVR) " +
-                  $"values ({debtorID},'{name}','{adress}','{postalCode}','{city}','{phone}','{email}','{CVR})";
+                  "Insert into Business(CVR,CompanyName,ContactFname,ContactPhone) " +
+                  $"values ({CVR},'{companyName}','{contactFname}','{contactPhone}','{debtorID})";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
@@ -83,15 +83,14 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
         }
 
-        public string UpdateBusinessDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CVR)
+        public string UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
             string SQL;
 
-            SQL = $"update Debtor set debtorID={debtorID},name='{name}',adress='{adress}" +
-                $",postalCode='{postalCode},city='{city},phone='{phone},email='{email}" +
+            SQL = $"update Debtor set DebtorID={debtorID},Street='{street}" +
+                $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}" +
 
-                $"update Business set debtorID={debtorID},name='{name}',adress='{adress}" +
-                $",postalCode='{postalCode},city='{city},phone='{phone},email='{email},CPR='{CVR}";
+                $"update Business set CVR={CVR},CompanyName='{companyName},ContactFname='{contactFname},ContactPhone='{contactPhone},DebtorID='{debtorID}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
@@ -100,8 +99,8 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = $"Delete from Debtor where debtorID={debtorID}" +
-                  $"Delete from Business where debtorID={debtorID}";
+            SQL = $"Delete from Debtor where DebtorID={debtorID}" +
+                  $"Delete from Business where DebtorID={debtorID}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
