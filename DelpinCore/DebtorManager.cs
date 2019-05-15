@@ -8,15 +8,15 @@ namespace DelpinCore
 {
     class DebtorManager
     {
-        public string CreatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CPR)
+        public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
             string SQL;
 
-            SQL = "Insert into Debtor(debtorID, name, adress,postalCode,city,phone,email) " +
-                  $"values ({debtorID},'{name}','{adress}','{postalCode}','{city}','{phone}','{email})"+
+            SQL = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
+                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})"+
 
-                  "Insert into Personal(debtorID, name, adress,postalCode,city,phone,email,CVR) " +
-                  $"values ({debtorID},'{name}','{adress}','{postalCode}','{city}','{phone}','{email}','{CPR})"; 
+                  "Insert into Personal(CPR, FirstName, LastName,DebtorID) " +
+                  $"values ({CPR},'{firstName}','{lastName}','{debtorID})"; 
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
