@@ -12,7 +12,7 @@ namespace DelpinCore
 
         public Personal(int debtorID, string name, string adress, int postalCode, string city, string phone, string email) : base(debtorID, name, adress, postalCode, city, phone, email)
         {
-
+            this.CPR = CPR;
         }
 
     }

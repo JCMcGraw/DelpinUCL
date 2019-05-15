@@ -10,9 +10,9 @@ namespace DelpinCore
     {
         public int CVR { get; private set; }
 
-        public Business(int debtorID, string name, string adress, int postalCode, string city, string phone, string email) : base(debtorID, name, adress, postalCode, city, phone, email)
+        public Business(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CVR) :base (debtorID,name,adress,postalCode,city,phone,email)
         {
-
+            this.CVR = CVR;
         }
     }
 }

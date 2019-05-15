@@ -38,6 +38,6 @@ namespace DelpinCore
             this.email = email;
         }
 
-        //se
+        
     }
 }
