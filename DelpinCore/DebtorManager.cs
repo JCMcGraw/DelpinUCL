@@ -39,15 +39,14 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
         }
 
-        public string UpdatePersonalDebtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CPR)
+        public string UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
             string SQL;
 
-            SQL = $"update Debtor set debtorID={debtorID},name='{name}',adress='{adress}" +
-                $",postalCode='{postalCode},city='{city},phone='{phone},email='{email}"+
+            SQL = $"update Debtor set DebtorID={debtorID},Street='{street}" +
+                $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}"+
 
-                $"update Personal set debtorID={debtorID},name='{name}',adress='{adress}" +
-                $",postalCode='{postalCode},city='{city},phone='{phone},email='{email},CPR='{CPR}";
+                $"update Personal set CPR={CPR},FirstName='{firstName},LastName='{lastName},DebtorID='{debtorID}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
@@ -56,8 +55,8 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = $"Delete from Debtor where debtorID={debtorID}"+
-                  $"Delete from Personal where debtorID={debtorID}";
+            SQL = $"Delete from Debtor where DebtorID={debtorID}"+
+                  $"Delete from Personal where DebtorID={debtorID}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
