@@ -33,6 +33,6 @@ namespace DelpinCore
             this.email = email;
         }
 
-        //hejse
+        //he
     }
 }
