@@ -27,25 +27,5 @@ namespace DelpinCore
             this.modelName = modelName;
             this.listPrice = listPrice;
         }
-
-        public void AddResource(Resource resource)
-        {
-            accesories.Add(resource);
-        }
-
-        public void AddResourceAtSpecificIndes(Resource resource, int indexToAddAt)
-        {
-            accesories.Insert(indexToAddAt, resource);
-        }
-
-        public void RemoveResource(int indexToRemove)
-        {
-            accesories.RemoveAt(indexToRemove);
-        }
-
-        public List<Resource> GetResource()
-        {
-            return accesories;
-        }
     }
 }
