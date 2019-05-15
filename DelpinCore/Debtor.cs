@@ -10,9 +10,7 @@ namespace DelpinCore
     {
         public int debtorID { get; private set; }
 
-        public string name { get; private set; }
-
-        public string adress { get; private set; }
+        public string street { get; private set; }
 
         public int postalCode { get; private set; }
 
@@ -27,11 +25,10 @@ namespace DelpinCore
             this.debtorID = debtorID;
         }
 
-        public Debtor(int debtorID, string name, string adress, int postalCode, string city, string phone, string email)
+        public Debtor(int debtorID, string street, int postalCode, string city, string phone, string email)
         {
             this.debtorID = debtorID;
-            this.name = name;
-            this.adress = adress;
+            this.street = street;
             this.postalCode = postalCode;
             this.city = city;
             this.phone = phone;

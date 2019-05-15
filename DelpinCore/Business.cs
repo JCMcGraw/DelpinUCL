@@ -10,9 +10,18 @@ namespace DelpinCore
     {
         public int CVR { get; private set; }
 
-        public Business(int debtorID, string name, string adress, int postalCode, string city, string phone, string email, int CVR) :base (debtorID,name,adress,postalCode,city,phone,email)
+        public string companyName { get; private set; }
+
+        public string contactFname { get; private set; }
+
+        public string contactPhone { get; private set; }
+
+        public Business(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR,string companyName, string contactFname, string contactPhone) :base (debtorID,street,postalCode,city,phone,email)
         {
             this.CVR = CVR;
+            this.companyName = companyName;
+            this.contactFname = contactFname;
+            this.contactPhone = contactPhone;
         }
     }
 }
