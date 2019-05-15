@@ -8,14 +8,14 @@ namespace DelpinCore
 {
     class ResourceManager
     {
-        Resource resource = new Resource(0);
+        //Resource resource = new Resource(0);
 
         public string CreateResource(int resourceID, string modelName, double listPrice)
         {
             string SQL;
 
             SQL = "Insert into VareInfo(resourceID, modelName, listPrice) " +
-                                         $"values ({resource.resourceID},'{resource.modelName}','{resource.listPrice})";
+                                         $"values ({resourceID},'{modelName}','{listPrice})";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
@@ -33,7 +33,7 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = $"update Resource set resourceID={resource.resourceID},ModelName='{resource.modelName}',listPrice='{resource.listPrice}";
+            SQL = $"update Resource set resourceID={resourceID},ModelName='{modelName}',listPrice='{listPrice}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
@@ -42,7 +42,7 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = $"Delete from Resource where ResourceID={resource.resourceID}";
+            SQL = $"Delete from Resource where ResourceID={resourceID}";
 
             return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
         }
