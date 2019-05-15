@@ -8,7 +8,7 @@ namespace DelpinCore
 {
     class ResourceManager
     {
-        private Resource activeResource;
+        
 
        
 
