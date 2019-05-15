@@ -8,6 +8,15 @@ namespace DelpinCore
 {
     class DebtorManager
     {
+        public string ReadDebtor()
+        {
+            string SQL;
+
+            SQL = "Select * from Debtor";
+
+            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+        }
+
         public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
             string SQL;
@@ -25,8 +34,7 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = "Select * from Debtor"+
-                  "Select * from Personal"; 
+            SQL = "Select * from Personal"; 
 
             return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
         }
@@ -71,8 +79,7 @@ namespace DelpinCore
         {
             string SQL;
 
-            SQL = "Select * from Debtor" +
-                  "Select * from Business";
+            SQL = "Select * from Business";
 
             return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
         }
