@@ -10,9 +10,7 @@ namespace DelpinCore
     {
         public string ReadDebtor()
         {
-            string readAllDebtor;
-
-            readAllDebtor = "Select * from Debtor";
+            string readAllDebtor= "Select * from Debtor";
 
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readAllDebtor));
         }
@@ -94,46 +92,73 @@ namespace DelpinCore
 
         public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
-            string SQL;
+            string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
+                                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
 
-            SQL = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
-                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})" +
+            string createBusinessDebtor = "Insert into Business(CVR,CompanyName,ContactFname,ContactPhone) " +
+                                          $"values ({CVR},'{companyName}','{contactFname}','{contactPhone}','{debtorID})";
 
-                  "Insert into Business(CVR,CompanyName,ContactFname,ContactPhone) " +
-                  $"values ({CVR},'{companyName}','{contactFname}','{contactPhone}','{debtorID})";
+            string isCreateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
+            if (isCreateDebtor != "Success")
+            {
+                return isCreateDebtor;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            string isCreateBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createBusinessDebtor);
+            if (isCreateBusinessDebtor != "Success")
+            {
+                return isCreateBusinessDebtor;
+            }
+
+            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CVR},'{companyName},'{contactFname},'{contactPhone}er blevet Oprettet";
         }
 
         public string ReadBusinessDebtor()
         {
-            string SQL;
+            string readBusinessDebtor = "Select * from Business";
 
-            SQL = "Select * from Business";
-
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+            return Convert.ToString(DatabaseManager.ReadFromDatabase(readBusinessDebtor));
         }
 
         public string UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
-            string SQL;
+            string updateDebtor = $"update Debtor set DebtorID={debtorID},Street='{street}" +
+                                  $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}";
 
-            SQL = $"update Debtor set DebtorID={debtorID},Street='{street}" +
-                $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}" +
+            string updateBusinessDebtor = $"update Business set CVR={CVR},CompanyName='{companyName},ContactFname='{contactFname},ContactPhone='{contactPhone},DebtorID='{debtorID}";
 
-                $"update Business set CVR={CVR},CompanyName='{companyName},ContactFname='{contactFname},ContactPhone='{contactPhone},DebtorID='{debtorID}";
+            string isUpdateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateDebtor);
+            if (isUpdateDebtor != "Success")
+            {
+                return isUpdateDebtor;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            string isUpdateBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateBusinessDebtor);
+            if (isUpdateBusinessDebtor != "Succes")
+            {
+                return isUpdateBusinessDebtor;
+            }
+            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CVR},'{companyName},'{contactFname},'{contactPhone}er blevet Opdateret";
         }
 
         public string DeleteBusinessDebtor(int debtorID)
         {
-            string SQL;
+            string deleteDebtor = $"Delete from Debtor where DebtorID={debtorID}";
+            string deleteBusinessDebtor = $"Delete from Business where DebtorID={debtorID}";
 
-            SQL = $"Delete from Debtor where DebtorID={debtorID}" +
-                  $"Delete from Business where DebtorID={debtorID}";
+            string isDeleteDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deleteDebtor);
+            if (isDeleteDebtor != "Succes")
+            {
+                return isDeleteDebtor;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            string isDeleteBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deleteBusinessDebtor);
+            if (isDeleteBusinessDebtor != "Success")
+            {
+                return isDeleteBusinessDebtor;
+            }
+
+            return $"Kunden {debtorID} er blevet slettet";
         }
     }
 }
