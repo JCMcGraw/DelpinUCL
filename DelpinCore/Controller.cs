@@ -56,9 +56,9 @@ namespace DelpinCore
             debtorManager.DeleteBusinessDebtor(debtorID);
         }
 
-        public void CreateResource(int resourceID, string modelName, double listPrice)
+        public void CreateResource(int resourceID, string modelID, int branchID)
         {
-            resourceManager.CreateResource(resourceID, modelName, listPrice);
+            resourceManager.CreateResource(resourceID, modelID, branchID);
         }
 
         public void ReadResource()
@@ -66,9 +66,9 @@ namespace DelpinCore
             resourceManager.ReadResource();
         }
 
-        public void UpdateResource(int resourceID, string modelName, double listPrice)
+        public void UpdateResource(int resourceID, string modelID, double branchID)
         {
-            resourceManager.UpdateResource(resourceID, modelName, listPrice);
+            resourceManager.UpdateResource(resourceID, modelID, branchID);
         }
 
         public void DeleteResource(int resourceID)
