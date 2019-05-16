@@ -38,28 +38,38 @@ namespace DelpinCore
                 return isCreatePersonalSuccess;
             }
 
-            return $"Kunden er blevet oprettet {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Oprettet";
+            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Oprettet";
         }
 
         public string ReadPersonalDebtor()
         {
-            string SQL;
+            string readPersonalDebtor;
 
-            SQL = "Select * from Personal"; 
+            readPersonalDebtor = "Select * from Personal"; 
 
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+            return Convert.ToString(DatabaseManager.ReadFromDatabase(readPersonalDebtor));
         }
 
         public string UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
-            string SQL;
+            string updateDebtor = $"update Debtor set DebtorID={debtorID},Street='{street}" +
+                                  $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}";
 
-            SQL = $"update Debtor set DebtorID={debtorID},Street='{street}" +
-                $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}"+
+            string updatePersonalDebtor = $"update Personal set CPR={CPR},FirstName='{firstName},LastName='{lastName},DebtorID='{debtorID}";
 
-                $"update Personal set CPR={CPR},FirstName='{firstName},LastName='{lastName},DebtorID='{debtorID}";
+            string isUpdateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateDebtor);
+            if (isUpdateDebtor != "Success")
+            {
+                return isUpdateDebtor;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            string isUpdatePersonalDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updatePersonalDebtor);
+            if (isUpdatePersonalDebtor != "Success")
+            {
+                return isUpdatePersonalDebtor;
+            }
+
+            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Updateret";
         }
 
         public string DeletePersonalDebtor(int debtorID)
