@@ -74,12 +74,22 @@ namespace DelpinCore
 
         public string DeletePersonalDebtor(int debtorID)
         {
-            string SQL;
+            string deleteDebtor = $"Delete from Debtor where DebtorID={debtorID}";
+            string deletePersonalDebtor=$"Delete from Personal where DebtorID={debtorID}";
 
-            SQL = $"Delete from Debtor where DebtorID={debtorID}"+
-                  $"Delete from Personal where DebtorID={debtorID}";
+            string isDeleteDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deleteDebtor);
+            if (isDeleteDebtor != "Success")
+            {
+                return isDeleteDebtor;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            string isDeletePersonalDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deletePersonalDebtor);
+            if (isDeletePersonalDebtor != "Success")
+            {
+                return isDeletePersonalDebtor;
+            }
+
+            return $"Kunden {debtorID} er blevet slettet";
         }
 
         public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
