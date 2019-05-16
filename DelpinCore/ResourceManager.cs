@@ -8,43 +8,51 @@ namespace DelpinCore
 {
     class ResourceManager
     {
-        //Resource resource = new Resource(0);
-
-        public string CreateResource(int resourceID, string modelName, double listPrice)
+        public string CreateResource(int resourceID, string modelID, int branchID)
         {
-            string SQL;
+            string createResource ="Insert into Resources(resourceID, modelID, BranchID) " +
+                                   $"values ({resourceID},'{modelID}','{branchID})";
 
-            SQL = "Insert into VareInfo(resourceID, modelName, listPrice) " +
-                                         $"values ({resourceID},'{modelName}','{listPrice})";
+            string isCreateResource = DatabaseManager.CreateUpdateDeleteInDatabase(createResource);
+            if (isCreateResource != "Succes")
+            {
+                return isCreateResource;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            return $"Resources {resourceID},'{modelID},'{branchID} er blevet Oprettet";
         }
 
         public string ReadResource()
         {
-            string SQL;
+            string readResource = "Select * from Resources";
 
-            SQL = "Select * from Resource";
-
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+            return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource));
         }
 
-        public string UpdateResource(int resourceID, string modelName, double listPrice)
+        public string UpdateResource(int resourceID, string modelID, double branchID)
         {
-            string SQL;
+            string updateResource = $"update Resources set resourcesID={resourceID},ModelID='{modelID}',BrancID='{branchID}";
 
-            SQL = $"update Resource set resourceID={resourceID},ModelName='{modelName}',listPrice='{listPrice}";
+            string isUpdateResource = DatabaseManager.CreateUpdateDeleteInDatabase(updateResource);
+            if (isUpdateResource != "Success")
+            {
+                return isUpdateResource;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            return $"Resources {resourceID},'{modelID},'{branchID} er blevet Opdateret";
         }
 
         public string DeleteResource(int resourceID)
         {
-            string SQL;
+            string deleteResource = $"Delete from Resources where ResourcesID={resourceID}";
 
-            SQL = $"Delete from Resource where ResourceID={resourceID}";
+            string isDeleteResource = DatabaseManager.CreateUpdateDeleteInDatabase(deleteResource);
+            if (isDeleteResource != "Success")
+            {
+                return isDeleteResource;
+            }
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+            return $"Resources {resourceID} er blevet Slettet";
         }
     }
 }
