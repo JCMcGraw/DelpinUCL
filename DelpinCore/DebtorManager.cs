@@ -10,24 +10,35 @@ namespace DelpinCore
     {
         public string ReadDebtor()
         {
-            string SQL;
+            string readAllDebtor;
 
-            SQL = "Select * from Debtor";
+            readAllDebtor = "Select * from Debtor";
 
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(SQL));
+            return Convert.ToString(DatabaseManager.ReadFromDatabase(readAllDebtor));
         }
 
         public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
-            string SQL;
+            string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
+                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
 
-            SQL = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
-                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})"+
-
-                  "Insert into Personal(CPR, FirstName, LastName,DebtorID) " +
+            string createPersonal = "Insert into Personal(CPR, FirstName, LastName,DebtorID) " +
                   $"values ({CPR},'{firstName}','{lastName}','{debtorID})"; 
 
-            return DatabaseManager.CreateUpdateDeleteInDatabase(SQL);
+
+            string isCreateDebtorSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
+            if (isCreateDebtorSuccess != "Success")
+            {
+                return isCreateDebtorSuccess;
+            }
+
+            string isCreatePersonalSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createPersonal);
+            if (isCreatePersonalSuccess != "Success")
+            {
+                return isCreatePersonalSuccess;
+            }
+
+            return $"Kunden er blevet oprettet {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Oprettet";
         }
 
         public string ReadPersonalDebtor()
