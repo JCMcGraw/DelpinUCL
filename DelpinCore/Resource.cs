@@ -10,22 +10,22 @@ namespace DelpinCore
     {
         public int resourceID { get; private set; }
 
-        public string modelName { get; private set; }
+        public string modelID { get; private set; }
 
-        public double listPrice { get; private set; }
+        public double branchID { get; private set; }
 
-        List<Resource> accesories = new List<Resource>();
-
+        //Constructor
         public Resource(int resourceID)
         {
             this.resourceID = resourceID;
         }
 
-        public Resource(int resourceID, string modelName, double listPrice)
+        //Constructor
+        public Resource(int resourceID, string modelID, int branchID)
         {
             this.resourceID = resourceID;
-            this.modelName = modelName;
-            this.listPrice = listPrice;
+            this.modelID = modelID;
+            this.branchID = branchID;
         }
     }
 }
