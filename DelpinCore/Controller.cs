@@ -11,49 +11,58 @@ namespace DelpinCore
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
 
-        public void ReadDebtor()
+        public string ReadDebtor()
         {
-            debtorManager.ReadDebtor();
+            string readDebtor = debtorManager.ReadDebtor();
+            return readDebtor;
         }
 
-        public void CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
-            debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            string createPersonalDebtor = debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            return createPersonalDebtor;
         }
 
-        public void ReadPersonalDebtor()
+        public string ReadPersonalDebtor()
         {
-            debtorManager.ReadPersonalDebtor();
+            string readPersonalDebtor = debtorManager.ReadPersonalDebtor();
+            return readPersonalDebtor;
         }
 
-        public void UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
         {
-            debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            return updatePersonalDebtor;
         }
 
-        public void DetetePersonalDebtor(int debtorID)
+        public string DetetePersonalDebtor(int debtorID)
         {
-            debtorManager.DeletePersonalDebtor(debtorID);
+            string deletePersonalDebtor = debtorManager.DeletePersonalDebtor(debtorID);
+            return deletePersonalDebtor;
         }
 
-        public void CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
-            debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+            string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+            return createBusinessDebtor;
         }
 
-        public void ReadBusinessDebtor()
+        public string ReadBusinessDebtor()
         {
-            debtorManager.ReadBusinessDebtor();
+            string readBusinessDebtor = debtorManager.ReadBusinessDebtor();
+            return readBusinessDebtor;
         }
 
-        public void UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
         {
-            debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+            string updateBusinessDebtor = debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+            return updateBusinessDebtor;
         }
 
-        public void DeleteBusinessDebter(int debtorID)
+        public string DeleteBusinessDebter(int debtorID)
         {
-            debtorManager.DeleteBusinessDebtor(debtorID);
+            string deleteBusinessDebter = debtorManager.DeleteBusinessDebtor(debtorID);
+            return deleteBusinessDebter;
         }
 
         public void CreateResource(int resourceID, string modelID, int branchID)
