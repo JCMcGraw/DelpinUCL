@@ -10,6 +10,7 @@ namespace DelpinCore
     {
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
+        LeaseManager leaseManager = new LeaseManager();
 
         public string ReadDebtor()
         {
@@ -83,6 +84,11 @@ namespace DelpinCore
         public void DeleteResource(int resourceID)
         {
             resourceManager.DeleteResource(resourceID);
+        }
+
+        public void DeleteLease(int leaseID)
+        {
+            leaseManager.DeleteLease(leaseID);
         }
     }
 }
