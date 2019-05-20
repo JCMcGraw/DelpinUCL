@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -89,6 +90,32 @@ namespace DelpinCore
         public void DeleteLease(int leaseID)
         {
             leaseManager.DeleteLease(leaseID);
+        }
+
+        public void CreateLease(Lease lease)
+        {
+            leaseManager.CreateLease(lease);
+        }
+
+        public void UpdateLeaseOrdersOnLease(Lease lease)
+        {
+            leaseManager.UpdateLeaseOrdersOnLease(lease);
+        }
+        
+        public DataTable ReadLeasesByDebtor(int debtorID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = leaseManager.ReadLeasesByDebtor(debtorID);
+
+            return dataTable;
+        }
+
+        public DataTable ReadLeaseByLeaseID(int leaseID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = leaseManager.ReadLeaseByLeaseID(leaseID);
+
+            return dataTable;
         }
     }
 }

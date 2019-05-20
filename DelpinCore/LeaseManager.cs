@@ -18,7 +18,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable ReadLeasesByLeaseID(int leaseID)
+        public DataTable ReadLeaseByLeaseID(int leaseID)
         {
             string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Where Lease.LeaseID = {leaseID}";
 
@@ -89,13 +89,13 @@ namespace DelpinCore
                 {
                     insertLeaseOrder += ", ";
                 }
-                insertLeaseOrder += $"({lo.startDate.ToString("yyyy-MM-dd")}, {lo.endDate.ToString("yyyy-MM-dd")}, {lo.leasePrice}," +
+                insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
                     $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalcode}, '{lo.deliveryCity}')";
             }
             return insertLeaseOrder;
         }
 
-        public string UpdateLease(Lease lease)
+        public string UpdateLeaseOrdersOnLease(Lease lease)
         {
             string deleteLeaseOrders = $"delete from LeaseOrder where LeaseID = {lease.leaseID}";
 
