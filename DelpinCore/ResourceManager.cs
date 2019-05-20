@@ -39,7 +39,7 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource+readModel));
         }
 
-        public string UpdateResource(int resourceID, string modelID, double branchID, string modelName, double price, int subGroupID)
+        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
             string updateResource = $"update Resources set ResourcesID={resourceID},ModelID='{modelID}',BrancID='{branchID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}";
             string updateModel = $"update Model set ModelID={modelID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}";

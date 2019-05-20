@@ -66,9 +66,9 @@ namespace DelpinCore
             return deleteBusinessDebter;
         }
 
-        public void CreateResource(int resourceID, string modelID, int branchID)
+        public void CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
-            resourceManager.CreateResource(resourceID, modelID, branchID);
+            resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
         }
 
         public void ReadResource()
@@ -76,14 +76,14 @@ namespace DelpinCore
             resourceManager.ReadResource();
         }
 
-        public void UpdateResource(int resourceID, string modelID, double branchID)
+        public void UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
-            resourceManager.UpdateResource(resourceID, modelID, branchID);
+            resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
         }
 
-        public void DeleteResource(int resourceID)
+        public void DeleteResource(int resourceID,int modelID)
         {
-            resourceManager.DeleteResource(resourceID);
+            resourceManager.DeleteResource(resourceID,modelID);
         }
 
         public void DeleteLease(int leaseID)

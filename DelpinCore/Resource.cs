@@ -21,13 +21,14 @@ namespace DelpinCore
         public int subGroupID { get; private set; }
 
         //Constructor
-        public Resource(int resourceID)
+        public Resource(int resourceID,int modelID)
         {
             this.resourceID = resourceID;
+            this.modelID = modelID;
         }
 
         //Constructor
-        public Resource(int resourceID, int modelID, int branchID,string modelName,double price,int subGroupID)
+        public Resource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
             this.resourceID = resourceID;
             this.modelID = modelID;
