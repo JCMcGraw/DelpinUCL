@@ -21,6 +21,11 @@ namespace DelpinCore
             this.accessoryID = accessoryID;
         }
 
+        public Accessory(int accessoryModelID)
+        {
+            this.accessoryModelID = accessoryModelID;
+        }
+
 
     }
 }
