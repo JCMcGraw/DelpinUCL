@@ -20,8 +20,8 @@ namespace DelpinCore
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
                   $"values ('{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}')";
 
-            string createPersonal = "Insert into Personal(CPR, FirstName, LastName,DebtorID) " +
-                  $"values ('{CPR}','{firstName}','{lastName}','{debtorID}')"; 
+            string createPersonal = "Insert into Personal(CPR, FirstName, LastName) " +
+                  $"values ('{CPR}','{firstName}','{lastName}')"; 
 
 
             string isCreateDebtorSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
