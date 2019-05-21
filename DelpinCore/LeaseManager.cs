@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
     class LeaseManager
     {
-        private Lease activeLease;
-
-        //dummy method, doesn't do anything yet
-        public void ReadLease(int leaseID)
+        public DataTable ReadLeasesByDebtor(int debtorID)
         {
+            string selectLeases = $"Select * From Lease Where Lease.DebtorID = {debtorID}";
 
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
+
+            return dataTable;
+        }
+
+        public DataTable ReadLeaseByLeaseID(int leaseID)
+        {
+            string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Where Lease.LeaseID = {leaseID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
+
+            return dataTable;
         }
 
         //Method to delete a Lease
@@ -47,16 +58,56 @@ namespace DelpinCore
             return $"Lejekontrakt {leaseID} er blevet slettet";
         }
 
-        //dummy method, doesn't do anything yet
-        public void CreateLease(int debtorID)
+        //inserts new Lease in database
+        public string CreateLease(Lease lease)
         {
-            activeLease = new Lease(debtorID);
+            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID) output inserted.LeaseID " +
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID})";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
+
+            int leaseID = (int)dataTable.Rows[0][0];
+
+            lease.SetLeaseID(leaseID);
+
+            string insertLeaseOrder = GetLeaseOrderInsertString(lease);
+
+            string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
+
+            return isInsertSuccess;
         }
 
-        //dummy method, doesn't do anything yet
-        public void AddLeaseOrderToLease(LeaseOrder leaseOrder)
+        //create insertstring for leaseorders
+        private string GetLeaseOrderInsertString(Lease lease)
         {
-            activeLease.AddLeaseOrder(leaseOrder);
+            string insertLeaseOrder = $"insert into LeaseOrder (StartDate, EndDate, LeasePrice, ResourcesID, LeaseID, DeliveryStreet, DeliveryPostalCode, DeliveryCity)\nvalues\n";
+
+            for (int i = 0; i < lease.GetLeaseOrders().Count; i++)
+            {
+                LeaseOrder lo = lease.GetLeaseOrders()[i];
+                if (i != 0)
+                {
+                    insertLeaseOrder += ", ";
+                }
+                insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalcode}, '{lo.deliveryCity}')";
+            }
+            return insertLeaseOrder;
         }
+
+        public string UpdateLeaseOrdersOnLease(Lease lease)
+        {
+            string deleteLeaseOrders = $"delete from LeaseOrder where LeaseID = {lease.leaseID}";
+
+            string isDeleteSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLeaseOrders);
+
+            string insertLeaseOrder = GetLeaseOrderInsertString(lease);
+
+            string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
+
+            return isInsertSuccess;
+
+        }
+
     }
 }
