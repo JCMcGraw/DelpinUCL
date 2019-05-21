@@ -93,10 +93,10 @@ namespace DelpinCore
         public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
-                                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
+                                  $"values ('{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}')";
 
             string createBusinessDebtor = "Insert into Business(CVR,CompanyName,ContactFname,ContactPhone) " +
-                                          $"values ({CVR},'{companyName}','{contactFname}','{contactPhone}','{debtorID})";
+                                          $"values ('{CVR}','{companyName}','{contactFname}','{contactPhone}','{debtorID}')";
 
             string isCreateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
             if (isCreateDebtor != "Success")
