@@ -40,7 +40,7 @@ namespace DelpinCore
             string isDeleteLeaseOrderSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLeaseOrders);
 
             //if deletion of LeaseOrders was not a success return the error message
-            if (isDeleteLeaseOrderSuccess != "success")
+            if (isDeleteLeaseOrderSuccess != "Success")
             {
                 return isDeleteLeaseOrderSuccess;
             }
@@ -49,7 +49,7 @@ namespace DelpinCore
             string isDeleteLeaseSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLease);
             
             //if deletion of LeaseOrders was not a success return the error message
-            if (isDeleteLeaseSuccess != "success")
+            if (isDeleteLeaseSuccess != "Success")
             {
                 return isDeleteLeaseSuccess;
             }
