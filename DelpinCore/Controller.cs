@@ -19,7 +19,7 @@ namespace DelpinCore
             return readDebtor;
         }
 
-        public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string createPersonalDebtor = debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
             return createPersonalDebtor;
@@ -31,19 +31,19 @@ namespace DelpinCore
             return readPersonalDebtor;
         }
 
-        public string UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
             return updatePersonalDebtor;
         }
 
-        public string DetetePersonalDebtor(int debtorID)
+        public string DetetePersonalDebtor(string debtorID)
         {
             string deletePersonalDebtor = debtorManager.DeletePersonalDebtor(debtorID);
             return deletePersonalDebtor;
         }
 
-        public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
         {
             string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
             return createBusinessDebtor;
@@ -55,13 +55,13 @@ namespace DelpinCore
             return readBusinessDebtor;
         }
 
-        public string UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
         {
             string updateBusinessDebtor = debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
             return updateBusinessDebtor;
         }
 
-        public string DeleteBusinessDebter(int debtorID)
+        public string DeleteBusinessDebter(string debtorID)
         {
             string deleteBusinessDebter = debtorManager.DeleteBusinessDebtor(debtorID);
             return deleteBusinessDebter;

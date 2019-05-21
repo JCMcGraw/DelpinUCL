@@ -15,7 +15,7 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readAllDebtor));
         }
 
-        public string CreatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
                   $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
@@ -48,7 +48,7 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readPersonalDebtor));
         }
 
-        public string UpdatePersonalDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CPR, string firstName, string lastName)
+        public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string updateDebtor = $"update Debtor set DebtorID={debtorID},Street='{street}" +
                                   $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}";
@@ -70,7 +70,7 @@ namespace DelpinCore
             return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Updateret";
         }
 
-        public string DeletePersonalDebtor(int debtorID)
+        public string DeletePersonalDebtor(string debtorID)
         {
             string deleteDebtor = $"Delete from Debtor where DebtorID={debtorID}";
             string deletePersonalDebtor=$"Delete from Personal where DebtorID={debtorID}";
@@ -90,7 +90,7 @@ namespace DelpinCore
             return $"Kunden {debtorID} er blevet slettet";
         }
 
-        public string CreateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
                                   $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
@@ -120,7 +120,7 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readBusinessDebtor));
         }
 
-        public string UpdateBusinessDebtor(int debtorID, string street, int postalCode, string city, string phone, string email, int CVR, string companyName, string contactFname, string contactPhone)
+        public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
         {
             string updateDebtor = $"update Debtor set DebtorID={debtorID},Street='{street}" +
                                   $",PostalCode='{postalCode},City='{city},Phone='{phone},Email='{email}";
@@ -141,7 +141,7 @@ namespace DelpinCore
             return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CVR},'{companyName},'{contactFname},'{contactPhone}er blevet Opdateret";
         }
 
-        public string DeleteBusinessDebtor(int debtorID)
+        public string DeleteBusinessDebtor(string debtorID)
         {
             string deleteDebtor = $"Delete from Debtor where DebtorID={debtorID}";
             string deleteBusinessDebtor = $"Delete from Business where DebtorID={debtorID}";
