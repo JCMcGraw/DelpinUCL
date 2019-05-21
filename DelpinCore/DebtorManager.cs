@@ -18,10 +18,10 @@ namespace DelpinCore
         public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
-                  $"values ({debtorID},'{street}','{postalCode}','{city}','{phone}','{email})";
+                  $"values ('{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}')";
 
             string createPersonal = "Insert into Personal(CPR, FirstName, LastName,DebtorID) " +
-                  $"values ({CPR},'{firstName}','{lastName}','{debtorID})"; 
+                  $"values ('{CPR}','{firstName}','{lastName}','{debtorID}')"; 
 
 
             string isCreateDebtorSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
@@ -36,7 +36,7 @@ namespace DelpinCore
                 return isCreatePersonalSuccess;
             }
 
-            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Oprettet";
+            return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
         }
 
         public string ReadPersonalDebtor()
@@ -143,8 +143,8 @@ namespace DelpinCore
 
         public string DeleteBusinessDebtor(string debtorID)
         {
-            string deleteDebtor = $"Delete from Debtor where DebtorID={debtorID}";
-            string deleteBusinessDebtor = $"Delete from Business where DebtorID={debtorID}";
+            string deleteDebtor = $"Delete from Debtor where DebtorID='{debtorID}'";
+            string deleteBusinessDebtor = $"Delete from Business where DebtorID='{debtorID}'";
 
             string isDeleteDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deleteDebtor);
             if (isDeleteDebtor != "Succes")
