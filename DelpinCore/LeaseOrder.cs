@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DelpinCore
 {
-    class LeaseOrder
+    public class LeaseOrder
     {
         public int leaseOrderID { get; private set; }
         public DateTime startDate { get; private set; }

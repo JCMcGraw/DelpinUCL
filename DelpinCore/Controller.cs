@@ -7,7 +7,7 @@ using System.Data;
 
 namespace DelpinCore
 {
-    class Controller
+    public class Controller
     {
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
