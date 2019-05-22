@@ -28,7 +28,7 @@ namespace DelpinCore
                     }
                 }
                 //return success if query executed properly
-                return "success";
+                return "Success";
             }
             catch (Exception e)
             {
