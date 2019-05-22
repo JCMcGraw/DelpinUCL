@@ -12,6 +12,11 @@ namespace DelpinCore
         {
             if (ton >= 8)
             {
+                if (zone == 0)
+                {
+                    deliveryPrice = 0;
+                    return deliveryPrice;
+                }
                 if (zone == 1)
                 {
                     deliveryPrice = 330;
@@ -65,6 +70,11 @@ namespace DelpinCore
             }
             if (ton < 8)
             {
+                if (zone ==0)
+                {
+                    deliveryPrice = 0;
+                    return deliveryPrice;
+                }
                 if (zone == 1)
                 {
                     deliveryPrice = 490;
