@@ -14,6 +14,7 @@ namespace DelpinCore
         LeaseManager leaseManager = new LeaseManager();
         AccessoryManager accessoryManager = new AccessoryManager();
         TableDisplay tableDisplay = new TableDisplay();
+        DeliveryManager deliveryManager = new DeliveryManager();
 
         public string ReadDebtor()
         {
@@ -159,6 +160,12 @@ namespace DelpinCore
             dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
 
             return dataTable;
+        }
+
+        public double DeliveryPrice(int zone, double ton, int km, int extraKm8, int extraKm10, double deliveryPrice)
+        {
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, extraKm8, extraKm10, deliveryPrice);
+            return deliveryPrices;
         }
     }
 }
