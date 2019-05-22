@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -77,6 +78,26 @@ namespace DelpinCore
             }
 
             return $"Resources {resourceID},'{modelID} er blevet Slettet";
+        }
+
+        public DataTable ReadSpecefikSubCataegori(int SubGroupID)
+        {
+            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
+
+            DataTable dataTable= DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
+
+            return dataTable;
+        }
+
+        public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
+        {
+            string ReadSpecefikModelResourcesBranch = $"select * from Model" +
+                                                      $"join Resources on Model.ModelID = Resources.ModelID" +
+                                                      $"join Branch on Branch.BranchID = Resources.BranchID" +
+                                                      $"where model.{ModelID} = 1";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
+            return dataTable;
         }
     }
 }

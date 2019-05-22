@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accessory.cs" />
+    <Compile Include="AccessoryManager.cs" />
     <Compile Include="Business.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="Debtor.cs" />
     <Compile Include="DebtorManager.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="DeliveryManager.cs" />
     <Compile Include="Lease.cs" />
     <Compile Include="LeaseManager.cs" />
     <Compile Include="LeaseOrder.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="ResourceManager.cs" />
+    <Compile Include="TableDisplay.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

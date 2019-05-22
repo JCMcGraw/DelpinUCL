@@ -12,6 +12,9 @@ namespace DelpinCore
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
         LeaseManager leaseManager = new LeaseManager();
+        AccessoryManager accessoryManager = new AccessoryManager();
+        TableDisplay tableDisplay = new TableDisplay();
+        DeliveryManager deliveryManager = new DeliveryManager();
 
         public string ReadDebtor()
         {
@@ -25,10 +28,11 @@ namespace DelpinCore
             return createPersonalDebtor;
         }
 
-        public string ReadPersonalDebtor()
+        public DataTable ReadPersonalDebtor(string debtorID)
         {
-            string readPersonalDebtor = debtorManager.ReadPersonalDebtor();
-            return readPersonalDebtor;
+            DataTable dataTable = new DataTable();
+            dataTable = debtorManager.ReadPersonalDebtor(debtorID);
+            return dataTable;
         }
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
@@ -49,10 +53,12 @@ namespace DelpinCore
             return createBusinessDebtor;
         }
 
-        public string ReadBusinessDebtor()
+        public DataTable ReadBusinessDebtor(string debtorID)
         {
-            string readBusinessDebtor = debtorManager.ReadBusinessDebtor();
-            return readBusinessDebtor;
+            DataTable dataTable = new DataTable();
+            dataTable = debtorManager.ReadBusinessDebtor(debtorID);
+
+            return dataTable;
         }
 
         public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
@@ -67,24 +73,28 @@ namespace DelpinCore
             return deleteBusinessDebter;
         }
 
-        public void CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
-            resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            return createResource;
         }
 
-        public void ReadResource()
+        public string ReadResource()
         {
-            resourceManager.ReadResource();
+            string readResource = resourceManager.ReadResource();
+            return readResource;
         }
 
-        public void UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
-            resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            return updateResource;
         }
 
-        public void DeleteResource(int resourceID,int modelID)
+        public string DeleteResource(int resourceID,int modelID)
         {
-            resourceManager.DeleteResource(resourceID,modelID);
+            string deleteResource = resourceManager.DeleteResource(resourceID,modelID);
+            return deleteResource;
         }
 
         public void DeleteLease(int leaseID)
@@ -116,6 +126,46 @@ namespace DelpinCore
             dataTable = leaseManager.ReadLeaseByLeaseID(leaseID);
 
             return dataTable;
+        }
+
+        public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
+        {
+            string createAccessory = accessoryManager.CreateAccessory(accessoryModelID, modelID, accessoryID);
+            return createAccessory;
+        }
+
+        public string ReadAccessory()
+        {
+            string readAccessory = accessoryManager.ReadAccessory();
+            return readAccessory;
+        }
+
+        public string DeleteAccessory(int accessoryModelID)
+        {
+            string deleteAccessory = accessoryManager.DeleteAccessory(accessoryModelID);
+            return deleteAccessory;
+        }
+
+        public DataTable ReadSpecefikSubCataegori(int subGroupID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
+
+            return dataTable;
+        }
+
+        public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
+
+            return dataTable;
+        }
+
+        public double DeliveryPrice(int zone, double ton, int km, int extraKm8, int extraKm10, double deliveryPrice)
+        {
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, extraKm8, extraKm10, deliveryPrice);
+            return deliveryPrices;
         }
     }
 }
