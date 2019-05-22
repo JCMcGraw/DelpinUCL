@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -39,13 +40,13 @@ namespace DelpinCore
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
         }
 
-        public string ReadPersonalDebtor()
+        public DataTable ReadPersonalDebtor(int debtorID)
         {
-            string readPersonalDebtor;
+            string readPersonalDebtor = $"Select * from Personal Where DebtorID = {debtorID}";
 
-            readPersonalDebtor = "Select * from Personal"; 
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(readPersonalDebtor);
 
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readPersonalDebtor));
+            return dataTable;
         }
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
@@ -113,11 +114,12 @@ namespace DelpinCore
             return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CVR},'{companyName},'{contactFname},'{contactPhone}er blevet Oprettet";
         }
 
-        public string ReadBusinessDebtor()
+        public DataTable ReadBusinessDebtor(int debtorID)
         {
-            string readBusinessDebtor = "Select * from Business";
+            string readBusinessDebtor = $"Select * from Business Where DebtorID = {debtorID}";
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(readBusinessDebtor);
 
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readBusinessDebtor));
+            return dataTable;
         }
 
         public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
