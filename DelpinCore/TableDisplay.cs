@@ -79,5 +79,25 @@ namespace DelpinCore
 
             return dataTable;
         }
+
+        //Table for maingroups
+        public DataTable DisplayMainGroup()
+        {
+            string selectMainGroup = $"select * from MainGroup";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectMainGroup);
+
+            return dataTable;
+        }
+
+        //Table for maingroups
+        public DataTable DisplaySubGroup()
+        {
+            string selectSubGroup = $"select * from SubGroup";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectSubGroup);
+
+            return dataTable;
+        }
     }
 }

@@ -36,7 +36,7 @@
             this.textBoxDebtorID = new System.Windows.Forms.TextBox();
             this.labelDebtorID = new System.Windows.Forms.Label();
             this.SearchDebtorButton = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAccessory = new System.Windows.Forms.ComboBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxContactName = new System.Windows.Forms.TextBox();
             this.textBoxBillingAddress = new System.Windows.Forms.TextBox();
@@ -61,8 +61,8 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.dataGridViewLeaseOrders = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxMainGroup = new System.Windows.Forms.ComboBox();
+            this.comboBoxSubGroup = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.dataGridViewResources = new System.Windows.Forms.DataGridView();
@@ -70,7 +70,7 @@
             this.checkBoxUseBillingAddress = new System.Windows.Forms.CheckBox();
             this.radioButtonBusiness = new System.Windows.Forms.RadioButton();
             this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonFindModels = new System.Windows.Forms.Button();
             this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +80,9 @@
             this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxLeaseNumber = new System.Windows.Forms.TextBox();
+            this.labelLeaseNumber = new System.Windows.Forms.Label();
+            this.buttonUpdateOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -151,13 +154,13 @@
             this.SearchDebtorButton.UseVisualStyleBackColor = true;
             this.SearchDebtorButton.Click += new System.EventHandler(this.SearchDebtorButton_Click);
             // 
-            // comboBox2
+            // comboBoxAccessory
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(16, 448);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(196, 21);
-            this.comboBox2.TabIndex = 15;
+            this.comboBoxAccessory.FormattingEnabled = true;
+            this.comboBoxAccessory.Location = new System.Drawing.Point(16, 448);
+            this.comboBoxAccessory.Name = "comboBoxAccessory";
+            this.comboBoxAccessory.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxAccessory.TabIndex = 15;
             // 
             // textBoxName
             // 
@@ -359,27 +362,28 @@
             this.Gade,
             this.Postkode,
             this.By});
-            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(486, 338);
+            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(483, 354);
             this.dataGridViewLeaseOrders.MultiSelect = false;
             this.dataGridViewLeaseOrders.Name = "dataGridViewLeaseOrders";
             this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(723, 186);
             this.dataGridViewLeaseOrders.TabIndex = 39;
             // 
-            // comboBox1
+            // comboBoxMainGroup
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 135);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 40;
+            this.comboBoxMainGroup.FormattingEnabled = true;
+            this.comboBoxMainGroup.Location = new System.Drawing.Point(12, 135);
+            this.comboBoxMainGroup.Name = "comboBoxMainGroup";
+            this.comboBoxMainGroup.Size = new System.Drawing.Size(159, 21);
+            this.comboBoxMainGroup.TabIndex = 40;
+            this.comboBoxMainGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged);
             // 
-            // comboBox3
+            // comboBoxSubGroup
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(218, 135);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 21);
-            this.comboBox3.TabIndex = 41;
+            this.comboBoxSubGroup.FormattingEnabled = true;
+            this.comboBoxSubGroup.Location = new System.Drawing.Point(181, 135);
+            this.comboBoxSubGroup.Name = "comboBoxSubGroup";
+            this.comboBoxSubGroup.Size = new System.Drawing.Size(159, 21);
+            this.comboBoxSubGroup.TabIndex = 41;
             // 
             // label3
             // 
@@ -393,7 +397,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(215, 118);
+            this.label17.Location = new System.Drawing.Point(178, 118);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(74, 13);
             this.label17.TabIndex = 43;
@@ -454,15 +458,15 @@
             this.radioButtonPersonal.Text = "Privat";
             this.radioButtonPersonal.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // ButtonFindModels
             // 
-            this.button1.Location = new System.Drawing.Point(305, 374);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 49);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "button only used for testing";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ButtonFindModels.Location = new System.Drawing.Point(368, 133);
+            this.ButtonFindModels.Name = "ButtonFindModels";
+            this.ButtonFindModels.Size = new System.Drawing.Size(79, 33);
+            this.ButtonFindModels.TabIndex = 49;
+            this.ButtonFindModels.Text = "Find varer";
+            this.ButtonFindModels.UseVisualStyleBackColor = true;
+            this.ButtonFindModels.Click += new System.EventHandler(this.button1_Click);
             // 
             // ResurseID
             // 
@@ -515,12 +519,42 @@
             this.By.Name = "By";
             this.By.Width = 90;
             // 
+            // textBoxLeaseNumber
+            // 
+            this.textBoxLeaseNumber.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxLeaseNumber.Location = new System.Drawing.Point(570, 328);
+            this.textBoxLeaseNumber.Name = "textBoxLeaseNumber";
+            this.textBoxLeaseNumber.ReadOnly = true;
+            this.textBoxLeaseNumber.Size = new System.Drawing.Size(123, 20);
+            this.textBoxLeaseNumber.TabIndex = 50;
+            // 
+            // labelLeaseNumber
+            // 
+            this.labelLeaseNumber.AutoSize = true;
+            this.labelLeaseNumber.Location = new System.Drawing.Point(483, 331);
+            this.labelLeaseNumber.Name = "labelLeaseNumber";
+            this.labelLeaseNumber.Size = new System.Drawing.Size(72, 13);
+            this.labelLeaseNumber.TabIndex = 51;
+            this.labelLeaseNumber.Text = "OrderNummer";
+            // 
+            // buttonUpdateOrder
+            // 
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(987, 161);
+            this.buttonUpdateOrder.Name = "buttonUpdateOrder";
+            this.buttonUpdateOrder.Size = new System.Drawing.Size(143, 53);
+            this.buttonUpdateOrder.TabIndex = 52;
+            this.buttonUpdateOrder.Text = "Opdater ordre";
+            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonUpdateOrder);
+            this.Controls.Add(this.labelLeaseNumber);
+            this.Controls.Add(this.textBoxLeaseNumber);
+            this.Controls.Add(this.ButtonFindModels);
             this.Controls.Add(this.radioButtonPersonal);
             this.Controls.Add(this.radioButtonBusiness);
             this.Controls.Add(this.checkBoxUseBillingAddress);
@@ -528,8 +562,8 @@
             this.Controls.Add(this.dataGridViewResources);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxSubGroup);
+            this.Controls.Add(this.comboBoxMainGroup);
             this.Controls.Add(this.dataGridViewLeaseOrders);
             this.Controls.Add(this.buttonCreateOrder);
             this.Controls.Add(this.labelEmail);
@@ -554,7 +588,7 @@
             this.Controls.Add(this.textBoxBillingAddress);
             this.Controls.Add(this.textBoxContactName);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBoxAccessory);
             this.Controls.Add(this.SearchDebtorButton);
             this.Controls.Add(this.labelDebtorID);
             this.Controls.Add(this.textBoxDebtorID);
@@ -583,7 +617,7 @@
         private System.Windows.Forms.TextBox textBoxDebtorID;
         private System.Windows.Forms.Label labelDebtorID;
         private System.Windows.Forms.Button SearchDebtorButton;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxAccessory;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxContactName;
         private System.Windows.Forms.TextBox textBoxBillingAddress;
@@ -608,8 +642,8 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Button buttonCreateOrder;
         private System.Windows.Forms.DataGridView dataGridViewLeaseOrders;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxMainGroup;
+        private System.Windows.Forms.ComboBox comboBoxSubGroup;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView dataGridViewResources;
@@ -617,7 +651,7 @@
         private System.Windows.Forms.CheckBox checkBoxUseBillingAddress;
         private System.Windows.Forms.RadioButton radioButtonBusiness;
         private System.Windows.Forms.RadioButton radioButtonPersonal;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonFindModels;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
@@ -627,5 +661,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Gade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Postkode;
         private System.Windows.Forms.DataGridViewTextBoxColumn By;
+        private System.Windows.Forms.TextBox textBoxLeaseNumber;
+        private System.Windows.Forms.Label labelLeaseNumber;
+        private System.Windows.Forms.Button buttonUpdateOrder;
     }
 }

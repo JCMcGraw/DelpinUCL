@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using DelpinCore;
 
 namespace DelpinUI
@@ -15,6 +16,7 @@ namespace DelpinUI
     {
         private Controller controller = new Controller();
         private int resourceID = -1;
+        private DataTable dataTableSubGroup = new DataTable();
 
         public Lease()
         {
@@ -23,7 +25,37 @@ namespace DelpinUI
 
         private void Lease_Load(object sender, EventArgs e)
         {
-            
+            SetSelectionBoxes();
+        }
+
+        private void SetSelectionBoxes()
+        {
+            DataTable dataTableMainGroup = controller.GetMainGroup();
+            dataTableSubGroup = controller.GetSubGroup();
+
+            comboBoxMainGroup.DataSource = dataTableMainGroup;
+            comboBoxMainGroup.DisplayMember = "Category";
+            comboBoxMainGroup.ValueMember = "MainGroupID";
+
+
+            comboBoxSubGroup.DataSource = dataTableSubGroup;
+            comboBoxSubGroup.DisplayMember = "Category";
+            comboBoxSubGroup.ValueMember = "SubGroupID";
+        }
+
+
+        private void comboBoxMainGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dataTableSubGroup);
+                dv.RowFilter = $"MainGroup = {comboBoxMainGroup.SelectedValue}";
+
+                comboBoxSubGroup.DataSource = dv.ToTable();
+                comboBoxSubGroup.DisplayMember = "Category";
+                comboBoxSubGroup.ValueMember = "SubGroupID";
+            }
+            catch { }
         }
 
         public void SetResourceID(int resourceID)
@@ -33,13 +65,13 @@ namespace DelpinUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == -1)
+            if (comboBoxMainGroup.SelectedIndex == -1)
             {
                 textBoxDebtorID.Text = string.Empty;
             }
             else
             {
-                textBoxDebtorID.Text = comboBox1.SelectedItem.ToString();
+                textBoxDebtorID.Text = comboBoxMainGroup.SelectedItem.ToString();
             }
         }
 
@@ -129,7 +161,13 @@ namespace DelpinUI
                 lease.AddLeaseOrder(leaseOrder);
             }
 
-            controller.CreateLease(lease);
+            string leaseSuccess = controller.CreateLease(lease);
+
+            if (leaseSuccess.Contains("Success"))
+            {
+                string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
+                textBoxLeaseNumber.Text = leaseNumber;
+            }
         }
 
         private void checkBoxUseBillingAddress_CheckedChanged(object sender, EventArgs e)
@@ -172,7 +210,7 @@ namespace DelpinUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.ReadSpecefikSubCataegori(1);
+            DataTable dataTable = controller.ReadSpecefikSubCataegori(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
 
             dataGridViewResources.DataSource = dataTable;
 
@@ -180,5 +218,6 @@ namespace DelpinUI
             dataGridViewResources.Columns["SubGroupID"].Visible = false;
             dataGridViewResources.Columns["ModelName"].Width = 150;
         }
+
     }
 }

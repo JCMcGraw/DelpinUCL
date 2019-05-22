@@ -74,7 +74,7 @@ namespace DelpinCore
 
             string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
 
-            return isInsertSuccess;
+            return leaseID.ToString() + ";" + isInsertSuccess;
         }
 
         //create insertstring for leaseorders
