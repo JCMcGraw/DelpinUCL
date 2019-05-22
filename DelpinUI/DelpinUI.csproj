@@ -78,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectResourceForLeaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectResourceForLeaseOrder.Designer.cs">
+      <DependentUpon>FormSelectResourceForLeaseOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lease.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectResourceForLeaseOrder.resx">
+      <DependentUpon>FormSelectResourceForLeaseOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lease.resx">
       <DependentUpon>Lease.cs</DependentUpon>
@@ -169,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DelpinCore\DelpinCore.csproj">
+      <Project>{d4ba23ee-6497-4e36-b68a-608572181212}</Project>
+      <Name>DelpinCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

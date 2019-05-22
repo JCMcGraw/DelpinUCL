@@ -64,8 +64,14 @@ namespace DelpinCore
             }
             catch (Exception e)
             {
-                //return empty DataTable if problem arose
-                return new DataTable();
+                //return DataTable with error message if problem arose
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("ErrorMessage");
+
+                DataRow dataRow = dataTable.NewRow();
+                dataRow["ErrorMessage"] = e.Message;
+
+                return dataTable;
             }
         }
     }
