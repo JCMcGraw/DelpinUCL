@@ -14,6 +14,7 @@ namespace DelpinCore
         LeaseManager leaseManager = new LeaseManager();
         AccessoryManager accessoryManager = new AccessoryManager();
         TableDisplay tableDisplay = new TableDisplay();
+        DeliveryManager deliveryManager = new DeliveryManager();
 
         public string ReadDebtor()
         {
@@ -46,9 +47,9 @@ namespace DelpinCore
             return deletePersonalDebtor;
         }
 
-        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
+        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactLname, string contactPhone)
         {
-            string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactPhone);
+            string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName, contactFname, contactLname, contactPhone);
             return createBusinessDebtor;
         }
 
@@ -159,6 +160,12 @@ namespace DelpinCore
             dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
 
             return dataTable;
+        }
+
+        public double DeliveryPrice(int zone, double ton, int km, int extraKm8, int extraKm10, double deliveryPrice)
+        {
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, extraKm8, extraKm10, deliveryPrice);
+            return deliveryPrices;
         }
     }
 }

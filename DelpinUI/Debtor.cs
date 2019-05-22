@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DelpinCore;
 
 namespace DelpinUI
 {
     public partial class Debtor : Form
     {
+        Controller controller = new Controller();
         public Debtor()
         {
             InitializeComponent();
@@ -91,6 +93,8 @@ namespace DelpinUI
 
         private void Debtor_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet5.Business' table. You can move, or remove it, as needed.
+            this.businessTableAdapter1.Fill(this.dataSet5.Business);
             // TODO: This line of code loads data into the 'dataSet2.Debtor' table. You can move, or remove it, as needed.
             this.debtorTableAdapter1.Fill(this.dataSet2.Debtor);
             // TODO: This line of code loads data into the 'dataSet1.Personal' table. You can move, or remove it, as needed.
@@ -109,7 +113,11 @@ namespace DelpinUI
 
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
-            //indsæt business debitor
+            
+            string succes = controller.CreateBusinessDebtor(cvrText.Text,adressText.Text,Convert.ToInt32(postalcodeText.Text),city.Text,
+                phoneText.Text,emailText.Text,cvrText.Text,BnameText.Text,BcontactText.Text,BcontactPhoText.Text);
+            MessageBox.Show(succes);
+
         }
 
         private void CreatePdeb_Click(object sender, EventArgs e)
@@ -142,6 +150,13 @@ namespace DelpinUI
         private void ViewBdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
+        }
+
+        private void CreatePdeb_Click_1(object sender, EventArgs e)
+        {
+            string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text),city.Text, phoneText.Text,emailText.Text, cprText.Text, 
+                PfnameText.Text,PlnameText.Text);
+            MessageBox.Show(succes);
         }
     }
 }
