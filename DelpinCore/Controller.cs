@@ -26,10 +26,11 @@ namespace DelpinCore
             return createPersonalDebtor;
         }
 
-        public string ReadPersonalDebtor()
+        public DataTable ReadPersonalDebtor(int debtorID)
         {
-            string readPersonalDebtor = debtorManager.ReadPersonalDebtor();
-            return readPersonalDebtor;
+            DataTable dataTable = new DataTable();
+            dataTable = debtorManager.ReadPersonalDebtor(debtorID);
+            return dataTable;
         }
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
@@ -50,10 +51,12 @@ namespace DelpinCore
             return createBusinessDebtor;
         }
 
-        public string ReadBusinessDebtor()
+        public DataTable ReadBusinessDebtor(int debtorID)
         {
-            string readBusinessDebtor = debtorManager.ReadBusinessDebtor();
-            return readBusinessDebtor;
+            DataTable dataTable = new DataTable();
+            dataTable = debtorManager.ReadBusinessDebtor(debtorID);
+
+            return dataTable;
         }
 
         public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
