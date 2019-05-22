@@ -43,7 +43,7 @@ namespace DelpinCore
 
         public DataTable ReadPersonalDebtor(string debtorID)
         {
-            string readPersonalDebtor = $"Select * from Personal Where DebtorID = {debtorID}";
+            string readPersonalDebtor = $"Select * from Personal join Debtor on Personal.CPR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readPersonalDebtor);
 
@@ -117,7 +117,7 @@ namespace DelpinCore
 
         public DataTable ReadBusinessDebtor(string debtorID)
         {
-            string readBusinessDebtor = $"Select * from Business Where DebtorID = {debtorID}";
+            string readBusinessDebtor = $"Select * from Business join Debtor on Business.CVR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readBusinessDebtor);
 
             return dataTable;

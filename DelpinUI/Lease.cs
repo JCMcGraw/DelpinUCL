@@ -48,7 +48,14 @@ namespace DelpinUI
         {
             DataTable dataTable = controller.ReadBusinessDebtor(textBoxDebtorID.Text);
 
-            textBoxBillingAddress.Text = (string)dataTable.Rows[0][0];
+            textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
+            textBoxBillingAddress.Text = (string)dataTable.Rows[0]["Street"];
+            textBoxBillingCity.Text = (string)dataTable.Rows[0]["City"];
+            textBoxBillingPostCode.Text = dataTable.Rows[0]["PostalCode"].ToString();
+            textBoxPhone.Text = (string)dataTable.Rows[0]["Phone"];
+            textBoxEmail.Text = (string)dataTable.Rows[0]["Email"];
+            textBoxContactName.Text = (string)dataTable.Rows[0]["ContactFname"] + " " + (string)dataTable.Rows[0]["ContactLname"];
+            textBoxContactPhone.Text = (string)dataTable.Rows[0]["ContactPhone"];
         }
 
 
@@ -64,6 +71,8 @@ namespace DelpinUI
 
             int selectedRow = selectedRows[0].Index;
             int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ModelID"].Value);
+
+            DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
 
             FormSelectResourceForLeaseOrder formSelectResourceForLeaseOrder = new FormSelectResourceForLeaseOrder(this);
 

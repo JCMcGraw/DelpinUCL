@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewResources = new System.Windows.Forms.DataGridView();
             this.buttonSelectResource = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewResources
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(75, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(571, 287);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewResources.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResources.Location = new System.Drawing.Point(75, 37);
+            this.dataGridViewResources.Name = "dataGridViewResources";
+            this.dataGridViewResources.Size = new System.Drawing.Size(571, 287);
+            this.dataGridViewResources.TabIndex = 0;
             // 
             // buttonSelectResource
             // 
@@ -69,17 +69,17 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSelectResource);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewResources);
             this.Name = "FormSelectResourceForLeaseOrder";
             this.Text = "FormSelectResourceForLeaseOrder";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewResources;
         private System.Windows.Forms.Button buttonSelectResource;
         private System.Windows.Forms.Button buttonCancel;
     }

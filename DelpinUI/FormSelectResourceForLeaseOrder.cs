@@ -27,7 +27,20 @@ namespace DelpinUI
 
         private void buttonSelectResource_Click(object sender, EventArgs e)
         {
+            var selectedRows = dataGridViewResources.SelectedRows;
+            if (selectedRows.Count < 1)
+            {
+                MessageBox.Show("Vælg en resurse");
+                return;
+            }
 
+            int selectedRow = selectedRows[0].Index;
+            int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResourcesID"].Value);
+        }
+
+        public void ShowResources(DataTable dataTable)
+        {
+            dataGridViewResources.DataSource = dataTable;
         }
     }
 }
