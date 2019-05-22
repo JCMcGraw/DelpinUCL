@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -77,6 +78,15 @@ namespace DelpinCore
             }
 
             return $"Resources {resourceID},'{modelID} er blevet Slettet";
+        }
+
+        static public DataTable SpecefikSubCataegori(int SubGroupID)
+        {
+            //DataTable datatable = new DataTable();
+            
+            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
+
+            return DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
         }
     }
 }
