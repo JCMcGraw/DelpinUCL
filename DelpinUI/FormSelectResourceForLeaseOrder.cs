@@ -35,7 +35,10 @@ namespace DelpinUI
             }
 
             int selectedRow = selectedRows[0].Index;
-            int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResourcesID"].Value);
+            int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResourcesID"].Value);
+
+            lease.SetResourceID(resourceID);
+            this.Close();
         }
 
         public void ShowResources(DataTable dataTable)

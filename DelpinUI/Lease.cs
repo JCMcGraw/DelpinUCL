@@ -75,19 +75,32 @@ namespace DelpinUI
             DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
 
             FormSelectResourceForLeaseOrder formSelectResourceForLeaseOrder = new FormSelectResourceForLeaseOrder(this);
+            formSelectResourceForLeaseOrder.ShowResources(dataTable);
+            formSelectResourceForLeaseOrder.ShowDialog();
 
-            //MessageBox.Show(modelID.ToString());
-            dataGridViewLeaseOrders.Rows.Add();
-            int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = "12345";
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = "Schwamborn - BEF 201";
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = dateTimePickerDeliveryDate.Value.ToString("yyyy/MM/dd");
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = dateTimePickerReturnDate.Value.ToString("yyyy/MM/dd");
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = "300";
+            if (resourceID == -1)
+            {
+                return;
+            }
+            else
+            {
 
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Levering"].Value = textBoxDeliveryAddress.Text;
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
-            dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
+                //MessageBox.Show(modelID.ToString());
+                dataGridViewLeaseOrders.Rows.Add();
+                int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = dataGridViewResources.Rows[selectedRow].Cells["ModelName"].Value.ToString();
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = dateTimePickerDeliveryDate.Value.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = dateTimePickerReturnDate.Value.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
+
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
+
+
+                resourceID = -1;
+            }
 
         }
 
@@ -106,7 +119,7 @@ namespace DelpinUI
                 DateTime returnDate = Convert.ToDateTime(row.Cells["Slutdato"].Value.ToString());
                 decimal price = Convert.ToDecimal(row.Cells["Dagspris"].Value.ToString());
 
-                string deliveryAddrress = row.Cells["Levering"].Value.ToString();
+                string deliveryAddrress = row.Cells["Gade"].Value.ToString();
                 int deliveryPostCode = Convert.ToInt32(row.Cells["Postkode"].Value.ToString());
                 string deliveryCity = row.Cells["By"].Value.ToString();
 

@@ -61,14 +61,6 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.dataGridViewLeaseOrders = new System.Windows.Forms.DataGridView();
-            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,6 +71,15 @@
             this.radioButtonBusiness = new System.Windows.Forms.RadioButton();
             this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -126,7 +127,7 @@
             // 
             // textBoxDebtorID
             // 
-            this.textBoxDebtorID.Location = new System.Drawing.Point(523, 57);
+            this.textBoxDebtorID.Location = new System.Drawing.Point(483, 56);
             this.textBoxDebtorID.Name = "textBoxDebtorID";
             this.textBoxDebtorID.Size = new System.Drawing.Size(100, 20);
             this.textBoxDebtorID.TabIndex = 12;
@@ -134,7 +135,7 @@
             // labelDebtorID
             // 
             this.labelDebtorID.AutoSize = true;
-            this.labelDebtorID.Location = new System.Drawing.Point(523, 41);
+            this.labelDebtorID.Location = new System.Drawing.Point(483, 40);
             this.labelDebtorID.Name = "labelDebtorID";
             this.labelDebtorID.Size = new System.Drawing.Size(69, 13);
             this.labelDebtorID.TabIndex = 13;
@@ -142,7 +143,7 @@
             // 
             // SearchDebtorButton
             // 
-            this.SearchDebtorButton.Location = new System.Drawing.Point(628, 56);
+            this.SearchDebtorButton.Location = new System.Drawing.Point(588, 55);
             this.SearchDebtorButton.Name = "SearchDebtorButton";
             this.SearchDebtorButton.Size = new System.Drawing.Size(55, 23);
             this.SearchDebtorButton.TabIndex = 14;
@@ -160,49 +161,49 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(523, 95);
+            this.textBoxName.Location = new System.Drawing.Point(483, 94);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(123, 20);
             this.textBoxName.TabIndex = 16;
             // 
             // textBoxContactName
             // 
-            this.textBoxContactName.Location = new System.Drawing.Point(523, 290);
+            this.textBoxContactName.Location = new System.Drawing.Point(483, 289);
             this.textBoxContactName.Name = "textBoxContactName";
             this.textBoxContactName.Size = new System.Drawing.Size(123, 20);
             this.textBoxContactName.TabIndex = 17;
             // 
             // textBoxBillingAddress
             // 
-            this.textBoxBillingAddress.Location = new System.Drawing.Point(523, 134);
+            this.textBoxBillingAddress.Location = new System.Drawing.Point(483, 133);
             this.textBoxBillingAddress.Name = "textBoxBillingAddress";
             this.textBoxBillingAddress.Size = new System.Drawing.Size(178, 20);
             this.textBoxBillingAddress.TabIndex = 18;
             // 
             // textBoxBillingCity
             // 
-            this.textBoxBillingCity.Location = new System.Drawing.Point(523, 173);
+            this.textBoxBillingCity.Location = new System.Drawing.Point(483, 172);
             this.textBoxBillingCity.Name = "textBoxBillingCity";
             this.textBoxBillingCity.Size = new System.Drawing.Size(100, 20);
             this.textBoxBillingCity.TabIndex = 19;
             // 
             // textBoxBillingPostCode
             // 
-            this.textBoxBillingPostCode.Location = new System.Drawing.Point(632, 173);
+            this.textBoxBillingPostCode.Location = new System.Drawing.Point(592, 172);
             this.textBoxBillingPostCode.Name = "textBoxBillingPostCode";
             this.textBoxBillingPostCode.Size = new System.Drawing.Size(100, 20);
             this.textBoxBillingPostCode.TabIndex = 20;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(523, 249);
+            this.textBoxEmail.Location = new System.Drawing.Point(483, 248);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
             this.textBoxEmail.TabIndex = 21;
             // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Location = new System.Drawing.Point(524, 210);
+            this.textBoxPhone.Location = new System.Drawing.Point(484, 209);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(100, 20);
             this.textBoxPhone.TabIndex = 22;
@@ -210,7 +211,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(523, 80);
+            this.labelName.Location = new System.Drawing.Point(483, 79);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(56, 13);
             this.labelName.TabIndex = 23;
@@ -219,7 +220,7 @@
             // labelBillingAddress
             // 
             this.labelBillingAddress.AutoSize = true;
-            this.labelBillingAddress.Location = new System.Drawing.Point(523, 118);
+            this.labelBillingAddress.Location = new System.Drawing.Point(483, 117);
             this.labelBillingAddress.Name = "labelBillingAddress";
             this.labelBillingAddress.Size = new System.Drawing.Size(45, 13);
             this.labelBillingAddress.TabIndex = 24;
@@ -228,7 +229,7 @@
             // labelBillingCity
             // 
             this.labelBillingCity.AutoSize = true;
-            this.labelBillingCity.Location = new System.Drawing.Point(523, 157);
+            this.labelBillingCity.Location = new System.Drawing.Point(483, 156);
             this.labelBillingCity.Name = "labelBillingCity";
             this.labelBillingCity.Size = new System.Drawing.Size(19, 13);
             this.labelBillingCity.TabIndex = 25;
@@ -237,7 +238,7 @@
             // labelBillingPostCode
             // 
             this.labelBillingPostCode.AutoSize = true;
-            this.labelBillingPostCode.Location = new System.Drawing.Point(629, 157);
+            this.labelBillingPostCode.Location = new System.Drawing.Point(589, 156);
             this.labelBillingPostCode.Name = "labelBillingPostCode";
             this.labelBillingPostCode.Size = new System.Drawing.Size(65, 13);
             this.labelBillingPostCode.TabIndex = 26;
@@ -246,7 +247,7 @@
             // labelContactName
             // 
             this.labelContactName.AutoSize = true;
-            this.labelContactName.Location = new System.Drawing.Point(523, 274);
+            this.labelContactName.Location = new System.Drawing.Point(483, 273);
             this.labelContactName.Name = "labelContactName";
             this.labelContactName.Size = new System.Drawing.Size(76, 13);
             this.labelContactName.TabIndex = 27;
@@ -254,7 +255,7 @@
             // 
             // textBoxContactPhone
             // 
-            this.textBoxContactPhone.Location = new System.Drawing.Point(653, 290);
+            this.textBoxContactPhone.Location = new System.Drawing.Point(613, 289);
             this.textBoxContactPhone.Name = "textBoxContactPhone";
             this.textBoxContactPhone.Size = new System.Drawing.Size(100, 20);
             this.textBoxContactPhone.TabIndex = 28;
@@ -262,7 +263,7 @@
             // labelContactPhone
             // 
             this.labelContactPhone.AutoSize = true;
-            this.labelContactPhone.Location = new System.Drawing.Point(653, 274);
+            this.labelContactPhone.Location = new System.Drawing.Point(613, 273);
             this.labelContactPhone.Name = "labelContactPhone";
             this.labelContactPhone.Size = new System.Drawing.Size(80, 13);
             this.labelContactPhone.TabIndex = 29;
@@ -319,7 +320,7 @@
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(523, 196);
+            this.labelPhone.Location = new System.Drawing.Point(483, 195);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(56, 13);
             this.labelPhone.TabIndex = 36;
@@ -328,7 +329,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(523, 233);
+            this.labelEmail.Location = new System.Drawing.Point(483, 232);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(35, 13);
             this.labelEmail.TabIndex = 37;
@@ -336,7 +337,7 @@
             // 
             // buttonCreateOrder
             // 
-            this.buttonCreateOrder.Location = new System.Drawing.Point(878, 162);
+            this.buttonCreateOrder.Location = new System.Drawing.Point(838, 161);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
             this.buttonCreateOrder.Size = new System.Drawing.Size(143, 53);
             this.buttonCreateOrder.TabIndex = 38;
@@ -355,59 +356,14 @@
             this.Slutdato,
             this.Dagspris,
             this.Levering,
+            this.Gade,
             this.Postkode,
             this.By});
-            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(526, 339);
+            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(486, 338);
             this.dataGridViewLeaseOrders.MultiSelect = false;
             this.dataGridViewLeaseOrders.Name = "dataGridViewLeaseOrders";
-            this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(628, 186);
+            this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(723, 186);
             this.dataGridViewLeaseOrders.TabIndex = 39;
-            // 
-            // ResurseID
-            // 
-            this.ResurseID.HeaderText = "ResurseID";
-            this.ResurseID.Name = "ResurseID";
-            this.ResurseID.Visible = false;
-            // 
-            // Resurse
-            // 
-            this.Resurse.HeaderText = "Resurse";
-            this.Resurse.Name = "Resurse";
-            // 
-            // Leveringsdato
-            // 
-            this.Leveringsdato.HeaderText = "Leveringsdato";
-            this.Leveringsdato.Name = "Leveringsdato";
-            this.Leveringsdato.Width = 80;
-            // 
-            // Slutdato
-            // 
-            this.Slutdato.HeaderText = "Slutdato";
-            this.Slutdato.Name = "Slutdato";
-            this.Slutdato.Width = 80;
-            // 
-            // Dagspris
-            // 
-            this.Dagspris.HeaderText = "Dagspris";
-            this.Dagspris.Name = "Dagspris";
-            this.Dagspris.Width = 70;
-            // 
-            // Levering
-            // 
-            this.Levering.HeaderText = "Levering";
-            this.Levering.Name = "Levering";
-            // 
-            // Postkode
-            // 
-            this.Postkode.HeaderText = "Postkode";
-            this.Postkode.Name = "Postkode";
-            this.Postkode.Width = 60;
-            // 
-            // By
-            // 
-            this.By.HeaderText = "By";
-            this.By.Name = "By";
-            this.By.Width = 90;
             // 
             // comboBox1
             // 
@@ -479,7 +435,7 @@
             // 
             this.radioButtonBusiness.AutoSize = true;
             this.radioButtonBusiness.Checked = true;
-            this.radioButtonBusiness.Location = new System.Drawing.Point(782, 54);
+            this.radioButtonBusiness.Location = new System.Drawing.Point(742, 53);
             this.radioButtonBusiness.Name = "radioButtonBusiness";
             this.radioButtonBusiness.Size = new System.Drawing.Size(62, 17);
             this.radioButtonBusiness.TabIndex = 47;
@@ -491,7 +447,7 @@
             // radioButtonPersonal
             // 
             this.radioButtonPersonal.AutoSize = true;
-            this.radioButtonPersonal.Location = new System.Drawing.Point(865, 54);
+            this.radioButtonPersonal.Location = new System.Drawing.Point(825, 53);
             this.radioButtonPersonal.Name = "radioButtonPersonal";
             this.radioButtonPersonal.Size = new System.Drawing.Size(52, 17);
             this.radioButtonPersonal.TabIndex = 48;
@@ -500,13 +456,64 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(405, 66);
+            this.button1.Location = new System.Drawing.Point(305, 374);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(101, 49);
             this.button1.TabIndex = 49;
-            this.button1.Text = "button1";
+            this.button1.Text = "button only used for testing";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ResurseID
+            // 
+            this.ResurseID.HeaderText = "ResurseID";
+            this.ResurseID.Name = "ResurseID";
+            this.ResurseID.Visible = false;
+            // 
+            // Resurse
+            // 
+            this.Resurse.HeaderText = "Resurse";
+            this.Resurse.Name = "Resurse";
+            // 
+            // Leveringsdato
+            // 
+            this.Leveringsdato.HeaderText = "Leveringsdato";
+            this.Leveringsdato.Name = "Leveringsdato";
+            this.Leveringsdato.Width = 80;
+            // 
+            // Slutdato
+            // 
+            this.Slutdato.HeaderText = "Slutdato";
+            this.Slutdato.Name = "Slutdato";
+            this.Slutdato.Width = 80;
+            // 
+            // Dagspris
+            // 
+            this.Dagspris.HeaderText = "Dagspris";
+            this.Dagspris.Name = "Dagspris";
+            this.Dagspris.Width = 70;
+            // 
+            // Levering
+            // 
+            this.Levering.HeaderText = "Levering";
+            this.Levering.Name = "Levering";
+            // 
+            // Gade
+            // 
+            this.Gade.HeaderText = "Gade";
+            this.Gade.Name = "Gade";
+            // 
+            // Postkode
+            // 
+            this.Postkode.HeaderText = "Postkode";
+            this.Postkode.Name = "Postkode";
+            this.Postkode.Width = 60;
+            // 
+            // By
+            // 
+            this.By.HeaderText = "By";
+            this.By.Name = "By";
+            this.By.Width = 90;
             // 
             // Lease
             // 
@@ -607,17 +614,18 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView dataGridViewResources;
         private System.Windows.Forms.Button AddResourceToOrderButton;
+        private System.Windows.Forms.CheckBox checkBoxUseBillingAddress;
+        private System.Windows.Forms.RadioButton radioButtonBusiness;
+        private System.Windows.Forms.RadioButton radioButtonPersonal;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
         private System.Windows.Forms.DataGridViewTextBoxColumn Slutdato;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dagspris;
         private System.Windows.Forms.DataGridViewTextBoxColumn Levering;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Postkode;
         private System.Windows.Forms.DataGridViewTextBoxColumn By;
-        private System.Windows.Forms.CheckBox checkBoxUseBillingAddress;
-        private System.Windows.Forms.RadioButton radioButtonBusiness;
-        private System.Windows.Forms.RadioButton radioButtonPersonal;
-        private System.Windows.Forms.Button button1;
     }
 }
