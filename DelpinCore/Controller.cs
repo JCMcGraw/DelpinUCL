@@ -13,6 +13,7 @@ namespace DelpinCore
         ResourceManager resourceManager = new ResourceManager();
         LeaseManager leaseManager = new LeaseManager();
         AccessoryManager accessoryManager = new AccessoryManager();
+        TableDisplay tableDisplay = new TableDisplay();
 
         public string ReadDebtor()
         {
