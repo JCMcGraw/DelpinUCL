@@ -38,6 +38,7 @@ namespace DelpinCore
             }
 
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
+            
         }
 
         public DataTable ReadPersonalDebtor(string debtorID)
@@ -91,13 +92,13 @@ namespace DelpinCore
             return $"Kunden {debtorID} er blevet slettet";
         }
 
-        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname, string contactPhone)
+        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName, string contactFname,string contactLname, string contactPhone)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
                                   $"values ('{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}')";
 
-            string createBusinessDebtor = "Insert into Business(CVR,CompanyName,ContactFname,ContactPhone) " +
-                                          $"values ('{CVR}','{companyName}','{contactFname}','{contactPhone}')";
+            string createBusinessDebtor = "Insert into Business(CVR,CompanyName,ContactFname,ContactLname,ContactPhone) " +
+                                          $"values ('{CVR}','{companyName}','{contactFname}','{contactLname}','{contactPhone}')";
 
             string isCreateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
             if (isCreateDebtor != "Success")
