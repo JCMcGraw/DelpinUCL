@@ -90,7 +90,7 @@ namespace DelpinCore
                     insertLeaseOrder += ", ";
                 }
                 insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
-                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalcode}, '{lo.deliveryCity}')";
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalCode}, '{lo.deliveryCity}')";
             }
             return insertLeaseOrder;
         }

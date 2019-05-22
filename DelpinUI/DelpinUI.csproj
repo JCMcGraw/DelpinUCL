@@ -98,6 +98,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectResourceForLeaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectResourceForLeaseOrder.Designer.cs">
+      <DependentUpon>FormSelectResourceForLeaseOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lease.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectResourceForLeaseOrder.resx">
+      <DependentUpon>FormSelectResourceForLeaseOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lease.resx">
       <DependentUpon>Lease.cs</DependentUpon>
