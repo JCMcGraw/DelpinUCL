@@ -140,5 +140,13 @@ namespace DelpinCore
             string deleteAccessory = accessoryManager.DeleteAccessory(accessoryModelID);
             return deleteAccessory;
         }
+
+        public DataTable SpecefikSubCataegori(int subGroupID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = ResourceManager.SpecefikSubCataegori(subGroupID);
+
+            return dataTable;
+        }
     }
 }

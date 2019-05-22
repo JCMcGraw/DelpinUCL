@@ -80,19 +80,13 @@ namespace DelpinCore
             return $"Resources {resourceID},'{modelID} er blevet Slettet";
         }
 
-        public string SpecefikSubCataegori(int SubGroupID)
+        static public DataTable SpecefikSubCataegori(int SubGroupID)
         {
-            DataTable datatable = new DataTable();
-            
             string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
 
-            string isSpecefikSubCataegori = Convert.ToString(DatabaseManager.ReadFromDatabase(SpecefikSubCataegori));
-            if (isSpecefikSubCataegori != "Success")
-            {
-                return isSpecefikSubCataegori;
-            }
+            DataTable dataTable= DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
 
-            return Convert.ToString(datatable);
+            return dataTable;
         }
     }
 }
