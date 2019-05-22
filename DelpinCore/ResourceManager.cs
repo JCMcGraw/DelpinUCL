@@ -89,7 +89,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable ReadSpecefikModelResourcesBranch(int resurceID,string modelID,int branchID )
+        public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Resources join Model on Model.ModelID = Resources.ResurceID" +
                                                                                 $"join Branch on Branch.BranchID = Resources.ResurceID" +

@@ -149,10 +149,10 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable ReadSpecefikModelResourcesBranch(int resurceID, string modelID, int branchID)
+        public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID,modelID,branchID);
+            dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
 
             return dataTable;
         }
