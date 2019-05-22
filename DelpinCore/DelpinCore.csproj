@@ -51,6 +51,7 @@
     <Compile Include="Debtor.cs" />
     <Compile Include="DebtorManager.cs" />
     <Compile Include="Delivery.cs" />
+    <Compile Include="DeliveryManager.cs" />
     <Compile Include="Lease.cs" />
     <Compile Include="LeaseManager.cs" />
     <Compile Include="LeaseOrder.cs" />

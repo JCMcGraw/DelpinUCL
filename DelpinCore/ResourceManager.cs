@@ -99,6 +99,5 @@ namespace DelpinCore
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
             return dataTable;
         }
-
     }
 }
