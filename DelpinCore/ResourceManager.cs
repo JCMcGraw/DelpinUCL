@@ -82,11 +82,17 @@ namespace DelpinCore
 
         static public DataTable SpecefikSubCataegori(int SubGroupID)
         {
-            //DataTable datatable = new DataTable();
+            DataTable datatable = new DataTable();
             
             string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
 
-            return DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
+            string isSpecefikSubCataegori = Convert.ToString(DatabaseManager.ReadFromDatabase(SpecefikSubCataegori));
+            if (isSpecefikSubCataegori != "Success")
+            {
+                return isSpecefikSubCataegori;
+            }
+
+            return datatable;
         }
     }
 }
