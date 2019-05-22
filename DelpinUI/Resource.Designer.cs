@@ -42,25 +42,28 @@
             this.subGroupTableAdapter = new DelpinUI.DataSet3TableAdapters.SubGroupTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.ProductGridView = new System.Windows.Forms.DataGridView();
-            this.dataSet4 = new DelpinUI.DataSet4();
-            this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.modelIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subGroupIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet4 = new DelpinUI.DataSet4();
+            this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 181);
+            this.button1.Location = new System.Drawing.Point(12, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -94,7 +97,7 @@
             this.comboBox1.DataSource = this.subGroupBindingSource;
             this.comboBox1.DisplayMember = "Category";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 141);
+            this.comboBox1.Location = new System.Drawing.Point(129, 144);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 4;
@@ -145,15 +148,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 125);
+            this.label4.Location = new System.Drawing.Point(126, 128);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Kategori";
+            this.label4.Text = "Undergruppe";
             // 
             // ProductGridView
             // 
             this.ProductGridView.AutoGenerateColumns = false;
+            this.ProductGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.ProductGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProductGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.modelIDDataGridViewTextBoxColumn,
@@ -165,20 +170,6 @@
             this.ProductGridView.Name = "ProductGridView";
             this.ProductGridView.Size = new System.Drawing.Size(447, 177);
             this.ProductGridView.TabIndex = 9;
-            // 
-            // dataSet4
-            // 
-            this.dataSet4.DataSetName = "DataSet4";
-            this.dataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // modelBindingSource
-            // 
-            this.modelBindingSource.DataMember = "Model";
-            this.modelBindingSource.DataSource = this.dataSet4;
-            // 
-            // modelTableAdapter
-            // 
-            this.modelTableAdapter.ClearBeforeFill = true;
             // 
             // modelIDDataGridViewTextBoxColumn
             // 
@@ -205,6 +196,20 @@
             this.subGroupIDDataGridViewTextBoxColumn.HeaderText = "SubGroupID";
             this.subGroupIDDataGridViewTextBoxColumn.Name = "subGroupIDDataGridViewTextBoxColumn";
             // 
+            // modelBindingSource
+            // 
+            this.modelBindingSource.DataMember = "Model";
+            this.modelBindingSource.DataSource = this.dataSet4;
+            // 
+            // dataSet4
+            // 
+            this.dataSet4.DataSetName = "DataSet4";
+            this.dataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // modelTableAdapter
+            // 
+            this.modelTableAdapter.ClearBeforeFill = true;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -216,18 +221,50 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(107, 181);
+            this.button2.Location = new System.Drawing.Point(107, 228);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 23);
             this.button2.TabIndex = 11;
             this.button2.Text = "Opdater vare";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.DataSource = this.dataSet4;
+            this.comboBox2.DisplayMember = "MainGroup.Category";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(13, 144);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(101, 21);
+            this.comboBox2.TabIndex = 12;
+            this.comboBox2.ValueMember = "MainGroup.Category";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Hovedkategori";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(207, 228);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Slet vare";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Resource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ProductGridView);
@@ -246,8 +283,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +314,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subGroupIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -33,7 +33,7 @@
             this.PlnameText = new System.Windows.Forms.TextBox();
             this.adressText = new System.Windows.Forms.TextBox();
             this.city = new System.Windows.Forms.TextBox();
-            this.BpostalcodeText = new System.Windows.Forms.TextBox();
+            this.postalcodeText = new System.Windows.Forms.TextBox();
             this.phoneText = new System.Windows.Forms.TextBox();
             this.emailText = new System.Windows.Forms.TextBox();
             this.PfnameLabel = new System.Windows.Forms.Label();
@@ -45,12 +45,6 @@
             this.cprLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.BemailLabel = new System.Windows.Forms.Label();
-            this.DadressText = new System.Windows.Forms.TextBox();
-            this.cityText = new System.Windows.Forms.TextBox();
-            this.postalcodeText = new System.Windows.Forms.TextBox();
-            this.DadressLabel = new System.Windows.Forms.Label();
-            this.cityLabel = new System.Windows.Forms.Label();
-            this.postalcodeLabel = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.cvrText = new System.Windows.Forms.TextBox();
@@ -68,7 +62,8 @@
             this.contactFnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactLnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.debtorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.businessBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet5 = new DelpinUI.DataSet5();
             this.businessBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new DelpinUI.DataSet1();
@@ -90,7 +85,10 @@
             this.debtorTableAdapter1 = new DelpinUI.DataSet2TableAdapters.DebtorTableAdapter();
             this.fKBusinessDebtor4830B400BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKPersonalDebtor45544755BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.businessTableAdapter1 = new DelpinUI.DataSet5TableAdapters.BusinessTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -127,35 +125,35 @@
             this.adressText.Location = new System.Drawing.Point(11, 179);
             this.adressText.Name = "adressText";
             this.adressText.Size = new System.Drawing.Size(100, 20);
-            this.adressText.TabIndex = 2;
+            this.adressText.TabIndex = 4;
             // 
             // city
             // 
             this.city.Location = new System.Drawing.Point(11, 218);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(100, 20);
-            this.city.TabIndex = 3;
+            this.city.TabIndex = 5;
             // 
-            // BpostalcodeText
+            // postalcodeText
             // 
-            this.BpostalcodeText.Location = new System.Drawing.Point(126, 218);
-            this.BpostalcodeText.Name = "BpostalcodeText";
-            this.BpostalcodeText.Size = new System.Drawing.Size(61, 20);
-            this.BpostalcodeText.TabIndex = 4;
+            this.postalcodeText.Location = new System.Drawing.Point(126, 218);
+            this.postalcodeText.Name = "postalcodeText";
+            this.postalcodeText.Size = new System.Drawing.Size(61, 20);
+            this.postalcodeText.TabIndex = 6;
             // 
             // phoneText
             // 
             this.phoneText.Location = new System.Drawing.Point(11, 263);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(100, 20);
-            this.phoneText.TabIndex = 5;
+            this.phoneText.TabIndex = 7;
             // 
             // emailText
             // 
             this.emailText.Location = new System.Drawing.Point(11, 306);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(100, 20);
-            this.emailText.TabIndex = 6;
+            this.emailText.TabIndex = 8;
             // 
             // PfnameLabel
             // 
@@ -239,54 +237,6 @@
             this.BemailLabel.TabIndex = 15;
             this.BemailLabel.Text = "E-mail";
             // 
-            // DadressText
-            // 
-            this.DadressText.Location = new System.Drawing.Point(11, 349);
-            this.DadressText.Name = "DadressText";
-            this.DadressText.Size = new System.Drawing.Size(100, 20);
-            this.DadressText.TabIndex = 16;
-            // 
-            // cityText
-            // 
-            this.cityText.Location = new System.Drawing.Point(12, 388);
-            this.cityText.Name = "cityText";
-            this.cityText.Size = new System.Drawing.Size(100, 20);
-            this.cityText.TabIndex = 17;
-            // 
-            // postalcodeText
-            // 
-            this.postalcodeText.Location = new System.Drawing.Point(126, 388);
-            this.postalcodeText.Name = "postalcodeText";
-            this.postalcodeText.Size = new System.Drawing.Size(100, 20);
-            this.postalcodeText.TabIndex = 18;
-            // 
-            // DadressLabel
-            // 
-            this.DadressLabel.AutoSize = true;
-            this.DadressLabel.Location = new System.Drawing.Point(10, 333);
-            this.DadressLabel.Name = "DadressLabel";
-            this.DadressLabel.Size = new System.Drawing.Size(90, 13);
-            this.DadressLabel.TabIndex = 19;
-            this.DadressLabel.Text = "Leveringsadresse";
-            // 
-            // cityLabel
-            // 
-            this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(11, 372);
-            this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(19, 13);
-            this.cityLabel.TabIndex = 20;
-            this.cityLabel.Text = "By";
-            // 
-            // postalcodeLabel
-            // 
-            this.postalcodeLabel.AutoSize = true;
-            this.postalcodeLabel.Location = new System.Drawing.Point(123, 372);
-            this.postalcodeLabel.Name = "postalcodeLabel";
-            this.postalcodeLabel.Size = new System.Drawing.Size(37, 13);
-            this.postalcodeLabel.TabIndex = 21;
-            this.postalcodeLabel.Text = "Postnr";
-            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -316,7 +266,7 @@
             this.cvrText.Location = new System.Drawing.Point(12, 64);
             this.cvrText.Name = "cvrText";
             this.cvrText.Size = new System.Drawing.Size(100, 20);
-            this.cvrText.TabIndex = 24;
+            this.cvrText.TabIndex = 0;
             // 
             // CvrLabel
             // 
@@ -332,7 +282,7 @@
             this.BnameText.Location = new System.Drawing.Point(13, 102);
             this.BnameText.Name = "BnameText";
             this.BnameText.Size = new System.Drawing.Size(163, 20);
-            this.BnameText.TabIndex = 26;
+            this.BnameText.TabIndex = 1;
             // 
             // BnameLabel
             // 
@@ -348,14 +298,14 @@
             this.BcontactPhoText.Location = new System.Drawing.Point(126, 140);
             this.BcontactPhoText.Name = "BcontactPhoText";
             this.BcontactPhoText.Size = new System.Drawing.Size(100, 20);
-            this.BcontactPhoText.TabIndex = 28;
+            this.BcontactPhoText.TabIndex = 3;
             // 
             // BcontactText
             // 
             this.BcontactText.Location = new System.Drawing.Point(11, 140);
             this.BcontactText.Name = "BcontactText";
             this.BcontactText.Size = new System.Drawing.Size(100, 20);
-            this.BcontactText.TabIndex = 29;
+            this.BcontactText.TabIndex = 2;
             // 
             // BcontactLabel
             // 
@@ -395,9 +345,8 @@
             this.companyNameDataGridViewTextBoxColumn,
             this.contactFnameDataGridViewTextBoxColumn,
             this.contactLnameDataGridViewTextBoxColumn,
-            this.contactPhoneDataGridViewTextBoxColumn,
-            this.debtorIDDataGridViewTextBoxColumn});
-            this.ViewBdeb.DataSource = this.businessBindingSource;
+            this.contactPhoneDataGridViewTextBoxColumn});
+            this.ViewBdeb.DataSource = this.businessBindingSource2;
             this.ViewBdeb.Location = new System.Drawing.Point(286, 13);
             this.ViewBdeb.Name = "ViewBdeb";
             this.ViewBdeb.Size = new System.Drawing.Size(705, 425);
@@ -434,11 +383,15 @@
             this.contactPhoneDataGridViewTextBoxColumn.HeaderText = "ContactPhone";
             this.contactPhoneDataGridViewTextBoxColumn.Name = "contactPhoneDataGridViewTextBoxColumn";
             // 
-            // debtorIDDataGridViewTextBoxColumn
+            // businessBindingSource2
             // 
-            this.debtorIDDataGridViewTextBoxColumn.DataPropertyName = "DebtorID";
-            this.debtorIDDataGridViewTextBoxColumn.HeaderText = "DebtorID";
-            this.debtorIDDataGridViewTextBoxColumn.Name = "debtorIDDataGridViewTextBoxColumn";
+            this.businessBindingSource2.DataMember = "Business";
+            this.businessBindingSource2.DataSource = this.dataSet5;
+            // 
+            // dataSet5
+            // 
+            this.dataSet5.DataSetName = "DataSet5";
+            this.dataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // businessBindingSource
             // 
@@ -479,6 +432,7 @@
             this.CreatePdeb.Text = "Opret";
             this.CreatePdeb.UseVisualStyleBackColor = true;
             this.CreatePdeb.Visible = false;
+            this.CreatePdeb.Click += new System.EventHandler(this.CreatePdeb_Click_1);
             // 
             // ViewPdeb
             // 
@@ -561,25 +515,22 @@
             this.fKPersonalDebtor45544755BindingSource.DataMember = "FK__Personal__Debtor__45544755";
             this.fKPersonalDebtor45544755BindingSource.DataSource = this.debtorBindingSource1;
             // 
+            // businessTableAdapter1
+            // 
+            this.businessTableAdapter1.ClearBeforeFill = true;
+            // 
             // Debtor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 450);
             this.Controls.Add(this.ViewBdeb);
-            this.Controls.Add(this.CreateBdeb);
             this.Controls.Add(this.BcontactphoLabel);
             this.Controls.Add(this.BcontactLabel);
             this.Controls.Add(this.BcontactText);
             this.Controls.Add(this.BcontactPhoText);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.postalcodeLabel);
-            this.Controls.Add(this.cityLabel);
-            this.Controls.Add(this.DadressLabel);
-            this.Controls.Add(this.postalcodeText);
-            this.Controls.Add(this.cityText);
-            this.Controls.Add(this.DadressText);
             this.Controls.Add(this.BemailLabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -588,7 +539,7 @@
             this.Controls.Add(this.PlnameLabel);
             this.Controls.Add(this.emailText);
             this.Controls.Add(this.phoneText);
-            this.Controls.Add(this.BpostalcodeText);
+            this.Controls.Add(this.postalcodeText);
             this.Controls.Add(this.city);
             this.Controls.Add(this.adressText);
             this.Controls.Add(this.CvrLabel);
@@ -602,10 +553,13 @@
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.ViewPdeb);
+            this.Controls.Add(this.CreateBdeb);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
@@ -628,7 +582,7 @@
         private System.Windows.Forms.TextBox PfnameText;
         private System.Windows.Forms.TextBox adressText;
         private System.Windows.Forms.TextBox city;
-        private System.Windows.Forms.TextBox BpostalcodeText;
+        private System.Windows.Forms.TextBox postalcodeText;
         private System.Windows.Forms.TextBox phoneText;
         private System.Windows.Forms.TextBox emailText;
         private System.Windows.Forms.Label PfnameLabel;
@@ -640,12 +594,6 @@
         private System.Windows.Forms.Label cprLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label BemailLabel;
-        private System.Windows.Forms.TextBox DadressText;
-        private System.Windows.Forms.TextBox cityText;
-        private System.Windows.Forms.TextBox postalcodeText;
-        private System.Windows.Forms.Label DadressLabel;
-        private System.Windows.Forms.Label cityLabel;
-        private System.Windows.Forms.Label postalcodeLabel;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TextBox cvrText;
@@ -679,12 +627,14 @@
         private DataSet2 dataSet2;
         private System.Windows.Forms.BindingSource debtorBindingSource2;
         private DataSet2TableAdapters.DebtorTableAdapter debtorTableAdapter1;
+        private System.Windows.Forms.BindingSource fKPersonalDebtor45544755BindingSource;
+        private DataSet5 dataSet5;
+        private System.Windows.Forms.BindingSource businessBindingSource2;
+        private DataSet5TableAdapters.BusinessTableAdapter businessTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cVRDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactFnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactLnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPhoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn debtorIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource fKPersonalDebtor45544755BindingSource;
     }
 }

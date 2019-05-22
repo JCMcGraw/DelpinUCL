@@ -101,13 +101,13 @@ namespace DelpinCore
                                           $"values ('{CVR}','{companyName}','{contactFname}','{contactLname}','{contactPhone}')";
 
             string isCreateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
-            if (isCreateDebtor != "Success")
+            if (isCreateDebtor != "success")
             {
                 return isCreateDebtor;
             }
 
             string isCreateBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(createBusinessDebtor);
-            if (isCreateBusinessDebtor != "Success")
+            if (isCreateBusinessDebtor != "success")
             {
                 return isCreateBusinessDebtor;
             }
