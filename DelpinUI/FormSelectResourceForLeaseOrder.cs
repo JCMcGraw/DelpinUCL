@@ -13,24 +13,21 @@ namespace DelpinUI
     public partial class FormSelectResourceForLeaseOrder : Form
     {
         Lease lease = new Lease();
-        public FormSelectResourceForLeaseOrder()
-        {
-            InitializeComponent();
-        }
-
         public FormSelectResourceForLeaseOrder(Lease lease)
         {
+            InitializeComponent();
             this.lease = lease;
-        }
-
-        private void buttonSelectResource_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             lease.SetResourceID(-1);
+            this.Close();
+        }
+
+        private void buttonSelectResource_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
