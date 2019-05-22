@@ -102,9 +102,10 @@ namespace DelpinCore
             leaseManager.DeleteLease(leaseID);
         }
 
-        public void CreateLease(Lease lease)
+        public string CreateLease(Lease lease)
         {
-            leaseManager.CreateLease(lease);
+            string leaseSuccess = leaseManager.CreateLease(lease);
+            return leaseSuccess;
         }
 
         public void UpdateLeaseOrdersOnLease(Lease lease)
@@ -166,6 +167,18 @@ namespace DelpinCore
         {
             double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, extraKm8, extraKm10, deliveryPrice);
             return deliveryPrices;
+        }
+
+        public DataTable GetMainGroup()
+        {
+            DataTable dataTable = tableDisplay.DisplayMainGroup();
+            return dataTable;
+        }
+
+        public DataTable GetSubGroup()
+        {
+            DataTable dataTable = tableDisplay.DisplaySubGroup();
+            return dataTable;
         }
     }
 }
