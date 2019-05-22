@@ -40,7 +40,7 @@ namespace DelpinCore
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
         }
 
-        public DataTable ReadPersonalDebtor(int debtorID)
+        public DataTable ReadPersonalDebtor(string debtorID)
         {
             string readPersonalDebtor = $"Select * from Personal Where DebtorID = {debtorID}";
 
@@ -114,7 +114,7 @@ namespace DelpinCore
             return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CVR},'{companyName},'{contactFname},'{contactPhone}er blevet Oprettet";
         }
 
-        public DataTable ReadBusinessDebtor(int debtorID)
+        public DataTable ReadBusinessDebtor(string debtorID)
         {
             string readBusinessDebtor = $"Select * from Business Where DebtorID = {debtorID}";
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readBusinessDebtor);
