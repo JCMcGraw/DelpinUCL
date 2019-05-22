@@ -80,7 +80,7 @@ namespace DelpinCore
             return $"Resources {resourceID},'{modelID} er blevet Slettet";
         }
 
-        static public DataTable SpecefikSubCataegori(int SubGroupID)
+        public string SpecefikSubCataegori(int SubGroupID)
         {
             DataTable datatable = new DataTable();
             
@@ -92,7 +92,7 @@ namespace DelpinCore
                 return isSpecefikSubCataegori;
             }
 
-            return datatable;
+            return Convert.ToString(datatable);
         }
     }
 }
