@@ -80,7 +80,7 @@ namespace DelpinCore
             return $"Resources {resourceID},'{modelID} er blevet Slettet";
         }
 
-        static public DataTable SpecefikSubCataegori(int SubGroupID)
+        public DataTable ReadSpecefikSubCataegori(int SubGroupID)
         {
             string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
 
@@ -88,5 +88,11 @@ namespace DelpinCore
 
             return dataTable;
         }
+
+        //static public DataTable ReadSpecefikModelResourcesBranch()
+        //{
+
+        //}
+
     }
 }

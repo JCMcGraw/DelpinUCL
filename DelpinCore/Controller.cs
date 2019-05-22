@@ -141,10 +141,10 @@ namespace DelpinCore
             return deleteAccessory;
         }
 
-        public DataTable SpecefikSubCataegori(int subGroupID)
+        public DataTable ReadSpecefikSubCataegori(int subGroupID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = ResourceManager.SpecefikSubCataegori(subGroupID);
+            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
 
             return dataTable;
         }
