@@ -14,6 +14,11 @@ namespace DelpinCore
         public DateTime dateCreated { get; private set; }
         private List<LeaseOrder> leaseOrders = new List<LeaseOrder>();
 
+        public string contactFirstName { get; private set; }
+        public string contactLastName { get; private set; }
+        public string contactPhone { get; private set; }
+
+
         public Lease(string debtorID, int branchID)
         {
             this.debtorID = debtorID;
@@ -27,6 +32,13 @@ namespace DelpinCore
             this.debtorID = debtorID;
             this.branchID = branchID;
             this.dateCreated = dateCreated;
+        }
+
+        public void SetContactDetails(string contactFirstName, string contactLastName, string contactPhone)
+        {
+            this.contactFirstName = contactFirstName;
+            this.contactLastName = contactLastName;
+            this.contactPhone = contactPhone;
         }
 
         public void AddLeaseOrder(LeaseOrder leaseOrder)

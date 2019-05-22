@@ -61,8 +61,8 @@ namespace DelpinCore
         //inserts new Lease in database
         public string CreateLease(Lease lease)
         {
-            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID})";
+            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone) output inserted.LeaseID " +
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 

@@ -86,8 +86,6 @@ namespace DelpinUI
             textBoxBillingPostCode.Text = dataTable.Rows[0]["PostalCode"].ToString();
             textBoxPhone.Text = (string)dataTable.Rows[0]["Phone"];
             textBoxEmail.Text = (string)dataTable.Rows[0]["Email"];
-            textBoxContactName.Text = (string)dataTable.Rows[0]["ContactFname"] + " " + (string)dataTable.Rows[0]["ContactLname"];
-            textBoxContactPhone.Text = (string)dataTable.Rows[0]["ContactPhone"];
         }
 
 
@@ -140,6 +138,8 @@ namespace DelpinUI
         {
             DelpinCore.Lease lease = new DelpinCore.Lease(textBoxDebtorID.Text, 1);
 
+            lease.SetContactDetails(textBoxContactFirstName.Text, textBoxContactLastName.Text, textBoxContactPhone.Text);
+
             foreach(DataGridViewRow row in dataGridViewLeaseOrders.Rows)
             {
                 if (row.Cells["ResurseID"].Value == null)
@@ -190,19 +190,11 @@ namespace DelpinUI
         {
             if (radioButtonBusiness.Checked == true)
             {
-                labelContactName.Visible = true;
-                labelContactPhone.Visible = true;
-                textBoxContactName.Visible = true;
-                textBoxContactPhone.Visible = true;
                 labelName.Text = "Firmanavn";
                 labelDebtorID.Text = "CVR-nummer";
             }
             else
             {
-                labelContactName.Visible = false;
-                labelContactPhone.Visible = false;
-                textBoxContactName.Visible = false;
-                textBoxContactPhone.Visible = false;
                 labelName.Text = "Navn";
                 labelDebtorID.Text = "CPR-nummer";
             }

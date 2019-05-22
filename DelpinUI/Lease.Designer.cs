@@ -38,7 +38,7 @@
             this.SearchDebtorButton = new System.Windows.Forms.Button();
             this.comboBoxAccessory = new System.Windows.Forms.ComboBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxContactName = new System.Windows.Forms.TextBox();
+            this.textBoxContactFirstName = new System.Windows.Forms.TextBox();
             this.textBoxBillingAddress = new System.Windows.Forms.TextBox();
             this.textBoxBillingCity = new System.Windows.Forms.TextBox();
             this.textBoxBillingPostCode = new System.Windows.Forms.TextBox();
@@ -48,7 +48,7 @@
             this.labelBillingAddress = new System.Windows.Forms.Label();
             this.labelBillingCity = new System.Windows.Forms.Label();
             this.labelBillingPostCode = new System.Windows.Forms.Label();
-            this.labelContactName = new System.Windows.Forms.Label();
+            this.labelContactFirstName = new System.Windows.Forms.Label();
             this.textBoxContactPhone = new System.Windows.Forms.TextBox();
             this.labelContactPhone = new System.Windows.Forms.Label();
             this.labelDeliveryPostCode = new System.Windows.Forms.Label();
@@ -83,6 +83,10 @@
             this.textBoxLeaseNumber = new System.Windows.Forms.TextBox();
             this.labelLeaseNumber = new System.Windows.Forms.Label();
             this.buttonUpdateOrder = new System.Windows.Forms.Button();
+            this.labelContactPerson = new System.Windows.Forms.Label();
+            this.labelContactLastName = new System.Windows.Forms.Label();
+            this.textBoxContactLastName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -169,12 +173,12 @@
             this.textBoxName.Size = new System.Drawing.Size(123, 20);
             this.textBoxName.TabIndex = 16;
             // 
-            // textBoxContactName
+            // textBoxContactFirstName
             // 
-            this.textBoxContactName.Location = new System.Drawing.Point(483, 289);
-            this.textBoxContactName.Name = "textBoxContactName";
-            this.textBoxContactName.Size = new System.Drawing.Size(123, 20);
-            this.textBoxContactName.TabIndex = 17;
+            this.textBoxContactFirstName.Location = new System.Drawing.Point(856, 252);
+            this.textBoxContactFirstName.Name = "textBoxContactFirstName";
+            this.textBoxContactFirstName.Size = new System.Drawing.Size(123, 20);
+            this.textBoxContactFirstName.TabIndex = 17;
             // 
             // textBoxBillingAddress
             // 
@@ -247,18 +251,18 @@
             this.labelBillingPostCode.TabIndex = 26;
             this.labelBillingPostCode.Text = "Postnummer";
             // 
-            // labelContactName
+            // labelContactFirstName
             // 
-            this.labelContactName.AutoSize = true;
-            this.labelContactName.Location = new System.Drawing.Point(483, 273);
-            this.labelContactName.Name = "labelContactName";
-            this.labelContactName.Size = new System.Drawing.Size(76, 13);
-            this.labelContactName.TabIndex = 27;
-            this.labelContactName.Text = "Kontaktperson";
+            this.labelContactFirstName.AutoSize = true;
+            this.labelContactFirstName.Location = new System.Drawing.Point(856, 236);
+            this.labelContactFirstName.Name = "labelContactFirstName";
+            this.labelContactFirstName.Size = new System.Drawing.Size(46, 13);
+            this.labelContactFirstName.TabIndex = 27;
+            this.labelContactFirstName.Text = "Fornavn";
             // 
             // textBoxContactPhone
             // 
-            this.textBoxContactPhone.Location = new System.Drawing.Point(613, 289);
+            this.textBoxContactPhone.Location = new System.Drawing.Point(856, 291);
             this.textBoxContactPhone.Name = "textBoxContactPhone";
             this.textBoxContactPhone.Size = new System.Drawing.Size(100, 20);
             this.textBoxContactPhone.TabIndex = 28;
@@ -266,7 +270,7 @@
             // labelContactPhone
             // 
             this.labelContactPhone.AutoSize = true;
-            this.labelContactPhone.Location = new System.Drawing.Point(613, 273);
+            this.labelContactPhone.Location = new System.Drawing.Point(856, 275);
             this.labelContactPhone.Name = "labelContactPhone";
             this.labelContactPhone.Size = new System.Drawing.Size(80, 13);
             this.labelContactPhone.TabIndex = 29;
@@ -340,7 +344,7 @@
             // 
             // buttonCreateOrder
             // 
-            this.buttonCreateOrder.Location = new System.Drawing.Point(838, 161);
+            this.buttonCreateOrder.Location = new System.Drawing.Point(838, 123);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
             this.buttonCreateOrder.Size = new System.Drawing.Size(143, 53);
             this.buttonCreateOrder.TabIndex = 38;
@@ -362,7 +366,7 @@
             this.Gade,
             this.Postkode,
             this.By});
-            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(483, 354);
+            this.dataGridViewLeaseOrders.Location = new System.Drawing.Point(482, 337);
             this.dataGridViewLeaseOrders.MultiSelect = false;
             this.dataGridViewLeaseOrders.Name = "dataGridViewLeaseOrders";
             this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(723, 186);
@@ -416,7 +420,7 @@
             // 
             // AddResourceToOrderButton
             // 
-            this.AddResourceToOrderButton.Location = new System.Drawing.Point(268, 54);
+            this.AddResourceToOrderButton.Location = new System.Drawing.Point(12, 374);
             this.AddResourceToOrderButton.Name = "AddResourceToOrderButton";
             this.AddResourceToOrderButton.Size = new System.Drawing.Size(101, 46);
             this.AddResourceToOrderButton.TabIndex = 45;
@@ -460,7 +464,7 @@
             // 
             // ButtonFindModels
             // 
-            this.ButtonFindModels.Location = new System.Drawing.Point(368, 133);
+            this.ButtonFindModels.Location = new System.Drawing.Point(350, 133);
             this.ButtonFindModels.Name = "ButtonFindModels";
             this.ButtonFindModels.Size = new System.Drawing.Size(79, 33);
             this.ButtonFindModels.TabIndex = 49;
@@ -522,7 +526,7 @@
             // textBoxLeaseNumber
             // 
             this.textBoxLeaseNumber.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxLeaseNumber.Location = new System.Drawing.Point(570, 328);
+            this.textBoxLeaseNumber.Location = new System.Drawing.Point(569, 311);
             this.textBoxLeaseNumber.Name = "textBoxLeaseNumber";
             this.textBoxLeaseNumber.ReadOnly = true;
             this.textBoxLeaseNumber.Size = new System.Drawing.Size(123, 20);
@@ -531,7 +535,7 @@
             // labelLeaseNumber
             // 
             this.labelLeaseNumber.AutoSize = true;
-            this.labelLeaseNumber.Location = new System.Drawing.Point(483, 331);
+            this.labelLeaseNumber.Location = new System.Drawing.Point(482, 314);
             this.labelLeaseNumber.Name = "labelLeaseNumber";
             this.labelLeaseNumber.Size = new System.Drawing.Size(72, 13);
             this.labelLeaseNumber.TabIndex = 51;
@@ -539,18 +543,57 @@
             // 
             // buttonUpdateOrder
             // 
-            this.buttonUpdateOrder.Location = new System.Drawing.Point(987, 161);
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(988, 123);
             this.buttonUpdateOrder.Name = "buttonUpdateOrder";
             this.buttonUpdateOrder.Size = new System.Drawing.Size(143, 53);
             this.buttonUpdateOrder.TabIndex = 52;
             this.buttonUpdateOrder.Text = "Opdater ordre";
             this.buttonUpdateOrder.UseVisualStyleBackColor = true;
             // 
+            // labelContactPerson
+            // 
+            this.labelContactPerson.AutoSize = true;
+            this.labelContactPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelContactPerson.Location = new System.Drawing.Point(856, 216);
+            this.labelContactPerson.Name = "labelContactPerson";
+            this.labelContactPerson.Size = new System.Drawing.Size(90, 13);
+            this.labelContactPerson.TabIndex = 53;
+            this.labelContactPerson.Text = "KontaktPerson";
+            // 
+            // labelContactLastName
+            // 
+            this.labelContactLastName.AutoSize = true;
+            this.labelContactLastName.Location = new System.Drawing.Point(988, 236);
+            this.labelContactLastName.Name = "labelContactLastName";
+            this.labelContactLastName.Size = new System.Drawing.Size(53, 13);
+            this.labelContactLastName.TabIndex = 55;
+            this.labelContactLastName.Text = "Efternavn";
+            // 
+            // textBoxContactLastName
+            // 
+            this.textBoxContactLastName.Location = new System.Drawing.Point(988, 252);
+            this.textBoxContactLastName.Name = "textBoxContactLastName";
+            this.textBoxContactLastName.Size = new System.Drawing.Size(123, 20);
+            this.textBoxContactLastName.TabIndex = 54;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(218, 441);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 33);
+            this.button1.TabIndex = 56;
+            this.button1.Text = "Tilføj tilbehør";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.labelContactLastName);
+            this.Controls.Add(this.textBoxContactLastName);
+            this.Controls.Add(this.labelContactPerson);
             this.Controls.Add(this.buttonUpdateOrder);
             this.Controls.Add(this.labelLeaseNumber);
             this.Controls.Add(this.textBoxLeaseNumber);
@@ -576,7 +619,7 @@
             this.Controls.Add(this.textBoxDeliveryAddress);
             this.Controls.Add(this.labelContactPhone);
             this.Controls.Add(this.textBoxContactPhone);
-            this.Controls.Add(this.labelContactName);
+            this.Controls.Add(this.labelContactFirstName);
             this.Controls.Add(this.labelBillingPostCode);
             this.Controls.Add(this.labelBillingCity);
             this.Controls.Add(this.labelBillingAddress);
@@ -586,7 +629,7 @@
             this.Controls.Add(this.textBoxBillingPostCode);
             this.Controls.Add(this.textBoxBillingCity);
             this.Controls.Add(this.textBoxBillingAddress);
-            this.Controls.Add(this.textBoxContactName);
+            this.Controls.Add(this.textBoxContactFirstName);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.comboBoxAccessory);
             this.Controls.Add(this.SearchDebtorButton);
@@ -619,7 +662,7 @@
         private System.Windows.Forms.Button SearchDebtorButton;
         private System.Windows.Forms.ComboBox comboBoxAccessory;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxContactName;
+        private System.Windows.Forms.TextBox textBoxContactFirstName;
         private System.Windows.Forms.TextBox textBoxBillingAddress;
         private System.Windows.Forms.TextBox textBoxBillingCity;
         private System.Windows.Forms.TextBox textBoxBillingPostCode;
@@ -629,7 +672,7 @@
         private System.Windows.Forms.Label labelBillingAddress;
         private System.Windows.Forms.Label labelBillingCity;
         private System.Windows.Forms.Label labelBillingPostCode;
-        private System.Windows.Forms.Label labelContactName;
+        private System.Windows.Forms.Label labelContactFirstName;
         private System.Windows.Forms.TextBox textBoxContactPhone;
         private System.Windows.Forms.Label labelContactPhone;
         private System.Windows.Forms.Label labelDeliveryPostCode;
@@ -664,5 +707,9 @@
         private System.Windows.Forms.TextBox textBoxLeaseNumber;
         private System.Windows.Forms.Label labelLeaseNumber;
         private System.Windows.Forms.Button buttonUpdateOrder;
+        private System.Windows.Forms.Label labelContactPerson;
+        private System.Windows.Forms.Label labelContactLastName;
+        private System.Windows.Forms.TextBox textBoxContactLastName;
+        private System.Windows.Forms.Button button1;
     }
 }
