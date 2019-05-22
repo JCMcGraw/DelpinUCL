@@ -89,10 +89,15 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //static public DataTable ReadSpecefikModelResourcesBranch()
-        //{
+        public DataTable ReadSpecefikModelResourcesBranch(int resurceID,string modelID,int branchID )
+        {
+            string ReadSpecefikModelResourcesBranch = $"select * from Resources join Model on Model.{modelID} = Resources.{resurceID}" +
+                                                                                $"join Branch on Branch.{branchID} = Resources.{resurceID}" +
+                                                                                $"where ResourcesID = {resurceID}";
 
-        //}
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
+            return dataTable;
+        }
 
     }
 }
