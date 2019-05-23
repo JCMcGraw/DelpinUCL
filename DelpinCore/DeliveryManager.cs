@@ -8,7 +8,7 @@ namespace DelpinCore
 {
     class DeliveryManager
     {
-        public double DeliveryPrice(int zone, double ton, int km, int extraKm8, int extraKm10, double deliveryPrice)
+        public double DeliveryPrice(int zone, double ton, int km, double deliveryPrice)
         {
             if (ton >= 8)
             {
@@ -64,7 +64,7 @@ namespace DelpinCore
                 }
                 else
                 {
-                    deliveryPrice = 1140 + (extraKm8 * km);
+                    deliveryPrice = 1140 + (8 * km);
                     return deliveryPrice;
                 }
             }
@@ -117,7 +117,7 @@ namespace DelpinCore
                 }
                 else
                 {
-                    deliveryPrice = 1730 + (extraKm10 * km);
+                    deliveryPrice = 1730 + (10 * km);
                     return deliveryPrice;
                 }
             }
