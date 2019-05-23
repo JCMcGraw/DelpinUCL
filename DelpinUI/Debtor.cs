@@ -125,9 +125,9 @@ namespace DelpinUI
 
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
-            
-            string succes = controller.CreateBusinessDebtor(cvrText.Text,adressText.Text,Convert.ToInt32(postalcodeText.Text),city.Text,
-                phoneText.Text,emailText.Text,cvrText.Text,BnameText.Text);
+
+            string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
+                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
             MessageBox.Show(succes);
 
         }
