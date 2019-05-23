@@ -23,5 +23,16 @@ namespace DelpinCore
             this.km = km;
             this.deliveryPrice = deliveryPrice;
         }
+
+        public Delivery(int zone, double ton)
+        {
+            this.zone = zone;
+            this.ton = ton;
+        }
+
+        public Delivery(double deliveryPrice)
+        {
+            this.deliveryPrice = deliveryPrice;
+        }
     }
 }
