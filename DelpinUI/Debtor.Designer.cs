@@ -51,17 +51,12 @@
             this.CvrLabel = new System.Windows.Forms.Label();
             this.BnameText = new System.Windows.Forms.TextBox();
             this.BnameLabel = new System.Windows.Forms.Label();
-            this.BcontactPhoText = new System.Windows.Forms.TextBox();
-            this.BcontactText = new System.Windows.Forms.TextBox();
-            this.BcontactLabel = new System.Windows.Forms.Label();
-            this.BcontactphoLabel = new System.Windows.Forms.Label();
             this.CreateBdeb = new System.Windows.Forms.Button();
             this.ViewBdeb = new System.Windows.Forms.DataGridView();
             this.cVRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactFnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactLnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.businessBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet7 = new DelpinUI.DataSet7();
             this.businessBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet5 = new DelpinUI.DataSet5();
             this.businessBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -75,7 +70,8 @@
             this.cPRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.debtorIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet6 = new DelpinUI.DataSet6();
             this.businessTableAdapter = new DelpinUI.DataSet1TableAdapters.BusinessTableAdapter();
             this.debtorTableAdapter = new DelpinUI.DataSet1TableAdapters.DebtorTableAdapter();
             this.personalTableAdapter = new DelpinUI.DataSet1TableAdapters.PersonalTableAdapter();
@@ -86,7 +82,12 @@
             this.fKBusinessDebtor4830B400BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKPersonalDebtor45544755BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.businessTableAdapter1 = new DelpinUI.DataSet5TableAdapters.BusinessTableAdapter();
+            this.personalTableAdapter1 = new DelpinUI.DataSet6TableAdapters.PersonalTableAdapter();
+            this.businessTableAdapter2 = new DelpinUI.DataSet7TableAdapters.BusinessTableAdapter();
+            this.GetBdeb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).BeginInit();
@@ -96,6 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPdeb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource2)).BeginInit();
@@ -122,35 +125,35 @@
             // 
             // adressText
             // 
-            this.adressText.Location = new System.Drawing.Point(11, 179);
+            this.adressText.Location = new System.Drawing.Point(15, 140);
             this.adressText.Name = "adressText";
             this.adressText.Size = new System.Drawing.Size(100, 20);
             this.adressText.TabIndex = 4;
             // 
             // city
             // 
-            this.city.Location = new System.Drawing.Point(11, 218);
+            this.city.Location = new System.Drawing.Point(15, 179);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(100, 20);
             this.city.TabIndex = 5;
             // 
             // postalcodeText
             // 
-            this.postalcodeText.Location = new System.Drawing.Point(126, 218);
+            this.postalcodeText.Location = new System.Drawing.Point(130, 179);
             this.postalcodeText.Name = "postalcodeText";
             this.postalcodeText.Size = new System.Drawing.Size(61, 20);
             this.postalcodeText.TabIndex = 6;
             // 
             // phoneText
             // 
-            this.phoneText.Location = new System.Drawing.Point(11, 263);
+            this.phoneText.Location = new System.Drawing.Point(15, 224);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(100, 20);
             this.phoneText.TabIndex = 7;
             // 
             // emailText
             // 
-            this.emailText.Location = new System.Drawing.Point(11, 306);
+            this.emailText.Location = new System.Drawing.Point(15, 267);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(100, 20);
             this.emailText.TabIndex = 8;
@@ -178,7 +181,7 @@
             // adressLabel
             // 
             this.adressLabel.AutoSize = true;
-            this.adressLabel.Location = new System.Drawing.Point(12, 163);
+            this.adressLabel.Location = new System.Drawing.Point(16, 124);
             this.adressLabel.Name = "adressLabel";
             this.adressLabel.Size = new System.Drawing.Size(45, 13);
             this.adressLabel.TabIndex = 9;
@@ -187,7 +190,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 202);
+            this.label4.Location = new System.Drawing.Point(16, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 10;
@@ -196,7 +199,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 202);
+            this.label5.Location = new System.Drawing.Point(127, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 11;
@@ -222,7 +225,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 245);
+            this.label7.Location = new System.Drawing.Point(16, 206);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 14;
@@ -231,7 +234,7 @@
             // BemailLabel
             // 
             this.BemailLabel.AutoSize = true;
-            this.BemailLabel.Location = new System.Drawing.Point(11, 290);
+            this.BemailLabel.Location = new System.Drawing.Point(15, 251);
             this.BemailLabel.Name = "BemailLabel";
             this.BemailLabel.Size = new System.Drawing.Size(35, 13);
             this.BemailLabel.TabIndex = 15;
@@ -293,38 +296,6 @@
             this.BnameLabel.TabIndex = 27;
             this.BnameLabel.Text = "Firmanavn";
             // 
-            // BcontactPhoText
-            // 
-            this.BcontactPhoText.Location = new System.Drawing.Point(126, 140);
-            this.BcontactPhoText.Name = "BcontactPhoText";
-            this.BcontactPhoText.Size = new System.Drawing.Size(100, 20);
-            this.BcontactPhoText.TabIndex = 3;
-            // 
-            // BcontactText
-            // 
-            this.BcontactText.Location = new System.Drawing.Point(11, 140);
-            this.BcontactText.Name = "BcontactText";
-            this.BcontactText.Size = new System.Drawing.Size(100, 20);
-            this.BcontactText.TabIndex = 2;
-            // 
-            // BcontactLabel
-            // 
-            this.BcontactLabel.AutoSize = true;
-            this.BcontactLabel.Location = new System.Drawing.Point(10, 124);
-            this.BcontactLabel.Name = "BcontactLabel";
-            this.BcontactLabel.Size = new System.Drawing.Size(76, 13);
-            this.BcontactLabel.TabIndex = 30;
-            this.BcontactLabel.Text = "Kontaktperson";
-            // 
-            // BcontactphoLabel
-            // 
-            this.BcontactphoLabel.AutoSize = true;
-            this.BcontactphoLabel.Location = new System.Drawing.Point(126, 124);
-            this.BcontactphoLabel.Name = "BcontactphoLabel";
-            this.BcontactphoLabel.Size = new System.Drawing.Size(52, 13);
-            this.BcontactphoLabel.TabIndex = 31;
-            this.BcontactphoLabel.Text = "tlfnummer";
-            // 
             // CreateBdeb
             // 
             this.CreateBdeb.Location = new System.Drawing.Point(15, 415);
@@ -342,11 +313,8 @@
             this.ViewBdeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViewBdeb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cVRDataGridViewTextBoxColumn,
-            this.companyNameDataGridViewTextBoxColumn,
-            this.contactFnameDataGridViewTextBoxColumn,
-            this.contactLnameDataGridViewTextBoxColumn,
-            this.contactPhoneDataGridViewTextBoxColumn});
-            this.ViewBdeb.DataSource = this.businessBindingSource2;
+            this.companyNameDataGridViewTextBoxColumn});
+            this.ViewBdeb.DataSource = this.businessBindingSource3;
             this.ViewBdeb.Location = new System.Drawing.Point(286, 13);
             this.ViewBdeb.Name = "ViewBdeb";
             this.ViewBdeb.Size = new System.Drawing.Size(705, 425);
@@ -365,23 +333,15 @@
             this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
             this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
             // 
-            // contactFnameDataGridViewTextBoxColumn
+            // businessBindingSource3
             // 
-            this.contactFnameDataGridViewTextBoxColumn.DataPropertyName = "ContactFname";
-            this.contactFnameDataGridViewTextBoxColumn.HeaderText = "ContactFname";
-            this.contactFnameDataGridViewTextBoxColumn.Name = "contactFnameDataGridViewTextBoxColumn";
+            this.businessBindingSource3.DataMember = "Business";
+            this.businessBindingSource3.DataSource = this.dataSet7;
             // 
-            // contactLnameDataGridViewTextBoxColumn
+            // dataSet7
             // 
-            this.contactLnameDataGridViewTextBoxColumn.DataPropertyName = "ContactLname";
-            this.contactLnameDataGridViewTextBoxColumn.HeaderText = "ContactLname";
-            this.contactLnameDataGridViewTextBoxColumn.Name = "contactLnameDataGridViewTextBoxColumn";
-            // 
-            // contactPhoneDataGridViewTextBoxColumn
-            // 
-            this.contactPhoneDataGridViewTextBoxColumn.DataPropertyName = "ContactPhone";
-            this.contactPhoneDataGridViewTextBoxColumn.HeaderText = "ContactPhone";
-            this.contactPhoneDataGridViewTextBoxColumn.Name = "contactPhoneDataGridViewTextBoxColumn";
+            this.dataSet7.DataSetName = "DataSet7";
+            this.dataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // businessBindingSource2
             // 
@@ -441,9 +401,8 @@
             this.ViewPdeb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cPRDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.debtorIDDataGridViewTextBoxColumn1});
-            this.ViewPdeb.DataSource = this.personalBindingSource;
+            this.lastNameDataGridViewTextBoxColumn});
+            this.ViewPdeb.DataSource = this.personalBindingSource1;
             this.ViewPdeb.Location = new System.Drawing.Point(286, 12);
             this.ViewPdeb.Name = "ViewPdeb";
             this.ViewPdeb.Size = new System.Drawing.Size(660, 426);
@@ -468,11 +427,15 @@
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             // 
-            // debtorIDDataGridViewTextBoxColumn1
+            // personalBindingSource1
             // 
-            this.debtorIDDataGridViewTextBoxColumn1.DataPropertyName = "DebtorID";
-            this.debtorIDDataGridViewTextBoxColumn1.HeaderText = "DebtorID";
-            this.debtorIDDataGridViewTextBoxColumn1.Name = "debtorIDDataGridViewTextBoxColumn1";
+            this.personalBindingSource1.DataMember = "Personal";
+            this.personalBindingSource1.DataSource = this.dataSet6;
+            // 
+            // dataSet6
+            // 
+            this.dataSet6.DataSetName = "DataSet6";
+            this.dataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // businessTableAdapter
             // 
@@ -519,16 +482,30 @@
             // 
             this.businessTableAdapter1.ClearBeforeFill = true;
             // 
+            // personalTableAdapter1
+            // 
+            this.personalTableAdapter1.ClearBeforeFill = true;
+            // 
+            // businessTableAdapter2
+            // 
+            this.businessTableAdapter2.ClearBeforeFill = true;
+            // 
+            // GetBdeb
+            // 
+            this.GetBdeb.Location = new System.Drawing.Point(118, 62);
+            this.GetBdeb.Name = "GetBdeb";
+            this.GetBdeb.Size = new System.Drawing.Size(75, 23);
+            this.GetBdeb.TabIndex = 36;
+            this.GetBdeb.Text = "Find debitor";
+            this.GetBdeb.UseVisualStyleBackColor = true;
+            this.GetBdeb.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Debtor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 450);
-            this.Controls.Add(this.ViewBdeb);
-            this.Controls.Add(this.BcontactphoLabel);
-            this.Controls.Add(this.BcontactLabel);
-            this.Controls.Add(this.BcontactText);
-            this.Controls.Add(this.BcontactPhoText);
+            this.Controls.Add(this.GetBdeb);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.BemailLabel);
@@ -552,12 +529,15 @@
             this.Controls.Add(this.CreatePdeb);
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
-            this.Controls.Add(this.ViewPdeb);
             this.Controls.Add(this.CreateBdeb);
+            this.Controls.Add(this.ViewPdeb);
+            this.Controls.Add(this.ViewBdeb);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).EndInit();
@@ -567,6 +547,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ViewPdeb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource2)).EndInit();
@@ -600,10 +582,6 @@
         private System.Windows.Forms.Label CvrLabel;
         private System.Windows.Forms.TextBox BnameText;
         private System.Windows.Forms.Label BnameLabel;
-        private System.Windows.Forms.TextBox BcontactPhoText;
-        private System.Windows.Forms.TextBox BcontactText;
-        private System.Windows.Forms.Label BcontactLabel;
-        private System.Windows.Forms.Label BcontactphoLabel;
         private System.Windows.Forms.TextBox PlnameText;
         private System.Windows.Forms.Button CreateBdeb;
         private System.Windows.Forms.DataGridView ViewBdeb;
@@ -618,10 +596,6 @@
         private System.Windows.Forms.BindingSource businessBindingSource1;
         private System.Windows.Forms.Button CreatePdeb;
         private System.Windows.Forms.DataGridView ViewPdeb;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPRDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn debtorIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource fKBusinessDebtor4830B400BindingSource;
         private System.Windows.Forms.BindingSource debtorBindingSource1;
         private DataSet2 dataSet2;
@@ -633,8 +607,15 @@
         private DataSet5TableAdapters.BusinessTableAdapter businessTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cVRDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactFnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactLnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactPhoneDataGridViewTextBoxColumn;
+        private DataSet6 dataSet6;
+        private System.Windows.Forms.BindingSource personalBindingSource1;
+        private DataSet6TableAdapters.PersonalTableAdapter personalTableAdapter1;
+        private DataSet7 dataSet7;
+        private System.Windows.Forms.BindingSource businessBindingSource3;
+        private DataSet7TableAdapters.BusinessTableAdapter businessTableAdapter2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPRDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button GetBdeb;
     }
 }

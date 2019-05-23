@@ -18,7 +18,9 @@ namespace DelpinUI
         {
             InitializeComponent();
         }
-
+        //update table
+        
+        //
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -93,6 +95,10 @@ namespace DelpinUI
 
         private void Debtor_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet7.Business' table. You can move, or remove it, as needed.
+            this.businessTableAdapter2.Fill(this.dataSet7.Business);
+            // TODO: This line of code loads data into the 'dataSet6.Personal' table. You can move, or remove it, as needed.
+            this.personalTableAdapter1.Fill(this.dataSet6.Personal);
             // TODO: This line of code loads data into the 'dataSet5.Business' table. You can move, or remove it, as needed.
             this.businessTableAdapter1.Fill(this.dataSet5.Business);
             // TODO: This line of code loads data into the 'dataSet2.Debtor' table. You can move, or remove it, as needed.
@@ -114,9 +120,9 @@ namespace DelpinUI
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
             
-            //string succes = controller.CreateBusinessDebtor(cvrText.Text,adressText.Text,Convert.ToInt32(postalcodeText.Text),city.Text,
-            //    phoneText.Text,emailText.Text,cvrText.Text,BnameText.Text,BcontactText.Text,BcontactPhoText.Text);
-            //MessageBox.Show(succes);
+            string succes = controller.CreateBusinessDebtor(cvrText.Text,adressText.Text,Convert.ToInt32(postalcodeText.Text),city.Text,
+                phoneText.Text,emailText.Text,cvrText.Text,BnameText.Text);
+            MessageBox.Show(succes);
 
         }
 
@@ -156,7 +162,14 @@ namespace DelpinUI
         {
             string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text),city.Text, phoneText.Text,emailText.Text, cprText.Text, 
                 PfnameText.Text,PlnameText.Text);
+            this.ViewPdeb.RefreshEdit();
+
             MessageBox.Show(succes);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            controller.ReadBusinessDebtor(cvrText.Text);
         }
     }
 }

@@ -22,8 +22,9 @@ namespace DelpinCore
                   $"values ('{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}')";
 
             string createPersonal = "Insert into Personal(CPR, FirstName, LastName) " +
-                  $"values ('{CPR}','{firstName}','{lastName}')"; 
-
+                  $"values ('{CPR}','{firstName}','{lastName}')";
+           
+            
 
             string isCreateDebtorSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
             if (isCreateDebtorSuccess != "Success")
