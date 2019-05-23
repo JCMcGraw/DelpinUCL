@@ -53,8 +53,6 @@
             this.BnameLabel = new System.Windows.Forms.Label();
             this.CreateBdeb = new System.Windows.Forms.Button();
             this.ViewBdeb = new System.Windows.Forms.DataGridView();
-            this.cVRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.businessBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet7 = new DelpinUI.DataSet7();
             this.businessBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -67,9 +65,6 @@
             this.businessBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.CreatePdeb = new System.Windows.Forms.Button();
             this.ViewPdeb = new System.Windows.Forms.DataGridView();
-            this.cPRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet6 = new DelpinUI.DataSet6();
             this.businessTableAdapter = new DelpinUI.DataSet1TableAdapters.BusinessTableAdapter();
@@ -309,29 +304,12 @@
             // ViewBdeb
             // 
             this.ViewBdeb.AllowUserToOrderColumns = true;
-            this.ViewBdeb.AutoGenerateColumns = false;
             this.ViewBdeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViewBdeb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cVRDataGridViewTextBoxColumn,
-            this.companyNameDataGridViewTextBoxColumn});
-            this.ViewBdeb.DataSource = this.businessBindingSource3;
             this.ViewBdeb.Location = new System.Drawing.Point(286, 13);
             this.ViewBdeb.Name = "ViewBdeb";
             this.ViewBdeb.Size = new System.Drawing.Size(705, 425);
             this.ViewBdeb.TabIndex = 33;
             this.ViewBdeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);
-            // 
-            // cVRDataGridViewTextBoxColumn
-            // 
-            this.cVRDataGridViewTextBoxColumn.DataPropertyName = "CVR";
-            this.cVRDataGridViewTextBoxColumn.HeaderText = "CVR";
-            this.cVRDataGridViewTextBoxColumn.Name = "cVRDataGridViewTextBoxColumn";
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
             // 
             // businessBindingSource3
             // 
@@ -396,36 +374,13 @@
             // 
             // ViewPdeb
             // 
-            this.ViewPdeb.AutoGenerateColumns = false;
             this.ViewPdeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViewPdeb.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cPRDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn});
-            this.ViewPdeb.DataSource = this.personalBindingSource1;
             this.ViewPdeb.Location = new System.Drawing.Point(286, 12);
             this.ViewPdeb.Name = "ViewPdeb";
             this.ViewPdeb.Size = new System.Drawing.Size(660, 426);
             this.ViewPdeb.TabIndex = 35;
             this.ViewPdeb.Visible = false;
-            // 
-            // cPRDataGridViewTextBoxColumn
-            // 
-            this.cPRDataGridViewTextBoxColumn.DataPropertyName = "CPR";
-            this.cPRDataGridViewTextBoxColumn.HeaderText = "CPR";
-            this.cPRDataGridViewTextBoxColumn.Name = "cPRDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.ViewPdeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewPdeb_CellContentClick);
             // 
             // personalBindingSource1
             // 
@@ -530,8 +485,8 @@
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.CreateBdeb);
-            this.Controls.Add(this.ViewPdeb);
             this.Controls.Add(this.ViewBdeb);
+            this.Controls.Add(this.ViewPdeb);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
@@ -605,17 +560,12 @@
         private DataSet5 dataSet5;
         private System.Windows.Forms.BindingSource businessBindingSource2;
         private DataSet5TableAdapters.BusinessTableAdapter businessTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cVRDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
         private DataSet6 dataSet6;
         private System.Windows.Forms.BindingSource personalBindingSource1;
         private DataSet6TableAdapters.PersonalTableAdapter personalTableAdapter1;
         private DataSet7 dataSet7;
         private System.Windows.Forms.BindingSource businessBindingSource3;
         private DataSet7TableAdapters.BusinessTableAdapter businessTableAdapter2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPRDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button GetBdeb;
     }
 }
