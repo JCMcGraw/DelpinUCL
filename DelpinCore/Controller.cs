@@ -133,12 +133,11 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable ReadLeaseByLeaseID(int leaseID)
+        public Lease ReadLeaseByLeaseID(int leaseID)
         {
-            DataTable dataTable = new DataTable();
-            dataTable = leaseManager.ReadLeaseByLeaseID(leaseID);
+            Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
 
-            return dataTable;
+            return lease;
         }
 
         public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)

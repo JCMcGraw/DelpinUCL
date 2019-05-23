@@ -63,22 +63,14 @@ namespace DelpinUI
             this.resourceID = resourceID;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxMainGroup.SelectedIndex == -1)
-            {
-                textBoxDebtorID.Text = string.Empty;
-            }
-            else
-            {
-                textBoxDebtorID.Text = comboBoxMainGroup.SelectedItem.ToString();
-            }
-        }
-
-
         private void SearchDebtorButton_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.ReadBusinessDebtor(textBoxDebtorID.Text);
+            GetDebtoryByID(textBoxDebtorID.Text);
+        }
+
+        private void GetDebtoryByID(string debtorID)
+        {
+            DataTable dataTable = controller.ReadBusinessDebtor(debtorID);
 
             textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
             textBoxBillingAddress.Text = (string)dataTable.Rows[0]["Street"];
@@ -87,8 +79,6 @@ namespace DelpinUI
             textBoxPhone.Text = (string)dataTable.Rows[0]["Phone"];
             textBoxEmail.Text = (string)dataTable.Rows[0]["Email"];
         }
-
-
 
         private void AddResourceToOrderButton_Click(object sender, EventArgs e)
         {
@@ -156,7 +146,7 @@ namespace DelpinUI
                 string deliveryCity = row.Cells["By"].Value.ToString();
 
                 LeaseOrder leaseOrder = new LeaseOrder(deliveryDate, returnDate, price, resouceID);
-                leaseOrder.AddDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
+                leaseOrder.SetDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
 
                 lease.AddLeaseOrder(leaseOrder);
             }
@@ -211,5 +201,42 @@ namespace DelpinUI
             dataGridViewResources.Columns["ModelName"].Width = 150;
         }
 
+        private void buttonFindLeaseByLeaseID_Click(object sender, EventArgs e)
+        {
+            GetLeaseByLeaseID();
+        }
+
+        private void GetLeaseByLeaseID()
+        {
+            int leaseID = Convert.ToInt32(textBoxFindLeaseByLeaseID.Text);
+            DelpinCore.Lease lease = controller.ReadLeaseByLeaseID(leaseID);
+
+            ClearAllTextBoxes();
+
+            FillFormWithLease(lease);
+        }
+
+        private void FillFormWithLease(DelpinCore.Lease lease)
+        {
+            string debtorID = lease.debtorID;
+
+            textBoxDebtorID.Text = debtorID;
+
+            GetDebtoryByID(debtorID);
+        }
+
+        private void ClearAllTextBoxes()
+        {
+            dataGridViewLeaseOrders.Rows.Clear();
+
+            foreach (Control c in this.Controls)
+            {
+                string getType = c.GetType().ToString();
+                if (c.GetType().ToString() == "System.Windows.Forms.TextBox")
+                {
+                    c.Text = "";
+                }
+            }
+        }
     }
 }

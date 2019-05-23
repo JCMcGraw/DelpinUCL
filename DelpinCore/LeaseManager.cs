@@ -18,13 +18,52 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable ReadLeaseByLeaseID(int leaseID)
+        public Lease ReadLeaseByLeaseID(int leaseID)
         {
             string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Where Lease.LeaseID = {leaseID}";
 
+
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
 
-            return dataTable;
+            Lease lease = ConvertDataTabeToLease(dataTable);
+
+            return lease;
+        }
+
+        private Lease ConvertDataTabeToLease(DataTable dataTable)
+        {
+            int leaseID = Convert.ToInt32(dataTable.Rows[0]["LeaseID"]);
+            int branchID = Convert.ToInt32(dataTable.Rows[0]["BranchID"]);
+            DateTime creationDate = Convert.ToDateTime(dataTable.Rows[0]["CreationDate"]);
+            string debtorID = (string)dataTable.Rows[0]["DebtorID"];
+
+            Lease lease = new Lease(debtorID, branchID, leaseID, creationDate);
+
+            string contactFirstName = (string)dataTable.Rows[0]["ContactFname"];
+            string contactLastName = (string)dataTable.Rows[0]["ContactLname"];
+            string contactPhone = (string)dataTable.Rows[0]["ContactPhone"];
+
+            lease.SetContactDetails(contactFirstName, contactLastName, contactPhone);
+
+            foreach(DataRow dataRow in dataTable.Rows)
+            {
+                DateTime startDate = Convert.ToDateTime(dataRow["StartDate"]);
+                DateTime endDate = Convert.ToDateTime(dataRow["EndDate"]);
+                int resourcesID = Convert.ToInt32(dataRow["ResourcesID"]);
+                decimal leasePrice = Convert.ToDecimal(dataRow["LeasePrice"]);
+
+                LeaseOrder leaseOrder = new LeaseOrder(startDate, endDate, leasePrice, resourcesID);
+
+                string deliveryStreet = dataRow["DeliveryStreet"].ToString();
+                int deliveryPostalCode = Convert.ToInt32(dataRow["DeliveryPostalCode"]);
+                string deliveryCity = dataRow["DeliveryCity"].ToString();
+
+                leaseOrder.SetDeliveryAddress(deliveryStreet, deliveryPostalCode, deliveryCity);
+                
+                lease.AddLeaseOrder(leaseOrder);
+            }
+
+            return lease;
         }
 
         //Method to delete a Lease
