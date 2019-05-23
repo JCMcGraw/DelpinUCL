@@ -17,10 +17,16 @@ namespace DelpinUI
         public Debtor()
         {
             InitializeComponent();
+            updateDatagridView();
         }
         //update table
         
         //
+        private void updateDatagridView()
+        {
+            DataTable dataTable = controller.SelectAllBusiness();
+            ViewBdeb.DataSource = dataTable; 
+        }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -169,7 +175,21 @@ namespace DelpinUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            controller.ReadBusinessDebtor(cvrText.Text);
+            DataTable dataTable = controller.SelectSpecificBusiness(cvrText.Text);
+
+            
+            BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
+            adressText.Text = (string)dataTable.Rows[0]["Gade"];
+            city.Text = dataTable.Rows[0]["By"].ToString();
+            postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
+            //phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+            //emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+            
+        }
+
+        private void ViewPdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

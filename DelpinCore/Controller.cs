@@ -34,6 +34,18 @@ namespace DelpinCore
             dataTable = debtorManager.ReadPersonalDebtor(debtorID);
             return dataTable;
         }
+        public DataTable SelectSpecificBusiness(string debtorID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
+            return dataTable;
+        }
+        public DataTable SelectAllBusiness()
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplayAllBusinessDebtor();
+            return dataTable;
+        }
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {

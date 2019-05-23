@@ -13,7 +13,7 @@ namespace DelpinCore
         //Viser en business debtor ud fra et specefikt CVR-nummer
         public DataTable DisplaySpeceficBusinessDebtor(string CVR)
         {
-            string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummmer, City as \"By\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
+            string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummer, City as \"By\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
 
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
