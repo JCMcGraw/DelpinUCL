@@ -120,9 +120,10 @@ namespace DelpinCore
             return leaseSuccess;
         }
 
-        public void UpdateLeaseOrdersOnLease(Lease lease)
+        public string UpdateLease(Lease lease)
         {
-            leaseManager.UpdateLeaseOrdersOnLease(lease);
+            string isUpdateSuccess = leaseManager.UpdateLease(lease);
+            return isUpdateSuccess;
         }
         
         public DataTable ReadLeasesByDebtor(int debtorID)

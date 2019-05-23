@@ -16,6 +16,9 @@ namespace DelpinCore
         public string deliveryStreet { get; private set; }
         public int deliveryPostalCode { get; private set; }
         public string deliveryCity { get; private set; }
+        public decimal deliveryPrice { get; private set; }
+        public string modelName { get; private set; }
+
 
 
         public LeaseOrder(DateTime startDate, DateTime endDate, decimal leasePrice, int resourceID)
@@ -36,6 +39,16 @@ namespace DelpinCore
         public void SetLeaseOrderID(int leaseOrderID)
         {
             this.leaseOrderID = leaseOrderID;
+        }
+
+        public void SetDeliveryPrice(decimal deliveryPrice)
+        {
+            this.deliveryPrice = deliveryPrice;
+        }
+
+        public void SetModelName(string modelName)
+        {
+            this.modelName = modelName;
         }
     }
 }

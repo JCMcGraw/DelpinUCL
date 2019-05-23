@@ -552,6 +552,7 @@
             this.buttonUpdateOrder.TabIndex = 52;
             this.buttonUpdateOrder.Text = "Opdater ordre";
             this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            this.buttonUpdateOrder.Click += new System.EventHandler(this.buttonUpdateOrder_Click);
             // 
             // labelContactPerson
             // 

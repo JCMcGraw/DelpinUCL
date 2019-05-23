@@ -20,7 +20,8 @@ namespace DelpinCore
 
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
-            string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Where Lease.LeaseID = {leaseID}";
+            string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID join Resources " +
+                $"on LeaseOrder.ResourcesID = Resources.ResourcesID join Model on Resources.ModelID = Model.ModelID Where Lease.LeaseID = {leaseID}";
 
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
@@ -59,6 +60,7 @@ namespace DelpinCore
                 string deliveryCity = dataRow["DeliveryCity"].ToString();
 
                 leaseOrder.SetDeliveryAddress(deliveryStreet, deliveryPostalCode, deliveryCity);
+                leaseOrder.SetModelName(dataRow["ModelName"].ToString());
                 
                 lease.AddLeaseOrder(leaseOrder);
             }
@@ -134,11 +136,40 @@ namespace DelpinCore
             return insertLeaseOrder;
         }
 
-        public string UpdateLeaseOrdersOnLease(Lease lease)
+        public string UpdateLease(Lease lease)
+        {
+            string isUpdateLeaseTableSuccess = UpdateLeaseTable(lease);
+            if (isUpdateLeaseTableSuccess != "Success")
+            {
+                return isUpdateLeaseTableSuccess;
+            }
+            else
+            {
+                string isUpdateLeaseOrdersSuccess= UpdateLeaseOrdersOnLease(lease);
+                return isUpdateLeaseOrdersSuccess;
+            }
+        }
+
+
+        private string UpdateLeaseTable(Lease lease)
+        {
+            string updateLease = $"update Lease set ContactFname = '{lease.contactFirstName}', ContactLname = '{lease.contactLastName}', " +
+                $"ContactPhone = '{lease.contactPhone}', DebtorID = '{lease.debtorID}' where LeaseID = 5";
+
+            string isUpdateSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(updateLease);
+
+            return isUpdateSuccess;
+        }
+
+        private string UpdateLeaseOrdersOnLease(Lease lease)
         {
             string deleteLeaseOrders = $"delete from LeaseOrder where LeaseID = {lease.leaseID}";
 
             string isDeleteSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLeaseOrders);
+            if (isDeleteSuccess != "Success")
+            {
+                return isDeleteSuccess;
+            }
 
             string insertLeaseOrder = GetLeaseOrderInsertString(lease);
 
