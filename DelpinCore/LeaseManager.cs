@@ -61,8 +61,8 @@ namespace DelpinCore
         //inserts new Lease in database
         public string CreateLease(Lease lease)
         {
-            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID})";
+            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone) output inserted.LeaseID " +
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 
@@ -74,7 +74,7 @@ namespace DelpinCore
 
             string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
 
-            return isInsertSuccess;
+            return leaseID.ToString() + ";" + isInsertSuccess;
         }
 
         //create insertstring for leaseorders
@@ -90,7 +90,7 @@ namespace DelpinCore
                     insertLeaseOrder += ", ";
                 }
                 insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
-                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalcode}, '{lo.deliveryCity}')";
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalCode}, '{lo.deliveryCity}')";
             }
             return insertLeaseOrder;
         }

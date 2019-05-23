@@ -14,14 +14,17 @@ namespace DelpinCore
 
         public string contactFname { get; private set; }
 
+        public string contactLname { get; private set; }
+
         public string contactPhone { get; private set; }
 
         //Constructor Who has parameters from Base constructor in Debtor Class, + Business's own Variabels
-        public Business(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR,string companyName, string contactFname, string contactPhone) :base (debtorID,street,postalCode,city,phone,email)
+        public Business(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR,string companyName, string contactFname, string contactLname, string contactPhone) :base (debtorID,street,postalCode,city,phone,email)
         {
             this.CVR = CVR;
             this.companyName = companyName;
             this.contactFname = contactFname;
+            this.contactLname = contactLname;
             this.contactPhone = contactPhone;
         }
     }
