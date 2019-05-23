@@ -64,7 +64,7 @@ namespace DelpinCore
                 }
                 else
                 {
-                    deliveryPrice = 1140 + (extraKm8 * km);
+                    deliveryPrice = 1140 + (8 * km);
                     return deliveryPrice;
                 }
             }
@@ -117,7 +117,7 @@ namespace DelpinCore
                 }
                 else
                 {
-                    deliveryPrice = 1730 + (extraKm10 * km);
+                    deliveryPrice = 1730 + (10 * km);
                     return deliveryPrice;
                 }
             }
