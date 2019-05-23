@@ -15,7 +15,7 @@ namespace DelpinUI
     public partial class Lease : Form
     {
         private Controller controller = new Controller();
-        private int resourceID = -1;
+        //private int resourceID = -1;
         private DataTable dataTableSubGroup = new DataTable();
 
         public Lease()
@@ -58,10 +58,10 @@ namespace DelpinUI
             catch { }
         }
 
-        public void SetResourceID(int resourceID)
-        {
-            this.resourceID = resourceID;
-        }
+        //public void SetResourceID(int resourceID)
+        //{
+        //    this.resourceID = resourceID;
+        //}
 
         private void SearchDebtorButton_Click(object sender, EventArgs e)
         {
@@ -94,16 +94,15 @@ namespace DelpinUI
 
             DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
 
-            FormSelectResourceForLeaseOrder formSelectResourceForLeaseOrder = new FormSelectResourceForLeaseOrder(this);
-            formSelectResourceForLeaseOrder.ShowResources(dataTable);
-            formSelectResourceForLeaseOrder.ShowDialog();
+            FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
+            formSelectFromTable.ShowResources(dataTable);
+            formSelectFromTable.SetTitle("Vælg resurse");
+            var result = formSelectFromTable.ShowDialog();
+            
+            if(result == DialogResult.OK)
+            {
+                int resourceID = formSelectFromTable.returnValue;
 
-            if (resourceID == -1)
-            {
-                return;
-            }
-            else
-            {
                 dataGridViewLeaseOrders.Rows.Add();
                 int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
@@ -115,10 +114,8 @@ namespace DelpinUI
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
-
-
-                resourceID = -1;
             }
+            
 
         }
 
@@ -270,6 +267,28 @@ namespace DelpinUI
             string isUpdateSuccess = controller.UpdateLease(lease);
 
             MessageBox.Show(isUpdateSuccess);
+        }
+
+        private void buttonFindLeases_Click(object sender, EventArgs e)
+        {
+            FindLeasesByDebtorID(textBoxDebtorID.Text);
+        }
+
+        private void FindLeasesByDebtorID(string debtorID)
+        {
+            DataTable dataTable = controller.ReadLeasesByDebtor(debtorID);
+
+            FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
+            formSelectFromTable.ShowResources(dataTable);
+            formSelectFromTable.SetTitle("Vælg ordre");
+            var result = formSelectFromTable.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                int leaseID = formSelectFromTable.returnValue;
+
+                GetLeaseByLeaseID(leaseID);
+            }
         }
     }
 }

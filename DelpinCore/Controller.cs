@@ -126,10 +126,10 @@ namespace DelpinCore
             return isUpdateSuccess;
         }
         
-        public DataTable ReadLeasesByDebtor(int debtorID)
+        public DataTable ReadLeasesByDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = leaseManager.ReadLeasesByDebtor(debtorID);
+            dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
 
             return dataTable;
         }

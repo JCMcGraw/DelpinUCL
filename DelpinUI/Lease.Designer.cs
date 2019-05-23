@@ -90,6 +90,7 @@
             this.labelFindLeaseByLeaseID = new System.Windows.Forms.Label();
             this.textBoxFindLeaseByLeaseID = new System.Windows.Forms.TextBox();
             this.buttonFindLeaseByLeaseID = new System.Windows.Forms.Button();
+            this.buttonFindLeases = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -155,9 +156,9 @@
             // 
             this.SearchDebtorButton.Location = new System.Drawing.Point(588, 55);
             this.SearchDebtorButton.Name = "SearchDebtorButton";
-            this.SearchDebtorButton.Size = new System.Drawing.Size(55, 23);
+            this.SearchDebtorButton.Size = new System.Drawing.Size(73, 23);
             this.SearchDebtorButton.TabIndex = 14;
-            this.SearchDebtorButton.Text = "Søg";
+            this.SearchDebtorButton.Text = "Find kunde";
             this.SearchDebtorButton.UseVisualStyleBackColor = true;
             this.SearchDebtorButton.Click += new System.EventHandler(this.SearchDebtorButton_Click);
             // 
@@ -594,9 +595,9 @@
             this.labelFindLeaseByLeaseID.AutoSize = true;
             this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(954, 37);
             this.labelFindLeaseByLeaseID.Name = "labelFindLeaseByLeaseID";
-            this.labelFindLeaseByLeaseID.Size = new System.Drawing.Size(54, 13);
+            this.labelFindLeaseByLeaseID.Size = new System.Drawing.Size(141, 13);
             this.labelFindLeaseByLeaseID.TabIndex = 58;
-            this.labelFindLeaseByLeaseID.Text = "Find ordre";
+            this.labelFindLeaseByLeaseID.Text = "Find ordre med ordrenummer";
             // 
             // textBoxFindLeaseByLeaseID
             // 
@@ -616,11 +617,22 @@
             this.buttonFindLeaseByLeaseID.UseVisualStyleBackColor = true;
             this.buttonFindLeaseByLeaseID.Click += new System.EventHandler(this.buttonFindLeaseByLeaseID_Click);
             // 
+            // buttonFindLeases
+            // 
+            this.buttonFindLeases.Location = new System.Drawing.Point(667, 55);
+            this.buttonFindLeases.Name = "buttonFindLeases";
+            this.buttonFindLeases.Size = new System.Drawing.Size(73, 23);
+            this.buttonFindLeases.TabIndex = 60;
+            this.buttonFindLeases.Text = "Find ordrer";
+            this.buttonFindLeases.UseVisualStyleBackColor = true;
+            this.buttonFindLeases.Click += new System.EventHandler(this.buttonFindLeases_Click);
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.buttonFindLeases);
             this.Controls.Add(this.buttonFindLeaseByLeaseID);
             this.Controls.Add(this.labelFindLeaseByLeaseID);
             this.Controls.Add(this.textBoxFindLeaseByLeaseID);
@@ -748,5 +760,6 @@
         private System.Windows.Forms.Label labelFindLeaseByLeaseID;
         private System.Windows.Forms.TextBox textBoxFindLeaseByLeaseID;
         private System.Windows.Forms.Button buttonFindLeaseByLeaseID;
+        private System.Windows.Forms.Button buttonFindLeases;
     }
 }

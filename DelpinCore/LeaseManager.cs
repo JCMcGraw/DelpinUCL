@@ -9,15 +9,6 @@ namespace DelpinCore
 {
     class LeaseManager
     {
-        public DataTable ReadLeasesByDebtor(int debtorID)
-        {
-            string selectLeases = $"Select * From Lease Where Lease.DebtorID = {debtorID}";
-
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
-
-            return dataTable;
-        }
-
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
             string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID join Resources " +
@@ -29,6 +20,18 @@ namespace DelpinCore
             Lease lease = ConvertDataTabeToLease(dataTable);
 
             return lease;
+        }
+
+        public DataTable ReadLeasesByDebtorID(string debtorID)
+        {
+            string selectLeases = "Select Lease.LeaseID As Ordrenummer, Branch.City As Afdeling, Lease.Active As Åben, " +
+                "Lease.CreationDate As Dato, Lease.DebtorID As Kundenummer, Lease.ContactFname + ' ' + Lease.ContactLname As Kontakt, Lease.ContactPhone As Kontaktnummer " +
+                "From Lease Inner Join Branch On Lease.BranchID = Branch.BranchID " +
+                "Where Lease.DebtorID = '33333333' " +
+                "Order By Lease.CreationDate Desc";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
+            return dataTable;
         }
 
         private Lease ConvertDataTabeToLease(DataTable dataTable)
@@ -154,7 +157,7 @@ namespace DelpinCore
         private string UpdateLeaseTable(Lease lease)
         {
             string updateLease = $"update Lease set ContactFname = '{lease.contactFirstName}', ContactLname = '{lease.contactLastName}', " +
-                $"ContactPhone = '{lease.contactPhone}', DebtorID = '{lease.debtorID}' where LeaseID = 5";
+                $"ContactPhone = '{lease.contactPhone}', DebtorID = '{lease.debtorID}' where LeaseID = {lease.leaseID}";
 
             string isUpdateSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(updateLease);
 
