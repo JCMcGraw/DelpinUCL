@@ -51,8 +51,8 @@
             this.CvrLabel = new System.Windows.Forms.Label();
             this.BnameText = new System.Windows.Forms.TextBox();
             this.BnameLabel = new System.Windows.Forms.Label();
-            this.CreateBdeb = new System.Windows.Forms.Button();
-            this.ViewBdeb = new System.Windows.Forms.DataGridView();
+            this.CreateDeb = new System.Windows.Forms.Button();
+            this.ViewDeb = new System.Windows.Forms.DataGridView();
             this.businessBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet7 = new DelpinUI.DataSet7();
             this.businessBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -63,8 +63,6 @@
             this.debtorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.personalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.businessBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.CreatePdeb = new System.Windows.Forms.Button();
-            this.ViewPdeb = new System.Windows.Forms.DataGridView();
             this.personalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet6 = new DelpinUI.DataSet6();
             this.businessTableAdapter = new DelpinUI.DataSet1TableAdapters.BusinessTableAdapter();
@@ -80,7 +78,11 @@
             this.personalTableAdapter1 = new DelpinUI.DataSet6TableAdapters.PersonalTableAdapter();
             this.businessTableAdapter2 = new DelpinUI.DataSet7TableAdapters.BusinessTableAdapter();
             this.GetBdeb = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).BeginInit();
+            this.UpdateDebtor = new System.Windows.Forms.Button();
+            this.SaveDebtor = new System.Windows.Forms.Button();
+            this.CancelUpdate = new System.Windows.Forms.Button();
+            this.DeleteDebtor = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).BeginInit();
@@ -91,7 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewPdeb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).BeginInit();
@@ -291,25 +292,25 @@
             this.BnameLabel.TabIndex = 27;
             this.BnameLabel.Text = "Firmanavn";
             // 
-            // CreateBdeb
+            // CreateDeb
             // 
-            this.CreateBdeb.Location = new System.Drawing.Point(15, 415);
-            this.CreateBdeb.Name = "CreateBdeb";
-            this.CreateBdeb.Size = new System.Drawing.Size(75, 23);
-            this.CreateBdeb.TabIndex = 32;
-            this.CreateBdeb.Text = "Opret";
-            this.CreateBdeb.UseVisualStyleBackColor = true;
-            this.CreateBdeb.Click += new System.EventHandler(this.CreateBdeb_Click);
+            this.CreateDeb.Location = new System.Drawing.Point(19, 403);
+            this.CreateDeb.Name = "CreateDeb";
+            this.CreateDeb.Size = new System.Drawing.Size(75, 23);
+            this.CreateDeb.TabIndex = 32;
+            this.CreateDeb.Text = "Opret";
+            this.CreateDeb.UseVisualStyleBackColor = true;
+            this.CreateDeb.Click += new System.EventHandler(this.CreateBdeb_Click);
             // 
-            // ViewBdeb
+            // ViewDeb
             // 
-            this.ViewBdeb.AllowUserToOrderColumns = true;
-            this.ViewBdeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViewBdeb.Location = new System.Drawing.Point(286, 13);
-            this.ViewBdeb.Name = "ViewBdeb";
-            this.ViewBdeb.Size = new System.Drawing.Size(705, 425);
-            this.ViewBdeb.TabIndex = 33;
-            this.ViewBdeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);
+            this.ViewDeb.AllowUserToOrderColumns = true;
+            this.ViewDeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ViewDeb.Location = new System.Drawing.Point(286, 13);
+            this.ViewDeb.Name = "ViewDeb";
+            this.ViewDeb.Size = new System.Drawing.Size(812, 425);
+            this.ViewDeb.TabIndex = 33;
+            this.ViewDeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);
             // 
             // businessBindingSource3
             // 
@@ -360,27 +361,6 @@
             // 
             this.businessBindingSource1.DataMember = "Business";
             this.businessBindingSource1.DataSource = this.dataSet1BindingSource;
-            // 
-            // CreatePdeb
-            // 
-            this.CreatePdeb.Location = new System.Drawing.Point(15, 415);
-            this.CreatePdeb.Name = "CreatePdeb";
-            this.CreatePdeb.Size = new System.Drawing.Size(75, 23);
-            this.CreatePdeb.TabIndex = 34;
-            this.CreatePdeb.Text = "Opret";
-            this.CreatePdeb.UseVisualStyleBackColor = true;
-            this.CreatePdeb.Visible = false;
-            this.CreatePdeb.Click += new System.EventHandler(this.CreatePdeb_Click_1);
-            // 
-            // ViewPdeb
-            // 
-            this.ViewPdeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViewPdeb.Location = new System.Drawing.Point(286, 12);
-            this.ViewPdeb.Name = "ViewPdeb";
-            this.ViewPdeb.Size = new System.Drawing.Size(660, 426);
-            this.ViewPdeb.TabIndex = 35;
-            this.ViewPdeb.Visible = false;
-            this.ViewPdeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewPdeb_CellContentClick);
             // 
             // personalBindingSource1
             // 
@@ -451,15 +431,58 @@
             this.GetBdeb.Name = "GetBdeb";
             this.GetBdeb.Size = new System.Drawing.Size(75, 23);
             this.GetBdeb.TabIndex = 36;
-            this.GetBdeb.Text = "Find debitor";
+            this.GetBdeb.Text = "Hent debitor";
             this.GetBdeb.UseVisualStyleBackColor = true;
             this.GetBdeb.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // UpdateDebtor
+            // 
+            this.UpdateDebtor.Location = new System.Drawing.Point(103, 403);
+            this.UpdateDebtor.Name = "UpdateDebtor";
+            this.UpdateDebtor.Size = new System.Drawing.Size(75, 23);
+            this.UpdateDebtor.TabIndex = 37;
+            this.UpdateDebtor.Text = "Ret Debitor";
+            this.UpdateDebtor.UseVisualStyleBackColor = true;
+            this.UpdateDebtor.Click += new System.EventHandler(this.UpdateDebtor_Click);
+            // 
+            // SaveDebtor
+            // 
+            this.SaveDebtor.Location = new System.Drawing.Point(19, 403);
+            this.SaveDebtor.Name = "SaveDebtor";
+            this.SaveDebtor.Size = new System.Drawing.Size(75, 23);
+            this.SaveDebtor.TabIndex = 38;
+            this.SaveDebtor.Text = "Gem Debitor";
+            this.SaveDebtor.UseVisualStyleBackColor = true;
+            this.SaveDebtor.Visible = false;
+            this.SaveDebtor.Click += new System.EventHandler(this.SaveDebtor_Click);
+            // 
+            // CancelUpdate
+            // 
+            this.CancelUpdate.Location = new System.Drawing.Point(103, 403);
+            this.CancelUpdate.Name = "CancelUpdate";
+            this.CancelUpdate.Size = new System.Drawing.Size(75, 23);
+            this.CancelUpdate.TabIndex = 39;
+            this.CancelUpdate.Text = "Annuller";
+            this.CancelUpdate.UseVisualStyleBackColor = true;
+            this.CancelUpdate.Visible = false;
+            this.CancelUpdate.Click += new System.EventHandler(this.CancelUpdate_Click);
+            // 
+            // DeleteDebtor
+            // 
+            this.DeleteDebtor.Location = new System.Drawing.Point(184, 403);
+            this.DeleteDebtor.Name = "DeleteDebtor";
+            this.DeleteDebtor.Size = new System.Drawing.Size(75, 23);
+            this.DeleteDebtor.TabIndex = 40;
+            this.DeleteDebtor.Text = "Slet";
+            this.DeleteDebtor.UseVisualStyleBackColor = true;
+            this.DeleteDebtor.Click += new System.EventHandler(this.DeleteDebtor_Click);
             // 
             // Debtor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 450);
+            this.ClientSize = new System.Drawing.Size(1128, 450);
+            this.Controls.Add(this.DeleteDebtor);
             this.Controls.Add(this.GetBdeb);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -475,22 +498,23 @@
             this.Controls.Add(this.city);
             this.Controls.Add(this.adressText);
             this.Controls.Add(this.CvrLabel);
-            this.Controls.Add(this.cvrText);
             this.Controls.Add(this.cprLabel);
             this.Controls.Add(this.cprText);
             this.Controls.Add(this.PfnameLabel);
             this.Controls.Add(this.BnameLabel);
             this.Controls.Add(this.BnameText);
-            this.Controls.Add(this.CreatePdeb);
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
-            this.Controls.Add(this.CreateBdeb);
-            this.Controls.Add(this.ViewBdeb);
-            this.Controls.Add(this.ViewPdeb);
+            this.Controls.Add(this.ViewDeb);
+            this.Controls.Add(this.CancelUpdate);
+            this.Controls.Add(this.UpdateDebtor);
+            this.Controls.Add(this.CreateDeb);
+            this.Controls.Add(this.SaveDebtor);
+            this.Controls.Add(this.cvrText);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ViewBdeb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).EndInit();
@@ -501,7 +525,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ViewPdeb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).EndInit();
@@ -538,8 +561,8 @@
         private System.Windows.Forms.TextBox BnameText;
         private System.Windows.Forms.Label BnameLabel;
         private System.Windows.Forms.TextBox PlnameText;
-        private System.Windows.Forms.Button CreateBdeb;
-        private System.Windows.Forms.DataGridView ViewBdeb;
+        private System.Windows.Forms.Button CreateDeb;
+        private System.Windows.Forms.DataGridView ViewDeb;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource businessBindingSource;
@@ -549,8 +572,6 @@
         private System.Windows.Forms.BindingSource personalBindingSource;
         private DataSet1TableAdapters.PersonalTableAdapter personalTableAdapter;
         private System.Windows.Forms.BindingSource businessBindingSource1;
-        private System.Windows.Forms.Button CreatePdeb;
-        private System.Windows.Forms.DataGridView ViewPdeb;
         private System.Windows.Forms.BindingSource fKBusinessDebtor4830B400BindingSource;
         private System.Windows.Forms.BindingSource debtorBindingSource1;
         private DataSet2 dataSet2;
@@ -567,5 +588,9 @@
         private System.Windows.Forms.BindingSource businessBindingSource3;
         private DataSet7TableAdapters.BusinessTableAdapter businessTableAdapter2;
         private System.Windows.Forms.Button GetBdeb;
+        private System.Windows.Forms.Button UpdateDebtor;
+        private System.Windows.Forms.Button SaveDebtor;
+        private System.Windows.Forms.Button CancelUpdate;
+        private System.Windows.Forms.Button DeleteDebtor;
     }
 }

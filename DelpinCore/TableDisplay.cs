@@ -25,8 +25,8 @@ namespace DelpinCore
         //Viser specefik debtor ud fra et CPR-nummer
         public DataTable DisplaySpeceficPersonalDebtor(string CPR)
         {
-            string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personalinner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
-            ;
+            string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
+            
 
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
@@ -50,7 +50,7 @@ namespace DelpinCore
         //Viser alle Personlige Debtore
         public DataTable DisplayAllPersonalDebtor()
         {
-            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personalinner join Debtor on Debtor.DebtorID = Personal.CPR";
+            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
 ;
 
 
