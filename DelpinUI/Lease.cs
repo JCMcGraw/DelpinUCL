@@ -92,7 +92,8 @@ namespace DelpinUI
             int selectedRow = selectedRows[0].Index;
             int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ModelID"].Value);
 
-            DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
+            //DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
+            DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID);
 
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
             formSelectFromTable.ShowResources(dataTable);

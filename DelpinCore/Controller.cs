@@ -141,6 +141,12 @@ namespace DelpinCore
             return lease;
         }
 
+        public DataTable GetAvailableResourcesForPeriod(int modelID)
+        {
+            DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID);
+            return dataTable;
+        }
+
         public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
         {
             string createAccessory = accessoryManager.CreateAccessory(accessoryModelID, modelID, accessoryID);

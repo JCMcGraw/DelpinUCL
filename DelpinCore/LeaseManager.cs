@@ -182,5 +182,56 @@ namespace DelpinCore
 
         }
 
+        public DataTable GetAvailableResourcesForPeriod(int modelID)
+        {
+            string sql = GetAvailabilitySQL(modelID);
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(sql);
+            return dataTable;
+        }
+
+        private string GetAvailabilitySQL(int modelID)
+        {
+            string sql = $"Select " +
+            $"    Resources.ResourcesID as [ResurseID], " +
+            $"    Model.ModelName as [Model], " +
+            $"	Case " +
+            $"		When ResourceAvailability.Tilgængelighed IS NULL then 'fri' " +
+            $"		else ResourceAvailability.Tilgængelighed " +
+            $"	end as Tilgængelighed, " +
+            $"	Branch.City as Lokation, " +
+            $"	Distance.DistanceKm as [Distance] " +
+            $"From " +
+            $"    Resources Inner Join " +
+            $"    Model On Resources.ModelID = Model.ModelID left join " +
+            $"(Select " +
+            $"    LeaseOrder.ResourcesID, " +
+            $"    LeaseOrder.StartDate, " +
+            $"    LeaseOrder.EndDate, " +
+            $"    Case " +
+            $"        When LeaseOrder.StartDate <= '2019-07-01' And LeaseOrder.EndDate >= '2019-07-03' " +
+            $"        Then 'Ikke fri' " +
+            $"        When LeaseOrder.StartDate Between '2019-07-01' And '2019-07-03' Or " +
+            $"            LeaseOrder.EndDate Between '2019-07-01' And '2019-07-03' " +
+            $"        Then 'Fri nogle dage' " +
+            $"        Else 'fri' " +
+            $"    End As Tilgængelighed " +
+            $"From " +
+            $"    LeaseOrder Inner Join " +
+            $"    Resources On LeaseOrder.ResourcesID = Resources.ResourcesID Inner Join " +
+            $"    Model On Resources.ModelID = Model.ModelID " +
+            $"Where " +
+            $"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '2019-07-01' And " +
+            $"            LeaseOrder.EndDate >= '2019-07-03') Or " +
+            $"        LeaseOrder.StartDate Between '2019-07-01' And '2019-07-03' Or " +
+            $"        LeaseOrder.EndDate Between '2019-07-01' And '2019-07-03')) as ResourceAvailability " +
+            $"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
+            $"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
+            $"	and Distance.StartLocation = 1 " +
+            $"	where Model.ModelID = {modelID} " +
+            $"	order by Tilgængelighed, Distance; ";
+
+            return sql;
+        }
+
     }
 }
