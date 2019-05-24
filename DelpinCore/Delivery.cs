@@ -10,16 +10,16 @@ namespace DelpinCore
     {
         public int zone { get; set; }
 
-        public double ton { get; set; }
+        public double weight { get; set; }
 
         public int km { get; set; }
 
         public double deliveryPrice { get; private set; }
 
-        public Delivery(int zone ,double ton, int km, double deliveryPrice)
+        public Delivery(int zone ,double weight, int km, double deliveryPrice)
         {
             this.zone = zone;
-            this.ton = ton;
+            this.weight = weight;
             this.km = km;
             this.deliveryPrice = deliveryPrice;
         }
@@ -27,7 +27,7 @@ namespace DelpinCore
         public Delivery(int zone, double ton)
         {
             this.zone = zone;
-            this.ton = ton;
+            this.weight = ton;
         }
 
         public Delivery(double deliveryPrice)

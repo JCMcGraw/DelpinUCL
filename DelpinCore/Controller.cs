@@ -175,9 +175,9 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public double DeliveryPrice(int zone, double ton, int km, double deliveryPrice)
+        public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
         {
-            double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, deliveryPrice);
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, weight, km, deliveryPrice);
             return deliveryPrices;
         }
 
