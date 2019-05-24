@@ -15,7 +15,7 @@ namespace DelpinUI
     public partial class Lease : Form
     {
         private Controller controller = new Controller();
-        private int resourceID = -1;
+        //private int resourceID = -1;
         private DataTable dataTableSubGroup = new DataTable();
 
         public Lease()
@@ -58,27 +58,19 @@ namespace DelpinUI
             catch { }
         }
 
-        public void SetResourceID(int resourceID)
-        {
-            this.resourceID = resourceID;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxMainGroup.SelectedIndex == -1)
-            {
-                textBoxDebtorID.Text = string.Empty;
-            }
-            else
-            {
-                textBoxDebtorID.Text = comboBoxMainGroup.SelectedItem.ToString();
-            }
-        }
-
+        //public void SetResourceID(int resourceID)
+        //{
+        //    this.resourceID = resourceID;
+        //}
 
         private void SearchDebtorButton_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.ReadBusinessDebtor(textBoxDebtorID.Text);
+            GetDebtoryByID(textBoxDebtorID.Text);
+        }
+
+        private void GetDebtoryByID(string debtorID)
+        {
+            DataTable dataTable = controller.ReadBusinessDebtor(debtorID);
 
             textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
             textBoxBillingAddress.Text = (string)dataTable.Rows[0]["Street"];
@@ -87,8 +79,6 @@ namespace DelpinUI
             textBoxPhone.Text = (string)dataTable.Rows[0]["Phone"];
             textBoxEmail.Text = (string)dataTable.Rows[0]["Email"];
         }
-
-
 
         private void AddResourceToOrderButton_Click(object sender, EventArgs e)
         {
@@ -104,18 +94,15 @@ namespace DelpinUI
 
             DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
 
-            FormSelectResourceForLeaseOrder formSelectResourceForLeaseOrder = new FormSelectResourceForLeaseOrder(this);
-            formSelectResourceForLeaseOrder.ShowResources(dataTable);
-            formSelectResourceForLeaseOrder.ShowDialog();
-
-            if (resourceID == -1)
+            FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
+            formSelectFromTable.ShowResources(dataTable);
+            formSelectFromTable.SetTitle("Vælg resurse");
+            var result = formSelectFromTable.ShowDialog();
+            
+            if(result == DialogResult.OK)
             {
-                return;
-            }
-            else
-            {
+                int resourceID = formSelectFromTable.returnValue;
 
-                //MessageBox.Show(modelID.ToString());
                 dataGridViewLeaseOrders.Rows.Add();
                 int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
@@ -127,20 +114,31 @@ namespace DelpinUI
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
-
-
-                resourceID = -1;
             }
+            
 
         }
 
         private void buttonCreateOrder_Click(object sender, EventArgs e)
         {
+            DelpinCore.Lease lease = GetLeaseFromForm();
+
+            string leaseSuccess = controller.CreateLease(lease);
+
+            if (leaseSuccess.Contains("Success"))
+            {
+                string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
+                textBoxLeaseNumber.Text = leaseNumber;
+            }
+        }
+
+        private DelpinCore.Lease GetLeaseFromForm()
+        {
             DelpinCore.Lease lease = new DelpinCore.Lease(textBoxDebtorID.Text, 1);
 
             lease.SetContactDetails(textBoxContactFirstName.Text, textBoxContactLastName.Text, textBoxContactPhone.Text);
 
-            foreach(DataGridViewRow row in dataGridViewLeaseOrders.Rows)
+            foreach (DataGridViewRow row in dataGridViewLeaseOrders.Rows)
             {
                 if (row.Cells["ResurseID"].Value == null)
                 {
@@ -156,18 +154,12 @@ namespace DelpinUI
                 string deliveryCity = row.Cells["By"].Value.ToString();
 
                 LeaseOrder leaseOrder = new LeaseOrder(deliveryDate, returnDate, price, resouceID);
-                leaseOrder.AddDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
+                leaseOrder.SetDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
 
                 lease.AddLeaseOrder(leaseOrder);
             }
 
-            string leaseSuccess = controller.CreateLease(lease);
-
-            if (leaseSuccess.Contains("Success"))
-            {
-                string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
-                textBoxLeaseNumber.Text = leaseNumber;
-            }
+            return lease;
         }
 
         private void checkBoxUseBillingAddress_CheckedChanged(object sender, EventArgs e)
@@ -211,5 +203,92 @@ namespace DelpinUI
             dataGridViewResources.Columns["ModelName"].Width = 150;
         }
 
+        private void buttonFindLeaseByLeaseID_Click(object sender, EventArgs e)
+        {
+            GetLeaseByLeaseID(Convert.ToInt32(textBoxFindLeaseByLeaseID.Text));
+        }
+
+        private void GetLeaseByLeaseID(int leaseID)
+        {
+            DelpinCore.Lease lease = controller.ReadLeaseByLeaseID(leaseID);
+
+            ClearAllTextBoxes();
+
+            FillFormWithLease(lease);
+        }
+
+        private void FillFormWithLease(DelpinCore.Lease lease)
+        {
+            string debtorID = lease.debtorID;
+
+            textBoxDebtorID.Text = debtorID;
+            GetDebtoryByID(debtorID);
+
+            textBoxContactFirstName.Text = lease.contactFirstName;
+            textBoxContactLastName.Text = lease.contactLastName;
+            textBoxContactPhone.Text = lease.contactPhone;
+            textBoxLeaseNumber.Text = lease.leaseID.ToString();
+
+            foreach(LeaseOrder leaseOrder in lease.GetLeaseOrders())
+            {
+                dataGridViewLeaseOrders.Rows.Add();
+                int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = leaseOrder.resourceID;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = leaseOrder.modelName;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = leaseOrder.startDate.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = leaseOrder.endDate.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = leaseOrder.leasePrice.ToString();
+
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = leaseOrder.deliveryStreet;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = leaseOrder.deliveryPostalCode.ToString();
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = leaseOrder.deliveryCity;
+            }
+
+        }
+
+        private void ClearAllTextBoxes()
+        {
+            dataGridViewLeaseOrders.Rows.Clear();
+
+            foreach (Control c in this.Controls)
+            {
+                string getType = c.GetType().ToString();
+                if (c.GetType().ToString() == "System.Windows.Forms.TextBox")
+                {
+                    c.Text = "";
+                }
+            }
+        }
+
+        private void buttonUpdateOrder_Click(object sender, EventArgs e)
+        {
+            DelpinCore.Lease lease = GetLeaseFromForm();
+            lease.SetLeaseID(Convert.ToInt32(textBoxLeaseNumber.Text));
+            string isUpdateSuccess = controller.UpdateLease(lease);
+
+            MessageBox.Show(isUpdateSuccess);
+        }
+
+        private void buttonFindLeases_Click(object sender, EventArgs e)
+        {
+            FindLeasesByDebtorID(textBoxDebtorID.Text);
+        }
+
+        private void FindLeasesByDebtorID(string debtorID)
+        {
+            DataTable dataTable = controller.ReadLeasesByDebtor(debtorID);
+
+            FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
+            formSelectFromTable.ShowResources(dataTable);
+            formSelectFromTable.SetTitle("Vælg ordre");
+            var result = formSelectFromTable.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                int leaseID = formSelectFromTable.returnValue;
+
+                GetLeaseByLeaseID(leaseID);
+            }
+        }
     }
 }

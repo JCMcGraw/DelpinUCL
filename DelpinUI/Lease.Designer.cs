@@ -61,6 +61,15 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.dataGridViewLeaseOrders = new System.Windows.Forms.DataGridView();
+            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxMainGroup = new System.Windows.Forms.ComboBox();
             this.comboBoxSubGroup = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,15 +80,6 @@
             this.radioButtonBusiness = new System.Windows.Forms.RadioButton();
             this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
             this.ButtonFindModels = new System.Windows.Forms.Button();
-            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxLeaseNumber = new System.Windows.Forms.TextBox();
             this.labelLeaseNumber = new System.Windows.Forms.Label();
             this.buttonUpdateOrder = new System.Windows.Forms.Button();
@@ -87,6 +87,10 @@
             this.labelContactLastName = new System.Windows.Forms.Label();
             this.textBoxContactLastName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelFindLeaseByLeaseID = new System.Windows.Forms.Label();
+            this.textBoxFindLeaseByLeaseID = new System.Windows.Forms.TextBox();
+            this.buttonFindLeaseByLeaseID = new System.Windows.Forms.Button();
+            this.buttonFindLeases = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -152,9 +156,9 @@
             // 
             this.SearchDebtorButton.Location = new System.Drawing.Point(588, 55);
             this.SearchDebtorButton.Name = "SearchDebtorButton";
-            this.SearchDebtorButton.Size = new System.Drawing.Size(55, 23);
+            this.SearchDebtorButton.Size = new System.Drawing.Size(73, 23);
             this.SearchDebtorButton.TabIndex = 14;
-            this.SearchDebtorButton.Text = "Søg";
+            this.SearchDebtorButton.Text = "Find kunde";
             this.SearchDebtorButton.UseVisualStyleBackColor = true;
             this.SearchDebtorButton.Click += new System.EventHandler(this.SearchDebtorButton_Click);
             // 
@@ -372,6 +376,57 @@
             this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(723, 186);
             this.dataGridViewLeaseOrders.TabIndex = 39;
             // 
+            // ResurseID
+            // 
+            this.ResurseID.HeaderText = "ResurseID";
+            this.ResurseID.Name = "ResurseID";
+            this.ResurseID.Visible = false;
+            // 
+            // Resurse
+            // 
+            this.Resurse.HeaderText = "Resurse";
+            this.Resurse.Name = "Resurse";
+            // 
+            // Leveringsdato
+            // 
+            this.Leveringsdato.HeaderText = "Leveringsdato";
+            this.Leveringsdato.Name = "Leveringsdato";
+            this.Leveringsdato.Width = 80;
+            // 
+            // Slutdato
+            // 
+            this.Slutdato.HeaderText = "Slutdato";
+            this.Slutdato.Name = "Slutdato";
+            this.Slutdato.Width = 80;
+            // 
+            // Dagspris
+            // 
+            this.Dagspris.HeaderText = "Dagspris";
+            this.Dagspris.Name = "Dagspris";
+            this.Dagspris.Width = 70;
+            // 
+            // Levering
+            // 
+            this.Levering.HeaderText = "Levering";
+            this.Levering.Name = "Levering";
+            // 
+            // Gade
+            // 
+            this.Gade.HeaderText = "Gade";
+            this.Gade.Name = "Gade";
+            // 
+            // Postkode
+            // 
+            this.Postkode.HeaderText = "Postkode";
+            this.Postkode.Name = "Postkode";
+            this.Postkode.Width = 60;
+            // 
+            // By
+            // 
+            this.By.HeaderText = "By";
+            this.By.Name = "By";
+            this.By.Width = 90;
+            // 
             // comboBoxMainGroup
             // 
             this.comboBoxMainGroup.FormattingEnabled = true;
@@ -443,7 +498,7 @@
             // 
             this.radioButtonBusiness.AutoSize = true;
             this.radioButtonBusiness.Checked = true;
-            this.radioButtonBusiness.Location = new System.Drawing.Point(742, 53);
+            this.radioButtonBusiness.Location = new System.Drawing.Point(484, 14);
             this.radioButtonBusiness.Name = "radioButtonBusiness";
             this.radioButtonBusiness.Size = new System.Drawing.Size(62, 17);
             this.radioButtonBusiness.TabIndex = 47;
@@ -455,7 +510,7 @@
             // radioButtonPersonal
             // 
             this.radioButtonPersonal.AutoSize = true;
-            this.radioButtonPersonal.Location = new System.Drawing.Point(825, 53);
+            this.radioButtonPersonal.Location = new System.Drawing.Point(567, 14);
             this.radioButtonPersonal.Name = "radioButtonPersonal";
             this.radioButtonPersonal.Size = new System.Drawing.Size(52, 17);
             this.radioButtonPersonal.TabIndex = 48;
@@ -464,64 +519,13 @@
             // 
             // ButtonFindModels
             // 
-            this.ButtonFindModels.Location = new System.Drawing.Point(350, 133);
+            this.ButtonFindModels.Location = new System.Drawing.Point(350, 128);
             this.ButtonFindModels.Name = "ButtonFindModels";
             this.ButtonFindModels.Size = new System.Drawing.Size(79, 33);
             this.ButtonFindModels.TabIndex = 49;
             this.ButtonFindModels.Text = "Find varer";
             this.ButtonFindModels.UseVisualStyleBackColor = true;
             this.ButtonFindModels.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // ResurseID
-            // 
-            this.ResurseID.HeaderText = "ResurseID";
-            this.ResurseID.Name = "ResurseID";
-            this.ResurseID.Visible = false;
-            // 
-            // Resurse
-            // 
-            this.Resurse.HeaderText = "Resurse";
-            this.Resurse.Name = "Resurse";
-            // 
-            // Leveringsdato
-            // 
-            this.Leveringsdato.HeaderText = "Leveringsdato";
-            this.Leveringsdato.Name = "Leveringsdato";
-            this.Leveringsdato.Width = 80;
-            // 
-            // Slutdato
-            // 
-            this.Slutdato.HeaderText = "Slutdato";
-            this.Slutdato.Name = "Slutdato";
-            this.Slutdato.Width = 80;
-            // 
-            // Dagspris
-            // 
-            this.Dagspris.HeaderText = "Dagspris";
-            this.Dagspris.Name = "Dagspris";
-            this.Dagspris.Width = 70;
-            // 
-            // Levering
-            // 
-            this.Levering.HeaderText = "Levering";
-            this.Levering.Name = "Levering";
-            // 
-            // Gade
-            // 
-            this.Gade.HeaderText = "Gade";
-            this.Gade.Name = "Gade";
-            // 
-            // Postkode
-            // 
-            this.Postkode.HeaderText = "Postkode";
-            this.Postkode.Name = "Postkode";
-            this.Postkode.Width = 60;
-            // 
-            // By
-            // 
-            this.By.HeaderText = "By";
-            this.By.Name = "By";
-            this.By.Width = 90;
             // 
             // textBoxLeaseNumber
             // 
@@ -537,9 +541,9 @@
             this.labelLeaseNumber.AutoSize = true;
             this.labelLeaseNumber.Location = new System.Drawing.Point(482, 314);
             this.labelLeaseNumber.Name = "labelLeaseNumber";
-            this.labelLeaseNumber.Size = new System.Drawing.Size(72, 13);
+            this.labelLeaseNumber.Size = new System.Drawing.Size(70, 13);
             this.labelLeaseNumber.TabIndex = 51;
-            this.labelLeaseNumber.Text = "OrderNummer";
+            this.labelLeaseNumber.Text = "Ordrenummer";
             // 
             // buttonUpdateOrder
             // 
@@ -549,6 +553,7 @@
             this.buttonUpdateOrder.TabIndex = 52;
             this.buttonUpdateOrder.Text = "Opdater ordre";
             this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            this.buttonUpdateOrder.Click += new System.EventHandler(this.buttonUpdateOrder_Click);
             // 
             // labelContactPerson
             // 
@@ -585,11 +590,52 @@
             this.button1.Text = "Tilføj tilbehør";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // labelFindLeaseByLeaseID
+            // 
+            this.labelFindLeaseByLeaseID.AutoSize = true;
+            this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(954, 37);
+            this.labelFindLeaseByLeaseID.Name = "labelFindLeaseByLeaseID";
+            this.labelFindLeaseByLeaseID.Size = new System.Drawing.Size(141, 13);
+            this.labelFindLeaseByLeaseID.TabIndex = 58;
+            this.labelFindLeaseByLeaseID.Text = "Find ordre med ordrenummer";
+            // 
+            // textBoxFindLeaseByLeaseID
+            // 
+            this.textBoxFindLeaseByLeaseID.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxFindLeaseByLeaseID.Location = new System.Drawing.Point(957, 55);
+            this.textBoxFindLeaseByLeaseID.Name = "textBoxFindLeaseByLeaseID";
+            this.textBoxFindLeaseByLeaseID.Size = new System.Drawing.Size(123, 20);
+            this.textBoxFindLeaseByLeaseID.TabIndex = 57;
+            // 
+            // buttonFindLeaseByLeaseID
+            // 
+            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(1086, 54);
+            this.buttonFindLeaseByLeaseID.Name = "buttonFindLeaseByLeaseID";
+            this.buttonFindLeaseByLeaseID.Size = new System.Drawing.Size(55, 23);
+            this.buttonFindLeaseByLeaseID.TabIndex = 59;
+            this.buttonFindLeaseByLeaseID.Text = "Søg";
+            this.buttonFindLeaseByLeaseID.UseVisualStyleBackColor = true;
+            this.buttonFindLeaseByLeaseID.Click += new System.EventHandler(this.buttonFindLeaseByLeaseID_Click);
+            // 
+            // buttonFindLeases
+            // 
+            this.buttonFindLeases.Location = new System.Drawing.Point(667, 55);
+            this.buttonFindLeases.Name = "buttonFindLeases";
+            this.buttonFindLeases.Size = new System.Drawing.Size(73, 23);
+            this.buttonFindLeases.TabIndex = 60;
+            this.buttonFindLeases.Text = "Find ordrer";
+            this.buttonFindLeases.UseVisualStyleBackColor = true;
+            this.buttonFindLeases.Click += new System.EventHandler(this.buttonFindLeases_Click);
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.buttonFindLeases);
+            this.Controls.Add(this.buttonFindLeaseByLeaseID);
+            this.Controls.Add(this.labelFindLeaseByLeaseID);
+            this.Controls.Add(this.textBoxFindLeaseByLeaseID);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelContactLastName);
             this.Controls.Add(this.textBoxContactLastName);
@@ -711,5 +757,9 @@
         private System.Windows.Forms.Label labelContactLastName;
         private System.Windows.Forms.TextBox textBoxContactLastName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelFindLeaseByLeaseID;
+        private System.Windows.Forms.TextBox textBoxFindLeaseByLeaseID;
+        private System.Windows.Forms.Button buttonFindLeaseByLeaseID;
+        private System.Windows.Forms.Button buttonFindLeases;
     }
 }

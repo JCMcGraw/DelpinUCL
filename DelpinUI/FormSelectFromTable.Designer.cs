@@ -1,6 +1,6 @@
 ﻿namespace DelpinUI
 {
-    partial class FormSelectResourceForLeaseOrder
+    partial class FormSelectFromTable
     {
         /// <summary>
         /// Required designer variable.
@@ -38,25 +38,26 @@
             // 
             this.dataGridViewResources.AllowUserToAddRows = false;
             this.dataGridViewResources.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResources.Location = new System.Drawing.Point(75, 37);
+            this.dataGridViewResources.Location = new System.Drawing.Point(24, 37);
+            this.dataGridViewResources.MultiSelect = false;
             this.dataGridViewResources.Name = "dataGridViewResources";
             this.dataGridViewResources.ReadOnly = true;
-            this.dataGridViewResources.Size = new System.Drawing.Size(571, 287);
+            this.dataGridViewResources.Size = new System.Drawing.Size(744, 287);
             this.dataGridViewResources.TabIndex = 0;
             // 
             // buttonSelectResource
             // 
-            this.buttonSelectResource.Location = new System.Drawing.Point(115, 356);
+            this.buttonSelectResource.Location = new System.Drawing.Point(212, 356);
             this.buttonSelectResource.Name = "buttonSelectResource";
             this.buttonSelectResource.Size = new System.Drawing.Size(126, 55);
             this.buttonSelectResource.TabIndex = 1;
-            this.buttonSelectResource.Text = "Vælg resurse";
+            this.buttonSelectResource.Text = "Vælg";
             this.buttonSelectResource.UseVisualStyleBackColor = true;
             this.buttonSelectResource.Click += new System.EventHandler(this.buttonSelectResource_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(294, 356);
+            this.buttonCancel.Location = new System.Drawing.Point(391, 356);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(126, 55);
             this.buttonCancel.TabIndex = 2;
@@ -64,15 +65,16 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // FormSelectResourceForLeaseOrder
+            // FormSelectFromTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSelectResource);
             this.Controls.Add(this.dataGridViewResources);
-            this.Name = "FormSelectResourceForLeaseOrder";
+            this.Name = "FormSelectFromTable";
             this.Text = "FormSelectResourceForLeaseOrder";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).EndInit();
             this.ResumeLayout(false);

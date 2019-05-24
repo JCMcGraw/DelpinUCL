@@ -8,9 +8,9 @@ namespace DelpinCore
 {
     class DeliveryManager
     {
-        public double DeliveryPrice(int zone, double ton, int km, double deliveryPrice)
+        public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
         {
-            if (ton >= 8)
+            if (weight >= 8000)
             {
                 if (zone == 0)
                 {
@@ -68,7 +68,7 @@ namespace DelpinCore
                     return deliveryPrice;
                 }
             }
-            if (ton < 8)
+            if (weight < 8000)
             {
                 if (zone ==0)
                 {

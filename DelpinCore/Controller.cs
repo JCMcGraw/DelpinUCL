@@ -132,25 +132,25 @@ namespace DelpinCore
             return leaseSuccess;
         }
 
-        public void UpdateLeaseOrdersOnLease(Lease lease)
+        public string UpdateLease(Lease lease)
         {
-            leaseManager.UpdateLeaseOrdersOnLease(lease);
+            string isUpdateSuccess = leaseManager.UpdateLease(lease);
+            return isUpdateSuccess;
         }
         
-        public DataTable ReadLeasesByDebtor(int debtorID)
+        public DataTable ReadLeasesByDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = leaseManager.ReadLeasesByDebtor(debtorID);
+            dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
 
             return dataTable;
         }
 
-        public DataTable ReadLeaseByLeaseID(int leaseID)
+        public Lease ReadLeaseByLeaseID(int leaseID)
         {
-            DataTable dataTable = new DataTable();
-            dataTable = leaseManager.ReadLeaseByLeaseID(leaseID);
+            Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
 
-            return dataTable;
+            return lease;
         }
 
         public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
@@ -187,9 +187,9 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public double DeliveryPrice(int zone, double ton, int km, double deliveryPrice)
+        public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
         {
-            double deliveryPrices = deliveryManager.DeliveryPrice(zone, ton, km, deliveryPrice);
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, weight, km, deliveryPrice);
             return deliveryPrices;
         }
 
