@@ -46,6 +46,18 @@ namespace DelpinCore
             dataTable = tableDisplay.DisplayAllBusinessDebtor();
             return dataTable;
         }
+        public DataTable SelectAllPersonal()
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplayAllPersonalDebtor();
+            return dataTable;
+        }
+        public DataTable SelectSpecificPersonal(string debtorID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
+            return dataTable;
+        }
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
@@ -53,7 +65,7 @@ namespace DelpinCore
             return updatePersonalDebtor;
         }
 
-        public string DetetePersonalDebtor(string debtorID)
+        public string DeletePersonalDebtor(string debtorID)
         {
             string deletePersonalDebtor = debtorManager.DeletePersonalDebtor(debtorID);
             return deletePersonalDebtor;

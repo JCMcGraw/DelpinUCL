@@ -1,49 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using DelpinCore;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DelpinCore;
 
 namespace DelpinUI
 {
     public partial class Debtor : Form
     {
         Controller controller = new Controller();
+        
         public Debtor()
         {
             InitializeComponent();
             updateDatagridView();
         }
         //update table
-        
-        //
+        private void ClearTextBox()
+        {
+            cprText.Clear();
+            cvrText.Clear();
+            BnameText.Clear();
+            PfnameText.Clear();
+            PlnameText.Clear();
+            adressText.Clear();
+            city.Clear();
+            postalcodeText.Clear();
+            phoneText.Clear();
+            emailText.Clear();
+        }
+
+
         private void updateDatagridView()
         {
-            DataTable dataTable = controller.SelectAllBusiness();
-            ViewBdeb.DataSource = dataTable; 
+            
+            {
+                DataTable dataTable = controller.SelectAllBusiness();
+                ViewDeb.DataSource = dataTable;
+            }
+            
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
+                DataTable dataTable = controller.SelectAllBusiness();
+                ViewDeb.DataSource = dataTable;
+
                 cvrText.Visible = true;
                 CvrLabel.Visible = true;
+                cprText.Visible = false;
+                cprLabel.Visible = false;
                 BnameLabel.Visible = true;
                 BnameText.Visible = true;
-                CreateBdeb.Visible = true;
-                ViewBdeb.Visible = true;
+                CreateDeb.Visible = true;
+                ViewDeb.Visible = true;
                 PfnameLabel.Visible = false;
                 PfnameText.Visible = false;
                 PlnameLabel.Visible = false;
                 PlnameText.Visible = false;
-                CreatePdeb.Visible = false;
-                ViewPdeb.Visible = false;
-
+                
+          
             }
             else
             {
@@ -51,16 +67,16 @@ namespace DelpinUI
                 cprLabel.Visible = true;
                 BnameLabel.Visible = false;
                 BnameText.Visible = false;
-                CreateBdeb.Visible = false;
-                PfnameLabel.Visible = true;
-                PfnameText.Visible = true;
-                PlnameLabel.Visible = true;
-                PlnameText.Visible = true;
-                CreatePdeb.Visible = true;
-                ViewPdeb.Visible = false;
-
+                CreateDeb.Visible = true;
+                //PfnameLabel.Visible = true;
+                //PfnameText.Visible = true;
+                //PlnameLabel.Visible = true;
+                //PlnameText.Visible = true;
+             
 
             }
+            ClearTextBox();
+         
 
 
 
@@ -70,6 +86,10 @@ namespace DelpinUI
         {
             if (radioButton2.Checked)
             {
+
+                DataTable dataTable = controller.SelectAllPersonal();
+                ViewDeb.DataSource = dataTable;
+
                 cvrText.Visible = false;
                 CvrLabel.Visible = false;
                 cprText.Visible = true;
@@ -80,10 +100,9 @@ namespace DelpinUI
                 PfnameText.Visible = true;
                 PlnameLabel.Visible = true;
                 PlnameText.Visible = true;
-                CreateBdeb.Visible = false;
-                CreatePdeb.Visible = true;
-                ViewPdeb.Visible = true;
-                ViewBdeb.Visible = false;
+                CreateDeb.Visible = true;
+           
+                ViewDeb.Visible = true;
             }
             
 
@@ -101,20 +120,7 @@ namespace DelpinUI
 
         private void Debtor_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet7.Business' table. You can move, or remove it, as needed.
-            this.businessTableAdapter2.Fill(this.dataSet7.Business);
-            // TODO: This line of code loads data into the 'dataSet6.Personal' table. You can move, or remove it, as needed.
-            this.personalTableAdapter1.Fill(this.dataSet6.Personal);
-            // TODO: This line of code loads data into the 'dataSet5.Business' table. You can move, or remove it, as needed.
-            this.businessTableAdapter1.Fill(this.dataSet5.Business);
-            // TODO: This line of code loads data into the 'dataSet2.Debtor' table. You can move, or remove it, as needed.
-            this.debtorTableAdapter1.Fill(this.dataSet2.Debtor);
-            // TODO: This line of code loads data into the 'dataSet1.Personal' table. You can move, or remove it, as needed.
-            this.personalTableAdapter.Fill(this.dataSet1.Personal);
-            // TODO: This line of code loads data into the 'dataSet1.Debtor' table. You can move, or remove it, as needed.
-            this.debtorTableAdapter.Fill(this.dataSet1.Debtor);
-            // TODO: This line of code loads data into the 'dataSet1.Business' table. You can move, or remove it, as needed.
-            this.businessTableAdapter.Fill(this.dataSet1.Business);
+
 
         }
 
@@ -125,17 +131,23 @@ namespace DelpinUI
 
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
+            if (radioButton1.Checked)
+            {
+                string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
+                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
+                MessageBox.Show(succes);
+            }
+            if(radioButton2.Checked)
+            {
+                string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text, phoneText.Text, emailText.Text, cprText.Text,
+                    PfnameText.Text, PlnameText.Text);
+                MessageBox.Show(succes);
+            }
 
-            string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
-            MessageBox.Show(succes);
 
         }
 
-        private void CreatePdeb_Click(object sender, EventArgs e)
-        {
-            //indsæt privat debitor
-        }
+
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
         {
@@ -149,47 +161,118 @@ namespace DelpinUI
             }
 
         }
-        private void ViewBdeb_CellClick()
-        {
-            //cvrText.Text = ViewBdeb[0, e.RowIndex].Value.ToString();
-            //BnameText.Text = ViewBdeb[1, e.RowIndex].Value.ToString();
-            //BcontactText.Text = ViewBdeb[2, e.RowIndex].Value.ToString();
-            //BcontactPhoText.Text = ViewBdeb[2, e.RowIndex].Value.ToString();
-            //adressText.Text = ViewBdeb[2, e.RowIndex].Value.ToString();
-            //cityText.Text = ViewBdeb[2, e.RowIndex].Value.ToString();
-        }
+
 
         private void ViewBdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
         }
 
-        private void CreatePdeb_Click_1(object sender, EventArgs e)
-        {
-            string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text),city.Text, phoneText.Text,emailText.Text, cprText.Text, 
-                PfnameText.Text,PlnameText.Text);
-            this.ViewPdeb.RefreshEdit();
-
-            MessageBox.Show(succes);
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.SelectSpecificBusiness(cvrText.Text);
+            if (radioButton1.Checked)
+            {
+                DataTable dataTable = controller.SelectSpecificBusiness(cvrText.Text);
 
-            
-            BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
-            adressText.Text = (string)dataTable.Rows[0]["Gade"];
-            city.Text = dataTable.Rows[0]["By"].ToString();
-            postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
-            //phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
-            //emailText.Text = (string)dataTable.Rows[0]["E-mail"];
-            
+
+                BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
+                adressText.Text = (string)dataTable.Rows[0]["Gade"];
+                city.Text = dataTable.Rows[0]["By"].ToString();
+                postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
+                phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+                emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+            }
+            if (radioButton2.Checked)
+            {
+                DataTable dataTable = controller.SelectSpecificPersonal(cprText.Text);
+
+
+                PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
+                PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
+                adressText.Text = (string)dataTable.Rows[0]["Gade"];
+                city.Text = dataTable.Rows[0]["By"].ToString();
+                postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
+                phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+                emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+
+            }
+
+
+
         }
 
-        private void ViewPdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UpdateDebtor_Click(object sender, EventArgs e)
         {
+            if(radioButton1.Checked)
+            {
+                CreateDeb.Visible = false;
+                SaveDebtor.Visible = true;
+                CancelUpdate.Visible = true;
+                UpdateDebtor.Visible = false;
+            }
+            if (radioButton2.Checked)
+            {
+                CreateDeb.Visible = false;
+                SaveDebtor.Visible = true;
+                CancelUpdate.Visible = true;
+                UpdateDebtor.Visible = false;
+            }
 
+        }
+       
+
+        private void SaveDebtor_Click(object sender, EventArgs e)
+        {
+            if(radioButton1.Checked)
+            {
+                string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
+                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
+                MessageBox.Show(succes);
+            }
+            if (radioButton2.Checked)
+            {
+                string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
+                phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text,PlnameText.Text);
+                MessageBox.Show(succes);
+
+            }
+            CreateDeb.Visible = true;
+            UpdateDebtor.Visible = true;
+            SaveDebtor.Visible = false;
+            CancelUpdate.Visible = false;
+            ClearTextBox();
+         
+        }
+
+        private void CancelUpdate_Click(object sender, EventArgs e)
+        {
+            CreateDeb.Visible = true;
+            UpdateDebtor.Visible = true;
+            SaveDebtor.Visible = false;
+            CancelUpdate.Visible = false;
+            ClearTextBox();
+         
+
+
+        }
+
+        private void DeleteDebtor_Click(object sender, EventArgs e)
+        {
+            //indsæt slet debtor metode
+            if (radioButton1.Checked)
+            {
+                string Success = controller.DeleteBusinessDebter(cvrText.Text);
+                MessageBox.Show(Success);
+                ClearTextBox();
+            }
+            if (radioButton2.Checked)
+            {
+                string Success = controller.DeletePersonalDebtor(cprText.Text);
+                MessageBox.Show(Success);
+                ClearTextBox();
+            }
         }
     }
 }
