@@ -17,6 +17,11 @@ namespace DelpinCore
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
 
+            if (dataTable.Rows.Count == 0)
+            {
+                return new Lease("-1", -1);
+            }
+
             Lease lease = ConvertDataTabeToLease(dataTable);
 
             return lease;
@@ -27,7 +32,7 @@ namespace DelpinCore
             string selectLeases = "Select Lease.LeaseID As Ordrenummer, Branch.City As Afdeling, Lease.Active As Åben, " +
                 "Lease.CreationDate As Dato, Lease.DebtorID As Kundenummer, Lease.ContactFname + ' ' + Lease.ContactLname As Kontakt, Lease.ContactPhone As Kontaktnummer " +
                 "From Lease Inner Join Branch On Lease.BranchID = Branch.BranchID " +
-                "Where Lease.DebtorID = '33333333' " +
+                $"Where Lease.DebtorID = '{debtorID}' " +
                 "Order By Lease.CreationDate Desc";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
@@ -182,14 +187,14 @@ namespace DelpinCore
 
         }
 
-        public DataTable GetAvailableResourcesForPeriod(int modelID)
+        public DataTable GetAvailableResourcesForPeriod(int modelID, int BranchID, string startDate, string endDate)
         {
-            string sql = GetAvailabilitySQL(modelID);
+            string sql = GetAvailabilitySQL(modelID, BranchID, startDate, endDate);
             DataTable dataTable = DatabaseManager.ReadFromDatabase(sql);
             return dataTable;
         }
 
-        private string GetAvailabilitySQL(int modelID)
+        private string GetAvailabilitySQL(int modelID, int branchID, string startDate, string endDate)
         {
             string sql = $"Select " +
             $"    Resources.ResourcesID as [ResurseID], " +
@@ -208,10 +213,10 @@ namespace DelpinCore
             $"    LeaseOrder.StartDate, " +
             $"    LeaseOrder.EndDate, " +
             $"    Case " +
-            $"        When LeaseOrder.StartDate <= '2019-07-01' And LeaseOrder.EndDate >= '2019-07-03' " +
+            $"        When LeaseOrder.StartDate <= '{startDate}' And LeaseOrder.EndDate >= '{endDate}' " +
             $"        Then 'Ikke fri' " +
-            $"        When LeaseOrder.StartDate Between '2019-07-01' And '2019-07-03' Or " +
-            $"            LeaseOrder.EndDate Between '2019-07-01' And '2019-07-03' " +
+            $"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            $"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
             $"        Then 'Fri nogle dage' " +
             $"        Else 'fri' " +
             $"    End As Tilgængelighed " +
@@ -220,13 +225,13 @@ namespace DelpinCore
             $"    Resources On LeaseOrder.ResourcesID = Resources.ResourcesID Inner Join " +
             $"    Model On Resources.ModelID = Model.ModelID " +
             $"Where " +
-            $"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '2019-07-01' And " +
-            $"            LeaseOrder.EndDate >= '2019-07-03') Or " +
-            $"        LeaseOrder.StartDate Between '2019-07-01' And '2019-07-03' Or " +
-            $"        LeaseOrder.EndDate Between '2019-07-01' And '2019-07-03')) as ResourceAvailability " +
+            $"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '{startDate}' And " +
+            $"            LeaseOrder.EndDate >= '{endDate}') Or " +
+            $"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            $"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as ResourceAvailability " +
             $"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
             $"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
-            $"	and Distance.StartLocation = 1 " +
+            $"	and Distance.StartLocation = {branchID} " +
             $"	where Model.ModelID = {modelID} " +
             $"	order by Tilgængelighed, Distance; ";
 

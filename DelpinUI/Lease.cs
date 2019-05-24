@@ -72,12 +72,29 @@ namespace DelpinUI
         {
             DataTable dataTable = controller.ReadBusinessDebtor(debtorID);
 
+            if (dataTable.Rows.Count == 0)
+            {
+                AskIfNewCustomerShouldBeMade();
+                return;
+            }
+
             textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
             textBoxBillingAddress.Text = (string)dataTable.Rows[0]["Street"];
             textBoxBillingCity.Text = (string)dataTable.Rows[0]["City"];
             textBoxBillingPostCode.Text = dataTable.Rows[0]["PostalCode"].ToString();
             textBoxPhone.Text = (string)dataTable.Rows[0]["Phone"];
             textBoxEmail.Text = (string)dataTable.Rows[0]["Email"];
+        }
+
+        private void AskIfNewCustomerShouldBeMade()
+        {
+            DialogResult dialogResult = MessageBox.Show("Der blev ikke fundet en kunde med det angivne debitornummer, " +
+                "vil du oprette en ny debitor", "Ingen debitor fundet", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Debtor debtor = new Debtor();
+                debtor.ShowDialog();
+            }
         }
 
         private void AddResourceToOrderButton_Click(object sender, EventArgs e)
@@ -92,8 +109,11 @@ namespace DelpinUI
             int selectedRow = selectedRows[0].Index;
             int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ModelID"].Value);
 
+            DateTime startDate = dateTimePickerDeliveryDate.Value;
+            DateTime endDate = dateTimePickerReturnDate.Value;
+
             //DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
-            DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID);
+            DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, 1, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
 
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
             formSelectFromTable.ShowResources(dataTable);
@@ -213,6 +233,12 @@ namespace DelpinUI
         {
             DelpinCore.Lease lease = controller.ReadLeaseByLeaseID(leaseID);
 
+            if(lease.debtorID == "-1")
+            {
+                MessageBox.Show("Ordren blev ikke fundet, prøv at indtaste ordrenummeret igen.");
+                return;
+            }
+
             ClearAllTextBoxes();
 
             FillFormWithLease(lease);
@@ -279,6 +305,12 @@ namespace DelpinUI
         {
             DataTable dataTable = controller.ReadLeasesByDebtor(debtorID);
 
+            if (dataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Der blev ikke fundet nogle ordrer, prøv at indtaste kundenummeret igen.");
+                return;
+            }
+
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
             formSelectFromTable.ShowResources(dataTable);
             formSelectFromTable.SetTitle("Vælg ordre");
@@ -289,6 +321,28 @@ namespace DelpinUI
                 int leaseID = formSelectFromTable.returnValue;
 
                 GetLeaseByLeaseID(leaseID);
+            }
+        }
+
+        private void dateTimePickerDeliveryDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePickerDeliveryDate.Value < DateTime.Today)
+            {
+                MessageBox.Show("Du kan ikke sætte en dato tidligere end i dag!");
+                dateTimePickerDeliveryDate.Value = DateTime.Today;
+            }
+            if(dateTimePickerDeliveryDate.Value >= dateTimePickerReturnDate.Value)
+            {
+                dateTimePickerReturnDate.Value = dateTimePickerDeliveryDate.Value.AddDays(1);
+            }
+        }
+
+        private void dateTimePickerReturnDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePickerReturnDate.Value < dateTimePickerDeliveryDate.Value)
+            {
+                MessageBox.Show("Du kan ikke sætte tilbageleveringsdato tidligere end leveringsdatoen!");
+                dateTimePickerReturnDate.Value = dateTimePickerDeliveryDate.Value.AddDays(1);
             }
         }
     }

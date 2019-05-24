@@ -101,6 +101,7 @@
             this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
             this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerDeliveryDate.TabIndex = 0;
+            this.dateTimePickerDeliveryDate.ValueChanged += new System.EventHandler(this.dateTimePickerDeliveryDate_ValueChanged);
             // 
             // label1
             // 
@@ -126,6 +127,7 @@
             this.dateTimePickerReturnDate.Name = "dateTimePickerReturnDate";
             this.dateTimePickerReturnDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerReturnDate.TabIndex = 4;
+            this.dateTimePickerReturnDate.ValueChanged += new System.EventHandler(this.dateTimePickerReturnDate_ValueChanged);
             // 
             // label4
             // 

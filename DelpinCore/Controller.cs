@@ -153,9 +153,9 @@ namespace DelpinCore
             return lease;
         }
 
-        public DataTable GetAvailableResourcesForPeriod(int modelID)
+        public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
-            DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID);
+            DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
             return dataTable;
         }
 

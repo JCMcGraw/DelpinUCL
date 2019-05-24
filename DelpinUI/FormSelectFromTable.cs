@@ -56,6 +56,15 @@ namespace DelpinUI
         public void ShowResources(DataTable dataTable)
         {
             dataGridViewResources.DataSource = dataTable;
+            AutoSizeAllColumns();
+        }
+
+        private void AutoSizeAllColumns()
+        {
+            for(int i = 0; i < dataGridViewResources.ColumnCount; i++)
+            {
+                dataGridViewResources.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         public void SetTitle(string title)
