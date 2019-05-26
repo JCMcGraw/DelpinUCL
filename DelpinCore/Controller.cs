@@ -126,6 +126,12 @@ namespace DelpinCore
             leaseManager.DeleteLease(leaseID);
         }
 
+        public string DeactivateLease(int leaseID)
+        {
+            string deactivateSuccess = leaseManager.DeactivateLease(leaseID);
+            return deactivateSuccess;
+        }
+
         public string CreateLease(Lease lease)
         {
             string leaseSuccess = leaseManager.CreateLease(lease);
@@ -195,7 +201,7 @@ namespace DelpinCore
 
         public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
         {
-            double deliveryPrices = deliveryManager.DeliveryPrice(zone, weight, km, deliveryPrice);
+            double deliveryPrices = deliveryManager.DeliveryPrice(zone, true, km, deliveryPrice);
             return deliveryPrices;
         }
 

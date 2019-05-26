@@ -13,6 +13,8 @@ namespace DelpinUI
     public partial class FormSelectFromTable : Form
     {
         public int returnValue { get; private set; }
+        public string modelName { get; private set; }
+        public decimal dailyPrice { get; private set; }
 
         public FormSelectFromTable()
         {
@@ -39,8 +41,10 @@ namespace DelpinUI
 
             if (this.Text == "Vælg resurse")
             {
-                int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResourcesID"].Value);
+                int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResurseID"].Value);
                 returnValue = resourceID;
+                modelName = dataGridViewResources.Rows[selectedRow].Cells["Model"].Value.ToString();
+                dailyPrice = Convert.ToDecimal(dataGridViewResources.Rows[selectedRow].Cells["Dagspris"].Value.ToString());
             }
             else if (this.Text == "Vælg ordre")
             {

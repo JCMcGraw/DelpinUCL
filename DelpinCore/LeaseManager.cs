@@ -32,7 +32,7 @@ namespace DelpinCore
             string selectLeases = "Select Lease.LeaseID As Ordrenummer, Branch.City As Afdeling, Lease.Active As Åben, " +
                 "Lease.CreationDate As Dato, Lease.DebtorID As Kundenummer, Lease.ContactFname + ' ' + Lease.ContactLname As Kontakt, Lease.ContactPhone As Kontaktnummer " +
                 "From Lease Inner Join Branch On Lease.BranchID = Branch.BranchID " +
-                $"Where Lease.DebtorID = '{debtorID}' " +
+                $"Where Lease.DebtorID = '{debtorID}' and Lease.Active = 1 " +
                 "Order By Lease.CreationDate Desc";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
@@ -187,6 +187,13 @@ namespace DelpinCore
 
         }
 
+        public string DeactivateLease(int leaseID)
+        {
+            string deactivateLease = $"update Lease set Lease.Active = 0 where LeaseID = {leaseID}";
+            string isSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deactivateLease);
+            return isSuccess;
+        }
+
         public DataTable GetAvailableResourcesForPeriod(int modelID, int BranchID, string startDate, string endDate)
         {
             string sql = GetAvailabilitySQL(modelID, BranchID, startDate, endDate);
@@ -199,6 +206,7 @@ namespace DelpinCore
             string sql = $"Select " +
             $"    Resources.ResourcesID as [ResurseID], " +
             $"    Model.ModelName as [Model], " +
+            $"    Model.Price as [Dagspris], " +
             $"	Case " +
             $"		When ResourceAvailability.Tilgængelighed IS NULL then 'fri' " +
             $"		else ResourceAvailability.Tilgængelighed " +
