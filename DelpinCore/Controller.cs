@@ -165,15 +165,15 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
+        public string CreateAccessory(int modelID, int accessoryID)
         {
-            string createAccessory = accessoryManager.CreateAccessory(accessoryModelID, modelID, accessoryID);
+            string createAccessory = accessoryManager.CreateAccessory(modelID, accessoryID);
             return createAccessory;
         }
 
-        public string ReadAccessory()
+        public string ReadAccessory(int modelID)
         {
-            string readAccessory = accessoryManager.ReadAccessory();
+            string readAccessory = accessoryManager.ReadAccessory(modelID);
             return readAccessory;
         }
 
