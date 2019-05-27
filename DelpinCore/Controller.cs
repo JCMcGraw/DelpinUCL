@@ -202,7 +202,6 @@ namespace DelpinCore
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
             double getItemsFromDeliveryTable = deliveryManager.GetItemsFromDeliveryTable(zone,ton);
-
             return getItemsFromDeliveryTable;
         }
 
