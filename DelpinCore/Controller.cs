@@ -199,11 +199,13 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
+        public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
-            double deliveryPrices = deliveryManager.DeliveryPrice(zone, true, km, deliveryPrice);
-            return deliveryPrices;
+            double getItemsFromDeliveryTable = deliveryManager.GetItemsFromDeliveryTable(zone,ton);
+
+            return getItemsFromDeliveryTable;
         }
+
 
         public DataTable GetMainGroup()
         {
