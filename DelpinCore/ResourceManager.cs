@@ -9,6 +9,7 @@ namespace DelpinCore
 {
     class ResourceManager
     {
+        //Daniel
         public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
         {
             string createResource = "Insert into Resources(ResourceID, ModelID, BranchID) " +

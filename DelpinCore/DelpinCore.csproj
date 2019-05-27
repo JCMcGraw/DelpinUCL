@@ -55,6 +55,8 @@
     <Compile Include="Lease.cs" />
     <Compile Include="LeaseManager.cs" />
     <Compile Include="LeaseOrder.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="ModelManager.cs" />
     <Compile Include="Personal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

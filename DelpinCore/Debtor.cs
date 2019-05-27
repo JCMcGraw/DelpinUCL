@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     abstract class Debtor
     {
+        //Daniel
         public string debtorID { get; private set; }
 
         public string street { get; private set; }

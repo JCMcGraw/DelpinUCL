@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     class Resource
     {
+        //Daniel
         public int resourceID { get; private set; }
 
         public int modelID { get; private set; }

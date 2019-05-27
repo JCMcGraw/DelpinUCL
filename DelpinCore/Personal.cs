@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     class Personal : Debtor //Personal Arv from Debtor
     {
+        //Daniel
         public string CPR { get; private set; }
 
         public string firstName { get; private set; }

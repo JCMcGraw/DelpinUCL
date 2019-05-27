@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     class Accessory
     {
+        //Daniel
         public int accessoryModelID { get; private set; }
 
         public string modelID { get; private set; }

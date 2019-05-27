@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     class Business : Debtor //Business arv from Debtor
     {
+        //Daniel
         public string CVR { get; private set; }
 
         public string companyName { get; private set; }

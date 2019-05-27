@@ -8,6 +8,7 @@ namespace DelpinCore
 {
     class AccessoryManager
     {
+        //Daniel
         public string CreateAccessory(int modelID, int accessoryID)
         {
             string createAccessory = "Insert into Accessory(ModelID, accessoryID) " +
