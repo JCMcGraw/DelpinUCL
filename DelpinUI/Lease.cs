@@ -21,6 +21,7 @@ namespace DelpinUI
         public Lease()
         {
             InitializeComponent();
+            comboBoxLeaseStatus.SelectedIndex = 0;
         }
 
         private void Lease_Load(object sender, EventArgs e)
@@ -68,8 +69,34 @@ namespace DelpinUI
             GetDebtoryByID(textBoxDebtorID.Text);
         }
 
+        private bool CheckDebtorID(string debtorID)
+        {
+            if (radioButtonBusiness.Checked == true)
+            {
+                if (Utility.CheckForValidCVRNumber(debtorID) == false)
+                {
+                    MessageBox.Show("CVR-nummeret er ikke korrekt, prøv at indtaste det igen");
+                    return false;
+                }
+            }
+            else
+            {
+                if (Utility.CheckForValidCPRNumber(debtorID) == false)
+                {
+                    MessageBox.Show("CPR-nummeret er ikke korrekt, prøv at indtaste det igen. Bemærk at CPR-nummeret skal indtastes uden bindestreg");
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void GetDebtoryByID(string debtorID)
         {
+            if (CheckDebtorID(debtorID) == false)
+            {
+                return;
+            }
+
             DataTable dataTable = controller.ReadBusinessDebtor(debtorID);
 
             if (dataTable.Rows.Count == 0)
@@ -109,6 +136,11 @@ namespace DelpinUI
             int selectedRow = selectedRows[0].Index;
             int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ModelID"].Value);
 
+            AddResourceToLease(modelID);
+        }
+
+        private void AddResourceToLease(int modelID)
+        {
             DateTime startDate = dateTimePickerDeliveryDate.Value;
             DateTime endDate = dateTimePickerReturnDate.Value;
 
@@ -119,29 +151,34 @@ namespace DelpinUI
             formSelectFromTable.ShowResources(dataTable);
             formSelectFromTable.SetTitle("Vælg resurse");
             var result = formSelectFromTable.ShowDialog();
-            
-            if(result == DialogResult.OK)
+
+            if (result == DialogResult.OK)
             {
                 int resourceID = formSelectFromTable.returnValue;
 
                 dataGridViewLeaseOrders.Rows.Add();
                 int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = dataGridViewResources.Rows[selectedRow].Cells["ModelName"].Value.ToString();
+                //dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = dataGridViewResources.Rows[selectedRow].Cells["ModelName"].Value.ToString();
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = formSelectFromTable.modelName;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = dateTimePickerDeliveryDate.Value.ToString("yyyy/MM/dd");
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = dateTimePickerReturnDate.Value.ToString("yyyy/MM/dd");
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
+                //dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = formSelectFromTable.dailyPrice;
 
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
             }
-            
-
         }
 
         private void buttonCreateOrder_Click(object sender, EventArgs e)
         {
+            if (CheckOrderIsGood() == false)
+            {
+                return;
+            }
+
             DelpinCore.Lease lease = GetLeaseFromForm();
 
             string leaseSuccess = controller.CreateLease(lease);
@@ -150,7 +187,25 @@ namespace DelpinUI
             {
                 string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
                 textBoxLeaseNumber.Text = leaseNumber;
+                AddStatusesToComboBox();
             }
+
+        }
+
+        private bool CheckOrderIsGood()
+        {
+            if (textBoxBillingAddress.Text == "")
+            {
+                MessageBox.Show("Vælg kunde før du opretter ordren");
+                return false;
+            }
+            if(textBoxLeaseNumber.Text != "")
+            {
+                MessageBox.Show("Denne ordre er allerede oprettet. Ville du opdatere?");
+                return false;
+            }
+
+            return true;
         }
 
         private DelpinCore.Lease GetLeaseFromForm()
@@ -171,7 +226,13 @@ namespace DelpinUI
                 decimal price = Convert.ToDecimal(row.Cells["Dagspris"].Value.ToString());
 
                 string deliveryAddrress = row.Cells["Gade"].Value.ToString();
-                int deliveryPostCode = Convert.ToInt32(row.Cells["Postkode"].Value.ToString());
+
+                int deliveryPostCode = 0;
+                try
+                {
+                    deliveryPostCode = Convert.ToInt32(row.Cells["Postkode"].Value.ToString());
+                }
+                catch { }
                 string deliveryCity = row.Cells["By"].Value.ToString();
 
                 LeaseOrder leaseOrder = new LeaseOrder(deliveryDate, returnDate, price, resouceID);
@@ -343,6 +404,55 @@ namespace DelpinUI
             {
                 MessageBox.Show("Du kan ikke sætte tilbageleveringsdato tidligere end leveringsdatoen!");
                 dateTimePickerReturnDate.Value = dateTimePickerDeliveryDate.Value.AddDays(1);
+            }
+        }
+
+        private void buttonAddAccessory_Click(object sender, EventArgs e)
+        {
+            AddResourceToLease(1);
+        }
+
+        private void AddStatusesToComboBox()
+        {
+            comboBoxLeaseStatus.Items.Clear();
+
+            comboBoxLeaseStatus.Items.Add("Åben");
+            comboBoxLeaseStatus.Items.Add("Leveret");
+            comboBoxLeaseStatus.Items.Add("Returneret");
+            comboBoxLeaseStatus.Items.Add("Betalt");
+
+            comboBoxLeaseStatus.SelectedIndex = 0;
+        }
+
+        private void SetStatusComboBoxToDefault()
+        {
+            comboBoxLeaseStatus.Items.Clear();
+
+            comboBoxLeaseStatus.Items.Add("Ikke oprettet");
+
+            comboBoxLeaseStatus.SelectedIndex = 0;
+        }
+
+        private void buttonDeleteLease_Click(object sender, EventArgs e)
+        {
+            if (textBoxLeaseNumber.Text.Length > 0)
+            {
+                int leaseID = Convert.ToInt32(textBoxLeaseNumber.Text);
+
+                DialogResult dialogResult = MessageBox.Show($"Vil du sletter ordre nummer {leaseID}", "Slet ordre", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    controller.DeactivateLease(leaseID);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Vælg en ordre at slette.");
             }
         }
     }

@@ -126,6 +126,12 @@ namespace DelpinCore
             leaseManager.DeleteLease(leaseID);
         }
 
+        public string DeactivateLease(int leaseID)
+        {
+            string deactivateSuccess = leaseManager.DeactivateLease(leaseID);
+            return deactivateSuccess;
+        }
+
         public string CreateLease(Lease lease)
         {
             string leaseSuccess = leaseManager.CreateLease(lease);
@@ -159,15 +165,15 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
+        public string CreateAccessory(int modelID, int accessoryID)
         {
-            string createAccessory = accessoryManager.CreateAccessory(accessoryModelID, modelID, accessoryID);
+            string createAccessory = accessoryManager.CreateAccessory(modelID, accessoryID);
             return createAccessory;
         }
 
-        public string ReadAccessory()
+        public string ReadAccessory(int modelID)
         {
-            string readAccessory = accessoryManager.ReadAccessory();
+            string readAccessory = accessoryManager.ReadAccessory(modelID);
             return readAccessory;
         }
 
@@ -193,11 +199,12 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public double DeliveryPrice(int zone, double weight, int km, double deliveryPrice)
+        public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
-            double deliveryPrices = deliveryManager.DeliveryPrice(zone, weight, km, deliveryPrice);
-            return deliveryPrices;
+            double getItemsFromDeliveryTable = deliveryManager.GetItemsFromDeliveryTable(zone,ton);
+            return getItemsFromDeliveryTable;
         }
+
 
         public DataTable GetMainGroup()
         {

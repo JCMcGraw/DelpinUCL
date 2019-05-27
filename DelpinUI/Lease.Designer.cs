@@ -86,11 +86,14 @@
             this.labelContactPerson = new System.Windows.Forms.Label();
             this.labelContactLastName = new System.Windows.Forms.Label();
             this.textBoxContactLastName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAddAccessory = new System.Windows.Forms.Button();
             this.labelFindLeaseByLeaseID = new System.Windows.Forms.Label();
             this.textBoxFindLeaseByLeaseID = new System.Windows.Forms.TextBox();
             this.buttonFindLeaseByLeaseID = new System.Windows.Forms.Button();
             this.buttonFindLeases = new System.Windows.Forms.Button();
+            this.comboBoxLeaseStatus = new System.Windows.Forms.ComboBox();
+            this.labelLeaseStatus = new System.Windows.Forms.Label();
+            this.buttonDeleteLease = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -166,6 +169,7 @@
             // 
             // comboBoxAccessory
             // 
+            this.comboBoxAccessory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAccessory.FormattingEnabled = true;
             this.comboBoxAccessory.Location = new System.Drawing.Point(16, 448);
             this.comboBoxAccessory.Name = "comboBoxAccessory";
@@ -174,8 +178,10 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxName.Location = new System.Drawing.Point(483, 94);
             this.textBoxName.Name = "textBoxName";
+            this.textBoxName.ReadOnly = true;
             this.textBoxName.Size = new System.Drawing.Size(123, 20);
             this.textBoxName.TabIndex = 16;
             // 
@@ -188,36 +194,46 @@
             // 
             // textBoxBillingAddress
             // 
+            this.textBoxBillingAddress.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxBillingAddress.Location = new System.Drawing.Point(483, 133);
             this.textBoxBillingAddress.Name = "textBoxBillingAddress";
+            this.textBoxBillingAddress.ReadOnly = true;
             this.textBoxBillingAddress.Size = new System.Drawing.Size(178, 20);
             this.textBoxBillingAddress.TabIndex = 18;
             // 
             // textBoxBillingCity
             // 
+            this.textBoxBillingCity.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxBillingCity.Location = new System.Drawing.Point(483, 172);
             this.textBoxBillingCity.Name = "textBoxBillingCity";
+            this.textBoxBillingCity.ReadOnly = true;
             this.textBoxBillingCity.Size = new System.Drawing.Size(100, 20);
             this.textBoxBillingCity.TabIndex = 19;
             // 
             // textBoxBillingPostCode
             // 
+            this.textBoxBillingPostCode.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxBillingPostCode.Location = new System.Drawing.Point(592, 172);
             this.textBoxBillingPostCode.Name = "textBoxBillingPostCode";
+            this.textBoxBillingPostCode.ReadOnly = true;
             this.textBoxBillingPostCode.Size = new System.Drawing.Size(100, 20);
             this.textBoxBillingPostCode.TabIndex = 20;
             // 
             // textBoxEmail
             // 
+            this.textBoxEmail.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxEmail.Location = new System.Drawing.Point(483, 248);
             this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.ReadOnly = true;
             this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
             this.textBoxEmail.TabIndex = 21;
             // 
             // textBoxPhone
             // 
+            this.textBoxPhone.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxPhone.Location = new System.Drawing.Point(484, 209);
             this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.ReadOnly = true;
             this.textBoxPhone.Size = new System.Drawing.Size(100, 20);
             this.textBoxPhone.TabIndex = 22;
             // 
@@ -352,7 +368,7 @@
             // 
             this.buttonCreateOrder.Location = new System.Drawing.Point(838, 123);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
-            this.buttonCreateOrder.Size = new System.Drawing.Size(143, 53);
+            this.buttonCreateOrder.Size = new System.Drawing.Size(123, 53);
             this.buttonCreateOrder.TabIndex = 38;
             this.buttonCreateOrder.Text = "Opret ordre";
             this.buttonCreateOrder.UseVisualStyleBackColor = true;
@@ -431,6 +447,7 @@
             // 
             // comboBoxMainGroup
             // 
+            this.comboBoxMainGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMainGroup.FormattingEnabled = true;
             this.comboBoxMainGroup.Location = new System.Drawing.Point(12, 135);
             this.comboBoxMainGroup.Name = "comboBoxMainGroup";
@@ -440,6 +457,7 @@
             // 
             // comboBoxSubGroup
             // 
+            this.comboBoxSubGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSubGroup.FormattingEnabled = true;
             this.comboBoxSubGroup.Location = new System.Drawing.Point(181, 135);
             this.comboBoxSubGroup.Name = "comboBoxSubGroup";
@@ -532,16 +550,16 @@
             // textBoxLeaseNumber
             // 
             this.textBoxLeaseNumber.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxLeaseNumber.Location = new System.Drawing.Point(569, 311);
+            this.textBoxLeaseNumber.Location = new System.Drawing.Point(483, 292);
             this.textBoxLeaseNumber.Name = "textBoxLeaseNumber";
             this.textBoxLeaseNumber.ReadOnly = true;
-            this.textBoxLeaseNumber.Size = new System.Drawing.Size(123, 20);
+            this.textBoxLeaseNumber.Size = new System.Drawing.Size(100, 20);
             this.textBoxLeaseNumber.TabIndex = 50;
             // 
             // labelLeaseNumber
             // 
             this.labelLeaseNumber.AutoSize = true;
-            this.labelLeaseNumber.Location = new System.Drawing.Point(482, 314);
+            this.labelLeaseNumber.Location = new System.Drawing.Point(482, 275);
             this.labelLeaseNumber.Name = "labelLeaseNumber";
             this.labelLeaseNumber.Size = new System.Drawing.Size(70, 13);
             this.labelLeaseNumber.TabIndex = 51;
@@ -549,9 +567,9 @@
             // 
             // buttonUpdateOrder
             // 
-            this.buttonUpdateOrder.Location = new System.Drawing.Point(988, 123);
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(967, 123);
             this.buttonUpdateOrder.Name = "buttonUpdateOrder";
-            this.buttonUpdateOrder.Size = new System.Drawing.Size(143, 53);
+            this.buttonUpdateOrder.Size = new System.Drawing.Size(123, 53);
             this.buttonUpdateOrder.TabIndex = 52;
             this.buttonUpdateOrder.Text = "Opdater ordre";
             this.buttonUpdateOrder.UseVisualStyleBackColor = true;
@@ -583,14 +601,15 @@
             this.textBoxContactLastName.Size = new System.Drawing.Size(123, 20);
             this.textBoxContactLastName.TabIndex = 54;
             // 
-            // button1
+            // buttonAddAccessory
             // 
-            this.button1.Location = new System.Drawing.Point(218, 441);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 33);
-            this.button1.TabIndex = 56;
-            this.button1.Text = "Tilføj tilbehør";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonAddAccessory.Location = new System.Drawing.Point(218, 441);
+            this.buttonAddAccessory.Name = "buttonAddAccessory";
+            this.buttonAddAccessory.Size = new System.Drawing.Size(79, 33);
+            this.buttonAddAccessory.TabIndex = 56;
+            this.buttonAddAccessory.Text = "Tilføj tilbehør";
+            this.buttonAddAccessory.UseVisualStyleBackColor = true;
+            this.buttonAddAccessory.Click += new System.EventHandler(this.buttonAddAccessory_Click);
             // 
             // labelFindLeaseByLeaseID
             // 
@@ -629,16 +648,49 @@
             this.buttonFindLeases.UseVisualStyleBackColor = true;
             this.buttonFindLeases.Click += new System.EventHandler(this.buttonFindLeases_Click);
             // 
+            // comboBoxLeaseStatus
+            // 
+            this.comboBoxLeaseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLeaseStatus.FormattingEnabled = true;
+            this.comboBoxLeaseStatus.Items.AddRange(new object[] {
+            "Ikke oprettet"});
+            this.comboBoxLeaseStatus.Location = new System.Drawing.Point(653, 267);
+            this.comboBoxLeaseStatus.Name = "comboBoxLeaseStatus";
+            this.comboBoxLeaseStatus.Size = new System.Drawing.Size(123, 21);
+            this.comboBoxLeaseStatus.TabIndex = 61;
+            // 
+            // labelLeaseStatus
+            // 
+            this.labelLeaseStatus.AutoSize = true;
+            this.labelLeaseStatus.Location = new System.Drawing.Point(655, 248);
+            this.labelLeaseStatus.Name = "labelLeaseStatus";
+            this.labelLeaseStatus.Size = new System.Drawing.Size(61, 13);
+            this.labelLeaseStatus.TabIndex = 62;
+            this.labelLeaseStatus.Text = "Ordrestatus";
+            // 
+            // buttonDeleteLease
+            // 
+            this.buttonDeleteLease.Location = new System.Drawing.Point(1096, 123);
+            this.buttonDeleteLease.Name = "buttonDeleteLease";
+            this.buttonDeleteLease.Size = new System.Drawing.Size(123, 53);
+            this.buttonDeleteLease.TabIndex = 63;
+            this.buttonDeleteLease.Text = "Slet ordre";
+            this.buttonDeleteLease.UseVisualStyleBackColor = true;
+            this.buttonDeleteLease.Click += new System.EventHandler(this.buttonDeleteLease_Click);
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.buttonDeleteLease);
+            this.Controls.Add(this.labelLeaseStatus);
+            this.Controls.Add(this.comboBoxLeaseStatus);
             this.Controls.Add(this.buttonFindLeases);
             this.Controls.Add(this.buttonFindLeaseByLeaseID);
             this.Controls.Add(this.labelFindLeaseByLeaseID);
             this.Controls.Add(this.textBoxFindLeaseByLeaseID);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAddAccessory);
             this.Controls.Add(this.labelContactLastName);
             this.Controls.Add(this.textBoxContactLastName);
             this.Controls.Add(this.labelContactPerson);
@@ -758,10 +810,13 @@
         private System.Windows.Forms.Label labelContactPerson;
         private System.Windows.Forms.Label labelContactLastName;
         private System.Windows.Forms.TextBox textBoxContactLastName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAddAccessory;
         private System.Windows.Forms.Label labelFindLeaseByLeaseID;
         private System.Windows.Forms.TextBox textBoxFindLeaseByLeaseID;
         private System.Windows.Forms.Button buttonFindLeaseByLeaseID;
         private System.Windows.Forms.Button buttonFindLeases;
+        private System.Windows.Forms.ComboBox comboBoxLeaseStatus;
+        private System.Windows.Forms.Label labelLeaseStatus;
+        private System.Windows.Forms.Button buttonDeleteLease;
     }
 }
