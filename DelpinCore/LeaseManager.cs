@@ -203,6 +203,46 @@ namespace DelpinCore
 
         private string GetAvailabilitySQL(int modelID, int branchID, string startDate, string endDate)
         {
+            //string sql = $"Select " +
+            //$"    Resources.ResourcesID as [ResurseID], " +
+            //$"    Model.ModelName as [Model], " +
+            //$"    Model.Price as [Dagspris], " +
+            //$"	Case " +
+            //$"		When ResourceAvailability.Tilgængelighed IS NULL then 'fri' " +
+            //$"		else ResourceAvailability.Tilgængelighed " +
+            //$"	end as Tilgængelighed, " +
+            //$"	Branch.City as Lokation, " +
+            //$"	Distance.DistanceKm as [Distance] " +
+            //$"From " +
+            //$"    Resources Inner Join " +
+            //$"    Model On Resources.ModelID = Model.ModelID left join " +
+            //$"(Select " +
+            //$"    LeaseOrder.ResourcesID, " +
+            //$"    LeaseOrder.StartDate, " +
+            //$"    LeaseOrder.EndDate, " +
+            //$"    Case " +
+            //$"        When LeaseOrder.StartDate <= '{startDate}' And LeaseOrder.EndDate >= '{endDate}' " +
+            //$"        Then 'Ikke fri' " +
+            //$"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            //$"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
+            //$"        Then 'Fri nogle dage' " +
+            //$"        Else 'fri' " +
+            //$"    End As Tilgængelighed " +
+            //$"From " +
+            //$"    LeaseOrder Inner Join " +
+            //$"    Resources On LeaseOrder.ResourcesID = Resources.ResourcesID Inner Join " +
+            //$"    Model On Resources.ModelID = Model.ModelID " +
+            //$"Where " +
+            //$"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '{startDate}' And " +
+            //$"            LeaseOrder.EndDate >= '{endDate}') Or " +
+            //$"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            //$"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as ResourceAvailability " +
+            //$"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
+            //$"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
+            //$"	and Distance.StartLocation = {branchID} " +
+            //$"	where Model.ModelID = {modelID} " +
+            //$"	order by Tilgængelighed, Distance; ";
+
             string sql = $"Select " +
             $"    Resources.ResourcesID as [ResurseID], " +
             $"    Model.ModelName as [Model], " +
@@ -212,10 +252,15 @@ namespace DelpinCore
             $"		else ResourceAvailability.Tilgængelighed " +
             $"	end as Tilgængelighed, " +
             $"	Branch.City as Lokation, " +
-            $"	Distance.DistanceKm as [Distance] " +
+            $"	Distance.DistanceKm as [Distance], " +
+            $"	Case " +
+            $"		When ResourceAvailability.DatesBooked IS NULL then '' " +
+            $"		else ResourceAvailability.DatesBooked " +
+            $"	end as [Datoer udlejet] " +
             $"From " +
             $"    Resources Inner Join " +
             $"    Model On Resources.ModelID = Model.ModelID left join " +
+            $"(select TestDates.ResourcesID, TestDates.Tilgængelighed, STRING_AGG(CONVERT(varchar, TestDates.StartDate, 3) + ' - ' + CONVERT(varchar, TestDates.EndDate, 3), ', ') AS DatesBooked  from " +
             $"(Select " +
             $"    LeaseOrder.ResourcesID, " +
             $"    LeaseOrder.StartDate, " +
@@ -236,7 +281,8 @@ namespace DelpinCore
             $"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '{startDate}' And " +
             $"            LeaseOrder.EndDate >= '{endDate}') Or " +
             $"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
-            $"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as ResourceAvailability " +
+            $"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as TestDates " +
+            $"Group by TestDates.ResourcesID, TestDates.Tilgængelighed) as ResourceAvailability " +
             $"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
             $"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
             $"	and Distance.StartLocation = {branchID} " +

@@ -15,6 +15,7 @@ namespace DelpinUI
         public Form1()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.delpinikon;
         }
 
         private void button1_Click(object sender, EventArgs e)

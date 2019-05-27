@@ -196,9 +196,9 @@ namespace DelpinCore
             return createAccessory;
         }
 
-        public string ReadAccessory(int modelID)
+        public DataTable ReadAccessory(int modelID)
         {
-            string readAccessory = accessoryManager.ReadAccessory(modelID);
+            DataTable readAccessory = accessoryManager.ReadAccessory(modelID);
             return readAccessory;
         }
 

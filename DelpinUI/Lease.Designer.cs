@@ -492,6 +492,7 @@
             this.dataGridViewResources.Name = "dataGridViewResources";
             this.dataGridViewResources.Size = new System.Drawing.Size(417, 186);
             this.dataGridViewResources.TabIndex = 44;
+            this.dataGridViewResources.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_RowHeaderMouseClick);
             // 
             // AddResourceToOrderButton
             // 

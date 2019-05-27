@@ -409,7 +409,7 @@ namespace DelpinUI
 
         private void buttonAddAccessory_Click(object sender, EventArgs e)
         {
-            AddResourceToLease(1);
+            AddResourceToLease(Convert.ToInt32(comboBoxAccessory.SelectedValue));
         }
 
         private void AddStatusesToComboBox()
@@ -454,6 +454,18 @@ namespace DelpinUI
             {
                 MessageBox.Show("Vælg en ordre at slette.");
             }
+        }
+
+        private void dataGridViewResources_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataTable dataTable = controller.ReadAccessory(Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value.ToString()));
+            try
+            {
+                comboBoxAccessory.DataSource = dataTable;
+                comboBoxAccessory.DisplayMember = "ModelName";
+                comboBoxAccessory.ValueMember = "ModelID";
+            }
+            catch { }
         }
     }
 }
