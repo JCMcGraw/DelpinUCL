@@ -98,5 +98,33 @@ namespace DelpinCore
 
             return dataTable;
         }
+        //Sim
+        public DataTable DisplayBranch()
+        {
+            string selectBranch = $"select * from Branch";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
+
+            return dataTable;
+        }
+        public DataTable DisplayModelBySubgroupID(int subgroupID)
+        {
+            string selectBranch = $"select * from Model where SubGroupID = {subgroupID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
+
+            return dataTable;
+        }
+        public DataTable DisplayAccessoriesByModelID(int modelID)
+        {
+            string selectAccessory = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
+                $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where" +
+                $" Accessory.ModelID = { modelID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
+
+            return dataTable;
+        }
+        
     }
 }
