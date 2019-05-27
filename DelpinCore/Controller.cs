@@ -11,6 +11,7 @@ namespace DelpinCore
     {
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
+        ModelManager modelManager = new ModelManager();
         LeaseManager leaseManager = new LeaseManager();
         AccessoryManager accessoryManager = new AccessoryManager();
         TableDisplay tableDisplay = new TableDisplay();
@@ -97,9 +98,9 @@ namespace DelpinCore
             return deleteBusinessDebter;
         }
 
-        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string CreateResource(int resourceID, int modelID, int branchID)
         {
-            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID);
             return createResource;
         }
 
@@ -109,16 +110,40 @@ namespace DelpinCore
             return readResource;
         }
 
-        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string UpdateResource(int resourceID, int modelID, int branchID)
         {
-            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID);
             return updateResource;
         }
 
         public string DeleteResource(int resourceID,int modelID)
         {
-            string deleteResource = resourceManager.DeleteResource(resourceID,modelID);
+            string deleteResource = resourceManager.DeleteResource(resourceID);
             return deleteResource;
+        }
+
+        public string CreateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        {
+            string createModel = modelManager.CreateModel(modelID,modelName,price,subGroupID,weightKG);
+            return createModel;
+        }
+
+        public string ReadModel()
+        {
+            string readModel = modelManager.ReadModel();
+            return readModel;
+        }
+
+        public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        {
+            string updateModel = modelManager.UpdateModel(modelID,modelName,price,subGroupID,weightKG);
+            return updateModel;
+        }
+
+        public string DeleteModel(int modelID)
+        {
+            string deleteModel = modelManager.DeleteModel(modelID);
+            return deleteModel;
         }
 
         public void DeleteLease(int leaseID)
