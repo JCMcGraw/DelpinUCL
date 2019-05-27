@@ -303,6 +303,10 @@ namespace DelpinUI
             ClearAllTextBoxes();
 
             FillFormWithLease(lease);
+
+            buttonCreateOrder.Enabled = false;
+            buttonUpdateOrder.Enabled = true;
+            buttonDeleteLease.Enabled = true;
         }
 
         private void FillFormWithLease(DelpinCore.Lease lease)
@@ -317,7 +321,10 @@ namespace DelpinUI
             textBoxContactPhone.Text = lease.contactPhone;
             textBoxLeaseNumber.Text = lease.leaseID.ToString();
 
-            foreach(LeaseOrder leaseOrder in lease.GetLeaseOrders())
+            AddStatusesToComboBox();
+            FillStatus(lease.status);
+
+            foreach (LeaseOrder leaseOrder in lease.GetLeaseOrders())
             {
                 dataGridViewLeaseOrders.Rows.Add();
                 int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
@@ -334,6 +341,25 @@ namespace DelpinUI
 
         }
 
+        private void FillStatus(string status)
+        {
+            switch (status)
+            {
+                case "Åben":
+                    comboBoxLeaseStatus.SelectedIndex = 0;
+                    break;
+                case "Leveret":
+                    comboBoxLeaseStatus.SelectedIndex = 1;
+                    break;
+                case "Returneret":
+                    comboBoxLeaseStatus.SelectedIndex = 2;
+                    break;
+                case "Betalt":
+                    comboBoxLeaseStatus.SelectedIndex = 3;
+                    break;
+            }
+        }
+
         private void ClearAllTextBoxes()
         {
             dataGridViewLeaseOrders.Rows.Clear();
@@ -346,6 +372,10 @@ namespace DelpinUI
                     c.Text = "";
                 }
             }
+
+            buttonCreateOrder.Enabled = true;
+            buttonUpdateOrder.Enabled = false;
+            buttonDeleteLease.Enabled = false;
         }
 
         private void buttonUpdateOrder_Click(object sender, EventArgs e)
@@ -382,6 +412,9 @@ namespace DelpinUI
                 int leaseID = formSelectFromTable.returnValue;
 
                 GetLeaseByLeaseID(leaseID);
+                buttonCreateOrder.Enabled = false;
+                buttonUpdateOrder.Enabled = true;
+                buttonDeleteLease.Enabled = true;
             }
         }
 

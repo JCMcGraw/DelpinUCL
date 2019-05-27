@@ -45,14 +45,21 @@ namespace DelpinCore
             int branchID = Convert.ToInt32(dataTable.Rows[0]["BranchID"]);
             DateTime creationDate = Convert.ToDateTime(dataTable.Rows[0]["CreationDate"]);
             string debtorID = (string)dataTable.Rows[0]["DebtorID"];
+            string status = (string)dataTable.Rows[0]["Status"];
 
             Lease lease = new Lease(debtorID, branchID, leaseID, creationDate);
 
-            string contactFirstName = (string)dataTable.Rows[0]["ContactFname"];
-            string contactLastName = (string)dataTable.Rows[0]["ContactLname"];
-            string contactPhone = (string)dataTable.Rows[0]["ContactPhone"];
+            try
+            {
+                string contactFirstName = (string)dataTable.Rows[0]["ContactFname"];
+                string contactLastName = (string)dataTable.Rows[0]["ContactLname"];
+                string contactPhone = (string)dataTable.Rows[0]["ContactPhone"];
 
-            lease.SetContactDetails(contactFirstName, contactLastName, contactPhone);
+                lease.SetContactDetails(contactFirstName, contactLastName, contactPhone);
+            }
+            catch { }
+
+            lease.SetStatus(status);
 
             foreach(DataRow dataRow in dataTable.Rows)
             {
