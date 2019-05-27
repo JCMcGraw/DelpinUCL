@@ -8,10 +8,10 @@ namespace DelpinCore
 {
     class AccessoryManager
     {
-        public string CreateAccessory(int accessoryModelID, string modelID, string accessoryID)
+        public string CreateAccessory(string modelID, string accessoryID)
         {
-            string createAccessory = "Insert into Accessory(AccessoryModelID, ModelID, accessoryID) " +
-                                   $"values ({accessoryModelID},'{modelID}','{accessoryID}')";
+            string createAccessory = "Insert into Accessory(ModelID, accessoryID) " +
+                                   $"values ({modelID},{accessoryID})";
 
             string isCreateAccessory = DatabaseManager.CreateUpdateDeleteInDatabase(createAccessory);
             if (isCreateAccessory != "Success")
@@ -19,12 +19,12 @@ namespace DelpinCore
                 return isCreateAccessory;
             }
 
-            return $"Accessory {accessoryModelID},'{modelID},'{accessoryID} er blevet Oprettet";
+            return $"Accessory {modelID}, {accessoryID} er blevet oprettet";
         }
 
-        public string ReadAccessory()
+        public string ReadAccessory(int modelID)
         {
-            string readAccessory = "Select * from Accessory";
+            string readAccessory = $"Select * from Accessory where ModelID = {modelID}";
             
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readAccessory));
         }

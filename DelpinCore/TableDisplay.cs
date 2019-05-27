@@ -19,7 +19,6 @@ namespace DelpinCore
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
 
             return dataTable;
-            
         }
 
         //Viser specefik debtor ud fra et CPR-nummer
