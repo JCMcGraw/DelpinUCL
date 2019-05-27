@@ -20,6 +20,8 @@ namespace DelpinCore
 
         public int subGroupID { get; private set; }
 
+        public double weightKG { get; private set; }
+
         //Constructor
         public Resource(int resourceID,int modelID)
         {
@@ -28,7 +30,7 @@ namespace DelpinCore
         }
 
         //Constructor
-        public Resource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public Resource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
         {
             this.resourceID = resourceID;
             this.modelID = modelID;
@@ -36,6 +38,7 @@ namespace DelpinCore
             this.modelName = modelName;
             this.price = price;
             this.subGroupID = subGroupID;
+            this.weightKG = weightKG;
         }
     }
 }

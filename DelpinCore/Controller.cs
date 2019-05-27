@@ -97,9 +97,9 @@ namespace DelpinCore
             return deleteBusinessDebter;
         }
 
-        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
         {
-            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID,weightKG);
             return createResource;
         }
 
@@ -109,9 +109,9 @@ namespace DelpinCore
             return readResource;
         }
 
-        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
         {
-            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID);
+            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID,weightKG);
             return updateResource;
         }
 
@@ -208,6 +208,11 @@ namespace DelpinCore
         public DataTable GetSubGroup()
         {
             DataTable dataTable = tableDisplay.DisplaySubGroup();
+            return dataTable;
+        }
+        public DataTable GetBranch()
+        {
+            DataTable dataTable = tableDisplay.DisplayBranch();
             return dataTable;
         }
     }

@@ -9,13 +9,15 @@ namespace DelpinCore
 {
     class ResourceManager
     {
-        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
         {
             string createResource = "Insert into Resources(ResourceID, ModelID, BranchID) " +
-                                   $"values ({resourceID},'{modelID}','{branchID})";
+                                   $"values ({resourceID},{modelID},{branchID})";
 
-            string createModel = "Insert into Model(ModelID, ModelName, Price, SubGroupID) " +
-                                   $"values ({modelID},'{modelName}','{price}','{subGroupID})";
+            
+
+            string createModel = "Insert into Model(ModelID, ModelName, Price, SubGroupID, WeightKG) " +
+                                   $"values ({modelID},'{modelName}','{price}',{subGroupID},{weightKG})";
 
             string isCreateResource = DatabaseManager.CreateUpdateDeleteInDatabase(createResource);
             if (isCreateResource != "Success")
@@ -29,7 +31,7 @@ namespace DelpinCore
                 return isCreateModel;
             }
 
-            return $"Resources {resourceID},'{modelID},'{branchID},'{modelName},'{price},'{subGroupID} er blevet Oprettet";
+            return $"Resources {resourceID},'{modelID},'{branchID},'{modelName},'{price},'{subGroupID},{weightKG} er blevet Oprettet";
         }
 
         public string ReadResource()
@@ -40,10 +42,10 @@ namespace DelpinCore
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource+readModel));
         }
 
-        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID)
+        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID,double weightKG)
         {
             string updateResource = $"update Resources set ResourcesID={resourceID},ModelID='{modelID}',BrancID='{branchID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}";
-            string updateModel = $"update Model set ModelID={modelID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}";
+            string updateModel = $"update Model set ModelID={modelID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}, WeightKG='{weightKG}";
 
             string isUpdateResource = DatabaseManager.CreateUpdateDeleteInDatabase(updateResource);
             if (isUpdateResource != "Success")
@@ -57,7 +59,7 @@ namespace DelpinCore
                 return isUpdateModel;
             }
 
-            return $"Resources {resourceID},'{modelID},'{branchID},'{modelName}','{price}','{subGroupID} er blevet Opdateret";
+            return $"Resources {resourceID},'{modelID},'{branchID},'{modelName}','{price}','{subGroupID},'{weightKG} er blevet Opdateret";
         }
 
         public string DeleteResource(int resourceID,int modelID)
