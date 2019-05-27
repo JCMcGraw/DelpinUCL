@@ -168,6 +168,12 @@ namespace DelpinCore
             string isUpdateSuccess = leaseManager.UpdateLease(lease);
             return isUpdateSuccess;
         }
+
+        public string UpdateLeaseStatus(string status, int leaseID)
+        {
+            string isSuccess = leaseManager.UpdateStatus(status, leaseID);
+            return isSuccess;
+        }
         
         public DataTable ReadLeasesByDebtor(string debtorID)
         {

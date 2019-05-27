@@ -117,8 +117,8 @@ namespace DelpinCore
         //inserts new Lease in database
         public string CreateLease(Lease lease)
         {
-            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}')";
+            string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 
@@ -255,7 +255,7 @@ namespace DelpinCore
             $"    Model.ModelName as [Model], " +
             $"    Model.Price as [Dagspris], " +
             $"	Case " +
-            $"		When ResourceAvailability.Tilgængelighed IS NULL then 'fri' " +
+            $"		When ResourceAvailability.Tilgængelighed IS NULL then 'Fri' " +
             $"		else ResourceAvailability.Tilgængelighed " +
             $"	end as Tilgængelighed, " +
             $"	Branch.City as Lokation, " +
@@ -267,7 +267,8 @@ namespace DelpinCore
             $"From " +
             $"    Resources Inner Join " +
             $"    Model On Resources.ModelID = Model.ModelID left join " +
-            $"(select TestDates.ResourcesID, TestDates.Tilgængelighed, STRING_AGG(CONVERT(varchar, TestDates.StartDate, 3) + ' - ' + CONVERT(varchar, TestDates.EndDate, 3), ', ') AS DatesBooked  from " +
+            $"(select TestDates.ResourcesID, TestDates.Tilgængelighed, STRING_AGG(CONVERT(varchar, TestDates.StartDate, 3) + ' - ' + CONVERT(varchar, TestDates.EndDate, 3), ', ') " +
+            $"WITHIN GROUP (ORDER BY TestDates.StartDate) AS DatesBooked  from " +
             $"(Select " +
             $"    LeaseOrder.ResourcesID, " +
             $"    LeaseOrder.StartDate, " +
@@ -299,5 +300,12 @@ namespace DelpinCore
             return sql;
         }
 
+        public string UpdateStatus(string status, int leaseID)
+        {
+            string updateStatus = $"update Lease set Status = '{status}' where leaseID = {leaseID}";
+            string isSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(updateStatus);
+
+            return isSuccess;
+        }
     }
 }

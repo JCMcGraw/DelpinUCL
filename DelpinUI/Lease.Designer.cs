@@ -79,7 +79,6 @@
             this.checkBoxUseBillingAddress = new System.Windows.Forms.CheckBox();
             this.radioButtonBusiness = new System.Windows.Forms.RadioButton();
             this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
-            this.ButtonFindModels = new System.Windows.Forms.Button();
             this.textBoxLeaseNumber = new System.Windows.Forms.TextBox();
             this.labelLeaseNumber = new System.Windows.Forms.Label();
             this.buttonUpdateOrder = new System.Windows.Forms.Button();
@@ -94,6 +93,10 @@
             this.comboBoxLeaseStatus = new System.Windows.Forms.ComboBox();
             this.labelLeaseStatus = new System.Windows.Forms.Label();
             this.buttonDeleteLease = new System.Windows.Forms.Button();
+            this.buttonClearAll = new System.Windows.Forms.Button();
+            this.buttonUpdateStatus = new System.Windows.Forms.Button();
+            this.comboBoxDeliveryZone = new System.Windows.Forms.ComboBox();
+            this.labelDeliveryZone = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -187,7 +190,7 @@
             // 
             // textBoxContactFirstName
             // 
-            this.textBoxContactFirstName.Location = new System.Drawing.Point(856, 252);
+            this.textBoxContactFirstName.Location = new System.Drawing.Point(714, 252);
             this.textBoxContactFirstName.Name = "textBoxContactFirstName";
             this.textBoxContactFirstName.Size = new System.Drawing.Size(123, 20);
             this.textBoxContactFirstName.TabIndex = 17;
@@ -276,7 +279,7 @@
             // labelContactFirstName
             // 
             this.labelContactFirstName.AutoSize = true;
-            this.labelContactFirstName.Location = new System.Drawing.Point(856, 236);
+            this.labelContactFirstName.Location = new System.Drawing.Point(714, 236);
             this.labelContactFirstName.Name = "labelContactFirstName";
             this.labelContactFirstName.Size = new System.Drawing.Size(46, 13);
             this.labelContactFirstName.TabIndex = 27;
@@ -284,7 +287,7 @@
             // 
             // textBoxContactPhone
             // 
-            this.textBoxContactPhone.Location = new System.Drawing.Point(856, 291);
+            this.textBoxContactPhone.Location = new System.Drawing.Point(714, 291);
             this.textBoxContactPhone.Name = "textBoxContactPhone";
             this.textBoxContactPhone.Size = new System.Drawing.Size(100, 20);
             this.textBoxContactPhone.TabIndex = 28;
@@ -292,7 +295,7 @@
             // labelContactPhone
             // 
             this.labelContactPhone.AutoSize = true;
-            this.labelContactPhone.Location = new System.Drawing.Point(856, 275);
+            this.labelContactPhone.Location = new System.Drawing.Point(714, 275);
             this.labelContactPhone.Name = "labelContactPhone";
             this.labelContactPhone.Size = new System.Drawing.Size(80, 13);
             this.labelContactPhone.TabIndex = 29;
@@ -463,6 +466,7 @@
             this.comboBoxSubGroup.Name = "comboBoxSubGroup";
             this.comboBoxSubGroup.Size = new System.Drawing.Size(159, 21);
             this.comboBoxSubGroup.TabIndex = 41;
+            this.comboBoxSubGroup.TextChanged += new System.EventHandler(this.comboBoxSubGroup_TextChanged);
             // 
             // label3
             // 
@@ -507,7 +511,7 @@
             // checkBoxUseBillingAddress
             // 
             this.checkBoxUseBillingAddress.AutoSize = true;
-            this.checkBoxUseBillingAddress.Location = new System.Drawing.Point(218, 507);
+            this.checkBoxUseBillingAddress.Location = new System.Drawing.Point(251, 508);
             this.checkBoxUseBillingAddress.Name = "checkBoxUseBillingAddress";
             this.checkBoxUseBillingAddress.Size = new System.Drawing.Size(145, 17);
             this.checkBoxUseBillingAddress.TabIndex = 46;
@@ -537,16 +541,6 @@
             this.radioButtonPersonal.TabIndex = 48;
             this.radioButtonPersonal.Text = "Privat";
             this.radioButtonPersonal.UseVisualStyleBackColor = true;
-            // 
-            // ButtonFindModels
-            // 
-            this.ButtonFindModels.Location = new System.Drawing.Point(350, 128);
-            this.ButtonFindModels.Name = "ButtonFindModels";
-            this.ButtonFindModels.Size = new System.Drawing.Size(79, 33);
-            this.ButtonFindModels.TabIndex = 49;
-            this.ButtonFindModels.Text = "Find varer";
-            this.ButtonFindModels.UseVisualStyleBackColor = true;
-            this.ButtonFindModels.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxLeaseNumber
             // 
@@ -581,7 +575,7 @@
             // 
             this.labelContactPerson.AutoSize = true;
             this.labelContactPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContactPerson.Location = new System.Drawing.Point(856, 216);
+            this.labelContactPerson.Location = new System.Drawing.Point(714, 216);
             this.labelContactPerson.Name = "labelContactPerson";
             this.labelContactPerson.Size = new System.Drawing.Size(90, 13);
             this.labelContactPerson.TabIndex = 53;
@@ -590,7 +584,7 @@
             // labelContactLastName
             // 
             this.labelContactLastName.AutoSize = true;
-            this.labelContactLastName.Location = new System.Drawing.Point(988, 236);
+            this.labelContactLastName.Location = new System.Drawing.Point(846, 236);
             this.labelContactLastName.Name = "labelContactLastName";
             this.labelContactLastName.Size = new System.Drawing.Size(53, 13);
             this.labelContactLastName.TabIndex = 55;
@@ -598,7 +592,7 @@
             // 
             // textBoxContactLastName
             // 
-            this.textBoxContactLastName.Location = new System.Drawing.Point(988, 252);
+            this.textBoxContactLastName.Location = new System.Drawing.Point(846, 252);
             this.textBoxContactLastName.Name = "textBoxContactLastName";
             this.textBoxContactLastName.Size = new System.Drawing.Size(123, 20);
             this.textBoxContactLastName.TabIndex = 54;
@@ -616,7 +610,7 @@
             // labelFindLeaseByLeaseID
             // 
             this.labelFindLeaseByLeaseID.AutoSize = true;
-            this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(954, 37);
+            this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(835, 37);
             this.labelFindLeaseByLeaseID.Name = "labelFindLeaseByLeaseID";
             this.labelFindLeaseByLeaseID.Size = new System.Drawing.Size(141, 13);
             this.labelFindLeaseByLeaseID.TabIndex = 58;
@@ -625,14 +619,14 @@
             // textBoxFindLeaseByLeaseID
             // 
             this.textBoxFindLeaseByLeaseID.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxFindLeaseByLeaseID.Location = new System.Drawing.Point(957, 55);
+            this.textBoxFindLeaseByLeaseID.Location = new System.Drawing.Point(838, 55);
             this.textBoxFindLeaseByLeaseID.Name = "textBoxFindLeaseByLeaseID";
             this.textBoxFindLeaseByLeaseID.Size = new System.Drawing.Size(123, 20);
             this.textBoxFindLeaseByLeaseID.TabIndex = 57;
             // 
             // buttonFindLeaseByLeaseID
             // 
-            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(1086, 54);
+            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(967, 54);
             this.buttonFindLeaseByLeaseID.Name = "buttonFindLeaseByLeaseID";
             this.buttonFindLeaseByLeaseID.Size = new System.Drawing.Size(55, 23);
             this.buttonFindLeaseByLeaseID.TabIndex = 59;
@@ -656,7 +650,7 @@
             this.comboBoxLeaseStatus.FormattingEnabled = true;
             this.comboBoxLeaseStatus.Items.AddRange(new object[] {
             "Ikke oprettet"});
-            this.comboBoxLeaseStatus.Location = new System.Drawing.Point(653, 267);
+            this.comboBoxLeaseStatus.Location = new System.Drawing.Point(1096, 251);
             this.comboBoxLeaseStatus.Name = "comboBoxLeaseStatus";
             this.comboBoxLeaseStatus.Size = new System.Drawing.Size(123, 21);
             this.comboBoxLeaseStatus.TabIndex = 61;
@@ -664,7 +658,7 @@
             // labelLeaseStatus
             // 
             this.labelLeaseStatus.AutoSize = true;
-            this.labelLeaseStatus.Location = new System.Drawing.Point(655, 248);
+            this.labelLeaseStatus.Location = new System.Drawing.Point(1098, 232);
             this.labelLeaseStatus.Name = "labelLeaseStatus";
             this.labelLeaseStatus.Size = new System.Drawing.Size(61, 13);
             this.labelLeaseStatus.TabIndex = 62;
@@ -681,11 +675,65 @@
             this.buttonDeleteLease.UseVisualStyleBackColor = true;
             this.buttonDeleteLease.Click += new System.EventHandler(this.buttonDeleteLease_Click);
             // 
+            // buttonClearAll
+            // 
+            this.buttonClearAll.Location = new System.Drawing.Point(1096, 47);
+            this.buttonClearAll.Name = "buttonClearAll";
+            this.buttonClearAll.Size = new System.Drawing.Size(123, 53);
+            this.buttonClearAll.TabIndex = 64;
+            this.buttonClearAll.Text = "Ryd alt";
+            this.buttonClearAll.UseVisualStyleBackColor = true;
+            this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
+            // 
+            // buttonUpdateStatus
+            // 
+            this.buttonUpdateStatus.Enabled = false;
+            this.buttonUpdateStatus.Location = new System.Drawing.Point(1117, 278);
+            this.buttonUpdateStatus.Name = "buttonUpdateStatus";
+            this.buttonUpdateStatus.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdateStatus.TabIndex = 65;
+            this.buttonUpdateStatus.Text = "Opdater";
+            this.buttonUpdateStatus.UseVisualStyleBackColor = true;
+            this.buttonUpdateStatus.Click += new System.EventHandler(this.buttonUpdateStatus_Click);
+            // 
+            // comboBoxDeliveryZone
+            // 
+            this.comboBoxDeliveryZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDeliveryZone.FormattingEnabled = true;
+            this.comboBoxDeliveryZone.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.comboBoxDeliveryZone.Location = new System.Drawing.Point(251, 543);
+            this.comboBoxDeliveryZone.Name = "comboBoxDeliveryZone";
+            this.comboBoxDeliveryZone.Size = new System.Drawing.Size(123, 21);
+            this.comboBoxDeliveryZone.TabIndex = 66;
+            // 
+            // labelDeliveryZone
+            // 
+            this.labelDeliveryZone.AutoSize = true;
+            this.labelDeliveryZone.Location = new System.Drawing.Point(248, 528);
+            this.labelDeliveryZone.Name = "labelDeliveryZone";
+            this.labelDeliveryZone.Size = new System.Drawing.Size(76, 13);
+            this.labelDeliveryZone.TabIndex = 67;
+            this.labelDeliveryZone.Text = "Leveringszone";
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.labelDeliveryZone);
+            this.Controls.Add(this.comboBoxDeliveryZone);
+            this.Controls.Add(this.buttonUpdateStatus);
+            this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.buttonDeleteLease);
             this.Controls.Add(this.labelLeaseStatus);
             this.Controls.Add(this.comboBoxLeaseStatus);
@@ -700,7 +748,6 @@
             this.Controls.Add(this.buttonUpdateOrder);
             this.Controls.Add(this.labelLeaseNumber);
             this.Controls.Add(this.textBoxLeaseNumber);
-            this.Controls.Add(this.ButtonFindModels);
             this.Controls.Add(this.radioButtonPersonal);
             this.Controls.Add(this.radioButtonBusiness);
             this.Controls.Add(this.checkBoxUseBillingAddress);
@@ -797,7 +844,6 @@
         private System.Windows.Forms.CheckBox checkBoxUseBillingAddress;
         private System.Windows.Forms.RadioButton radioButtonBusiness;
         private System.Windows.Forms.RadioButton radioButtonPersonal;
-        private System.Windows.Forms.Button ButtonFindModels;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
@@ -821,5 +867,9 @@
         private System.Windows.Forms.ComboBox comboBoxLeaseStatus;
         private System.Windows.Forms.Label labelLeaseStatus;
         private System.Windows.Forms.Button buttonDeleteLease;
+        private System.Windows.Forms.Button buttonClearAll;
+        private System.Windows.Forms.Button buttonUpdateStatus;
+        private System.Windows.Forms.ComboBox comboBoxDeliveryZone;
+        private System.Windows.Forms.Label labelDeliveryZone;
     }
 }
