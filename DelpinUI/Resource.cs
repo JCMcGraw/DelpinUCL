@@ -78,12 +78,15 @@ namespace DelpinUI
 
 
 
-            DataTable dataTableBranch = controller.GetBranch();
+            DataTable dataTableBranch = controller.DisplayBranch();
 
-            //comboBoxBranch.DataSource = dataTableBranch;
-            //comboBoxBranch.DisplayMember = "City";
-            //comboBoxBranch.ValueMember = "BranchID";
-            
+            branchID.DataSource = dataTableBranch;
+            branchID.DisplayMember = "City";
+            branchID.ValueMember = "BranchID";
+
+            DataTable dataTable = controller.DisplayAllResources();
+            resourceGridView.DataSource = dataTable;
+
         }
 
 
@@ -199,6 +202,12 @@ namespace DelpinUI
         private void comboBoxShowMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void CreateRessource_Click(object sender, EventArgs e)
+        {
+            string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(modelID.Text), Convert.ToInt32(branchID.SelectedValue));
+            MessageBox.Show(succes);
         }
     }
 }

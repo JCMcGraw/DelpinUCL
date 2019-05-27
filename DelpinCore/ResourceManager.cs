@@ -12,8 +12,8 @@ namespace DelpinCore
         //Daniel
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
-            string createResource = "Insert into Resources(ResourceID, ModelID, BranchID) " +
-                                   $"values ('{resourceID}','{modelID}','{branchID})";
+            string createResource = "Insert into Resources(ResourcesID, ModelID, BranchID) " +
+                                   $"values ('{resourceID}','{modelID}','{branchID}')";
 
             string isCreateResource = DatabaseManager.CreateUpdateDeleteInDatabase(createResource);
             if (isCreateResource != "Success")
@@ -74,6 +74,14 @@ namespace DelpinCore
                                                       $" where model.ModelID = {ModelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
+            return dataTable;
+        }
+        public DataTable DisplayModelBySubgroupID(int ModelID)
+        {
+            string DisplayModelBySubgroupID = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
+                $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where Accessory.ModelID = {ModelID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayModelBySubgroupID);
             return dataTable;
         }
     }
