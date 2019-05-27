@@ -24,11 +24,11 @@ namespace DelpinUI
         {
             InitializeComponent();
 
-            if (ProductGridView.SelectedRows.Count > 0) // make sure user select at least 1 row 
+            if (ModelGridView.SelectedRows.Count > 0) // make sure user select at least 1 row 
             {
-                string ModelID = ProductGridView.SelectedRows[0].Cells[0].Value + string.Empty;
-                string ModelName = ProductGridView.SelectedRows[0].Cells[2].Value + string.Empty;
-                string Price = ProductGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+                string ModelID = ModelGridView.SelectedRows[0].Cells[0].Value + string.Empty;
+                string ModelName = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+                string Price = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
                 
 
                 //this.ModelID.Text = ModelID;
@@ -65,6 +65,18 @@ namespace DelpinUI
             comboBoxSubGroup.DataSource = dataTableSubGroup;
             comboBoxSubGroup.DisplayMember = "Category";
             comboBoxSubGroup.ValueMember = "SubGroupID";
+
+
+            comboBoxShowMain.DataSource = dataTableMainGroup;
+            comboBoxShowMain.DisplayMember = "Category";
+            comboBoxShowMain.ValueMember = "MainGroupID";
+
+
+            comboBoxShowSub.DataSource = dataTableSubGroup;
+            comboBoxShowSub.DisplayMember = "Category";
+            comboBoxShowSub.ValueMember = "SubGroupID";
+
+
 
             DataTable dataTableBranch = controller.GetBranch();
 
@@ -140,6 +152,28 @@ namespace DelpinUI
 
         private void comboBoxMainGroup_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+        }
+       
+        
+        private void AddAccesories_Click(object sender, EventArgs e)
+        {
+            //controller.CreateAccessory()
+        }
+
+        private void comboBoxShowSub_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
+        
+        {
+
+        }
+
+        private void comboBoxMainGroup_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
@@ -152,9 +186,19 @@ namespace DelpinUI
             catch { }
         }
 
-        private void AddAccesories_Click(object sender, EventArgs e)
+        private void comboBoxSubGroup_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            try
+            {
+                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
+                ModelGridView.DataSource = dataTable;
+            }
+            catch { }
+            }
 
+        private void comboBoxShowMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

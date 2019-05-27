@@ -222,5 +222,15 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayBranch();
             return dataTable;
         }
+        public DataTable DisplayModelBySubgroupID(int subgroupID)
+        {
+            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(subgroupID);
+            return dataTable;
+        }
+        public DataTable DisplayAccessoriesByModelID(int modelID)
+        {
+            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(modelID);
+            return dataTable;
+        }
     }
 }
