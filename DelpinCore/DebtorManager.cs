@@ -9,6 +9,7 @@ namespace DelpinCore
 {
     class DebtorManager
     {
+        //Daniel
         public string ReadDebtor()
         {
             string readAllDebtor= "Select * from Debtor";

@@ -11,6 +11,7 @@ namespace DelpinCore
     {
         DebtorManager debtorManager = new DebtorManager();
         ResourceManager resourceManager = new ResourceManager();
+        ModelManager modelManager = new ModelManager();
         LeaseManager leaseManager = new LeaseManager();
         AccessoryManager accessoryManager = new AccessoryManager();
         TableDisplay tableDisplay = new TableDisplay();
@@ -97,9 +98,9 @@ namespace DelpinCore
             return deleteBusinessDebter;
         }
 
-        public string CreateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
+        public string CreateResource(int resourceID, int modelID, int branchID)
         {
-            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID,modelName,price,subGroupID,weightKG);
+            string createResource = resourceManager.CreateResource(resourceID, modelID, branchID);
             return createResource;
         }
 
@@ -109,16 +110,40 @@ namespace DelpinCore
             return readResource;
         }
 
-        public string UpdateResource(int resourceID, int modelID, int branchID, string modelName, double price, int subGroupID, double weightKG)
+        public string UpdateResource(int resourceID, int modelID, int branchID)
         {
-            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID,modelName,price,subGroupID,weightKG);
+            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID);
             return updateResource;
         }
 
         public string DeleteResource(int resourceID,int modelID)
         {
-            string deleteResource = resourceManager.DeleteResource(resourceID,modelID);
+            string deleteResource = resourceManager.DeleteResource(resourceID);
             return deleteResource;
+        }
+
+        public string CreateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        {
+            string createModel = modelManager.CreateModel(modelID,modelName,price,subGroupID,weightKG);
+            return createModel;
+        }
+
+        public string ReadModel()
+        {
+            string readModel = modelManager.ReadModel();
+            return readModel;
+        }
+
+        public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        {
+            string updateModel = modelManager.UpdateModel(modelID,modelName,price,subGroupID,weightKG);
+            return updateModel;
+        }
+
+        public string DeleteModel(int modelID)
+        {
+            string deleteModel = modelManager.DeleteModel(modelID);
+            return deleteModel;
         }
 
         public void DeleteLease(int leaseID)
@@ -171,9 +196,9 @@ namespace DelpinCore
             return createAccessory;
         }
 
-        public string ReadAccessory(int modelID)
+        public DataTable ReadAccessory(int modelID)
         {
-            string readAccessory = accessoryManager.ReadAccessory(modelID);
+            DataTable readAccessory = accessoryManager.ReadAccessory(modelID);
             return readAccessory;
         }
 
@@ -215,21 +240,6 @@ namespace DelpinCore
         public DataTable GetSubGroup()
         {
             DataTable dataTable = tableDisplay.DisplaySubGroup();
-            return dataTable;
-        }
-        public DataTable GetBranch()
-        {
-            DataTable dataTable = tableDisplay.DisplayBranch();
-            return dataTable;
-        }
-        public DataTable DisplayModelBySubgroupID(int subgroupID)
-        {
-            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(subgroupID);
-            return dataTable;
-        }
-        public DataTable DisplayAccessoriesByModelID(int modelID)
-        {
-            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(modelID);
             return dataTable;
         }
     }

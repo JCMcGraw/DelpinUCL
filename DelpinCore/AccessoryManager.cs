@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
     class AccessoryManager
     {
+        //Daniel
         public string CreateAccessory(int modelID, int accessoryID)
         {
             string createAccessory = "Insert into Accessory(ModelID, accessoryID) " +
@@ -22,11 +24,15 @@ namespace DelpinCore
             return $"Accessory {modelID}, {accessoryID} er blevet oprettet";
         }
 
-        public string ReadAccessory(int modelID)
+        public DataTable ReadAccessory(int modelID)
         {
-            string readAccessory = $"Select * from Accessory where ModelID = {modelID}";
+            string readAccessory = //$"Select * from Accessory where ModelID = {modelID}";
+            "Select Model2.ModelID, Model2.ModelName From " +
+            "Model Inner Join Accessory On Accessory.ModelID = Model.ModelID Inner Join Model Model2 On Accessory.AccessoryID = Model2.ModelID " +
+            $"Where Accessory.ModelID = {modelID}";
             
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readAccessory));
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(readAccessory);
+            return dataTable;
         }
 
         public string DeleteAccessory(int accessoryModelID)

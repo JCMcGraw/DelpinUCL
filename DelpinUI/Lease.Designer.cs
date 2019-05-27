@@ -492,6 +492,7 @@
             this.dataGridViewResources.Name = "dataGridViewResources";
             this.dataGridViewResources.Size = new System.Drawing.Size(417, 186);
             this.dataGridViewResources.TabIndex = 44;
+            this.dataGridViewResources.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_RowHeaderMouseClick);
             // 
             // AddResourceToOrderButton
             // 
@@ -567,6 +568,7 @@
             // 
             // buttonUpdateOrder
             // 
+            this.buttonUpdateOrder.Enabled = false;
             this.buttonUpdateOrder.Location = new System.Drawing.Point(967, 123);
             this.buttonUpdateOrder.Name = "buttonUpdateOrder";
             this.buttonUpdateOrder.Size = new System.Drawing.Size(123, 53);
@@ -670,6 +672,7 @@
             // 
             // buttonDeleteLease
             // 
+            this.buttonDeleteLease.Enabled = false;
             this.buttonDeleteLease.Location = new System.Drawing.Point(1096, 123);
             this.buttonDeleteLease.Name = "buttonDeleteLease";
             this.buttonDeleteLease.Size = new System.Drawing.Size(123, 53);

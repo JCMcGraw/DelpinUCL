@@ -12,6 +12,7 @@ namespace DelpinCore
         public string debtorID { get; private set; }
         public int branchID { get; private set; }
         public DateTime dateCreated { get; private set; }
+        public string status { get; private set; }
         private List<LeaseOrder> leaseOrders = new List<LeaseOrder>();
 
         public string contactFirstName { get; private set; }
@@ -59,6 +60,11 @@ namespace DelpinCore
         public void SetLeaseID(int leaseID)
         {
             this.leaseID = leaseID;
+        }
+
+        public void SetStatus(string status)
+        {
+            this.status = status;
         }
 
         public List<LeaseOrder> GetLeaseOrders()
