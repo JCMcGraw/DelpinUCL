@@ -97,6 +97,7 @@
             this.buttonUpdateStatus = new System.Windows.Forms.Button();
             this.comboBoxDeliveryZone = new System.Windows.Forms.ComboBox();
             this.labelDeliveryZone = new System.Windows.Forms.Label();
+            this.buttonInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
             this.SuspendLayout();
@@ -162,7 +163,7 @@
             // 
             // SearchDebtorButton
             // 
-            this.SearchDebtorButton.Location = new System.Drawing.Point(588, 55);
+            this.SearchDebtorButton.Location = new System.Drawing.Point(404, 55);
             this.SearchDebtorButton.Name = "SearchDebtorButton";
             this.SearchDebtorButton.Size = new System.Drawing.Size(73, 23);
             this.SearchDebtorButton.TabIndex = 14;
@@ -396,6 +397,7 @@
             this.dataGridViewLeaseOrders.Name = "dataGridViewLeaseOrders";
             this.dataGridViewLeaseOrders.Size = new System.Drawing.Size(723, 186);
             this.dataGridViewLeaseOrders.TabIndex = 39;
+            this.dataGridViewLeaseOrders.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewLeaseOrders_DataError);
             // 
             // ResurseID
             // 
@@ -494,9 +496,11 @@
             this.dataGridViewResources.Location = new System.Drawing.Point(12, 182);
             this.dataGridViewResources.MultiSelect = false;
             this.dataGridViewResources.Name = "dataGridViewResources";
+            this.dataGridViewResources.ReadOnly = true;
             this.dataGridViewResources.Size = new System.Drawing.Size(417, 186);
             this.dataGridViewResources.TabIndex = 44;
-            this.dataGridViewResources.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_RowHeaderMouseClick);
+            this.dataGridViewResources.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseClick);
+            this.dataGridViewResources.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseDoubleClick);
             // 
             // AddResourceToOrderButton
             // 
@@ -610,7 +614,7 @@
             // labelFindLeaseByLeaseID
             // 
             this.labelFindLeaseByLeaseID.AutoSize = true;
-            this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(835, 37);
+            this.labelFindLeaseByLeaseID.Location = new System.Drawing.Point(741, 38);
             this.labelFindLeaseByLeaseID.Name = "labelFindLeaseByLeaseID";
             this.labelFindLeaseByLeaseID.Size = new System.Drawing.Size(141, 13);
             this.labelFindLeaseByLeaseID.TabIndex = 58;
@@ -619,14 +623,14 @@
             // textBoxFindLeaseByLeaseID
             // 
             this.textBoxFindLeaseByLeaseID.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxFindLeaseByLeaseID.Location = new System.Drawing.Point(838, 55);
+            this.textBoxFindLeaseByLeaseID.Location = new System.Drawing.Point(744, 56);
             this.textBoxFindLeaseByLeaseID.Name = "textBoxFindLeaseByLeaseID";
             this.textBoxFindLeaseByLeaseID.Size = new System.Drawing.Size(123, 20);
             this.textBoxFindLeaseByLeaseID.TabIndex = 57;
             // 
             // buttonFindLeaseByLeaseID
             // 
-            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(967, 54);
+            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(873, 55);
             this.buttonFindLeaseByLeaseID.Name = "buttonFindLeaseByLeaseID";
             this.buttonFindLeaseByLeaseID.Size = new System.Drawing.Size(55, 23);
             this.buttonFindLeaseByLeaseID.TabIndex = 59;
@@ -636,7 +640,7 @@
             // 
             // buttonFindLeases
             // 
-            this.buttonFindLeases.Location = new System.Drawing.Point(667, 55);
+            this.buttonFindLeases.Location = new System.Drawing.Point(589, 55);
             this.buttonFindLeases.Name = "buttonFindLeases";
             this.buttonFindLeases.Size = new System.Drawing.Size(73, 23);
             this.buttonFindLeases.TabIndex = 60;
@@ -725,11 +729,22 @@
             this.labelDeliveryZone.TabIndex = 67;
             this.labelDeliveryZone.Text = "Leveringszone";
             // 
+            // buttonInvoice
+            // 
+            this.buttonInvoice.Location = new System.Drawing.Point(967, 47);
+            this.buttonInvoice.Name = "buttonInvoice";
+            this.buttonInvoice.Size = new System.Drawing.Size(123, 53);
+            this.buttonInvoice.TabIndex = 68;
+            this.buttonInvoice.Text = "Udskriv faktura";
+            this.buttonInvoice.UseVisualStyleBackColor = true;
+            this.buttonInvoice.Click += new System.EventHandler(this.buttonInvoice_Click);
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
+            this.Controls.Add(this.buttonInvoice);
             this.Controls.Add(this.labelDeliveryZone);
             this.Controls.Add(this.comboBoxDeliveryZone);
             this.Controls.Add(this.buttonUpdateStatus);
@@ -871,5 +886,6 @@
         private System.Windows.Forms.Button buttonUpdateStatus;
         private System.Windows.Forms.ComboBox comboBoxDeliveryZone;
         private System.Windows.Forms.Label labelDeliveryZone;
+        private System.Windows.Forms.Button buttonInvoice;
     }
 }

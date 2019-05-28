@@ -70,6 +70,7 @@ namespace DelpinCore
 
                 DataRow dataRow = dataTable.NewRow();
                 dataRow["ErrorMessage"] = e.Message;
+                
 
                 dataTable.Rows.Add(dataRow);
 

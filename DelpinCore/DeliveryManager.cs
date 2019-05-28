@@ -19,9 +19,9 @@ namespace DelpinCore
             dataTable = DatabaseManager.ReadFromDatabase(itemsFromDeliveryTable);
 
             string getPrice = dataTable.Rows[0]["Price"].ToString();
-            double databasePrice = Convert.ToDouble(getPrice);
+            double deliveryPrice = Convert.ToDouble(getPrice);
 
-            return databasePrice;
+            return deliveryPrice;
         }
 
     }
