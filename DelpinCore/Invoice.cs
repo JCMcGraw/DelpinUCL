@@ -14,7 +14,7 @@ namespace DelpinCore
 {
     class Invoice
     {
-        public void MakePDF(string contactFirstName, string contactLastName, string street,string city,int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal leasePrice)
+        public void MakePDF(string contactFirstName, string contactLastName, string street,string city,int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal numberOfDays, double price, decimal totalPrice)
         {
             //Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -137,23 +137,21 @@ namespace DelpinCore
                 new XRect(80, -110, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            //gfx.DrawString($"{leaseDay}", companyAndDebtor, XBrushes.Black,
-            //    new XRect(0, -110, page.Width, page.Height),
-            //    XStringFormats.Center);
+            gfx.DrawString($"{numberOfDays}", companyAndDebtor, XBrushes.Black,
+                new XRect(0, -110, page.Width, page.Height),
+                XStringFormats.Center);
 
-            //gfx.DrawString($"Kr. {dalyLeasePrice} ", companyAndDebtor, XBrushes.Black,
-            //    new XRect(80, -110, page.Width, page.Height),
-            //    XStringFormats.Center);
+            gfx.DrawString($"Kr. {price} ", companyAndDebtor, XBrushes.Black,
+                new XRect(80, -110, page.Width, page.Height),
+                XStringFormats.Center);
 
             gfx.DrawString($"Kr.{deliveryPrice}", companyAndDebtor, XBrushes.Black,
                 new XRect(150, -110, page.Width, page.Height),
                 XStringFormats.Center);
 
-            gfx.DrawString($"kr. {leasePrice}", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"kr. {totalPrice}", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -110, page.Width, page.Height),
                 XStringFormats.CenterRight);
-
-
 
             gfx.DrawString("___________________________________________________________________________________________ ", smallHeadLine, XBrushes.Black,
                 new XRect(80, -100, page.Width, page.Height),
