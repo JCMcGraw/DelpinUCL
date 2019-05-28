@@ -133,6 +133,14 @@ namespace DelpinCore
 
             return dataTable;
         }
-        
+        public DataTable DisplayAccModel(   )
+        {
+            string DisplayAccModel = $"Select *From Model";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayAccModel);
+
+            return dataTable;
+        }
+
     }
 }

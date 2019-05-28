@@ -78,6 +78,7 @@ namespace DelpinUI
 
 
 
+
             DataTable dataTableBranch = controller.DisplayBranch();
 
             branchID.DataSource = dataTableBranch;
@@ -90,6 +91,14 @@ namespace DelpinUI
             DataTable dataTableModel = controller.DisplayModel();
             ModelGridView.DataSource = dataTableModel;
 
+            DataTable dataTableAccModel = controller.DisplayModel();
+
+            AccModelView.DataSource = dataTableAccModel;
+
+            DataTable dataTableAddAccModel = controller.DisplayAccModel();
+           
+            AddAcc.DataSource = dataTableAddAccModel;
+            //AddAcc.DataSource = dataTableModel;
         }
 
 
@@ -164,7 +173,9 @@ namespace DelpinUI
         
         private void AddAccesories_Click(object sender, EventArgs e)
         {
-            //controller.CreateAccessory()
+            string succes = controller.CreateAccessory(Convert.ToInt32(AccModelView.SelectedCells[0]),
+                Convert.ToInt32(AddAcc.SelectedCells[0]));
+            MessageBox.Show(succes);
         }
 
         private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,7 +221,7 @@ namespace DelpinUI
 
         private void AssGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
 
         private void AccSub_SelectedIndexChanged(object sender, EventArgs e)
@@ -232,6 +243,30 @@ namespace DelpinUI
             string succes = controller.DeleteResource(Convert.ToInt32(ressourceID.Text));
             MessageBox.Show(succes);
         }
+
+        private void AccMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dataTableSubGroup);
+                dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
+
+                AccSub.DataSource = dv.ToTable();
+                AccSub.DisplayMember = "Category";
+                AccSub.ValueMember = "SubGroupID";
+            }
+            catch { }
+        }
+
+        private void AddAcc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            AddAccModel.Text = AddAcc.CurrentCell.Value.ToString();
+            
+
+
+        }
+
     }
 }
 

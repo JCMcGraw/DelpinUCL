@@ -268,7 +268,11 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
-
+        public DataTable DisplayAccModel()
+        {
+            DataTable dataTable = tableDisplay.DisplayAccModel();
+            return dataTable;
+        }
 
 
     }
