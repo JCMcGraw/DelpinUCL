@@ -39,14 +39,19 @@ namespace DelpinUI
 
             int selectedRow = selectedRows[0].Index;
 
+            SelectRow(selectedRow);
+        }
+
+        private void SelectRow(int rowIndex)
+        {
             if (this.Text == "Vælg resurse")
             {
-                if (CheckIfResourceAvailable(selectedRow) == true)
+                if (CheckIfResourceAvailable(rowIndex) == true)
                 {
-                    int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResurseID"].Value);
+                    int resourceID = Convert.ToInt32(dataGridViewResources.Rows[rowIndex].Cells["ResurseID"].Value);
                     returnValue = resourceID;
-                    modelName = dataGridViewResources.Rows[selectedRow].Cells["Model"].Value.ToString();
-                    dailyPrice = Convert.ToDecimal(dataGridViewResources.Rows[selectedRow].Cells["Dagspris"].Value.ToString());
+                    modelName = dataGridViewResources.Rows[rowIndex].Cells["Model"].Value.ToString();
+                    dailyPrice = Convert.ToDecimal(dataGridViewResources.Rows[rowIndex].Cells["Dagspris"].Value.ToString());
                 }
                 else
                 {
@@ -56,7 +61,7 @@ namespace DelpinUI
             }
             else if (this.Text == "Vælg ordre")
             {
-                int leaseID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["Ordrenummer"].Value);
+                int leaseID = Convert.ToInt32(dataGridViewResources.Rows[rowIndex].Cells["Ordrenummer"].Value);
                 returnValue = leaseID;
             }
 
@@ -94,6 +99,24 @@ namespace DelpinUI
         public void SetTitle(string title)
         {
             this.Text = title;
+        }
+
+        private void dataGridViewResources_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+
+                SelectRow(e.RowIndex);
+            }
+        }
+
+        private void dataGridViewResources_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+            }
         }
     }
 }

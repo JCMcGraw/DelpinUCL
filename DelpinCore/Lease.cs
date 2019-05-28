@@ -71,5 +71,18 @@ namespace DelpinCore
         {
             return leaseOrders;
         }
+
+        public decimal GetTotalPrice()
+        {
+            decimal totalPrice = 0m;
+            
+            foreach(LeaseOrder leaseOrder in leaseOrders)
+            {
+                decimal numberOfDays = Convert.ToDecimal((leaseOrder.endDate - leaseOrder.startDate).TotalDays);
+                totalPrice += (leaseOrder.leasePrice * numberOfDays) + leaseOrder.deliveryPrice;
+            }
+
+            return totalPrice;
+        }
     }
 }
