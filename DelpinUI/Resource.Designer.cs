@@ -49,8 +49,8 @@
             this.CreateRessource = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ModelGridView = new System.Windows.Forms.DataGridView();
-            this.comboBoxSubGroup = new System.Windows.Forms.ComboBox();
-            this.comboBoxMainGroup = new System.Windows.Forms.ComboBox();
+            this.ComboModelSub = new System.Windows.Forms.ComboBox();
+            this.ComboModelMain = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Weight = new System.Windows.Forms.TextBox();
             this.DeleteModel = new System.Windows.Forms.Button();
@@ -64,6 +64,9 @@
             this.ModelName = new System.Windows.Forms.TextBox();
             this.CreateModel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.AddAccModel = new System.Windows.Forms.TextBox();
             this.AccSub = new System.Windows.Forms.ComboBox();
             this.AccMain = new System.Windows.Forms.ComboBox();
             this.AddAcc = new System.Windows.Forms.DataGridView();
@@ -73,9 +76,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
-            this.AddAccModel = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -242,8 +242,8 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.ModelGridView);
-            this.tabPage1.Controls.Add(this.comboBoxSubGroup);
-            this.tabPage1.Controls.Add(this.comboBoxMainGroup);
+            this.tabPage1.Controls.Add(this.ComboModelSub);
+            this.tabPage1.Controls.Add(this.ComboModelMain);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.Weight);
             this.tabPage1.Controls.Add(this.DeleteModel);
@@ -275,23 +275,24 @@
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
             // 
-            // comboBoxSubGroup
+            // ComboModelSub
             // 
-            this.comboBoxSubGroup.FormattingEnabled = true;
-            this.comboBoxSubGroup.Location = new System.Drawing.Point(123, 154);
-            this.comboBoxSubGroup.Name = "comboBoxSubGroup";
-            this.comboBoxSubGroup.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSubGroup.TabIndex = 40;
-            this.comboBoxSubGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubGroup_SelectedIndexChanged_1);
+            this.ComboModelSub.FormattingEnabled = true;
+            this.ComboModelSub.Location = new System.Drawing.Point(123, 154);
+            this.ComboModelSub.Name = "ComboModelSub";
+            this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
+            this.ComboModelSub.TabIndex = 40;
+            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubGroup_SelectedIndexChanged_1);
+            this.ComboModelSub.Click += new System.EventHandler(this.comboBoxSubGroup_SelectedIndexChanged_1);
             // 
-            // comboBoxMainGroup
+            // ComboModelMain
             // 
-            this.comboBoxMainGroup.FormattingEnabled = true;
-            this.comboBoxMainGroup.Location = new System.Drawing.Point(10, 154);
-            this.comboBoxMainGroup.Name = "comboBoxMainGroup";
-            this.comboBoxMainGroup.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxMainGroup.TabIndex = 39;
-            this.comboBoxMainGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged_2);
+            this.ComboModelMain.FormattingEnabled = true;
+            this.ComboModelMain.Location = new System.Drawing.Point(10, 154);
+            this.ComboModelMain.Name = "ComboModelMain";
+            this.ComboModelMain.Size = new System.Drawing.Size(96, 21);
+            this.ComboModelMain.TabIndex = 39;
+            this.ComboModelMain.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged_2);
             // 
             // label8
             // 
@@ -418,6 +419,31 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 277);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.TabIndex = 62;
+            this.label15.Text = "Vælg tilbehør";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 129);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Vælg model";
+            // 
+            // AddAccModel
+            // 
+            this.AddAccModel.Location = new System.Drawing.Point(6, 296);
+            this.AddAccModel.Name = "AddAccModel";
+            this.AddAccModel.Size = new System.Drawing.Size(100, 20);
+            this.AddAccModel.TabIndex = 60;
+            // 
             // AccSub
             // 
             this.AccSub.FormattingEnabled = true;
@@ -425,7 +451,7 @@
             this.AccSub.Name = "AccSub";
             this.AccSub.Size = new System.Drawing.Size(98, 21);
             this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged_1);
             // 
             // AccMain
             // 
@@ -453,6 +479,7 @@
             this.AccModel.Name = "AccModel";
             this.AccModel.Size = new System.Drawing.Size(100, 20);
             this.AccModel.TabIndex = 56;
+            this.AccModel.TextChanged += new System.EventHandler(this.AccModel_TextChanged);
             // 
             // AddAccesories
             // 
@@ -500,32 +527,7 @@
             this.AccModelView.Name = "AccModelView";
             this.AccModelView.Size = new System.Drawing.Size(447, 125);
             this.AccModelView.TabIndex = 43;
-            this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
-            // 
-            // AddAccModel
-            // 
-            this.AddAccModel.Location = new System.Drawing.Point(6, 296);
-            this.AddAccModel.Name = "AddAccModel";
-            this.AddAccModel.Size = new System.Drawing.Size(100, 20);
-            this.AddAccModel.TabIndex = 60;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 129);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
-            this.label14.TabIndex = 61;
-            this.label14.Text = "Vælg model";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 277);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
-            this.label15.TabIndex = 62;
-            this.label15.Text = "Vælg tilbehør";
+            this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick);
             // 
             // Resource
             // 
@@ -566,8 +568,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView ModelGridView;
-        private System.Windows.Forms.ComboBox comboBoxSubGroup;
-        private System.Windows.Forms.ComboBox comboBoxMainGroup;
+        private System.Windows.Forms.ComboBox ComboModelSub;
+        private System.Windows.Forms.ComboBox ComboModelMain;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

@@ -57,14 +57,14 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
-            comboBoxMainGroup.DataSource = dataTableMainGroup;
-            comboBoxMainGroup.DisplayMember = "Category";
-            comboBoxMainGroup.ValueMember = "MainGroupID";
+            ComboModelMain.DataSource = dataTableMainGroup;
+            ComboModelMain.DisplayMember = "Category";
+            ComboModelMain.ValueMember = "MainGroupID";
 
 
-            comboBoxSubGroup.DataSource = dataTableSubGroup;
-            comboBoxSubGroup.DisplayMember = "Category";
-            comboBoxSubGroup.ValueMember = "SubGroupID";
+            ComboModelSub.DataSource = dataTableSubGroup;
+            ComboModelSub.DisplayMember = "Category";
+            ComboModelSub.ValueMember = "SubGroupID";
 
 
             AccMain.DataSource = dataTableMainGroup;
@@ -107,11 +107,11 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {comboBoxMainGroup.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
-                comboBoxSubGroup.DataSource = dv.ToTable();
-                comboBoxSubGroup.DisplayMember = "Category";
-                comboBoxSubGroup.ValueMember = "SubGroupID";
+                ComboModelSub.DataSource = dv.ToTable();
+                ComboModelSub.DisplayMember = "Category";
+                ComboModelSub.ValueMember = "SubGroupID";
             }
             catch { }
         }
@@ -138,43 +138,40 @@ namespace DelpinUI
 
        
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             
 
             string sub;
-            sub = comboBoxSubGroup.ValueMember;
+            sub = ComboModelSub.ValueMember;
 
             string succes = controller.CreateModel(ModelName.Text,Convert.ToInt32(ModelPrice.Text),
-                Convert.ToInt32(comboBoxSubGroup.SelectedValue), Convert.ToInt32(Weight.Text));
+                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToInt32(Weight.Text));
             MessageBox.Show(succes);
         }
 
-        private void comboBoxMainGroup_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-       
+      
         
         private void AddAccesories_Click(object sender, EventArgs e)
         {
-            string succes = controller.CreateAccessory(Convert.ToInt32(AccModelView.SelectedCells[0]),
-                Convert.ToInt32(AddAcc.SelectedCells[0]));
+            //string addM = AccModelView.SelectedCells[1].ToString();
+            //string addA = AddAcc.SelectedCells[1].ToString();
+
+            //int m = Convert.ToInt32(addM);
+
+            //int a = Convert.ToInt32(addA);
+
+            string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
+                Convert.ToInt32(AddAccModel.Text));
             MessageBox.Show(succes);
         }
 
@@ -189,11 +186,11 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {comboBoxMainGroup.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
-                comboBoxSubGroup.DataSource = dv.ToTable();
-                comboBoxSubGroup.DisplayMember = "Category";
-                comboBoxSubGroup.ValueMember = "SubGroupID";
+                ComboModelSub.DataSource = dv.ToTable();
+                ComboModelSub.DisplayMember = "Category";
+                ComboModelSub.ValueMember = "SubGroupID";
             }
             catch { }
         }
@@ -202,24 +199,20 @@ namespace DelpinUI
         {
             try
             {
-                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
+                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(ComboModelSub.SelectedValue));
                 ModelGridView.DataSource = dataTable;
             }
             catch { }
             }
 
-        private void comboBoxShowMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+      
         private void CreateRessource_Click(object sender, EventArgs e)
         {
             string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(modelID.Text), Convert.ToInt32(branchID.SelectedValue));
             MessageBox.Show(succes);
         }
 
-        private void AssGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void AccModelView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
@@ -250,6 +243,7 @@ namespace DelpinUI
             {
                 DataView dv = new DataView(dataTableSubGroup);
                 dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
+                
 
                 AccSub.DataSource = dv.ToTable();
                 AccSub.DisplayMember = "Category";
@@ -267,6 +261,22 @@ namespace DelpinUI
 
         }
 
+        private void AccModel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AccSub_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(AccSub.SelectedValue));
+                AccModelView.DataSource = dataTable;
+            }
+            catch { }
+        }
+
     }
 }
+
 
