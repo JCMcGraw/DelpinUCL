@@ -14,7 +14,7 @@ namespace DelpinCore
 {
     class Invoice
     {
-        public void MakePDF(string contactFirstName, string contactLastName, string street,string city,int postalCode, string contactPhone, string debtorID, DateTime dateCreated,int resourceID,int modelID)
+        public void MakePDF(string contactFirstName, string contactLastName, string street,string city,int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, decimal leasePrice)
         {
             //Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -99,11 +99,11 @@ namespace DelpinCore
                 new XRect(-60, -180, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString($"{dateCreated} ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"{startDate} ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -170, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("Betalings Dato ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"{endDate} ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -160, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
@@ -112,24 +112,24 @@ namespace DelpinCore
                 new XRect(80, -130, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString("Antal ", smallHeadLine, XBrushes.Black,
-                new XRect(350, -130, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+            //gfx.DrawString("Antal ", smallHeadLine, XBrushes.Black,
+            //    new XRect(350, -130, page.Width, page.Height),
+            //    XStringFormats.CenterLeft);
 
             gfx.DrawString("Pris ", smallHeadLine, XBrushes.Black,
-                new XRect(-150, -130, page.Width, page.Height),
-                XStringFormats.CenterRight);
-
-            gfx.DrawString("Beløb ", smallHeadLine, XBrushes.Black,
                 new XRect(-60, -130, page.Width, page.Height),
                 XStringFormats.CenterRight);
+
+            //gfx.DrawString("Beløb ", smallHeadLine, XBrushes.Black,
+            //    new XRect(-60, -130, page.Width, page.Height),
+            //    XStringFormats.CenterRight);
 
             //Navn på vare antal pris beløb-------------------------------------------------------------------------------------------------------------
             gfx.DrawString("___________________________________________________________________________________________ ", smallHeadLine, XBrushes.Black,
                 new XRect(80, -125, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{resourceID}','{modelID}", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"{modelName}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -110, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
@@ -141,9 +141,9 @@ namespace DelpinCore
             //    new XRect(80, -80, page.Width, page.Height),
             //    XStringFormats.CenterLeft);
 
-            gfx.DrawString("5", companyAndDebtor, XBrushes.Black,
-                new XRect(65, -110, page.Width, page.Height),
-                XStringFormats.Center);
+            //gfx.DrawString("5", companyAndDebtor, XBrushes.Black,
+            //    new XRect(65, -110, page.Width, page.Height),
+            //    XStringFormats.Center);
 
             //gfx.DrawString("5", companyAndDebtor, XBrushes.Black,
             //    new XRect(65, -95, page.Width, page.Height),
@@ -153,8 +153,8 @@ namespace DelpinCore
             //    new XRect(65, -80, page.Width, page.Height),
             //    XStringFormats.Center);
 
-            gfx.DrawString("Kr. 500", companyAndDebtor, XBrushes.Black,
-                new XRect(-150, -110, page.Width, page.Height),
+            gfx.DrawString($"{leasePrice}", companyAndDebtor, XBrushes.Black,
+                new XRect(-60, -110, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             //gfx.DrawString("Kr. 500", companyAndDebtor, XBrushes.Black,
@@ -165,9 +165,9 @@ namespace DelpinCore
             //    new XRect(-150, -80, page.Width, page.Height),
             //    XStringFormats.CenterRight);
 
-            gfx.DrawString("kr.2500 ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -110, page.Width, page.Height),
-                XStringFormats.CenterRight);
+            //gfx.DrawString("antal * pris ", companyAndDebtor, XBrushes.Black,
+            //    new XRect(-60, -110, page.Width, page.Height),
+            //    XStringFormats.CenterRight);
 
             //gfx.DrawString("kr.2500 ", companyAndDebtor, XBrushes.Black,
             //    new XRect(-60, -95, page.Width, page.Height),
@@ -182,7 +182,7 @@ namespace DelpinCore
                 XStringFormats.CenterLeft);
 
             //Ialt før Moms ------------------------------------------------------------------------------------------------------------------------------
-            gfx.DrawString("kr. 7500 ", priceFat, XBrushes.Black,
+            gfx.DrawString($"leasePrice + leasePrice ", priceFat, XBrushes.Black,
                 new XRect(-60, -60, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
