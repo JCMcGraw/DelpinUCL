@@ -514,19 +514,7 @@ namespace DelpinUI
                 MessageBox.Show("Vælg en ordre at slette.");
             }
         }
-
-        private void dataGridViewResources_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataTable dataTable = controller.ReadAccessory(Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value.ToString()));
-            try
-            {
-                comboBoxAccessory.DataSource = dataTable;
-                comboBoxAccessory.DisplayMember = "ModelName";
-                comboBoxAccessory.ValueMember = "ModelID";
-            }
-            catch { }
-        }
-
+      
         private void buttonClearAll_Click(object sender, EventArgs e)
         {
             ClearAllTextBoxes();
@@ -559,6 +547,48 @@ namespace DelpinUI
             dataGridViewResources.Columns["SubGroupID"].Visible = false;
             dataGridViewResources.Columns["ModelName"].Width = 150;
 
+            dataGridViewResources.Columns["ModelName"].HeaderText = "Model";
+            dataGridViewResources.Columns["Price"].HeaderText = "Dagspris";
+            dataGridViewResources.Columns["WeightKG"].HeaderText = "Vægt";
+
+        }
+
+        private void dataGridViewResources_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+
+                int modelID = Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value);
+
+                AddResourceToLease(modelID);
+
+                ReadAccessoriesToComboBox(modelID);
+            }
+        }
+
+        private void dataGridViewResources_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+
+                int modelID = Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value);
+                
+                ReadAccessoriesToComboBox(modelID);
+            }
+        }
+
+        private void ReadAccessoriesToComboBox(int modelID)
+        {
+            DataTable dataTable = controller.ReadAccessory(modelID);
+            try
+            {
+                comboBoxAccessory.DataSource = dataTable;
+                comboBoxAccessory.DisplayMember = "ModelName";
+                comboBoxAccessory.ValueMember = "ModelID";
+            }
+            catch { }
         }
     }
 }

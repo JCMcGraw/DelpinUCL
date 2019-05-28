@@ -44,6 +44,8 @@
             this.dataGridViewResources.ReadOnly = true;
             this.dataGridViewResources.Size = new System.Drawing.Size(744, 287);
             this.dataGridViewResources.TabIndex = 0;
+            this.dataGridViewResources.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseClick);
+            this.dataGridViewResources.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseDoubleClick);
             // 
             // buttonSelectResource
             // 

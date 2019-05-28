@@ -278,8 +278,8 @@ namespace DelpinCore
             $"        Then 'Ikke fri' " +
             $"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
             $"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
-            $"        Then 'Fri nogle dage' " +
-            $"        Else 'fri' " +
+            $"        Then 'Ikke fri' " +
+            $"        Else 'Fri' " +
             $"    End As Tilgængelighed " +
             $"From " +
             $"    LeaseOrder Inner Join " +
