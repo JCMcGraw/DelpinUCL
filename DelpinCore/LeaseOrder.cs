@@ -50,5 +50,15 @@ namespace DelpinCore
         {
             this.modelName = modelName;
         }
+
+        public decimal GetTotalPrice()
+        {
+            decimal totalPrice = 0m;
+
+            decimal numberOfDays = Convert.ToDecimal((endDate - startDate).TotalDays);
+            totalPrice += (leasePrice * numberOfDays) + deliveryPrice;
+            
+            return totalPrice;
+        }
     }
 }
