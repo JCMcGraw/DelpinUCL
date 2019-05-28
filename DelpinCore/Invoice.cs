@@ -16,11 +16,17 @@ namespace DelpinCore
     {
         public double Moms(double totalPrice)
         {
-            double momsPrice = totalPrice * 1.25;
+            double momsPrice = (totalPrice * 1.25)-totalPrice;
             return momsPrice;
         }
 
-        public void MakePDF(string contactFirstName, string contactLastName, string street, string city, int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal numberOfDays, double price, double totalPrice,double momsPrice)
+        public double endPrice(double totalPrice,double momsPrice)
+        {
+            double endPrice= totalPrice + momsPrice;
+            return endPrice;
+        }
+
+        public void MakePDF(string contactFirstName, string contactLastName, string street, string city, int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal numberOfDays, double price, double totalPrice,double momsPrice,double endPrice)
         {
             //Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -181,7 +187,7 @@ namespace DelpinCore
                 new XRect(400, 10, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"Kr. {totalPrice}", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
+            gfx.DrawString($"Kr. {totalPrice} ", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
                 new XRect(-60, -20, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
@@ -189,7 +195,7 @@ namespace DelpinCore
                 new XRect(-60, -5, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString($"Kr. {momsPrice} ", priceFat, XBrushes.Black,
+            gfx.DrawString($"Kr. {endPrice} ", priceFat, XBrushes.Black,
                 new XRect(-60, 10, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
