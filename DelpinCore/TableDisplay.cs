@@ -10,7 +10,7 @@ namespace DelpinCore
     class TableDisplay
         //Author: PR
     {
-        //Viser en business debtor ud fra et specefikt CVR-nummer
+        //Viser en business debtor ud fra et specefikt CVR-nummer,PR
         public DataTable DisplaySpeceficBusinessDebtor(string CVR)
         {
             string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
@@ -21,7 +21,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Viser specefik debtor ud fra et CPR-nummer
+        //Viser specefik debtor ud fra et CPR-nummer,PR
         public DataTable DisplaySpeceficPersonalDebtor(string CPR)
         {
             string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
@@ -34,7 +34,7 @@ namespace DelpinCore
             
         }
 
-        //Viser alle businessdebtore
+        //Viser alle businessdebtore,PR
         public DataTable DisplayAllBusinessDebtor()
         {
             string selectBusiness = "select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummmer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR";
@@ -46,7 +46,7 @@ namespace DelpinCore
             
         }
 
-        //Viser alle Personlige Debtore
+        //Viser alle Personlige Debtore,PR
         public DataTable DisplayAllPersonalDebtor()
         {
             string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
@@ -59,7 +59,7 @@ namespace DelpinCore
             
         }
 
-        //Viser alle resourcerne, deres modeltype og deres lokation
+        //Viser alle resourcerne, deres modeltype og deres lokation,PR
         public DataTable DisplayAllResources()
         {
             string selectResources = "select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
@@ -78,6 +78,18 @@ namespace DelpinCore
 
             return dataTable;
         }
+
+        //Viser antal af en bestemt model på de forskellige lokationer, PR
+        public DataTable CountModelPerBranch(int modelID)
+        {
+            string selectResources = $"select Model.ModelName as Modelnavn, Branch.City as Lokation, count(Model.ModelID) as Antal from Model join Resources on Model.ModelID = Resources.ModelID join Branch on Branch.BranchID = Resources.BranchID where Model.ModelID = {modelID} group by Branch.City, Model.ModelName'";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
+
+            return dataTable;
+        }
+
+
 
         //Table for maingroups
         public DataTable DisplayMainGroup()
