@@ -122,9 +122,9 @@ namespace DelpinCore
             return deleteResource;
         }
 
-        public string CreateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
-            string createModel = modelManager.CreateModel(modelID,modelName,price,subGroupID,weightKG);
+            string createModel = modelManager.CreateModel(modelName,price,subGroupID,weightKG);
             return createModel;
         }
 

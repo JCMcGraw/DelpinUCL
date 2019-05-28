@@ -151,8 +151,8 @@ namespace DelpinUI
             string sub;
             sub = comboBoxSubGroup.ValueMember;
 
-            string succes = controller.CreateModel(Convert.ToInt32(comboBoxSubGroup.SelectedValue), ModelName.Text,Convert.ToDouble(ModelPrice.Text),
-                Convert.ToDouble(Weight.Text), Convert.ToInt32(comboBoxSubGroup.SelectedValue), Convert.ToDouble(Weight.Text));
+            string succes = controller.CreateModel(ModelName.Text,Convert.ToInt32(ModelPrice.Text),
+                Convert.ToInt32(comboBoxSubGroup.SelectedValue), Convert.ToInt32(Weight.Text));
             MessageBox.Show(succes);
         }
 
