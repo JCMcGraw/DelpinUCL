@@ -232,6 +232,11 @@ namespace DelpinUI
             string succes = controller.DeleteResource(Convert.ToInt32(ressourceID.Text));
             MessageBox.Show(succes);
         }
+
+        private void AssGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

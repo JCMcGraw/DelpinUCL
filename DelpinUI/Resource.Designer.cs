@@ -64,6 +64,8 @@
             this.ModelName = new System.Windows.Forms.TextBox();
             this.CreateModel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.AccSub = new System.Windows.Forms.ComboBox();
+            this.AccMain = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,8 +81,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccMain = new System.Windows.Forms.ComboBox();
-            this.AccSub = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -420,6 +420,23 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // AccSub
+            // 
+            this.AccSub.FormattingEnabled = true;
+            this.AccSub.Location = new System.Drawing.Point(122, 60);
+            this.AccSub.Name = "AccSub";
+            this.AccSub.Size = new System.Drawing.Size(98, 21);
+            this.AccSub.TabIndex = 59;
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
+            // 
+            // AccMain
+            // 
+            this.AccMain.FormattingEnabled = true;
+            this.AccMain.Location = new System.Drawing.Point(9, 60);
+            this.AccMain.Name = "AccMain";
+            this.AccMain.Size = new System.Drawing.Size(100, 21);
+            this.AccMain.TabIndex = 58;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AutoGenerateColumns = false;
@@ -523,6 +540,7 @@
             this.AssGridView.Size = new System.Drawing.Size(447, 125);
             this.AssGridView.TabIndex = 43;
             this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
+            this.AssGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -548,23 +566,6 @@
             this.dataGridViewTextBoxColumn4.DataPropertyName = "SubGroupID";
             this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // AccMain
-            // 
-            this.AccMain.FormattingEnabled = true;
-            this.AccMain.Location = new System.Drawing.Point(9, 60);
-            this.AccMain.Name = "AccMain";
-            this.AccMain.Size = new System.Drawing.Size(100, 21);
-            this.AccMain.TabIndex = 58;
-            // 
-            // AccSub
-            // 
-            this.AccSub.FormattingEnabled = true;
-            this.AccSub.Location = new System.Drawing.Point(122, 60);
-            this.AccSub.Name = "AccSub";
-            this.AccSub.Size = new System.Drawing.Size(98, 21);
-            this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
             // Resource
             // 
