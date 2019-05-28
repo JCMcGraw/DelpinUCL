@@ -116,7 +116,7 @@ namespace DelpinCore
             return updateResource;
         }
 
-        public string DeleteResource(int resourceID,int modelID)
+        public string DeleteResource(int resourceID)
         {
             string deleteResource = resourceManager.DeleteResource(resourceID);
             return deleteResource;
@@ -255,6 +255,11 @@ namespace DelpinCore
         public DataTable DisplayAllResources()
         {
             DataTable dataTable = tableDisplay.DisplayAllResources();
+            return dataTable;
+        }
+        public DataTable DisplayModel()
+        {
+            DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
 

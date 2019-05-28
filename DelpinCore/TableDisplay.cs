@@ -62,7 +62,7 @@ namespace DelpinCore
         //Viser alle resourcerne, deres modeltype og deres lokation
         public DataTable DisplayAllResources()
         {
-            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from ResourcesJoin Model on Model.ModelID = Resources.ModelIDjoin Branch on Resources.BranchID = Branch.BranchID";
+            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -112,6 +112,14 @@ namespace DelpinCore
             string selectBranch = $"select * from Model where SubGroupID = {subgroupID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
+
+            return dataTable;
+        }
+        public DataTable DisplayModel()
+        {
+            string ShowModel = $"Select *From Model";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
 
             return dataTable;
         }

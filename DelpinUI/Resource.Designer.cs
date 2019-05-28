@@ -37,14 +37,14 @@
             this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.modelID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ressourceID = new System.Windows.Forms.TextBox();
             this.resourceGridView = new System.Windows.Forms.DataGridView();
             this.branchID = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DeleteRessource = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.CreateRessource = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -53,9 +53,9 @@
             this.comboBoxMainGroup = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.Weight = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.DeleteModel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.UpdateModel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,8 +71,6 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.AddAccesories = new System.Windows.Forms.Button();
-            this.comboBoxShowSub = new System.Windows.Forms.ComboBox();
-            this.comboBoxShowMain = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -81,7 +79,8 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelID = new System.Windows.Forms.TextBox();
+            this.AccMain = new System.Windows.Forms.ComboBox();
+            this.AccSub = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -145,9 +144,8 @@
             this.tabPage3.Controls.Add(this.resourceGridView);
             this.tabPage3.Controls.Add(this.branchID);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.DeleteRessource);
             this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.button4);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.CreateRessource);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -157,6 +155,13 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // modelID
+            // 
+            this.modelID.Location = new System.Drawing.Point(17, 73);
+            this.modelID.Name = "modelID";
+            this.modelID.Size = new System.Drawing.Size(100, 20);
+            this.modelID.TabIndex = 64;
             // 
             // label1
             // 
@@ -201,14 +206,15 @@
             this.label11.TabIndex = 55;
             this.label11.Text = "Afdeling";
             // 
-            // button1
+            // DeleteRessource
             // 
-            this.button1.Location = new System.Drawing.Point(215, 270);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Slet vare";
-            this.button1.UseVisualStyleBackColor = true;
+            this.DeleteRessource.Location = new System.Drawing.Point(124, 270);
+            this.DeleteRessource.Name = "DeleteRessource";
+            this.DeleteRessource.Size = new System.Drawing.Size(75, 23);
+            this.DeleteRessource.TabIndex = 54;
+            this.DeleteRessource.Text = "Slet resurse";
+            this.DeleteRessource.UseVisualStyleBackColor = true;
+            this.DeleteRessource.Click += new System.EventHandler(this.DeleteRessource_Click);
             // 
             // label12
             // 
@@ -218,15 +224,6 @@
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 53;
             this.label12.Text = "ModelID";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(116, 270);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(83, 23);
-            this.button4.TabIndex = 52;
-            this.button4.Text = "Opdater vare";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -241,9 +238,9 @@
             // 
             this.CreateRessource.Location = new System.Drawing.Point(20, 270);
             this.CreateRessource.Name = "CreateRessource";
-            this.CreateRessource.Size = new System.Drawing.Size(75, 23);
+            this.CreateRessource.Size = new System.Drawing.Size(83, 23);
             this.CreateRessource.TabIndex = 45;
-            this.CreateRessource.Text = "Opret vare";
+            this.CreateRessource.Text = "Opret Resurse";
             this.CreateRessource.UseVisualStyleBackColor = true;
             this.CreateRessource.Click += new System.EventHandler(this.CreateRessource_Click);
             // 
@@ -254,9 +251,9 @@
             this.tabPage1.Controls.Add(this.comboBoxMainGroup);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.Weight);
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.DeleteModel);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.UpdateModel);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
@@ -280,7 +277,7 @@
             this.ModelGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ModelGridView.Location = new System.Drawing.Point(319, 39);
             this.ModelGridView.Name = "ModelGridView";
-            this.ModelGridView.Size = new System.Drawing.Size(447, 177);
+            this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
             // 
             // comboBoxSubGroup
@@ -317,14 +314,14 @@
             this.Weight.Size = new System.Drawing.Size(100, 20);
             this.Weight.TabIndex = 37;
             // 
-            // button3
+            // DeleteModel
             // 
-            this.button3.Location = new System.Drawing.Point(204, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Slet vare";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DeleteModel.Location = new System.Drawing.Point(211, 196);
+            this.DeleteModel.Name = "DeleteModel";
+            this.DeleteModel.Size = new System.Drawing.Size(75, 23);
+            this.DeleteModel.TabIndex = 35;
+            this.DeleteModel.Text = "Slet model";
+            this.DeleteModel.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -335,14 +332,14 @@
             this.label6.TabIndex = 34;
             this.label6.Text = "Hovedkategori";
             // 
-            // button2
+            // UpdateModel
             // 
-            this.button2.Location = new System.Drawing.Point(105, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 23);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Opdater vare";
-            this.button2.UseVisualStyleBackColor = true;
+            this.UpdateModel.Location = new System.Drawing.Point(105, 196);
+            this.UpdateModel.Name = "UpdateModel";
+            this.UpdateModel.Size = new System.Drawing.Size(84, 23);
+            this.UpdateModel.TabIndex = 33;
+            this.UpdateModel.Text = "Opdater model";
+            this.UpdateModel.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -400,17 +397,17 @@
             this.CreateModel.Name = "CreateModel";
             this.CreateModel.Size = new System.Drawing.Size(75, 23);
             this.CreateModel.TabIndex = 24;
-            this.CreateModel.Text = "Opret vare";
+            this.CreateModel.Text = "Opret model";
             this.CreateModel.UseVisualStyleBackColor = true;
             this.CreateModel.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.AccSub);
+            this.tabPage2.Controls.Add(this.AccMain);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.AddAccesories);
-            this.tabPage2.Controls.Add(this.comboBoxShowSub);
-            this.tabPage2.Controls.Add(this.comboBoxShowMain);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
@@ -474,31 +471,13 @@
             // 
             // AddAccesories
             // 
-            this.AddAccesories.Location = new System.Drawing.Point(9, 87);
+            this.AddAccesories.Location = new System.Drawing.Point(9, 238);
             this.AddAccesories.Name = "AddAccesories";
             this.AddAccesories.Size = new System.Drawing.Size(75, 23);
             this.AddAccesories.TabIndex = 55;
             this.AddAccesories.Text = "Tilføj";
             this.AddAccesories.UseVisualStyleBackColor = true;
             this.AddAccesories.Click += new System.EventHandler(this.AddAccesories_Click);
-            // 
-            // comboBoxShowSub
-            // 
-            this.comboBoxShowSub.FormattingEnabled = true;
-            this.comboBoxShowSub.Location = new System.Drawing.Point(122, 60);
-            this.comboBoxShowSub.Name = "comboBoxShowSub";
-            this.comboBoxShowSub.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxShowSub.TabIndex = 48;
-            this.comboBoxShowSub.SelectedIndexChanged += new System.EventHandler(this.comboBoxShowSub_SelectedIndexChanged);
-            // 
-            // comboBoxShowMain
-            // 
-            this.comboBoxShowMain.FormattingEnabled = true;
-            this.comboBoxShowMain.Location = new System.Drawing.Point(9, 60);
-            this.comboBoxShowMain.Name = "comboBoxShowMain";
-            this.comboBoxShowMain.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxShowMain.TabIndex = 47;
-            this.comboBoxShowMain.SelectedIndexChanged += new System.EventHandler(this.comboBoxShowMain_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -543,6 +522,7 @@
             this.AssGridView.Name = "AssGridView";
             this.AssGridView.Size = new System.Drawing.Size(447, 125);
             this.AssGridView.TabIndex = 43;
+            this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -569,12 +549,22 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // modelID
+            // AccMain
             // 
-            this.modelID.Location = new System.Drawing.Point(17, 73);
-            this.modelID.Name = "modelID";
-            this.modelID.Size = new System.Drawing.Size(100, 20);
-            this.modelID.TabIndex = 64;
+            this.AccMain.FormattingEnabled = true;
+            this.AccMain.Location = new System.Drawing.Point(9, 60);
+            this.AccMain.Name = "AccMain";
+            this.AccMain.Size = new System.Drawing.Size(100, 21);
+            this.AccMain.TabIndex = 58;
+            // 
+            // AccSub
+            // 
+            this.AccSub.FormattingEnabled = true;
+            this.AccSub.Location = new System.Drawing.Point(122, 60);
+            this.AccSub.Name = "AccSub";
+            this.AccSub.Size = new System.Drawing.Size(98, 21);
+            this.AccSub.TabIndex = 59;
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
             // Resource
             // 
@@ -632,13 +622,12 @@
         private System.Windows.Forms.DataGridView resourceGridView;
         private System.Windows.Forms.ComboBox branchID;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DeleteRessource;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button CreateRessource;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DeleteModel;
+        private System.Windows.Forms.Button UpdateModel;
         private System.Windows.Forms.Button CreateModel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Weight;
@@ -646,8 +635,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ModelPrice;
         private System.Windows.Forms.TextBox ModelName;
-        private System.Windows.Forms.ComboBox comboBoxShowSub;
-        private System.Windows.Forms.ComboBox comboBoxShowMain;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button AddAccesories;
@@ -658,5 +645,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox modelID;
+        private System.Windows.Forms.ComboBox AccSub;
+        private System.Windows.Forms.ComboBox AccMain;
     }
 }
