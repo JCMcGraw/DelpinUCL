@@ -731,6 +731,7 @@
             // 
             // buttonInvoice
             // 
+            this.buttonInvoice.Enabled = false;
             this.buttonInvoice.Location = new System.Drawing.Point(967, 47);
             this.buttonInvoice.Name = "buttonInvoice";
             this.buttonInvoice.Size = new System.Drawing.Size(123, 53);
