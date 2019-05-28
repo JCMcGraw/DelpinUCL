@@ -15,13 +15,13 @@ namespace DelpinUI
     public partial class Lease : Form
     {
         private Controller controller = new Controller();
-        //private int resourceID = -1;
         private DataTable dataTableSubGroup = new DataTable();
 
         public Lease()
         {
             InitializeComponent();
             comboBoxLeaseStatus.SelectedIndex = 0;
+            comboBoxDeliveryZone.SelectedIndex = 0;
         }
 
         private void Lease_Load(object sender, EventArgs e)
@@ -42,6 +42,8 @@ namespace DelpinUI
             comboBoxSubGroup.DataSource = dataTableSubGroup;
             comboBoxSubGroup.DisplayMember = "Category";
             comboBoxSubGroup.ValueMember = "SubGroupID";
+
+            UpdateResourceDataGrid(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
         }
 
 
@@ -97,7 +99,15 @@ namespace DelpinUI
                 return;
             }
 
-            DataTable dataTable = controller.ReadBusinessDebtor(debtorID);
+            DataTable dataTable;
+            if (radioButtonBusiness.Checked == true)
+            {
+                dataTable = controller.ReadBusinessDebtor(debtorID);
+            }
+            else
+            {
+                dataTable = controller.ReadPersonalDebtor(debtorID);
+            }
 
             if (dataTable.Rows.Count == 0)
             {
@@ -105,7 +115,15 @@ namespace DelpinUI
                 return;
             }
 
-            textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
+            if (radioButtonBusiness.Checked == true)
+            {
+                textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
+            }
+            else
+            {
+                textBoxName.Text = (string)dataTable.Rows[0]["FirstName"] + " " + (string)dataTable.Rows[0]["LastName"];
+            }
+            
             textBoxBillingAddress.Text = (string)dataTable.Rows[0]["Street"];
             textBoxBillingCity.Text = (string)dataTable.Rows[0]["City"];
             textBoxBillingPostCode.Text = dataTable.Rows[0]["PostalCode"].ToString();
@@ -164,12 +182,25 @@ namespace DelpinUI
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = dateTimePickerDeliveryDate.Value.ToString("yyyy/MM/dd");
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = dateTimePickerReturnDate.Value.ToString("yyyy/MM/dd");
                 //dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = formSelectFromTable.dailyPrice;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = formSelectFromTable.dailyPrice.ToString("N2");
 
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
+
+                int weight = Convert.ToInt32(dataGridViewResources.Rows[dataGridViewResources.SelectedRows[0].Index].Cells["WeightKG"].Value);
+                double deliveryPrice = GetDeliveryPrice(Convert.ToInt32(comboBoxDeliveryZone.Text), weight);
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Levering"].Value = deliveryPrice.ToString("N2");
             }
+        }
+
+        private double GetDeliveryPrice(int zone, int tonnage)
+        {
+            bool ton = false;
+            if (tonnage > 8000) { ton = true; }
+
+            double deliveryPrice = controller.GetItemsFromDeliveryTable(zone, ton);
+            return deliveryPrice;
         }
 
         private void buttonCreateOrder_Click(object sender, EventArgs e)
@@ -237,6 +268,7 @@ namespace DelpinUI
 
                 LeaseOrder leaseOrder = new LeaseOrder(deliveryDate, returnDate, price, resouceID);
                 leaseOrder.SetDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
+                lease.SetStatus("Åben");
 
                 lease.AddLeaseOrder(leaseOrder);
             }
@@ -274,17 +306,6 @@ namespace DelpinUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataTable dataTable = controller.ReadSpecefikSubCataegori(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
-
-            dataGridViewResources.DataSource = dataTable;
-
-            dataGridViewResources.Columns["ModelID"].Visible = false;
-            dataGridViewResources.Columns["SubGroupID"].Visible = false;
-            dataGridViewResources.Columns["ModelName"].Width = 150;
-        }
-
         private void buttonFindLeaseByLeaseID_Click(object sender, EventArgs e)
         {
             GetLeaseByLeaseID(Convert.ToInt32(textBoxFindLeaseByLeaseID.Text));
@@ -303,6 +324,11 @@ namespace DelpinUI
             ClearAllTextBoxes();
 
             FillFormWithLease(lease);
+
+            buttonCreateOrder.Enabled = false;
+            buttonUpdateOrder.Enabled = true;
+            buttonDeleteLease.Enabled = true;
+            buttonUpdateStatus.Enabled = true;
         }
 
         private void FillFormWithLease(DelpinCore.Lease lease)
@@ -317,7 +343,10 @@ namespace DelpinUI
             textBoxContactPhone.Text = lease.contactPhone;
             textBoxLeaseNumber.Text = lease.leaseID.ToString();
 
-            foreach(LeaseOrder leaseOrder in lease.GetLeaseOrders())
+            AddStatusesToComboBox();
+            FillStatus(lease.status);
+
+            foreach (LeaseOrder leaseOrder in lease.GetLeaseOrders())
             {
                 dataGridViewLeaseOrders.Rows.Add();
                 int lastRow = dataGridViewLeaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
@@ -334,6 +363,25 @@ namespace DelpinUI
 
         }
 
+        private void FillStatus(string status)
+        {
+            switch (status)
+            {
+                case "Åben":
+                    comboBoxLeaseStatus.SelectedIndex = 0;
+                    break;
+                case "Leveret":
+                    comboBoxLeaseStatus.SelectedIndex = 1;
+                    break;
+                case "Returneret":
+                    comboBoxLeaseStatus.SelectedIndex = 2;
+                    break;
+                case "Betalt":
+                    comboBoxLeaseStatus.SelectedIndex = 3;
+                    break;
+            }
+        }
+
         private void ClearAllTextBoxes()
         {
             dataGridViewLeaseOrders.Rows.Clear();
@@ -346,6 +394,13 @@ namespace DelpinUI
                     c.Text = "";
                 }
             }
+
+            buttonCreateOrder.Enabled = true;
+            buttonUpdateOrder.Enabled = false;
+            buttonDeleteLease.Enabled = false;
+            buttonUpdateStatus.Enabled = false;
+
+            SetStatusComboBoxToDefault();
         }
 
         private void buttonUpdateOrder_Click(object sender, EventArgs e)
@@ -382,6 +437,10 @@ namespace DelpinUI
                 int leaseID = formSelectFromTable.returnValue;
 
                 GetLeaseByLeaseID(leaseID);
+                buttonCreateOrder.Enabled = false;
+                buttonUpdateOrder.Enabled = true;
+                buttonDeleteLease.Enabled = true;
+                buttonUpdateStatus.Enabled = true;
             }
         }
 
@@ -409,7 +468,7 @@ namespace DelpinUI
 
         private void buttonAddAccessory_Click(object sender, EventArgs e)
         {
-            AddResourceToLease(1);
+            AddResourceToLease(Convert.ToInt32(comboBoxAccessory.SelectedValue));
         }
 
         private void AddStatusesToComboBox()
@@ -454,6 +513,52 @@ namespace DelpinUI
             {
                 MessageBox.Show("Vælg en ordre at slette.");
             }
+        }
+
+        private void dataGridViewResources_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataTable dataTable = controller.ReadAccessory(Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value.ToString()));
+            try
+            {
+                comboBoxAccessory.DataSource = dataTable;
+                comboBoxAccessory.DisplayMember = "ModelName";
+                comboBoxAccessory.ValueMember = "ModelID";
+            }
+            catch { }
+        }
+
+        private void buttonClearAll_Click(object sender, EventArgs e)
+        {
+            ClearAllTextBoxes();
+        }
+
+        private void buttonUpdateStatus_Click(object sender, EventArgs e)
+        {
+            string status = comboBoxLeaseStatus.Items[comboBoxLeaseStatus.SelectedIndex].ToString();
+            int leaseID = Convert.ToInt32(textBoxLeaseNumber.Text);
+
+            string isSuccess = controller.UpdateLeaseStatus(status, leaseID);
+        }
+
+        private void comboBoxSubGroup_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateResourceDataGrid(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
+            }
+            catch { }
+        }
+
+        private void UpdateResourceDataGrid(int subgroupID)
+        {
+            DataTable dataTable = controller.ReadSpecefikSubCataegori(subgroupID);
+
+            dataGridViewResources.DataSource = dataTable;
+
+            dataGridViewResources.Columns["ModelID"].Visible = false;
+            dataGridViewResources.Columns["SubGroupID"].Visible = false;
+            dataGridViewResources.Columns["ModelName"].Width = 150;
+
         }
     }
 }

@@ -8,10 +8,11 @@ namespace DelpinCore
 {
     class ModelManager
     {
-        public string CreateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
-            string createModel = "Insert into Model(ModelID, ModelName, Price, SubGroupID, weightKG) " +
-                                   $"values ('{modelID}','{modelName}','{price}','{subGroupID}','{weightKG})";
+            
+            string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG) " +
+                                   $"values ('{modelName}',{price},{subGroupID},{weightKG})";
 
             string isCreateModel = DatabaseManager.CreateUpdateDeleteInDatabase(createModel);
             if (isCreateModel != "Success")
@@ -19,7 +20,7 @@ namespace DelpinCore
                 return isCreateModel;
             }
 
-            return $"Model {modelID}','{modelName}','{price}','{subGroupID}','{weightKG} er blevet Oprettet";
+            return $"Model '{modelName}','{price}','{subGroupID}','{weightKG} er blevet Oprettet";
         }
 
         public string ReadModel()

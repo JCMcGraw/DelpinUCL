@@ -41,10 +41,18 @@ namespace DelpinUI
 
             if (this.Text == "Vælg resurse")
             {
-                int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResurseID"].Value);
-                returnValue = resourceID;
-                modelName = dataGridViewResources.Rows[selectedRow].Cells["Model"].Value.ToString();
-                dailyPrice = Convert.ToDecimal(dataGridViewResources.Rows[selectedRow].Cells["Dagspris"].Value.ToString());
+                if (CheckIfResourceAvailable(selectedRow) == true)
+                {
+                    int resourceID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ResurseID"].Value);
+                    returnValue = resourceID;
+                    modelName = dataGridViewResources.Rows[selectedRow].Cells["Model"].Value.ToString();
+                    dailyPrice = Convert.ToDecimal(dataGridViewResources.Rows[selectedRow].Cells["Dagspris"].Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Denne vare kan ikke bookes i denne periode!");
+                    return;
+                }
             }
             else if (this.Text == "Vælg ordre")
             {
@@ -55,6 +63,18 @@ namespace DelpinUI
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private bool CheckIfResourceAvailable(int selectedRow)
+        {
+            if (dataGridViewResources.Rows[selectedRow].Cells["Tilgængelighed"].Value.ToString() == "Fri")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ShowResources(DataTable dataTable)
