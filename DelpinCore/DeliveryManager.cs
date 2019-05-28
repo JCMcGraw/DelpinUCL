@@ -13,7 +13,7 @@ namespace DelpinCore
         //Daniel
         public double GetItemsFromDeliveryTable(int zone,bool ton)
         {
-            string itemsFromDeliveryTable = $"select * from Delivery where \"Zone\" = {zone} and \"8ton\" ={ton}";
+            string itemsFromDeliveryTable = $"select * from Delivery where \"Zone\" = {zone} and \"8ton\" ={Convert.ToInt32(ton)}";
 
             DataTable dataTable = new DataTable();
             dataTable = DatabaseManager.ReadFromDatabase(itemsFromDeliveryTable);
