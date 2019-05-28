@@ -127,6 +127,14 @@ namespace DelpinCore
 
             return dataTable;
         }
+        public DataTable DisplayModel()
+        {
+            string ShowModel = $"Select *From Model";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
+
+            return dataTable;
+        }
         public DataTable DisplayAccessoriesByModelID(int modelID)
         {
             string selectAccessory = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +

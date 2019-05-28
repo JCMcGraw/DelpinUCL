@@ -116,15 +116,15 @@ namespace DelpinCore
             return updateResource;
         }
 
-        public string DeleteResource(int resourceID,int modelID)
+        public string DeleteResource(int resourceID)
         {
             string deleteResource = resourceManager.DeleteResource(resourceID);
             return deleteResource;
         }
 
-        public string CreateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
+        public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
-            string createModel = modelManager.CreateModel(modelID,modelName,price,subGroupID,weightKG);
+            string createModel = modelManager.CreateModel(modelName,price,subGroupID,weightKG);
             return createModel;
         }
 
@@ -261,6 +261,11 @@ namespace DelpinCore
         public DataTable DisplayAllResources()
         {
             DataTable dataTable = tableDisplay.DisplayAllResources();
+            return dataTable;
+        }
+        public DataTable DisplayModel()
+        {
+            DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
 
