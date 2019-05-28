@@ -14,7 +14,13 @@ namespace DelpinCore
 {
     class Invoice
     {
-        public void MakePDF(string contactFirstName, string contactLastName, string street,string city,int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal numberOfDays, double price, decimal totalPrice)
+        public double Moms(double totalPrice)
+        {
+            double momsPrice = totalPrice * 1.25;
+            return momsPrice;
+        }
+
+        public void MakePDF(string contactFirstName, string contactLastName, string street, string city, int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, double deliveryPrice, decimal numberOfDays, double price, double totalPrice,double momsPrice)
         {
             //Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -149,7 +155,7 @@ namespace DelpinCore
                 new XRect(150, -110, page.Width, page.Height),
                 XStringFormats.Center);
 
-            gfx.DrawString($"kr. {totalPrice}", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"Kr. {totalPrice}", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -110, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
@@ -161,7 +167,6 @@ namespace DelpinCore
             gfx.DrawString($"leasePrice + leasePrice ", priceFat, XBrushes.Black,
                 new XRect(-60, -85, page.Width, page.Height),
                 XStringFormats.CenterRight);
-
 
             //Netto Moms Total + penge + Streg------------------------------------------------------------------------------------------------------------
             gfx.DrawString("Netto: ", companyAndDebtor, XBrushes.Black,
@@ -176,22 +181,21 @@ namespace DelpinCore
                 new XRect(400, 10, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString("kr. 7500 ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"Kr. {totalPrice}", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
                 new XRect(-60, -20, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("kr. 7500 ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"Kr. {momsPrice} ", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
                 new XRect(-60, -5, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("kr. 7500 ", priceFat, XBrushes.Black,
+            gfx.DrawString($"Kr. {momsPrice} ", priceFat, XBrushes.Black,
                 new XRect(-60, 10, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
                 new XRect(400, 15, page.Width, page.Height),
                 XStringFormats.CenterLeft);
-
 
             //Dette  er til at vælge Navnet på filen
             const string filename = "Fakture.pdf";
