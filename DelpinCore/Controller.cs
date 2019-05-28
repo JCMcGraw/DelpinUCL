@@ -16,7 +16,6 @@ namespace DelpinCore
         AccessoryManager accessoryManager = new AccessoryManager();
         TableDisplay tableDisplay = new TableDisplay();
         DeliveryManager deliveryManager = new DeliveryManager();
-        Invoice invoice = new Invoice();
 
         public string ReadDebtor()
         {
@@ -269,25 +268,12 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
-
-        public double Moms(double totalPrice)
+        public DataTable DisplayAccModel()
         {
-            double momsPrice = invoice.Moms(totalPrice);
-            return momsPrice;
+            DataTable dataTable = tableDisplay.DisplayAccModel();
+            return dataTable;
         }
 
-        public double endPrice(double totalPrice, double momsPrice)
-        {
-            double endPrice = invoice.endPrice(totalPrice,momsPrice);
-            return endPrice;
-        }
 
-        public void MakePDF(string contactFirstName, string contactLastName, string street, string city, 
-        int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, 
-        double deliveryPrice, decimal numberOfDays, double price, double totalPrice, double momsPrice, double endPrice)
-        {
-            invoice.MakePDF(contactFirstName,contactFirstName,street,city,postalCode,contactPhone,debtorID,
-                startDate,endDate,modelName,deliveryPrice,numberOfDays,price,totalPrice,momsPrice,endPrice);
-        }
     }
 }

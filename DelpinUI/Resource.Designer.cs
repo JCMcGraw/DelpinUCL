@@ -64,23 +64,18 @@
             this.ModelName = new System.Windows.Forms.TextBox();
             this.CreateModel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.AccSub = new System.Windows.Forms.ComboBox();
+            this.AccMain = new System.Windows.Forms.ComboBox();
+            this.AddAcc = new System.Windows.Forms.DataGridView();
+            this.AccModel = new System.Windows.Forms.TextBox();
             this.AddAccesories = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.AssGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccMain = new System.Windows.Forms.ComboBox();
-            this.AccSub = new System.Windows.Forms.ComboBox();
+            this.AccModelView = new System.Windows.Forms.DataGridView();
+            this.AddAccModel = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -91,8 +86,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AssGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).BeginInit();
             this.SuspendLayout();
             // 
             // subGroupBindingSource
@@ -403,15 +398,18 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.AddAccModel);
             this.tabPage2.Controls.Add(this.AccSub);
             this.tabPage2.Controls.Add(this.AccMain);
-            this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.AddAcc);
+            this.tabPage2.Controls.Add(this.AccModel);
             this.tabPage2.Controls.Add(this.AddAccesories);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.AssGridView);
+            this.tabPage2.Controls.Add(this.AccModelView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -420,62 +418,49 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // AccSub
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12});
-            this.dataGridView2.DataSource = this.modelBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(306, 191);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(447, 125);
-            this.dataGridView2.TabIndex = 57;
+            this.AccSub.FormattingEnabled = true;
+            this.AccSub.Location = new System.Drawing.Point(122, 60);
+            this.AccSub.Name = "AccSub";
+            this.AccSub.Size = new System.Drawing.Size(98, 21);
+            this.AccSub.TabIndex = 59;
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
-            // dataGridViewTextBoxColumn9
+            // AccMain
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ModelID";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ModelID";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.AccMain.FormattingEnabled = true;
+            this.AccMain.Location = new System.Drawing.Point(9, 60);
+            this.AccMain.Name = "AccMain";
+            this.AccMain.Size = new System.Drawing.Size(100, 21);
+            this.AccMain.TabIndex = 58;
+            this.AccMain.SelectedIndexChanged += new System.EventHandler(this.AccMain_SelectedIndexChanged);
             // 
-            // dataGridViewTextBoxColumn10
+            // AddAcc
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "ModelName";
-            this.dataGridViewTextBoxColumn10.HeaderText = "ModelName";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.AddAcc.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AddAcc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AddAcc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AddAcc.Location = new System.Drawing.Point(306, 191);
+            this.AddAcc.Name = "AddAcc";
+            this.AddAcc.Size = new System.Drawing.Size(447, 125);
+            this.AddAcc.TabIndex = 57;
+            this.AddAcc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AddAcc_CellClick);
             // 
-            // dataGridViewTextBoxColumn11
+            // AccModel
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "SubGroupID";
-            this.dataGridViewTextBoxColumn12.HeaderText = "SubGroupID";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 191);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 56;
+            this.AccModel.Location = new System.Drawing.Point(6, 148);
+            this.AccModel.Name = "AccModel";
+            this.AccModel.Size = new System.Drawing.Size(100, 20);
+            this.AccModel.TabIndex = 56;
             // 
             // AddAccesories
             // 
-            this.AddAccesories.Location = new System.Drawing.Point(9, 238);
+            this.AddAccesories.Location = new System.Drawing.Point(12, 341);
             this.AddAccesories.Name = "AddAccesories";
-            this.AddAccesories.Size = new System.Drawing.Size(75, 23);
+            this.AddAccesories.Size = new System.Drawing.Size(102, 23);
             this.AddAccesories.TabIndex = 55;
-            this.AddAccesories.Text = "Tilføj";
+            this.AddAccesories.Text = "Tilføj tilbehør";
             this.AddAccesories.UseVisualStyleBackColor = true;
             this.AddAccesories.Click += new System.EventHandler(this.AddAccesories_Click);
             // 
@@ -506,65 +491,41 @@
             this.label9.TabIndex = 44;
             this.label9.Text = "Modeloversigt";
             // 
-            // AssGridView
+            // AccModelView
             // 
-            this.AssGridView.AutoGenerateColumns = false;
-            this.AssGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.AssGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AssGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AssGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.AssGridView.DataSource = this.modelBindingSource;
-            this.AssGridView.Location = new System.Drawing.Point(306, 43);
-            this.AssGridView.Name = "AssGridView";
-            this.AssGridView.Size = new System.Drawing.Size(447, 125);
-            this.AssGridView.TabIndex = 43;
-            this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
+            this.AccModelView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AccModelView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AccModelView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AccModelView.Location = new System.Drawing.Point(306, 43);
+            this.AccModelView.Name = "AccModelView";
+            this.AccModelView.Size = new System.Drawing.Size(447, 125);
+            this.AccModelView.TabIndex = 43;
+            this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // AddAccModel
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ModelID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ModelID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.AddAccModel.Location = new System.Drawing.Point(6, 296);
+            this.AddAccModel.Name = "AddAccModel";
+            this.AddAccModel.Size = new System.Drawing.Size(100, 20);
+            this.AddAccModel.TabIndex = 60;
             // 
-            // dataGridViewTextBoxColumn2
+            // label14
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ModelName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ModelName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 129);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Vælg model";
             // 
-            // dataGridViewTextBoxColumn3
+            // label15
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SubGroupID";
-            this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // AccMain
-            // 
-            this.AccMain.FormattingEnabled = true;
-            this.AccMain.Location = new System.Drawing.Point(9, 60);
-            this.AccMain.Name = "AccMain";
-            this.AccMain.Size = new System.Drawing.Size(100, 21);
-            this.AccMain.TabIndex = 58;
-            // 
-            // AccSub
-            // 
-            this.AccSub.FormattingEnabled = true;
-            this.AccSub.Location = new System.Drawing.Point(122, 60);
-            this.AccSub.Name = "AccSub";
-            this.AccSub.Size = new System.Drawing.Size(98, 21);
-            this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 277);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.TabIndex = 62;
+            this.label15.Text = "Vælg tilbehør";
             // 
             // Resource
             // 
@@ -588,8 +549,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ModelGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AssGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -611,11 +572,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView AssGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView AccModelView;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ressourceID;
@@ -638,14 +595,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button AddAccesories;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView AddAcc;
+        private System.Windows.Forms.TextBox AccModel;
         private System.Windows.Forms.TextBox modelID;
         private System.Windows.Forms.ComboBox AccSub;
         private System.Windows.Forms.ComboBox AccMain;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox AddAccModel;
     }
 }

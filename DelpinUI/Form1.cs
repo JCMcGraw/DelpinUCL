@@ -7,16 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DelpinCore;
 
 namespace DelpinUI
 {
     public partial class Form1 : Form
     {
+        private Controller controller = new Controller();
+        private DataTable dataTableSubGroup = new DataTable();
+
         public Form1()
         {
             InitializeComponent();
             this.Icon = Properties.Resources.delpinikon;
         }
+       
+        private void SetSelectionBoxes()
+        {
+            DataTable dataTableBranch = controller.DisplayBranch();
+
+            setBranch.DataSource = dataTableBranch;
+            setBranch.DisplayMember = "City";
+            setBranch.ValueMember = "BranchID";
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
