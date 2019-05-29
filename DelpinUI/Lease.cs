@@ -27,6 +27,22 @@ namespace DelpinUI
         private void Lease_Load(object sender, EventArgs e)
         {
             SetSelectionBoxes();
+            SetDataGridViewLeaseOrdersColumnTypes();
+        }
+
+        private void SetDataGridViewLeaseOrdersColumnTypes()
+        {
+            dataGridViewLeaseOrders.Columns["Dagspris"].ValueType = typeof(decimal);
+            dataGridViewLeaseOrders.Columns["Levering"].ValueType = typeof(decimal);
+            dataGridViewLeaseOrders.Columns["Dagspris"].DefaultCellStyle.Format = "N2";
+            dataGridViewLeaseOrders.Columns["Levering"].DefaultCellStyle.Format = "N2";
+
+            dataGridViewLeaseOrders.Columns["Postkode"].ValueType = typeof(int);
+            dataGridViewLeaseOrders.Columns["Resurse"].ReadOnly = true;
+
+
+            dataGridViewLeaseOrders.Columns["Leveringsdato"].ValueType = typeof(DateTime);
+            dataGridViewLeaseOrders.Columns["Slutdato"].ValueType = typeof(DateTime);
         }
 
         private void SetSelectionBoxes()
@@ -329,6 +345,7 @@ namespace DelpinUI
             buttonUpdateOrder.Enabled = true;
             buttonDeleteLease.Enabled = true;
             buttonUpdateStatus.Enabled = true;
+            buttonInvoice.Enabled = true;
         }
 
         private void FillFormWithLease(DelpinCore.Lease lease)
@@ -354,7 +371,8 @@ namespace DelpinUI
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = leaseOrder.modelName;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = leaseOrder.startDate.ToString("yyyy/MM/dd");
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = leaseOrder.endDate.ToString("yyyy/MM/dd");
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = leaseOrder.leasePrice.ToString();
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = leaseOrder.leasePrice.ToString("N2");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Levering"].Value = leaseOrder.deliveryPrice.ToString("N2");
 
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = leaseOrder.deliveryStreet;
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = leaseOrder.deliveryPostalCode.ToString();
@@ -399,6 +417,7 @@ namespace DelpinUI
             buttonUpdateOrder.Enabled = false;
             buttonDeleteLease.Enabled = false;
             buttonUpdateStatus.Enabled = false;
+            buttonInvoice.Enabled = false;
 
             SetStatusComboBoxToDefault();
         }
@@ -441,6 +460,7 @@ namespace DelpinUI
                 buttonUpdateOrder.Enabled = true;
                 buttonDeleteLease.Enabled = true;
                 buttonUpdateStatus.Enabled = true;
+                buttonInvoice.Enabled = true;
             }
         }
 
@@ -589,6 +609,17 @@ namespace DelpinUI
                 comboBoxAccessory.ValueMember = "ModelID";
             }
             catch { }
+        }
+
+        private void buttonInvoice_Click(object sender, EventArgs e)
+        {
+            controller.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2000, 500, 2500);
+        }
+
+        private void dataGridViewLeaseOrders_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Den indtastede værdi er ikke korrekt!");
+            dataGridViewLeaseOrders.CancelEdit();
         }
     }
 }
