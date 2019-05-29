@@ -48,6 +48,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.CreateRessource = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.GetModel = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ModelID = new System.Windows.Forms.TextBox();
             this.ModelGridView = new System.Windows.Forms.DataGridView();
             this.ComboModelSub = new System.Windows.Forms.ComboBox();
             this.ComboModelMain = new System.Windows.Forms.ComboBox();
@@ -76,9 +79,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
-            this.ModelID = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.GetModel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -271,6 +271,32 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // GetModel
+            // 
+            this.GetModel.Location = new System.Drawing.Point(111, 26);
+            this.GetModel.Name = "GetModel";
+            this.GetModel.Size = new System.Drawing.Size(75, 23);
+            this.GetModel.TabIndex = 45;
+            this.GetModel.Text = "Hent model";
+            this.GetModel.UseVisualStyleBackColor = true;
+            this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 13);
+            this.label16.TabIndex = 44;
+            this.label16.Text = "ModelID";
+            // 
+            // ModelID
+            // 
+            this.ModelID.Location = new System.Drawing.Point(3, 28);
+            this.ModelID.Name = "ModelID";
+            this.ModelID.Size = new System.Drawing.Size(100, 20);
+            this.ModelID.TabIndex = 43;
+            // 
             // ModelGridView
             // 
             this.ModelGridView.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -426,7 +452,7 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 277);
@@ -458,7 +484,7 @@
             this.AccSub.Name = "AccSub";
             this.AccSub.Size = new System.Drawing.Size(98, 21);
             this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged_1);
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
             // AccMain
             // 
@@ -525,91 +551,12 @@
             this.label9.TabIndex = 44;
             this.label9.Text = "Modeloversigt";
             // 
-            // AssGridView
+            // AccModelView
             // 
-            this.AssGridView.AutoGenerateColumns = false;
-            this.AssGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.AssGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AssGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AssGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.AssGridView.DataSource = this.modelBindingSource;
-            this.AssGridView.Location = new System.Drawing.Point(306, 43);
-            this.AssGridView.Name = "AssGridView";
-            this.AssGridView.Size = new System.Drawing.Size(447, 125);
-            this.AssGridView.TabIndex = 43;
-            this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ModelID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ModelID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "ModelName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "ModelName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SubGroupID";
-            this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // AccMain
-            // 
-            this.AccMain.FormattingEnabled = true;
-            this.AccMain.Location = new System.Drawing.Point(9, 60);
-            this.AccMain.Name = "AccMain";
-            this.AccMain.Size = new System.Drawing.Size(100, 21);
-            this.AccMain.TabIndex = 58;
-            // 
-            // AccSub
-            // 
-            this.AccSub.FormattingEnabled = true;
-            this.AccSub.Location = new System.Drawing.Point(122, 60);
-            this.AccSub.Name = "AccSub";
-            this.AccSub.Size = new System.Drawing.Size(98, 21);
-            this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
-            // 
-            // ModelID
-            // 
-            this.ModelID.Location = new System.Drawing.Point(3, 28);
-            this.ModelID.Name = "ModelID";
-            this.ModelID.Size = new System.Drawing.Size(100, 20);
-            this.ModelID.TabIndex = 43;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 44;
-            this.label16.Text = "ModelID";
-            // 
-            // GetModel
-            // 
-            this.GetModel.Location = new System.Drawing.Point(111, 26);
-            this.GetModel.Name = "GetModel";
-            this.GetModel.Size = new System.Drawing.Size(75, 23);
-            this.GetModel.TabIndex = 45;
-            this.GetModel.Text = "Hent model";
-            this.GetModel.UseVisualStyleBackColor = true;
-            this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
+            this.AccModelView.Location = new System.Drawing.Point(393, 18);
+            this.AccModelView.Name = "AccModelView";
+            this.AccModelView.Size = new System.Drawing.Size(360, 150);
+            this.AccModelView.TabIndex = 63;
             // 
             // Resource
             // 
