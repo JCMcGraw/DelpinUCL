@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Accessory.cs" />
     <Compile Include="AccessoryManager.cs" />
+    <Compile Include="Branch.cs" />
+    <Compile Include="BranchManager.cs" />
     <Compile Include="Business.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="DatabaseManager.cs" />
