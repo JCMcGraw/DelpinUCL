@@ -69,7 +69,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Viser en specefik resource, dens modeltype og dens lokation
+        //Viser en specefik resource, dens modeltype og dens lokation, PR
         public DataTable DisplaySpecficResources(int resourceID )
         {
             string selectResources = $"select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from ResourcesJoin Model on Model.ModelID = Resources.ModelIDjoin Branch on Resources.BranchID = Branch.BranchID where ResourceID='{resourceID}'";
@@ -110,7 +110,7 @@ namespace DelpinCore
 
             return dataTable;
         }
-        //Sim
+        //Sim og PR
         public DataTable DisplayBranch()
         {
             string selectBranch = $"select * from Branch";
@@ -121,25 +121,25 @@ namespace DelpinCore
         }
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
-            string selectBranch = $"select * from Model where SubGroupID = {subgroupID}";
+            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
 
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
             return dataTable;
         }
         public DataTable DisplayModel()
         {
-            string ShowModel = $"Select *From Model";
+            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
+
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
 
             return dataTable;
         }
+        //Viser hvilket tilbebehør der passer til hvilke modeller, PR
         public DataTable DisplayAccessoriesByModelID(int modelID)
         {
-            string selectAccessory = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
-                $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where" +
-                $" Accessory.ModelID = { modelID}";
+            string selectAccessory = $"select Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, m.ModelName as Tilbehør from Model join Accessory on Accessory.ModelID = Model.ModelID join Model m on M.ModelID = Accessory.AccessoryID where model.ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
 

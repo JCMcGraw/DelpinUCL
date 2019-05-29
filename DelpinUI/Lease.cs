@@ -345,6 +345,7 @@ namespace DelpinUI
             buttonUpdateOrder.Enabled = true;
             buttonDeleteLease.Enabled = true;
             buttonUpdateStatus.Enabled = true;
+            buttonInvoice.Enabled = true;
         }
 
         private void FillFormWithLease(DelpinCore.Lease lease)
@@ -416,6 +417,7 @@ namespace DelpinUI
             buttonUpdateOrder.Enabled = false;
             buttonDeleteLease.Enabled = false;
             buttonUpdateStatus.Enabled = false;
+            buttonInvoice.Enabled = false;
 
             SetStatusComboBoxToDefault();
         }
@@ -458,6 +460,7 @@ namespace DelpinUI
                 buttonUpdateOrder.Enabled = true;
                 buttonDeleteLease.Enabled = true;
                 buttonUpdateStatus.Enabled = true;
+                buttonInvoice.Enabled = true;
             }
         }
 
@@ -610,8 +613,7 @@ namespace DelpinUI
 
         private void buttonInvoice_Click(object sender, EventArgs e)
         {
-            //DelpinCore.Invoice invoice = new DelpinCore.Invoice();
-            //invoice.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2500);
+            controller.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2000, 500, 2500);
         }
 
         private void dataGridViewLeaseOrders_DataError(object sender, DataGridViewDataErrorEventArgs e)

@@ -17,6 +17,7 @@ namespace DelpinCore
         TableDisplay tableDisplay = new TableDisplay();
         DeliveryManager deliveryManager = new DeliveryManager();
         Invoice invoice = new Invoice();
+        BranchManager branchManager = new BranchManager();
 
         public string ReadDebtor()
         {
@@ -300,6 +301,19 @@ namespace DelpinCore
         {
             invoice.MakePDF(contactFirstName,contactFirstName,street,city,postalCode,contactPhone,debtorID,
                 startDate,endDate,modelName,deliveryPrice,numberOfDays,price,totalPrice,momsPrice,endPrice);
+        }
+
+        public DataTable ReadAllBranches()
+        {
+            DataTable dataTable = branchManager.ReadAllBranches();
+            return dataTable;
+        }
+
+        public Branch ReadBranchByBranchID(int branchID)
+        {
+            Branch branch = branchManager.ReadBranchByBranchID(branchID);
+
+            return branch;
         }
     }
 }
