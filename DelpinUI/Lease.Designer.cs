@@ -335,6 +335,7 @@
             this.textBoxDeliveryPostCode.Name = "textBoxDeliveryPostCode";
             this.textBoxDeliveryPostCode.Size = new System.Drawing.Size(100, 20);
             this.textBoxDeliveryPostCode.TabIndex = 32;
+            this.textBoxDeliveryPostCode.Leave += new System.EventHandler(this.textBoxDeliveryPostCode_Leave);
             // 
             // textBoxDeliveryCity
             // 

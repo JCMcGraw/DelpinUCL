@@ -62,7 +62,7 @@ namespace DelpinCore
         //Viser alle resourcerne, deres modeltype og deres lokation,PR
         public DataTable DisplayAllResources()
         {
-            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
+            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
