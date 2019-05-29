@@ -279,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="delpinikon.ico" />
+    <None Include="Resources\delpinlogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

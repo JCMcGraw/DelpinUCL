@@ -235,6 +235,13 @@ namespace DelpinUI
                 string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
                 textBoxLeaseNumber.Text = leaseNumber;
                 AddStatusesToComboBox();
+
+
+                buttonCreateOrder.Enabled = false;
+                buttonUpdateOrder.Enabled = true;
+                buttonDeleteLease.Enabled = true;
+                buttonUpdateStatus.Enabled = true;
+                buttonInvoice.Enabled = true;
             }
 
         }

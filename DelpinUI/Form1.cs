@@ -11,12 +11,12 @@ using DelpinCore;
 
 namespace DelpinUI
 {
-    public partial class Form1 : Form
+    public partial class saveBranch : Form
     {
         private Controller controller = new Controller();
         private DataTable dataTableSubGroup = new DataTable();
 
-        public Form1()
+        public saveBranch()
         {
             InitializeComponent();
             this.Icon = Properties.Resources.delpinikon;
@@ -26,9 +26,9 @@ namespace DelpinUI
         {
             DataTable dataTableBranch = controller.DisplayBranch();
 
-            setBranch.DataSource = dataTableBranch;
-            setBranch.DisplayMember = "City";
-            setBranch.ValueMember = "BranchID";
+            chooseBranchComboBox.DataSource = dataTableBranch;
+            chooseBranchComboBox.DisplayMember = "City";
+            chooseBranchComboBox.ValueMember = "BranchID";
         }
 
 
