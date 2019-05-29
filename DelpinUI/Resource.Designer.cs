@@ -307,6 +307,7 @@
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
             this.ModelGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellClick);
+            this.ModelGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ModelGridView_CellMouseDoubleClick);
             // 
             // ComboModelSub
             // 
@@ -452,23 +453,23 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // dataGridView2
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 277);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.Size = new System.Drawing.Size(80, 13);
             this.label15.TabIndex = 62;
-            this.label15.Text = "Vælg tilbehør";
+            this.label15.Text = "Vælg tilbehørID";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(9, 129);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.Size = new System.Drawing.Size(100, 13);
             this.label14.TabIndex = 61;
-            this.label14.Text = "Vælg model";
+            this.label14.Text = "Vælg modelnummer";
             // 
             // AddAccModel
             // 
@@ -484,7 +485,7 @@
             this.AccSub.Name = "AccSub";
             this.AccSub.Size = new System.Drawing.Size(98, 21);
             this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged_1);
             // 
             // AccMain
             // 
@@ -551,12 +552,65 @@
             this.label9.TabIndex = 44;
             this.label9.Text = "Modeloversigt";
             // 
-            // AccModelView
+            // AssGridView
             // 
-            this.AccModelView.Location = new System.Drawing.Point(393, 18);
-            this.AccModelView.Name = "AccModelView";
-            this.AccModelView.Size = new System.Drawing.Size(360, 150);
-            this.AccModelView.TabIndex = 63;
+            this.AssGridView.AutoGenerateColumns = false;
+            this.AssGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AssGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AssGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AssGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.AssGridView.DataSource = this.modelBindingSource;
+            this.AssGridView.Location = new System.Drawing.Point(306, 43);
+            this.AssGridView.Name = "AssGridView";
+            this.AssGridView.Size = new System.Drawing.Size(447, 125);
+            this.AssGridView.TabIndex = 43;
+            this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ModelID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ModelID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ModelName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ModelName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SubGroupID";
+            this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // AccMain
+            // 
+            this.AccMain.FormattingEnabled = true;
+            this.AccMain.Location = new System.Drawing.Point(9, 60);
+            this.AccMain.Name = "AccMain";
+            this.AccMain.Size = new System.Drawing.Size(100, 21);
+            this.AccMain.TabIndex = 58;
+            // 
+            // AccSub
+            // 
+            this.AccSub.FormattingEnabled = true;
+            this.AccSub.Location = new System.Drawing.Point(122, 60);
+            this.AccSub.Name = "AccSub";
+            this.AccSub.Size = new System.Drawing.Size(98, 21);
+            this.AccSub.TabIndex = 59;
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
             // Resource
             // 
