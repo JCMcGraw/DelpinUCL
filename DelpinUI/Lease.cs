@@ -21,7 +21,7 @@ namespace DelpinUI
         {
             InitializeComponent();
             comboBoxLeaseStatus.SelectedIndex = 0;
-            comboBoxDeliveryZone.SelectedIndex = 0;
+            deliveryZoneComboBox.SelectedIndex = 0;
         }
 
         private void Lease_Load(object sender, EventArgs e)
@@ -50,16 +50,16 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
-            comboBoxMainGroup.DataSource = dataTableMainGroup;
-            comboBoxMainGroup.DisplayMember = "Category";
-            comboBoxMainGroup.ValueMember = "MainGroupID";
+            MainGroup.DataSource = dataTableMainGroup;
+            MainGroup.DisplayMember = "Category";
+            MainGroup.ValueMember = "MainGroupID";
 
 
-            comboBoxSubGroup.DataSource = dataTableSubGroup;
-            comboBoxSubGroup.DisplayMember = "Category";
-            comboBoxSubGroup.ValueMember = "SubGroupID";
+            SubGroup.DataSource = dataTableSubGroup;
+            SubGroup.DisplayMember = "Category";
+            SubGroup.ValueMember = "SubGroupID";
 
-            UpdateResourceDataGrid(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
+            UpdateResourceDataGrid(Convert.ToInt32(SubGroup.SelectedValue));
         }
 
 
@@ -68,11 +68,11 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {comboBoxMainGroup.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {MainGroup.SelectedValue}";
 
-                comboBoxSubGroup.DataSource = dv.ToTable();
-                comboBoxSubGroup.DisplayMember = "Category";
-                comboBoxSubGroup.ValueMember = "SubGroupID";
+                SubGroup.DataSource = dv.ToTable();
+                SubGroup.DisplayMember = "Category";
+                SubGroup.ValueMember = "SubGroupID";
             }
             catch { }
         }
@@ -84,12 +84,12 @@ namespace DelpinUI
 
         private void SearchDebtorButton_Click(object sender, EventArgs e)
         {
-            GetDebtoryByID(textBoxDebtorID.Text);
+            GetDebtoryByID(debtorIDTextBox.Text);
         }
 
         private bool CheckDebtorID(string debtorID)
         {
-            if (radioButtonBusiness.Checked == true)
+            if (businessRadioButton.Checked == true)
             {
                 if (Utility.CheckForValidCVRNumber(debtorID) == false)
                 {
@@ -116,7 +116,7 @@ namespace DelpinUI
             }
 
             DataTable dataTable;
-            if (radioButtonBusiness.Checked == true)
+            if (businessRadioButton.Checked == true)
             {
                 dataTable = controller.ReadBusinessDebtor(debtorID);
             }
@@ -131,7 +131,7 @@ namespace DelpinUI
                 return;
             }
 
-            if (radioButtonBusiness.Checked == true)
+            if (businessRadioButton.Checked == true)
             {
                 textBoxName.Text = (string)dataTable.Rows[0]["CompanyName"];
             }
@@ -160,7 +160,7 @@ namespace DelpinUI
 
         private void AddResourceToOrderButton_Click(object sender, EventArgs e)
         {
-            var selectedRows = dataGridViewResources.SelectedRows;
+            var selectedRows = ResourcesdataGridView.SelectedRows;
             if (selectedRows.Count < 1)
             {
                 MessageBox.Show("Vælg en varemodel at indsætte");
@@ -168,15 +168,15 @@ namespace DelpinUI
             }
 
             int selectedRow = selectedRows[0].Index;
-            int modelID = Convert.ToInt32(dataGridViewResources.Rows[selectedRow].Cells["ModelID"].Value);
+            int modelID = Convert.ToInt32(ResourcesdataGridView.Rows[selectedRow].Cells["ModelID"].Value);
 
             AddResourceToLease(modelID);
         }
 
         private void AddResourceToLease(int modelID)
         {
-            DateTime startDate = dateTimePickerDeliveryDate.Value;
-            DateTime endDate = dateTimePickerReturnDate.Value;
+            DateTime startDate = DeliveryDate.Value;
+            DateTime endDate = ReturnDate.Value;
 
             //DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
             DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, Utility.BranchID, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
@@ -195,17 +195,17 @@ namespace DelpinUI
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
                 //dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = dataGridViewResources.Rows[selectedRow].Cells["ModelName"].Value.ToString();
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = formSelectFromTable.modelName;
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = dateTimePickerDeliveryDate.Value.ToString("yyyy/MM/dd");
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = dateTimePickerReturnDate.Value.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = DeliveryDate.Value.ToString("yyyy/MM/dd");
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Slutdato"].Value = ReturnDate.Value.ToString("yyyy/MM/dd");
                 //dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = formSelectFromTable.dailyPrice.ToString("N2");
 
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = textBoxDeliveryAddress.Text;
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = textBoxDeliveryPostCode.Text;
-                dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = textBoxDeliveryCity.Text;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Gade"].Value = deliveryAddressTextBox.Text;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["Postkode"].Value = deliveryPostCodeTextBox.Text;
+                dataGridViewLeaseOrders.Rows[lastRow].Cells["By"].Value = deliveryCityTextBox.Text;
 
-                int weight = Convert.ToInt32(dataGridViewResources.Rows[dataGridViewResources.SelectedRows[0].Index].Cells["WeightKG"].Value);
-                double deliveryPrice = GetDeliveryPrice(Convert.ToInt32(comboBoxDeliveryZone.Text), weight);
+                int weight = Convert.ToInt32(ResourcesdataGridView.Rows[ResourcesdataGridView.SelectedRows[0].Index].Cells["WeightKG"].Value);
+                double deliveryPrice = GetDeliveryPrice(Convert.ToInt32(deliveryZoneComboBox.Text), weight);
                 dataGridViewLeaseOrders.Rows[lastRow].Cells["Levering"].Value = deliveryPrice.ToString("N2");
             }
         }
@@ -264,7 +264,7 @@ namespace DelpinUI
 
         private DelpinCore.Lease GetLeaseFromForm()
         {
-            DelpinCore.Lease lease = new DelpinCore.Lease(textBoxDebtorID.Text, Utility.BranchID);
+            DelpinCore.Lease lease = new DelpinCore.Lease(debtorIDTextBox.Text, Utility.BranchID);
 
             lease.SetContactDetails(textBoxContactFirstName.Text, textBoxContactLastName.Text, textBoxContactPhone.Text);
 
@@ -301,31 +301,31 @@ namespace DelpinUI
 
         private void checkBoxUseBillingAddress_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxUseBillingAddress.Checked == true)
+            if (useBillingAddress.Checked == true)
             {
-                textBoxDeliveryAddress.Text = textBoxBillingAddress.Text;
-                textBoxDeliveryCity.Text = textBoxBillingCity.Text;
-                textBoxDeliveryPostCode.Text = textBoxBillingPostCode.Text;
+                deliveryAddressTextBox.Text = textBoxBillingAddress.Text;
+                deliveryCityTextBox.Text = textBoxBillingCity.Text;
+                deliveryPostCodeTextBox.Text = textBoxBillingPostCode.Text;
             }
             else
             {
-                textBoxDeliveryAddress.Text = "";
-                textBoxDeliveryCity.Text = "";
-                textBoxDeliveryPostCode.Text = "";
+                deliveryAddressTextBox.Text = "";
+                deliveryCityTextBox.Text = "";
+                deliveryPostCodeTextBox.Text = "";
             }
         }
 
         private void radioButtonBusiness_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonBusiness.Checked == true)
+            if (businessRadioButton.Checked == true)
             {
                 labelName.Text = "Firmanavn";
-                labelDebtorID.Text = "CVR-nummer";
+                debtorIDLabel.Text = "CVR-nummer";
             }
             else
             {
                 labelName.Text = "Navn";
-                labelDebtorID.Text = "CPR-nummer";
+                debtorIDLabel.Text = "CPR-nummer";
             }
         }
 
@@ -359,7 +359,7 @@ namespace DelpinUI
         {
             string debtorID = lease.debtorID;
 
-            textBoxDebtorID.Text = debtorID;
+            debtorIDTextBox.Text = debtorID;
             GetDebtoryByID(debtorID);
 
             textBoxContactFirstName.Text = lease.contactFirstName;
@@ -440,7 +440,7 @@ namespace DelpinUI
 
         private void buttonFindLeases_Click(object sender, EventArgs e)
         {
-            FindLeasesByDebtorID(textBoxDebtorID.Text);
+            FindLeasesByDebtorID(debtorIDTextBox.Text);
         }
 
         private void FindLeasesByDebtorID(string debtorID)
@@ -473,29 +473,29 @@ namespace DelpinUI
 
         private void dateTimePickerDeliveryDate_ValueChanged(object sender, EventArgs e)
         {
-            if (dateTimePickerDeliveryDate.Value < DateTime.Today)
+            if (DeliveryDate.Value < DateTime.Today)
             {
                 MessageBox.Show("Du kan ikke sætte en dato tidligere end i dag!");
-                dateTimePickerDeliveryDate.Value = DateTime.Today;
+                DeliveryDate.Value = DateTime.Today;
             }
-            if(dateTimePickerDeliveryDate.Value >= dateTimePickerReturnDate.Value)
+            if(DeliveryDate.Value >= ReturnDate.Value)
             {
-                dateTimePickerReturnDate.Value = dateTimePickerDeliveryDate.Value.AddDays(1);
+                ReturnDate.Value = DeliveryDate.Value.AddDays(1);
             }
         }
 
         private void dateTimePickerReturnDate_ValueChanged(object sender, EventArgs e)
         {
-            if (dateTimePickerReturnDate.Value < dateTimePickerDeliveryDate.Value)
+            if (ReturnDate.Value < DeliveryDate.Value)
             {
                 MessageBox.Show("Du kan ikke sætte tilbageleveringsdato tidligere end leveringsdatoen!");
-                dateTimePickerReturnDate.Value = dateTimePickerDeliveryDate.Value.AddDays(1);
+                ReturnDate.Value = DeliveryDate.Value.AddDays(1);
             }
         }
 
         private void buttonAddAccessory_Click(object sender, EventArgs e)
         {
-            AddResourceToLease(Convert.ToInt32(comboBoxAccessory.SelectedValue));
+            AddResourceToLease(Convert.ToInt32(accessoryComboBox.SelectedValue));
         }
 
         private void AddStatusesToComboBox()
@@ -559,7 +559,7 @@ namespace DelpinUI
         {
             try
             {
-                UpdateResourceDataGrid(Convert.ToInt32(comboBoxSubGroup.SelectedValue));
+                UpdateResourceDataGrid(Convert.ToInt32(SubGroup.SelectedValue));
             }
             catch { }
         }
@@ -568,15 +568,15 @@ namespace DelpinUI
         {
             DataTable dataTable = controller.ReadSpecefikSubCataegori(subgroupID);
 
-            dataGridViewResources.DataSource = dataTable;
+            ResourcesdataGridView.DataSource = dataTable;
 
-            dataGridViewResources.Columns["ModelID"].Visible = false;
-            dataGridViewResources.Columns["SubGroupID"].Visible = false;
-            dataGridViewResources.Columns["ModelName"].Width = 150;
+            ResourcesdataGridView.Columns["ModelID"].Visible = false;
+            ResourcesdataGridView.Columns["SubGroupID"].Visible = false;
+            ResourcesdataGridView.Columns["ModelName"].Width = 150;
 
-            dataGridViewResources.Columns["ModelName"].HeaderText = "Model";
-            dataGridViewResources.Columns["Price"].HeaderText = "Dagspris";
-            dataGridViewResources.Columns["WeightKG"].HeaderText = "Vægt";
+            ResourcesdataGridView.Columns["ModelName"].HeaderText = "Model";
+            ResourcesdataGridView.Columns["Price"].HeaderText = "Dagspris";
+            ResourcesdataGridView.Columns["WeightKG"].HeaderText = "Vægt";
 
         }
 
@@ -584,9 +584,9 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
-                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+                ResourcesdataGridView.Rows[e.RowIndex].Selected = true;
 
-                int modelID = Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value);
+                int modelID = Convert.ToInt32(ResourcesdataGridView.Rows[e.RowIndex].Cells["ModelID"].Value);
 
                 AddResourceToLease(modelID);
 
@@ -598,9 +598,9 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
-                dataGridViewResources.Rows[e.RowIndex].Selected = true;
+                ResourcesdataGridView.Rows[e.RowIndex].Selected = true;
 
-                int modelID = Convert.ToInt32(dataGridViewResources.Rows[e.RowIndex].Cells["ModelID"].Value);
+                int modelID = Convert.ToInt32(ResourcesdataGridView.Rows[e.RowIndex].Cells["ModelID"].Value);
                 
                 ReadAccessoriesToComboBox(modelID);
             }
@@ -611,9 +611,9 @@ namespace DelpinUI
             DataTable dataTable = controller.ReadAccessory(modelID);
             try
             {
-                comboBoxAccessory.DataSource = dataTable;
-                comboBoxAccessory.DisplayMember = "ModelName";
-                comboBoxAccessory.ValueMember = "ModelID";
+                accessoryComboBox.DataSource = dataTable;
+                accessoryComboBox.DisplayMember = "ModelName";
+                accessoryComboBox.ValueMember = "ModelID";
             }
             catch { }
         }
@@ -631,10 +631,10 @@ namespace DelpinUI
 
         private void textBoxDeliveryPostCode_Leave(object sender, EventArgs e)
         {
-            if (Utility.CheckForValidPostCode(textBoxDeliveryPostCode.Text) == false)
+            if (Utility.CheckForValidPostCode(deliveryPostCodeTextBox.Text) == false)
             {
                 MessageBox.Show("Den indtastede postkode er ikke korrekt, indtast den venligst igen!");
-                textBoxDeliveryPostCode.Text = "";
+                deliveryPostCodeTextBox.Text = "";
             }
         }
     }

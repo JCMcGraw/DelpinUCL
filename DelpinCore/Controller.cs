@@ -27,7 +27,7 @@ namespace DelpinCore
 
         public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
-            string createPersonalDebtor = debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            string createPersonalDebtor = debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR, firstName, lastName);
             return createPersonalDebtor;
         }
 
@@ -64,7 +64,7 @@ namespace DelpinCore
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
-            string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR,firstName,lastName);
+            string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR, firstName, lastName);
             return updatePersonalDebtor;
         }
 
@@ -126,7 +126,7 @@ namespace DelpinCore
 
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
-            string createModel = modelManager.CreateModel(modelName,price,subGroupID,weightKG);
+            string createModel = modelManager.CreateModel(modelName, price, subGroupID, weightKG);
             return createModel;
         }
 
@@ -138,7 +138,7 @@ namespace DelpinCore
 
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
-            string updateModel = modelManager.UpdateModel(modelID,modelName,price,subGroupID,weightKG);
+            string updateModel = modelManager.UpdateModel(modelID, modelName, price, subGroupID, weightKG);
             return updateModel;
         }
 
@@ -176,7 +176,7 @@ namespace DelpinCore
             string isSuccess = leaseManager.UpdateStatus(status, leaseID);
             return isSuccess;
         }
-        
+
         public DataTable ReadLeasesByDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
@@ -234,7 +234,7 @@ namespace DelpinCore
 
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
-            double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone,ton);
+            double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone, ton);
             return deliveryPrice;
         }
 
@@ -290,7 +290,7 @@ namespace DelpinCore
 
         public double endPrice(double totalPrice, double momsPrice)
         {
-            double endPrice = invoice.endPrice(totalPrice,momsPrice);
+            double endPrice = invoice.endPrice(totalPrice, momsPrice);
             return endPrice;
         }
 
@@ -317,6 +317,12 @@ namespace DelpinCore
         {
             DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
             return readOnlyAccessory;
+        }
+
+        public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
+        {
+            DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
+            return dataTable;
         }
     }
 }

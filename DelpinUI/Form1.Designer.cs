@@ -36,8 +36,11 @@
             this.chooseBranchLabel = new System.Windows.Forms.Label();
             this.saveBranchButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.headlineLabel = new System.Windows.Forms.Label();
+            this.deliveriesInNextTwoDays = new System.Windows.Forms.DataGridView();
+            this.ordersForDeliveryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveriesInNextTwoDays)).BeginInit();
             this.SuspendLayout();
             // 
             // openDebtorForm
@@ -108,15 +111,36 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // headlineLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(396, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 26);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Delpin A/S resursemanager";
+            this.headlineLabel.AutoSize = true;
+            this.headlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headlineLabel.Location = new System.Drawing.Point(396, 57);
+            this.headlineLabel.Name = "headlineLabel";
+            this.headlineLabel.Size = new System.Drawing.Size(280, 26);
+            this.headlineLabel.TabIndex = 7;
+            this.headlineLabel.Text = "Delpin A/S resursemanager";
+            // 
+            // deliveriesInNextTwoDays
+            // 
+            this.deliveriesInNextTwoDays.AllowUserToAddRows = false;
+            this.deliveriesInNextTwoDays.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.deliveriesInNextTwoDays.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.deliveriesInNextTwoDays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.deliveriesInNextTwoDays.Location = new System.Drawing.Point(187, 296);
+            this.deliveriesInNextTwoDays.Name = "deliveriesInNextTwoDays";
+            this.deliveriesInNextTwoDays.ReadOnly = true;
+            this.deliveriesInNextTwoDays.Size = new System.Drawing.Size(565, 121);
+            this.deliveriesInNextTwoDays.TabIndex = 8;
+            // 
+            // ordersForDeliveryLabel
+            // 
+            this.ordersForDeliveryLabel.AutoSize = true;
+            this.ordersForDeliveryLabel.Location = new System.Drawing.Point(184, 270);
+            this.ordersForDeliveryLabel.Name = "ordersForDeliveryLabel";
+            this.ordersForDeliveryLabel.Size = new System.Drawing.Size(17, 13);
+            this.ordersForDeliveryLabel.TabIndex = 9;
+            this.ordersForDeliveryLabel.Text = "\"\"";
             // 
             // saveBranch
             // 
@@ -124,7 +148,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ordersForDeliveryLabel);
+            this.Controls.Add(this.deliveriesInNextTwoDays);
+            this.Controls.Add(this.headlineLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.saveBranchButton);
             this.Controls.Add(this.chooseBranchLabel);
@@ -136,6 +162,7 @@
             this.Name = "saveBranch";
             this.Text = "Delpin A/S";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deliveriesInNextTwoDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,7 +177,9 @@
         private System.Windows.Forms.Label chooseBranchLabel;
         private System.Windows.Forms.Button saveBranchButton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label headlineLabel;
+        private System.Windows.Forms.DataGridView deliveriesInNextTwoDays;
+        private System.Windows.Forms.Label ordersForDeliveryLabel;
     }
 }
 

@@ -42,26 +42,45 @@ namespace DelpinUI
             else
             {
                 SetSavedBranch(savedBranch);
+                SetDeliveries();
             }
 
         }
 
         private void SetSavedBranch(string branchID)
         {
-            Utility.BranchID = Convert.ToInt32(branchID);
-
-            int index = 0;
-            for (int i = 0; i < Utility.Branches.Rows.Count; i++)
+            try
             {
-                string ID = Utility.Branches.Rows[i]["BranchID"].ToString();
-                if (ID == branchID)
-                {
-                    index = i;
-                    break;
-                }
-            }
+                Utility.BranchID = Convert.ToInt32(branchID);
 
-            chooseBranchComboBox.SelectedIndex = index;
+                int index = 0;
+                for (int i = 0; i < Utility.Branches.Rows.Count; i++)
+                {
+                    string ID = Utility.Branches.Rows[i]["BranchID"].ToString();
+                    if (ID == branchID)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+
+                chooseBranchComboBox.SelectedIndex = index;
+            }
+            catch
+            {
+                Utility.BranchID = 1;
+            }
+        }
+
+        private void SetDeliveries()
+        {
+            DataTable dataTable = controller.DisplayDeliveriesforNextNDays(Utility.BranchID, 1);
+
+            if (dataTable.Rows.Count > 0 && dataTable.Columns[0].ColumnName != "ErrorMessage")
+            {
+                ordersForDeliveryLabel.Text = "Ordrer til levering i de næste 2 dage for afdeling " + chooseBranchComboBox.GetItemText(chooseBranchComboBox.SelectedItem);
+                deliveriesInNextTwoDays.DataSource = dataTable;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

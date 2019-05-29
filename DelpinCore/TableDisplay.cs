@@ -157,12 +157,54 @@ namespace DelpinCore
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroupID as Undergruppe, weightKg as Vægt from Model where ModelID = '{ModelID}'";
 
-
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
             return dataTable;
 
+        }
+
+        public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
+        {
+            string deliveriesSQL = $"Select " +
+                $"    Lease.LeaseID, " +
+                $"    AllDebtors.Navn, " +
+                $"    LeaseOrder.StartDate As [Leveringsdato], " +
+                $"    Count(LeaseOrder.StartDate) As [Antal resurser] " +
+                $"From " +
+                $"    Lease Join " +
+                $"    LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Join " +
+                $"    (Select " +
+                $"         Business.CompanyName As Navn, " +
+                $"         Business.CVR As KundeID, " +
+                $"         Debtor.Street As Adresse, " +
+                $"         Debtor.Postalcode As Postkode, " +
+                $"         Debtor.City As [By], " +
+                $"         Debtor.Phone As Telefon, " +
+                $"         Debtor.Email As Email " +
+                $"     From " +
+                $"         Debtor Inner Join " +
+                $"         Business On Business.CVR = Debtor.DebtorID " +
+                $"     Union " +
+                $"     Select " +
+                $"         Personal.FirstName + ' ' + Personal.LastName As Navn, " +
+                $"         Personal.CPR As KundeID, " +
+                $"         Debtor.Street As Adresse, " +
+                $"         Debtor.Postalcode As Postkode, " +
+                $"         Debtor.City As [By], " +
+                $"         Debtor.Phone As Telefon, " +
+                $"         Debtor.Email As Email " +
+                $"     From " +
+                $"         Debtor Inner Join " +
+                $"         Personal On Personal.CPR = Debtor.DebtorID) As AllDebtors On AllDebtors.KundeID = Lease.DebtorID " +
+                $"Where " +
+                $"    LeaseOrder.StartDate Between GetDate() And DateAdd(DAY, {daysInFuture}, GetDate()) " +
+                $"    and Lease.BranchID = {branchID} " +
+                $"Group By Lease.LeaseID, AllDebtors.Navn, LeaseOrder.StartDate " +
+                $"Order By LeaseOrder.StartDate";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(deliveriesSQL);
+
+            return dataTable;
         }
 
     }

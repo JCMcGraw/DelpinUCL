@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePickerDeliveryDate = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerReturnDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxDebtorID = new System.Windows.Forms.TextBox();
-            this.labelDebtorID = new System.Windows.Forms.Label();
-            this.SearchDebtorButton = new System.Windows.Forms.Button();
-            this.comboBoxAccessory = new System.Windows.Forms.ComboBox();
+            this.DeliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.startDateLabel = new System.Windows.Forms.Label();
+            this.returnDateLabel = new System.Windows.Forms.Label();
+            this.ReturnDate = new System.Windows.Forms.DateTimePicker();
+            this.accessoryLabel = new System.Windows.Forms.Label();
+            this.debtorIDTextBox = new System.Windows.Forms.TextBox();
+            this.debtorIDLabel = new System.Windows.Forms.Label();
+            this.searchDebtorByDebtorID = new System.Windows.Forms.Button();
+            this.accessoryComboBox = new System.Windows.Forms.ComboBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxContactFirstName = new System.Windows.Forms.TextBox();
             this.textBoxBillingAddress = new System.Windows.Forms.TextBox();
@@ -51,12 +51,12 @@
             this.labelContactFirstName = new System.Windows.Forms.Label();
             this.textBoxContactPhone = new System.Windows.Forms.TextBox();
             this.labelContactPhone = new System.Windows.Forms.Label();
-            this.labelDeliveryPostCode = new System.Windows.Forms.Label();
-            this.labelDeliveryCity = new System.Windows.Forms.Label();
-            this.labelDeliveryAddress = new System.Windows.Forms.Label();
-            this.textBoxDeliveryPostCode = new System.Windows.Forms.TextBox();
-            this.textBoxDeliveryCity = new System.Windows.Forms.TextBox();
-            this.textBoxDeliveryAddress = new System.Windows.Forms.TextBox();
+            this.deliveryPostCodeLabel = new System.Windows.Forms.Label();
+            this.deliveryCityLabel = new System.Windows.Forms.Label();
+            this.deliveryAddressLabel = new System.Windows.Forms.Label();
+            this.deliveryPostCodeTextBox = new System.Windows.Forms.TextBox();
+            this.deliveryCityTextBox = new System.Windows.Forms.TextBox();
+            this.deliveryAddressTextBox = new System.Windows.Forms.TextBox();
             this.labelPhone = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
@@ -70,115 +70,115 @@
             this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBoxMainGroup = new System.Windows.Forms.ComboBox();
-            this.comboBoxSubGroup = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dataGridViewResources = new System.Windows.Forms.DataGridView();
-            this.AddResourceToOrderButton = new System.Windows.Forms.Button();
-            this.checkBoxUseBillingAddress = new System.Windows.Forms.CheckBox();
-            this.radioButtonBusiness = new System.Windows.Forms.RadioButton();
-            this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
+            this.MainGroup = new System.Windows.Forms.ComboBox();
+            this.SubGroup = new System.Windows.Forms.ComboBox();
+            this.categoryLabel = new System.Windows.Forms.Label();
+            this.subCategoryLabel = new System.Windows.Forms.Label();
+            this.ResourcesdataGridView = new System.Windows.Forms.DataGridView();
+            this.AddResourceToOrder = new System.Windows.Forms.Button();
+            this.useBillingAddress = new System.Windows.Forms.CheckBox();
+            this.businessRadioButton = new System.Windows.Forms.RadioButton();
+            this.personalRadioButton = new System.Windows.Forms.RadioButton();
             this.textBoxLeaseNumber = new System.Windows.Forms.TextBox();
             this.labelLeaseNumber = new System.Windows.Forms.Label();
             this.buttonUpdateOrder = new System.Windows.Forms.Button();
             this.labelContactPerson = new System.Windows.Forms.Label();
             this.labelContactLastName = new System.Windows.Forms.Label();
             this.textBoxContactLastName = new System.Windows.Forms.TextBox();
-            this.buttonAddAccessory = new System.Windows.Forms.Button();
+            this.addAccessory = new System.Windows.Forms.Button();
             this.labelFindLeaseByLeaseID = new System.Windows.Forms.Label();
             this.textBoxFindLeaseByLeaseID = new System.Windows.Forms.TextBox();
-            this.buttonFindLeaseByLeaseID = new System.Windows.Forms.Button();
-            this.buttonFindLeases = new System.Windows.Forms.Button();
+            this.findLeaseByLeaseID = new System.Windows.Forms.Button();
+            this.findLeasesByLeaseID = new System.Windows.Forms.Button();
             this.comboBoxLeaseStatus = new System.Windows.Forms.ComboBox();
             this.labelLeaseStatus = new System.Windows.Forms.Label();
             this.buttonDeleteLease = new System.Windows.Forms.Button();
             this.buttonClearAll = new System.Windows.Forms.Button();
             this.buttonUpdateStatus = new System.Windows.Forms.Button();
-            this.comboBoxDeliveryZone = new System.Windows.Forms.ComboBox();
-            this.labelDeliveryZone = new System.Windows.Forms.Label();
+            this.deliveryZoneComboBox = new System.Windows.Forms.ComboBox();
+            this.deliveryZoneLabel = new System.Windows.Forms.Label();
             this.buttonInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResourcesdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePickerDeliveryDate
+            // DeliveryDate
             // 
-            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(12, 37);
-            this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
-            this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerDeliveryDate.TabIndex = 0;
-            this.dateTimePickerDeliveryDate.ValueChanged += new System.EventHandler(this.dateTimePickerDeliveryDate_ValueChanged);
+            this.DeliveryDate.Location = new System.Drawing.Point(12, 37);
+            this.DeliveryDate.Name = "DeliveryDate";
+            this.DeliveryDate.Size = new System.Drawing.Size(200, 20);
+            this.DeliveryDate.TabIndex = 0;
+            this.DeliveryDate.ValueChanged += new System.EventHandler(this.dateTimePickerDeliveryDate_ValueChanged);
             // 
-            // label1
+            // startDateLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "StartDate";
+            this.startDateLabel.AutoSize = true;
+            this.startDateLabel.Location = new System.Drawing.Point(13, 18);
+            this.startDateLabel.Name = "startDateLabel";
+            this.startDateLabel.Size = new System.Drawing.Size(77, 13);
+            this.startDateLabel.TabIndex = 2;
+            this.startDateLabel.Text = "Udlejningsdato";
             // 
-            // label2
+            // returnDateLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "EndDate";
+            this.returnDateLabel.AutoSize = true;
+            this.returnDateLabel.Location = new System.Drawing.Point(13, 64);
+            this.returnDateLabel.Name = "returnDateLabel";
+            this.returnDateLabel.Size = new System.Drawing.Size(105, 13);
+            this.returnDateLabel.TabIndex = 3;
+            this.returnDateLabel.Text = "Tilbageleveringsdato";
             // 
-            // dateTimePickerReturnDate
+            // ReturnDate
             // 
-            this.dateTimePickerReturnDate.Location = new System.Drawing.Point(12, 80);
-            this.dateTimePickerReturnDate.Name = "dateTimePickerReturnDate";
-            this.dateTimePickerReturnDate.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerReturnDate.TabIndex = 4;
-            this.dateTimePickerReturnDate.ValueChanged += new System.EventHandler(this.dateTimePickerReturnDate_ValueChanged);
+            this.ReturnDate.Location = new System.Drawing.Point(12, 80);
+            this.ReturnDate.Name = "ReturnDate";
+            this.ReturnDate.Size = new System.Drawing.Size(200, 20);
+            this.ReturnDate.TabIndex = 4;
+            this.ReturnDate.ValueChanged += new System.EventHandler(this.dateTimePickerReturnDate_ValueChanged);
             // 
-            // label4
+            // accessoryLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 432);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Tilbehør";
+            this.accessoryLabel.AutoSize = true;
+            this.accessoryLabel.Location = new System.Drawing.Point(16, 432);
+            this.accessoryLabel.Name = "accessoryLabel";
+            this.accessoryLabel.Size = new System.Drawing.Size(45, 13);
+            this.accessoryLabel.TabIndex = 10;
+            this.accessoryLabel.Text = "Tilbehør";
             // 
-            // textBoxDebtorID
+            // debtorIDTextBox
             // 
-            this.textBoxDebtorID.Location = new System.Drawing.Point(483, 56);
-            this.textBoxDebtorID.Name = "textBoxDebtorID";
-            this.textBoxDebtorID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDebtorID.TabIndex = 12;
+            this.debtorIDTextBox.Location = new System.Drawing.Point(483, 56);
+            this.debtorIDTextBox.Name = "debtorIDTextBox";
+            this.debtorIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.debtorIDTextBox.TabIndex = 12;
             // 
-            // labelDebtorID
+            // debtorIDLabel
             // 
-            this.labelDebtorID.AutoSize = true;
-            this.labelDebtorID.Location = new System.Drawing.Point(483, 40);
-            this.labelDebtorID.Name = "labelDebtorID";
-            this.labelDebtorID.Size = new System.Drawing.Size(69, 13);
-            this.labelDebtorID.TabIndex = 13;
-            this.labelDebtorID.Text = "CVR-nummer";
+            this.debtorIDLabel.AutoSize = true;
+            this.debtorIDLabel.Location = new System.Drawing.Point(483, 40);
+            this.debtorIDLabel.Name = "debtorIDLabel";
+            this.debtorIDLabel.Size = new System.Drawing.Size(69, 13);
+            this.debtorIDLabel.TabIndex = 13;
+            this.debtorIDLabel.Text = "CVR-nummer";
             // 
-            // SearchDebtorButton
+            // searchDebtorByDebtorID
             // 
-            this.SearchDebtorButton.Location = new System.Drawing.Point(404, 55);
-            this.SearchDebtorButton.Name = "SearchDebtorButton";
-            this.SearchDebtorButton.Size = new System.Drawing.Size(73, 23);
-            this.SearchDebtorButton.TabIndex = 14;
-            this.SearchDebtorButton.Text = "Find kunde";
-            this.SearchDebtorButton.UseVisualStyleBackColor = true;
-            this.SearchDebtorButton.Click += new System.EventHandler(this.SearchDebtorButton_Click);
+            this.searchDebtorByDebtorID.Location = new System.Drawing.Point(404, 55);
+            this.searchDebtorByDebtorID.Name = "searchDebtorByDebtorID";
+            this.searchDebtorByDebtorID.Size = new System.Drawing.Size(73, 23);
+            this.searchDebtorByDebtorID.TabIndex = 14;
+            this.searchDebtorByDebtorID.Text = "Find kunde";
+            this.searchDebtorByDebtorID.UseVisualStyleBackColor = true;
+            this.searchDebtorByDebtorID.Click += new System.EventHandler(this.SearchDebtorButton_Click);
             // 
-            // comboBoxAccessory
+            // accessoryComboBox
             // 
-            this.comboBoxAccessory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAccessory.FormattingEnabled = true;
-            this.comboBoxAccessory.Location = new System.Drawing.Point(16, 448);
-            this.comboBoxAccessory.Name = "comboBoxAccessory";
-            this.comboBoxAccessory.Size = new System.Drawing.Size(196, 21);
-            this.comboBoxAccessory.TabIndex = 15;
+            this.accessoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.accessoryComboBox.FormattingEnabled = true;
+            this.accessoryComboBox.Location = new System.Drawing.Point(16, 448);
+            this.accessoryComboBox.Name = "accessoryComboBox";
+            this.accessoryComboBox.Size = new System.Drawing.Size(196, 21);
+            this.accessoryComboBox.TabIndex = 15;
             // 
             // textBoxName
             // 
@@ -302,54 +302,54 @@
             this.labelContactPhone.TabIndex = 29;
             this.labelContactPhone.Text = "Telefonnummer";
             // 
-            // labelDeliveryPostCode
+            // deliveryPostCodeLabel
             // 
-            this.labelDeliveryPostCode.AutoSize = true;
-            this.labelDeliveryPostCode.Location = new System.Drawing.Point(122, 527);
-            this.labelDeliveryPostCode.Name = "labelDeliveryPostCode";
-            this.labelDeliveryPostCode.Size = new System.Drawing.Size(59, 13);
-            this.labelDeliveryPostCode.TabIndex = 35;
-            this.labelDeliveryPostCode.Text = "Postummer";
+            this.deliveryPostCodeLabel.AutoSize = true;
+            this.deliveryPostCodeLabel.Location = new System.Drawing.Point(122, 527);
+            this.deliveryPostCodeLabel.Name = "deliveryPostCodeLabel";
+            this.deliveryPostCodeLabel.Size = new System.Drawing.Size(59, 13);
+            this.deliveryPostCodeLabel.TabIndex = 35;
+            this.deliveryPostCodeLabel.Text = "Postummer";
             // 
-            // labelDeliveryCity
+            // deliveryCityLabel
             // 
-            this.labelDeliveryCity.AutoSize = true;
-            this.labelDeliveryCity.Location = new System.Drawing.Point(16, 527);
-            this.labelDeliveryCity.Name = "labelDeliveryCity";
-            this.labelDeliveryCity.Size = new System.Drawing.Size(19, 13);
-            this.labelDeliveryCity.TabIndex = 34;
-            this.labelDeliveryCity.Text = "By";
+            this.deliveryCityLabel.AutoSize = true;
+            this.deliveryCityLabel.Location = new System.Drawing.Point(16, 527);
+            this.deliveryCityLabel.Name = "deliveryCityLabel";
+            this.deliveryCityLabel.Size = new System.Drawing.Size(19, 13);
+            this.deliveryCityLabel.TabIndex = 34;
+            this.deliveryCityLabel.Text = "By";
             // 
-            // labelDeliveryAddress
+            // deliveryAddressLabel
             // 
-            this.labelDeliveryAddress.AutoSize = true;
-            this.labelDeliveryAddress.Location = new System.Drawing.Point(16, 489);
-            this.labelDeliveryAddress.Name = "labelDeliveryAddress";
-            this.labelDeliveryAddress.Size = new System.Drawing.Size(90, 13);
-            this.labelDeliveryAddress.TabIndex = 33;
-            this.labelDeliveryAddress.Text = "Leveringsadresse";
+            this.deliveryAddressLabel.AutoSize = true;
+            this.deliveryAddressLabel.Location = new System.Drawing.Point(16, 489);
+            this.deliveryAddressLabel.Name = "deliveryAddressLabel";
+            this.deliveryAddressLabel.Size = new System.Drawing.Size(90, 13);
+            this.deliveryAddressLabel.TabIndex = 33;
+            this.deliveryAddressLabel.Text = "Leveringsadresse";
             // 
-            // textBoxDeliveryPostCode
+            // deliveryPostCodeTextBox
             // 
-            this.textBoxDeliveryPostCode.Location = new System.Drawing.Point(125, 543);
-            this.textBoxDeliveryPostCode.Name = "textBoxDeliveryPostCode";
-            this.textBoxDeliveryPostCode.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDeliveryPostCode.TabIndex = 32;
-            this.textBoxDeliveryPostCode.Leave += new System.EventHandler(this.textBoxDeliveryPostCode_Leave);
+            this.deliveryPostCodeTextBox.Location = new System.Drawing.Point(125, 543);
+            this.deliveryPostCodeTextBox.Name = "deliveryPostCodeTextBox";
+            this.deliveryPostCodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.deliveryPostCodeTextBox.TabIndex = 32;
+            this.deliveryPostCodeTextBox.Leave += new System.EventHandler(this.textBoxDeliveryPostCode_Leave);
             // 
-            // textBoxDeliveryCity
+            // deliveryCityTextBox
             // 
-            this.textBoxDeliveryCity.Location = new System.Drawing.Point(16, 543);
-            this.textBoxDeliveryCity.Name = "textBoxDeliveryCity";
-            this.textBoxDeliveryCity.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDeliveryCity.TabIndex = 31;
+            this.deliveryCityTextBox.Location = new System.Drawing.Point(16, 543);
+            this.deliveryCityTextBox.Name = "deliveryCityTextBox";
+            this.deliveryCityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.deliveryCityTextBox.TabIndex = 31;
             // 
-            // textBoxDeliveryAddress
+            // deliveryAddressTextBox
             // 
-            this.textBoxDeliveryAddress.Location = new System.Drawing.Point(16, 505);
-            this.textBoxDeliveryAddress.Name = "textBoxDeliveryAddress";
-            this.textBoxDeliveryAddress.Size = new System.Drawing.Size(178, 20);
-            this.textBoxDeliveryAddress.TabIndex = 30;
+            this.deliveryAddressTextBox.Location = new System.Drawing.Point(16, 505);
+            this.deliveryAddressTextBox.Name = "deliveryAddressTextBox";
+            this.deliveryAddressTextBox.Size = new System.Drawing.Size(178, 20);
+            this.deliveryAddressTextBox.TabIndex = 30;
             // 
             // labelPhone
             // 
@@ -451,101 +451,101 @@
             this.By.Name = "By";
             this.By.Width = 90;
             // 
-            // comboBoxMainGroup
+            // MainGroup
             // 
-            this.comboBoxMainGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMainGroup.FormattingEnabled = true;
-            this.comboBoxMainGroup.Location = new System.Drawing.Point(12, 135);
-            this.comboBoxMainGroup.Name = "comboBoxMainGroup";
-            this.comboBoxMainGroup.Size = new System.Drawing.Size(159, 21);
-            this.comboBoxMainGroup.TabIndex = 40;
-            this.comboBoxMainGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged);
+            this.MainGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MainGroup.FormattingEnabled = true;
+            this.MainGroup.Location = new System.Drawing.Point(12, 135);
+            this.MainGroup.Name = "MainGroup";
+            this.MainGroup.Size = new System.Drawing.Size(159, 21);
+            this.MainGroup.TabIndex = 40;
+            this.MainGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged);
             // 
-            // comboBoxSubGroup
+            // SubGroup
             // 
-            this.comboBoxSubGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSubGroup.FormattingEnabled = true;
-            this.comboBoxSubGroup.Location = new System.Drawing.Point(181, 135);
-            this.comboBoxSubGroup.Name = "comboBoxSubGroup";
-            this.comboBoxSubGroup.Size = new System.Drawing.Size(159, 21);
-            this.comboBoxSubGroup.TabIndex = 41;
-            this.comboBoxSubGroup.TextChanged += new System.EventHandler(this.comboBoxSubGroup_TextChanged);
+            this.SubGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubGroup.FormattingEnabled = true;
+            this.SubGroup.Location = new System.Drawing.Point(181, 135);
+            this.SubGroup.Name = "SubGroup";
+            this.SubGroup.Size = new System.Drawing.Size(159, 21);
+            this.SubGroup.TabIndex = 41;
+            this.SubGroup.TextChanged += new System.EventHandler(this.comboBoxSubGroup_TextChanged);
             // 
-            // label3
+            // categoryLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 118);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Kategori";
+            this.categoryLabel.AutoSize = true;
+            this.categoryLabel.Location = new System.Drawing.Point(13, 118);
+            this.categoryLabel.Name = "categoryLabel";
+            this.categoryLabel.Size = new System.Drawing.Size(46, 13);
+            this.categoryLabel.TabIndex = 42;
+            this.categoryLabel.Text = "Kategori";
             // 
-            // label17
+            // subCategoryLabel
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(178, 118);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 13);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "Underkategori";
+            this.subCategoryLabel.AutoSize = true;
+            this.subCategoryLabel.Location = new System.Drawing.Point(178, 118);
+            this.subCategoryLabel.Name = "subCategoryLabel";
+            this.subCategoryLabel.Size = new System.Drawing.Size(74, 13);
+            this.subCategoryLabel.TabIndex = 43;
+            this.subCategoryLabel.Text = "Underkategori";
             // 
-            // dataGridViewResources
+            // ResourcesdataGridView
             // 
-            this.dataGridViewResources.AllowUserToAddRows = false;
-            this.dataGridViewResources.AllowUserToDeleteRows = false;
-            this.dataGridViewResources.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResources.Location = new System.Drawing.Point(12, 182);
-            this.dataGridViewResources.MultiSelect = false;
-            this.dataGridViewResources.Name = "dataGridViewResources";
-            this.dataGridViewResources.ReadOnly = true;
-            this.dataGridViewResources.Size = new System.Drawing.Size(417, 186);
-            this.dataGridViewResources.TabIndex = 44;
-            this.dataGridViewResources.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseClick);
-            this.dataGridViewResources.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseDoubleClick);
+            this.ResourcesdataGridView.AllowUserToAddRows = false;
+            this.ResourcesdataGridView.AllowUserToDeleteRows = false;
+            this.ResourcesdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ResourcesdataGridView.Location = new System.Drawing.Point(12, 182);
+            this.ResourcesdataGridView.MultiSelect = false;
+            this.ResourcesdataGridView.Name = "ResourcesdataGridView";
+            this.ResourcesdataGridView.ReadOnly = true;
+            this.ResourcesdataGridView.Size = new System.Drawing.Size(417, 186);
+            this.ResourcesdataGridView.TabIndex = 44;
+            this.ResourcesdataGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseClick);
+            this.ResourcesdataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewResources_CellMouseDoubleClick);
             // 
-            // AddResourceToOrderButton
+            // AddResourceToOrder
             // 
-            this.AddResourceToOrderButton.Location = new System.Drawing.Point(12, 374);
-            this.AddResourceToOrderButton.Name = "AddResourceToOrderButton";
-            this.AddResourceToOrderButton.Size = new System.Drawing.Size(101, 46);
-            this.AddResourceToOrderButton.TabIndex = 45;
-            this.AddResourceToOrderButton.Text = "Tilføj resurse til ordren";
-            this.AddResourceToOrderButton.UseVisualStyleBackColor = true;
-            this.AddResourceToOrderButton.Click += new System.EventHandler(this.AddResourceToOrderButton_Click);
+            this.AddResourceToOrder.Location = new System.Drawing.Point(12, 374);
+            this.AddResourceToOrder.Name = "AddResourceToOrder";
+            this.AddResourceToOrder.Size = new System.Drawing.Size(101, 46);
+            this.AddResourceToOrder.TabIndex = 45;
+            this.AddResourceToOrder.Text = "Tilføj resurse til ordren";
+            this.AddResourceToOrder.UseVisualStyleBackColor = true;
+            this.AddResourceToOrder.Click += new System.EventHandler(this.AddResourceToOrderButton_Click);
             // 
-            // checkBoxUseBillingAddress
+            // useBillingAddress
             // 
-            this.checkBoxUseBillingAddress.AutoSize = true;
-            this.checkBoxUseBillingAddress.Location = new System.Drawing.Point(251, 508);
-            this.checkBoxUseBillingAddress.Name = "checkBoxUseBillingAddress";
-            this.checkBoxUseBillingAddress.Size = new System.Drawing.Size(145, 17);
-            this.checkBoxUseBillingAddress.TabIndex = 46;
-            this.checkBoxUseBillingAddress.Text = "Lever til betalingsadresse";
-            this.checkBoxUseBillingAddress.UseVisualStyleBackColor = true;
-            this.checkBoxUseBillingAddress.CheckedChanged += new System.EventHandler(this.checkBoxUseBillingAddress_CheckedChanged);
+            this.useBillingAddress.AutoSize = true;
+            this.useBillingAddress.Location = new System.Drawing.Point(251, 508);
+            this.useBillingAddress.Name = "useBillingAddress";
+            this.useBillingAddress.Size = new System.Drawing.Size(145, 17);
+            this.useBillingAddress.TabIndex = 46;
+            this.useBillingAddress.Text = "Lever til betalingsadresse";
+            this.useBillingAddress.UseVisualStyleBackColor = true;
+            this.useBillingAddress.CheckedChanged += new System.EventHandler(this.checkBoxUseBillingAddress_CheckedChanged);
             // 
-            // radioButtonBusiness
+            // businessRadioButton
             // 
-            this.radioButtonBusiness.AutoSize = true;
-            this.radioButtonBusiness.Checked = true;
-            this.radioButtonBusiness.Location = new System.Drawing.Point(484, 14);
-            this.radioButtonBusiness.Name = "radioButtonBusiness";
-            this.radioButtonBusiness.Size = new System.Drawing.Size(62, 17);
-            this.radioButtonBusiness.TabIndex = 47;
-            this.radioButtonBusiness.TabStop = true;
-            this.radioButtonBusiness.Text = "Erhverv";
-            this.radioButtonBusiness.UseVisualStyleBackColor = true;
-            this.radioButtonBusiness.CheckedChanged += new System.EventHandler(this.radioButtonBusiness_CheckedChanged);
+            this.businessRadioButton.AutoSize = true;
+            this.businessRadioButton.Checked = true;
+            this.businessRadioButton.Location = new System.Drawing.Point(484, 14);
+            this.businessRadioButton.Name = "businessRadioButton";
+            this.businessRadioButton.Size = new System.Drawing.Size(62, 17);
+            this.businessRadioButton.TabIndex = 47;
+            this.businessRadioButton.TabStop = true;
+            this.businessRadioButton.Text = "Erhverv";
+            this.businessRadioButton.UseVisualStyleBackColor = true;
+            this.businessRadioButton.CheckedChanged += new System.EventHandler(this.radioButtonBusiness_CheckedChanged);
             // 
-            // radioButtonPersonal
+            // personalRadioButton
             // 
-            this.radioButtonPersonal.AutoSize = true;
-            this.radioButtonPersonal.Location = new System.Drawing.Point(567, 14);
-            this.radioButtonPersonal.Name = "radioButtonPersonal";
-            this.radioButtonPersonal.Size = new System.Drawing.Size(52, 17);
-            this.radioButtonPersonal.TabIndex = 48;
-            this.radioButtonPersonal.Text = "Privat";
-            this.radioButtonPersonal.UseVisualStyleBackColor = true;
+            this.personalRadioButton.AutoSize = true;
+            this.personalRadioButton.Location = new System.Drawing.Point(567, 14);
+            this.personalRadioButton.Name = "personalRadioButton";
+            this.personalRadioButton.Size = new System.Drawing.Size(52, 17);
+            this.personalRadioButton.TabIndex = 48;
+            this.personalRadioButton.Text = "Privat";
+            this.personalRadioButton.UseVisualStyleBackColor = true;
             // 
             // textBoxLeaseNumber
             // 
@@ -602,15 +602,15 @@
             this.textBoxContactLastName.Size = new System.Drawing.Size(123, 20);
             this.textBoxContactLastName.TabIndex = 54;
             // 
-            // buttonAddAccessory
+            // addAccessory
             // 
-            this.buttonAddAccessory.Location = new System.Drawing.Point(218, 441);
-            this.buttonAddAccessory.Name = "buttonAddAccessory";
-            this.buttonAddAccessory.Size = new System.Drawing.Size(79, 33);
-            this.buttonAddAccessory.TabIndex = 56;
-            this.buttonAddAccessory.Text = "Tilføj tilbehør";
-            this.buttonAddAccessory.UseVisualStyleBackColor = true;
-            this.buttonAddAccessory.Click += new System.EventHandler(this.buttonAddAccessory_Click);
+            this.addAccessory.Location = new System.Drawing.Point(218, 441);
+            this.addAccessory.Name = "addAccessory";
+            this.addAccessory.Size = new System.Drawing.Size(79, 33);
+            this.addAccessory.TabIndex = 56;
+            this.addAccessory.Text = "Tilføj tilbehør";
+            this.addAccessory.UseVisualStyleBackColor = true;
+            this.addAccessory.Click += new System.EventHandler(this.buttonAddAccessory_Click);
             // 
             // labelFindLeaseByLeaseID
             // 
@@ -629,25 +629,25 @@
             this.textBoxFindLeaseByLeaseID.Size = new System.Drawing.Size(123, 20);
             this.textBoxFindLeaseByLeaseID.TabIndex = 57;
             // 
-            // buttonFindLeaseByLeaseID
+            // findLeaseByLeaseID
             // 
-            this.buttonFindLeaseByLeaseID.Location = new System.Drawing.Point(873, 55);
-            this.buttonFindLeaseByLeaseID.Name = "buttonFindLeaseByLeaseID";
-            this.buttonFindLeaseByLeaseID.Size = new System.Drawing.Size(55, 23);
-            this.buttonFindLeaseByLeaseID.TabIndex = 59;
-            this.buttonFindLeaseByLeaseID.Text = "Søg";
-            this.buttonFindLeaseByLeaseID.UseVisualStyleBackColor = true;
-            this.buttonFindLeaseByLeaseID.Click += new System.EventHandler(this.buttonFindLeaseByLeaseID_Click);
+            this.findLeaseByLeaseID.Location = new System.Drawing.Point(873, 55);
+            this.findLeaseByLeaseID.Name = "findLeaseByLeaseID";
+            this.findLeaseByLeaseID.Size = new System.Drawing.Size(55, 23);
+            this.findLeaseByLeaseID.TabIndex = 59;
+            this.findLeaseByLeaseID.Text = "Søg";
+            this.findLeaseByLeaseID.UseVisualStyleBackColor = true;
+            this.findLeaseByLeaseID.Click += new System.EventHandler(this.buttonFindLeaseByLeaseID_Click);
             // 
-            // buttonFindLeases
+            // findLeasesByLeaseID
             // 
-            this.buttonFindLeases.Location = new System.Drawing.Point(589, 55);
-            this.buttonFindLeases.Name = "buttonFindLeases";
-            this.buttonFindLeases.Size = new System.Drawing.Size(73, 23);
-            this.buttonFindLeases.TabIndex = 60;
-            this.buttonFindLeases.Text = "Find ordrer";
-            this.buttonFindLeases.UseVisualStyleBackColor = true;
-            this.buttonFindLeases.Click += new System.EventHandler(this.buttonFindLeases_Click);
+            this.findLeasesByLeaseID.Location = new System.Drawing.Point(589, 55);
+            this.findLeasesByLeaseID.Name = "findLeasesByLeaseID";
+            this.findLeasesByLeaseID.Size = new System.Drawing.Size(73, 23);
+            this.findLeasesByLeaseID.TabIndex = 60;
+            this.findLeasesByLeaseID.Text = "Find ordrer";
+            this.findLeasesByLeaseID.UseVisualStyleBackColor = true;
+            this.findLeasesByLeaseID.Click += new System.EventHandler(this.buttonFindLeases_Click);
             // 
             // comboBoxLeaseStatus
             // 
@@ -701,11 +701,11 @@
             this.buttonUpdateStatus.UseVisualStyleBackColor = true;
             this.buttonUpdateStatus.Click += new System.EventHandler(this.buttonUpdateStatus_Click);
             // 
-            // comboBoxDeliveryZone
+            // deliveryZoneComboBox
             // 
-            this.comboBoxDeliveryZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDeliveryZone.FormattingEnabled = true;
-            this.comboBoxDeliveryZone.Items.AddRange(new object[] {
+            this.deliveryZoneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.deliveryZoneComboBox.FormattingEnabled = true;
+            this.deliveryZoneComboBox.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
@@ -716,19 +716,19 @@
             "7",
             "8",
             "9"});
-            this.comboBoxDeliveryZone.Location = new System.Drawing.Point(251, 543);
-            this.comboBoxDeliveryZone.Name = "comboBoxDeliveryZone";
-            this.comboBoxDeliveryZone.Size = new System.Drawing.Size(123, 21);
-            this.comboBoxDeliveryZone.TabIndex = 66;
+            this.deliveryZoneComboBox.Location = new System.Drawing.Point(251, 543);
+            this.deliveryZoneComboBox.Name = "deliveryZoneComboBox";
+            this.deliveryZoneComboBox.Size = new System.Drawing.Size(123, 21);
+            this.deliveryZoneComboBox.TabIndex = 66;
             // 
-            // labelDeliveryZone
+            // deliveryZoneLabel
             // 
-            this.labelDeliveryZone.AutoSize = true;
-            this.labelDeliveryZone.Location = new System.Drawing.Point(248, 528);
-            this.labelDeliveryZone.Name = "labelDeliveryZone";
-            this.labelDeliveryZone.Size = new System.Drawing.Size(76, 13);
-            this.labelDeliveryZone.TabIndex = 67;
-            this.labelDeliveryZone.Text = "Leveringszone";
+            this.deliveryZoneLabel.AutoSize = true;
+            this.deliveryZoneLabel.Location = new System.Drawing.Point(248, 528);
+            this.deliveryZoneLabel.Name = "deliveryZoneLabel";
+            this.deliveryZoneLabel.Size = new System.Drawing.Size(76, 13);
+            this.deliveryZoneLabel.TabIndex = 67;
+            this.deliveryZoneLabel.Text = "Leveringszone";
             // 
             // buttonInvoice
             // 
@@ -747,43 +747,43 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 608);
             this.Controls.Add(this.buttonInvoice);
-            this.Controls.Add(this.labelDeliveryZone);
-            this.Controls.Add(this.comboBoxDeliveryZone);
+            this.Controls.Add(this.deliveryZoneLabel);
+            this.Controls.Add(this.deliveryZoneComboBox);
             this.Controls.Add(this.buttonUpdateStatus);
             this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.buttonDeleteLease);
             this.Controls.Add(this.labelLeaseStatus);
             this.Controls.Add(this.comboBoxLeaseStatus);
-            this.Controls.Add(this.buttonFindLeases);
-            this.Controls.Add(this.buttonFindLeaseByLeaseID);
+            this.Controls.Add(this.findLeasesByLeaseID);
+            this.Controls.Add(this.findLeaseByLeaseID);
             this.Controls.Add(this.labelFindLeaseByLeaseID);
             this.Controls.Add(this.textBoxFindLeaseByLeaseID);
-            this.Controls.Add(this.buttonAddAccessory);
+            this.Controls.Add(this.addAccessory);
             this.Controls.Add(this.labelContactLastName);
             this.Controls.Add(this.textBoxContactLastName);
             this.Controls.Add(this.labelContactPerson);
             this.Controls.Add(this.buttonUpdateOrder);
             this.Controls.Add(this.labelLeaseNumber);
             this.Controls.Add(this.textBoxLeaseNumber);
-            this.Controls.Add(this.radioButtonPersonal);
-            this.Controls.Add(this.radioButtonBusiness);
-            this.Controls.Add(this.checkBoxUseBillingAddress);
-            this.Controls.Add(this.AddResourceToOrderButton);
-            this.Controls.Add(this.dataGridViewResources);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBoxSubGroup);
-            this.Controls.Add(this.comboBoxMainGroup);
+            this.Controls.Add(this.personalRadioButton);
+            this.Controls.Add(this.businessRadioButton);
+            this.Controls.Add(this.useBillingAddress);
+            this.Controls.Add(this.AddResourceToOrder);
+            this.Controls.Add(this.ResourcesdataGridView);
+            this.Controls.Add(this.subCategoryLabel);
+            this.Controls.Add(this.categoryLabel);
+            this.Controls.Add(this.SubGroup);
+            this.Controls.Add(this.MainGroup);
             this.Controls.Add(this.dataGridViewLeaseOrders);
             this.Controls.Add(this.buttonCreateOrder);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelPhone);
-            this.Controls.Add(this.labelDeliveryPostCode);
-            this.Controls.Add(this.labelDeliveryCity);
-            this.Controls.Add(this.labelDeliveryAddress);
-            this.Controls.Add(this.textBoxDeliveryPostCode);
-            this.Controls.Add(this.textBoxDeliveryCity);
-            this.Controls.Add(this.textBoxDeliveryAddress);
+            this.Controls.Add(this.deliveryPostCodeLabel);
+            this.Controls.Add(this.deliveryCityLabel);
+            this.Controls.Add(this.deliveryAddressLabel);
+            this.Controls.Add(this.deliveryPostCodeTextBox);
+            this.Controls.Add(this.deliveryCityTextBox);
+            this.Controls.Add(this.deliveryAddressTextBox);
             this.Controls.Add(this.labelContactPhone);
             this.Controls.Add(this.textBoxContactPhone);
             this.Controls.Add(this.labelContactFirstName);
@@ -798,20 +798,20 @@
             this.Controls.Add(this.textBoxBillingAddress);
             this.Controls.Add(this.textBoxContactFirstName);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.comboBoxAccessory);
-            this.Controls.Add(this.SearchDebtorButton);
-            this.Controls.Add(this.labelDebtorID);
-            this.Controls.Add(this.textBoxDebtorID);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePickerReturnDate);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePickerDeliveryDate);
+            this.Controls.Add(this.accessoryComboBox);
+            this.Controls.Add(this.searchDebtorByDebtorID);
+            this.Controls.Add(this.debtorIDLabel);
+            this.Controls.Add(this.debtorIDTextBox);
+            this.Controls.Add(this.accessoryLabel);
+            this.Controls.Add(this.ReturnDate);
+            this.Controls.Add(this.returnDateLabel);
+            this.Controls.Add(this.startDateLabel);
+            this.Controls.Add(this.DeliveryDate);
             this.Name = "Lease";
             this.Text = "Leasing";
             this.Load += new System.EventHandler(this.Lease_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLeaseOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResources)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResourcesdataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -819,15 +819,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePickerDeliveryDate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePickerReturnDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxDebtorID;
-        private System.Windows.Forms.Label labelDebtorID;
-        private System.Windows.Forms.Button SearchDebtorButton;
-        private System.Windows.Forms.ComboBox comboBoxAccessory;
+        private System.Windows.Forms.DateTimePicker DeliveryDate;
+        private System.Windows.Forms.Label startDateLabel;
+        private System.Windows.Forms.Label returnDateLabel;
+        private System.Windows.Forms.DateTimePicker ReturnDate;
+        private System.Windows.Forms.Label accessoryLabel;
+        private System.Windows.Forms.TextBox debtorIDTextBox;
+        private System.Windows.Forms.Label debtorIDLabel;
+        private System.Windows.Forms.Button searchDebtorByDebtorID;
+        private System.Windows.Forms.ComboBox accessoryComboBox;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxContactFirstName;
         private System.Windows.Forms.TextBox textBoxBillingAddress;
@@ -842,25 +842,25 @@
         private System.Windows.Forms.Label labelContactFirstName;
         private System.Windows.Forms.TextBox textBoxContactPhone;
         private System.Windows.Forms.Label labelContactPhone;
-        private System.Windows.Forms.Label labelDeliveryPostCode;
-        private System.Windows.Forms.Label labelDeliveryCity;
-        private System.Windows.Forms.Label labelDeliveryAddress;
-        private System.Windows.Forms.TextBox textBoxDeliveryPostCode;
-        private System.Windows.Forms.TextBox textBoxDeliveryCity;
-        private System.Windows.Forms.TextBox textBoxDeliveryAddress;
+        private System.Windows.Forms.Label deliveryPostCodeLabel;
+        private System.Windows.Forms.Label deliveryCityLabel;
+        private System.Windows.Forms.Label deliveryAddressLabel;
+        private System.Windows.Forms.TextBox deliveryPostCodeTextBox;
+        private System.Windows.Forms.TextBox deliveryCityTextBox;
+        private System.Windows.Forms.TextBox deliveryAddressTextBox;
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Button buttonCreateOrder;
         private System.Windows.Forms.DataGridView dataGridViewLeaseOrders;
-        private System.Windows.Forms.ComboBox comboBoxMainGroup;
-        private System.Windows.Forms.ComboBox comboBoxSubGroup;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridView dataGridViewResources;
-        private System.Windows.Forms.Button AddResourceToOrderButton;
-        private System.Windows.Forms.CheckBox checkBoxUseBillingAddress;
-        private System.Windows.Forms.RadioButton radioButtonBusiness;
-        private System.Windows.Forms.RadioButton radioButtonPersonal;
+        private System.Windows.Forms.ComboBox MainGroup;
+        private System.Windows.Forms.ComboBox SubGroup;
+        private System.Windows.Forms.Label categoryLabel;
+        private System.Windows.Forms.Label subCategoryLabel;
+        private System.Windows.Forms.DataGridView ResourcesdataGridView;
+        private System.Windows.Forms.Button AddResourceToOrder;
+        private System.Windows.Forms.CheckBox useBillingAddress;
+        private System.Windows.Forms.RadioButton businessRadioButton;
+        private System.Windows.Forms.RadioButton personalRadioButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
         private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
@@ -876,18 +876,18 @@
         private System.Windows.Forms.Label labelContactPerson;
         private System.Windows.Forms.Label labelContactLastName;
         private System.Windows.Forms.TextBox textBoxContactLastName;
-        private System.Windows.Forms.Button buttonAddAccessory;
+        private System.Windows.Forms.Button addAccessory;
         private System.Windows.Forms.Label labelFindLeaseByLeaseID;
         private System.Windows.Forms.TextBox textBoxFindLeaseByLeaseID;
-        private System.Windows.Forms.Button buttonFindLeaseByLeaseID;
-        private System.Windows.Forms.Button buttonFindLeases;
+        private System.Windows.Forms.Button findLeaseByLeaseID;
+        private System.Windows.Forms.Button findLeasesByLeaseID;
         private System.Windows.Forms.ComboBox comboBoxLeaseStatus;
         private System.Windows.Forms.Label labelLeaseStatus;
         private System.Windows.Forms.Button buttonDeleteLease;
         private System.Windows.Forms.Button buttonClearAll;
         private System.Windows.Forms.Button buttonUpdateStatus;
-        private System.Windows.Forms.ComboBox comboBoxDeliveryZone;
-        private System.Windows.Forms.Label labelDeliveryZone;
+        private System.Windows.Forms.ComboBox deliveryZoneComboBox;
+        private System.Windows.Forms.Label deliveryZoneLabel;
         private System.Windows.Forms.Button buttonInvoice;
     }
 }
