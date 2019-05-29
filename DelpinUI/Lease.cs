@@ -621,5 +621,14 @@ namespace DelpinUI
             MessageBox.Show("Den indtastede værdi er ikke korrekt!");
             dataGridViewLeaseOrders.CancelEdit();
         }
+
+        private void textBoxDeliveryPostCode_Leave(object sender, EventArgs e)
+        {
+            if (Utility.CheckForValidPostCode(textBoxDeliveryPostCode.Text) == false)
+            {
+                MessageBox.Show("Den indtastede postkode er ikke korrekt, indtast den venligst igen!");
+                textBoxDeliveryPostCode.Text = "";
+            }
+        }
     }
 }
