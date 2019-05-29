@@ -294,5 +294,11 @@ namespace DelpinCore
             invoice.MakePDF(contactFirstName,contactFirstName,street,city,postalCode,contactPhone,debtorID,
                 startDate,endDate,modelName,deliveryPrice,numberOfDays,price,totalPrice,momsPrice,endPrice);
         }
+
+        public DataTable ReadOnlyAccessory()
+        {
+            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
+            return readOnlyAccessory;
+        }
     }
 }

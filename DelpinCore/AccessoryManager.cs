@@ -50,5 +50,13 @@ namespace DelpinCore
 
             return $"Accessory {accessoryModelID} er blevet Slettet";
         }
+        public DataTable ReadOnlyAccessory()
+        {
+            string readOnlyAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory" +
+                "join model on Accessory.AccessoryID = Model.ModelID join SubGroup on SubGroup.SubGroupID = Model.SubGroupID";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(readOnlyAccessory);
+            return dataTable;
+        }
     }
 }
