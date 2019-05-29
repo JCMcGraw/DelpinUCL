@@ -34,7 +34,7 @@
             this.openLeasingForm = new System.Windows.Forms.Button();
             this.chooseBranchComboBox = new System.Windows.Forms.ComboBox();
             this.chooseBranchLabel = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.saveBranchButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,14 +88,15 @@
             this.chooseBranchLabel.TabIndex = 4;
             this.chooseBranchLabel.Text = "Vælg afdeling";
             // 
-            // button4
+            // saveBranchButton
             // 
-            this.button4.Location = new System.Drawing.Point(31, 242);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Gem";
-            this.button4.UseVisualStyleBackColor = true;
+            this.saveBranchButton.Location = new System.Drawing.Point(31, 242);
+            this.saveBranchButton.Name = "saveBranchButton";
+            this.saveBranchButton.Size = new System.Drawing.Size(75, 23);
+            this.saveBranchButton.TabIndex = 5;
+            this.saveBranchButton.Text = "Gem";
+            this.saveBranchButton.UseVisualStyleBackColor = true;
+            this.saveBranchButton.Click += new System.EventHandler(this.saveBranchButton_Click);
             // 
             // pictureBox1
             // 
@@ -125,7 +126,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.saveBranchButton);
             this.Controls.Add(this.chooseBranchLabel);
             this.Controls.Add(this.chooseBranchComboBox);
             this.Controls.Add(this.openLeasingForm);
@@ -147,7 +148,7 @@
         private System.Windows.Forms.Button openLeasingForm;
         private System.Windows.Forms.ComboBox chooseBranchComboBox;
         private System.Windows.Forms.Label chooseBranchLabel;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button saveBranchButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
     }

@@ -118,7 +118,7 @@ namespace DelpinCore
         public string CreateLease(Lease lease)
         {
             string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), 1, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {lease.branchID}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 

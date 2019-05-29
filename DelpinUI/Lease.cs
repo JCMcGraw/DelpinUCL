@@ -179,7 +179,7 @@ namespace DelpinUI
             DateTime endDate = dateTimePickerReturnDate.Value;
 
             //DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
-            DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, 1, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
+            DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, Utility.BranchID, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
 
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
             formSelectFromTable.ShowResources(dataTable);
@@ -264,7 +264,7 @@ namespace DelpinUI
 
         private DelpinCore.Lease GetLeaseFromForm()
         {
-            DelpinCore.Lease lease = new DelpinCore.Lease(textBoxDebtorID.Text, 1);
+            DelpinCore.Lease lease = new DelpinCore.Lease(textBoxDebtorID.Text, Utility.BranchID);
 
             lease.SetContactDetails(textBoxContactFirstName.Text, textBoxContactLastName.Text, textBoxContactPhone.Text);
 
@@ -620,7 +620,7 @@ namespace DelpinUI
 
         private void buttonInvoice_Click(object sender, EventArgs e)
         {
-            controller.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2000, 500, 2500);
+            //controller.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2000, 500, 2500);
         }
 
         private void dataGridViewLeaseOrders_DataError(object sender, DataGridViewDataErrorEventArgs e)
