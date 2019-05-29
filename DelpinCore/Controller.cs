@@ -295,12 +295,9 @@ namespace DelpinCore
         }
 
 
-        public void MakePDF(string contactFirstName, string contactLastName, string street, string city, 
-        int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, 
-        double deliveryPrice, decimal numberOfDays, double price, double totalPrice, double momsPrice, double endPrice)
+        public void MakePDF(int LeaseID)
         {
-            invoice.MakePDF(contactFirstName,contactFirstName,street,city,postalCode,contactPhone,debtorID,
-                startDate,endDate,modelName,deliveryPrice,numberOfDays,price,totalPrice,momsPrice,endPrice);
+            leaseManager.ReadLeaseByLeaseID(LeaseID);
         }
 
         public DataTable ReadAllBranches()
