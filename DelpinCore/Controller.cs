@@ -315,5 +315,11 @@ namespace DelpinCore
 
             return branch;
         }
+
+        public DataTable ReadOnlyAccessory()
+        {
+            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
+            return readOnlyAccessory;
+        }
     }
 }
