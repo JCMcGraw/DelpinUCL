@@ -208,7 +208,7 @@ namespace DelpinUI
       
         private void CreateRessource_Click(object sender, EventArgs e)
         {
-            string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(modelID.Text), Convert.ToInt32(branchID.SelectedValue));
+            string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(ResourceModelID.Text), Convert.ToInt32(branchID.SelectedValue));
             MessageBox.Show(succes);
         }
 
@@ -276,6 +276,23 @@ namespace DelpinUI
             catch { }
         }
 
+        private void ModelGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void GetModel_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = controller.SelectSpecificModel(Convert.ToInt32(ModelID.Text));
+
+
+            ModelName.Text = (string)dataTable.Rows[0]["Modelname"];
+            //ModelPrice.Text = (string)dataTable.Rows[0]["Pris"];
+            //Weight.Text = dataTable.Rows[0]["Vægt"]toString();
+            //ComboModelSub = dataTable.Rows[0]["Undergruppe"].ToString();
+            //phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+            //emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+        }
     }
 }
 

@@ -17,6 +17,7 @@ namespace DelpinCore
         TableDisplay tableDisplay = new TableDisplay();
         DeliveryManager deliveryManager = new DeliveryManager();
         Invoice invoice = new Invoice();
+        BranchManager branchManager = new BranchManager();
 
         public string ReadDebtor()
         {
@@ -269,6 +270,12 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
+        public DataTable SelectSpecificModel(int ModelID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpecificModel(ModelID);
+            return dataTable;
+        }
         public DataTable DisplayAccModel()
         {
             DataTable dataTable = tableDisplay.DisplayAccModel();
@@ -287,6 +294,7 @@ namespace DelpinCore
             return endPrice;
         }
 
+
         public void MakePDF(string contactFirstName, string contactLastName, string street, string city, 
         int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, 
         double deliveryPrice, decimal numberOfDays, double price, double totalPrice, double momsPrice, double endPrice)
@@ -295,10 +303,17 @@ namespace DelpinCore
                 startDate,endDate,modelName,deliveryPrice,numberOfDays,price,totalPrice,momsPrice,endPrice);
         }
 
-        public DataTable ReadOnlyAccessory()
+        public DataTable ReadAllBranches()
         {
-            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
-            return readOnlyAccessory;
+            DataTable dataTable = branchManager.ReadAllBranches();
+            return dataTable;
+        }
+
+        public Branch ReadBranchByBranchID(int branchID)
+        {
+            Branch branch = branchManager.ReadBranchByBranchID(branchID);
+
+            return branch;
         }
     }
 }
