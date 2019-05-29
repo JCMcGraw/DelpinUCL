@@ -419,7 +419,7 @@
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // dataGridView2
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 277);
@@ -518,16 +518,65 @@
             this.label9.TabIndex = 44;
             this.label9.Text = "Modeloversigt";
             // 
-            // AccModelView
+            // AssGridView
             // 
-            this.AccModelView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.AccModelView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AccModelView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AccModelView.Location = new System.Drawing.Point(306, 43);
-            this.AccModelView.Name = "AccModelView";
-            this.AccModelView.Size = new System.Drawing.Size(447, 125);
-            this.AccModelView.TabIndex = 43;
-            this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick);
+            this.AssGridView.AutoGenerateColumns = false;
+            this.AssGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.AssGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AssGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AssGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.AssGridView.DataSource = this.modelBindingSource;
+            this.AssGridView.Location = new System.Drawing.Point(306, 43);
+            this.AssGridView.Name = "AssGridView";
+            this.AssGridView.Size = new System.Drawing.Size(447, 125);
+            this.AssGridView.TabIndex = 43;
+            this.AssGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssGridView_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ModelID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ModelID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "ModelName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "ModelName";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SubGroupID";
+            this.dataGridViewTextBoxColumn4.HeaderText = "SubGroupID";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // AccMain
+            // 
+            this.AccMain.FormattingEnabled = true;
+            this.AccMain.Location = new System.Drawing.Point(9, 60);
+            this.AccMain.Name = "AccMain";
+            this.AccMain.Size = new System.Drawing.Size(100, 21);
+            this.AccMain.TabIndex = 58;
+            // 
+            // AccSub
+            // 
+            this.AccSub.FormattingEnabled = true;
+            this.AccSub.Location = new System.Drawing.Point(122, 60);
+            this.AccSub.Name = "AccSub";
+            this.AccSub.Size = new System.Drawing.Size(98, 21);
+            this.AccSub.TabIndex = 59;
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
             // 
             // Resource
             // 
