@@ -296,17 +296,17 @@ namespace DelpinUI
 
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //if (e.RowIndex > -1)
-            //{
-            //    ShowStockModel
-            //        .Rows[e.RowIndex].Selected = true;
+            if (e.RowIndex > -1)
+            {
+                ShowStockModel
+                    .Rows[e.RowIndex].Selected = true;
 
-            //    int modelID = Convert.ToInt32(ViewModelAva.Rows[e.RowIndex].Cells["ModelID"].Value);
+                int modelID = Convert.ToInt32(ViewModelAva.Rows[e.RowIndex].Cells["ModelID"].Value);
 
 
 
-            //    ReadAccessoriesToComboBox(modelID);
-            //}
+                ReadAccessoriesToComboBox(modelID);
+            }
         }
     }
 }
