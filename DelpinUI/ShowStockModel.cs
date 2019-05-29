@@ -45,14 +45,7 @@ namespace DelpinUI
             this.Text = title;
         }
 
-        private void dataGridViewResources_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                StockGridView.Rows[e.RowIndex].Selected = true;
-
-                //SelectRow(e.RowIndex);
-            }
-        }
+       
+    
     }
 }

@@ -298,14 +298,14 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
-                ShowStockModel
-                    .Rows[e.RowIndex].Selected = true;
+                //ShowStockModel
+                //    StockGridView.Rows[e.RowIndex].Selected = true;
 
-                int modelID = Convert.ToInt32(ViewModelAva.Rows[e.RowIndex].Cells["ModelID"].Value);
+                //int modelID = Convert.ToInt32(StockGridView.Rows[e.RowIndex].Cells["ModelID"].Value);
 
 
 
-                ReadAccessoriesToComboBox(modelID);
+                //ReadAccessoriesToComboBox(modelID);
             }
         }
     }
