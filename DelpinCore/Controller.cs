@@ -269,6 +269,12 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayModel();
             return dataTable;
         }
+        public DataTable SelectSpecificModel(int ModelID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpecificModel(ModelID);
+            return dataTable;
+        }
         public DataTable DisplayAccModel()
         {
             DataTable dataTable = tableDisplay.DisplayAccModel();
@@ -286,6 +292,7 @@ namespace DelpinCore
             double endPrice = invoice.endPrice(totalPrice,momsPrice);
             return endPrice;
         }
+
 
         public void MakePDF(string contactFirstName, string contactLastName, string street, string city, 
         int postalCode, string contactPhone, string debtorID, DateTime startDate, DateTime endDate, string modelName, 

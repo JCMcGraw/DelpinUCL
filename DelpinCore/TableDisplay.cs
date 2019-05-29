@@ -153,6 +153,17 @@ namespace DelpinCore
 
             return dataTable;
         }
+        public DataTable DisplaySpecificModel(int ModelID)
+        {
+            string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroupID as Undergruppe, weightKg as Vægt from Model where ModelID = '{ModelID}'";
+
+
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
+
+            return dataTable;
+
+        }
 
     }
 }

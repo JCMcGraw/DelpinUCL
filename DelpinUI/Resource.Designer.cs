@@ -37,7 +37,7 @@
             this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.modelID = new System.Windows.Forms.TextBox();
+            this.ResourceModelID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ressourceID = new System.Windows.Forms.TextBox();
             this.resourceGridView = new System.Windows.Forms.DataGridView();
@@ -76,6 +76,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
+            this.ModelID = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.GetModel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -133,7 +136,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.modelID);
+            this.tabPage3.Controls.Add(this.ResourceModelID);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.ressourceID);
             this.tabPage3.Controls.Add(this.resourceGridView);
@@ -151,12 +154,12 @@
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // modelID
+            // ResourceModelID
             // 
-            this.modelID.Location = new System.Drawing.Point(17, 73);
-            this.modelID.Name = "modelID";
-            this.modelID.Size = new System.Drawing.Size(100, 20);
-            this.modelID.TabIndex = 64;
+            this.ResourceModelID.Location = new System.Drawing.Point(17, 73);
+            this.ResourceModelID.Name = "ResourceModelID";
+            this.ResourceModelID.Size = new System.Drawing.Size(100, 20);
+            this.ResourceModelID.TabIndex = 64;
             // 
             // label1
             // 
@@ -241,6 +244,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.GetModel);
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.ModelID);
             this.tabPage1.Controls.Add(this.ModelGridView);
             this.tabPage1.Controls.Add(this.ComboModelSub);
             this.tabPage1.Controls.Add(this.ComboModelMain);
@@ -274,11 +280,12 @@
             this.ModelGridView.Name = "ModelGridView";
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
+            this.ModelGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellClick);
             // 
             // ComboModelSub
             // 
             this.ComboModelSub.FormattingEnabled = true;
-            this.ComboModelSub.Location = new System.Drawing.Point(123, 154);
+            this.ComboModelSub.Location = new System.Drawing.Point(120, 181);
             this.ComboModelSub.Name = "ComboModelSub";
             this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
             this.ComboModelSub.TabIndex = 40;
@@ -288,7 +295,7 @@
             // ComboModelMain
             // 
             this.ComboModelMain.FormattingEnabled = true;
-            this.ComboModelMain.Location = new System.Drawing.Point(10, 154);
+            this.ComboModelMain.Location = new System.Drawing.Point(7, 181);
             this.ComboModelMain.Name = "ComboModelMain";
             this.ComboModelMain.Size = new System.Drawing.Size(96, 21);
             this.ComboModelMain.TabIndex = 39;
@@ -297,7 +304,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 99);
+            this.label8.Location = new System.Drawing.Point(3, 126);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 38;
@@ -305,14 +312,14 @@
             // 
             // Weight
             // 
-            this.Weight.Location = new System.Drawing.Point(6, 114);
+            this.Weight.Location = new System.Drawing.Point(3, 141);
             this.Weight.Name = "Weight";
             this.Weight.Size = new System.Drawing.Size(100, 20);
             this.Weight.TabIndex = 37;
             // 
             // DeleteModel
             // 
-            this.DeleteModel.Location = new System.Drawing.Point(211, 196);
+            this.DeleteModel.Location = new System.Drawing.Point(208, 223);
             this.DeleteModel.Name = "DeleteModel";
             this.DeleteModel.Size = new System.Drawing.Size(75, 23);
             this.DeleteModel.TabIndex = 35;
@@ -322,7 +329,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 137);
+            this.label6.Location = new System.Drawing.Point(4, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 34;
@@ -330,7 +337,7 @@
             // 
             // UpdateModel
             // 
-            this.UpdateModel.Location = new System.Drawing.Point(105, 196);
+            this.UpdateModel.Location = new System.Drawing.Point(102, 223);
             this.UpdateModel.Name = "UpdateModel";
             this.UpdateModel.Size = new System.Drawing.Size(84, 23);
             this.UpdateModel.TabIndex = 33;
@@ -349,7 +356,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(120, 137);
+            this.label4.Location = new System.Drawing.Point(117, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 31;
@@ -358,7 +365,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 60);
+            this.label3.Location = new System.Drawing.Point(3, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(24, 13);
             this.label3.TabIndex = 30;
@@ -367,7 +374,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 24);
+            this.label2.Location = new System.Drawing.Point(3, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 29;
@@ -375,21 +382,21 @@
             // 
             // ModelPrice
             // 
-            this.ModelPrice.Location = new System.Drawing.Point(7, 76);
+            this.ModelPrice.Location = new System.Drawing.Point(4, 103);
             this.ModelPrice.Name = "ModelPrice";
             this.ModelPrice.Size = new System.Drawing.Size(100, 20);
             this.ModelPrice.TabIndex = 27;
             // 
             // ModelName
             // 
-            this.ModelName.Location = new System.Drawing.Point(6, 39);
+            this.ModelName.Location = new System.Drawing.Point(3, 66);
             this.ModelName.Name = "ModelName";
             this.ModelName.Size = new System.Drawing.Size(100, 20);
             this.ModelName.TabIndex = 26;
             // 
             // CreateModel
             // 
-            this.CreateModel.Location = new System.Drawing.Point(9, 196);
+            this.CreateModel.Location = new System.Drawing.Point(6, 223);
             this.CreateModel.Name = "CreateModel";
             this.CreateModel.Size = new System.Drawing.Size(75, 23);
             this.CreateModel.TabIndex = 24;
@@ -529,6 +536,32 @@
             this.AccModelView.TabIndex = 43;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick);
             // 
+            // ModelID
+            // 
+            this.ModelID.Location = new System.Drawing.Point(3, 28);
+            this.ModelID.Name = "ModelID";
+            this.ModelID.Size = new System.Drawing.Size(100, 20);
+            this.ModelID.TabIndex = 43;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 13);
+            this.label16.TabIndex = 44;
+            this.label16.Text = "ModelID";
+            // 
+            // GetModel
+            // 
+            this.GetModel.Location = new System.Drawing.Point(111, 26);
+            this.GetModel.Name = "GetModel";
+            this.GetModel.Size = new System.Drawing.Size(75, 23);
+            this.GetModel.TabIndex = 45;
+            this.GetModel.Text = "Hent model";
+            this.GetModel.UseVisualStyleBackColor = true;
+            this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
+            // 
             // Resource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,11 +632,14 @@
         private System.Windows.Forms.Button AddAccesories;
         private System.Windows.Forms.DataGridView AddAcc;
         private System.Windows.Forms.TextBox AccModel;
-        private System.Windows.Forms.TextBox modelID;
+        private System.Windows.Forms.TextBox ResourceModelID;
         private System.Windows.Forms.ComboBox AccSub;
         private System.Windows.Forms.ComboBox AccMain;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox AddAccModel;
+        private System.Windows.Forms.TextBox ModelID;
+        private System.Windows.Forms.Button GetModel;
+        private System.Windows.Forms.Label label16;
     }
 }
