@@ -117,6 +117,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowStockModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowStockModel.Designer.cs">
+      <DependentUpon>ShowStockModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelectFromTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="Resource.resx">
       <DependentUpon>Resource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowStockModel.resx">
+      <DependentUpon>ShowStockModel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>

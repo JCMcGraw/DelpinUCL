@@ -48,6 +48,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.CreateRessource = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.GetModel = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ModelID = new System.Windows.Forms.TextBox();
             this.ModelGridView = new System.Windows.Forms.DataGridView();
             this.ComboModelSub = new System.Windows.Forms.ComboBox();
             this.ComboModelMain = new System.Windows.Forms.ComboBox();
@@ -76,9 +79,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
-            this.ModelID = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.GetModel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -271,6 +271,32 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // GetModel
+            // 
+            this.GetModel.Location = new System.Drawing.Point(111, 26);
+            this.GetModel.Name = "GetModel";
+            this.GetModel.Size = new System.Drawing.Size(75, 23);
+            this.GetModel.TabIndex = 45;
+            this.GetModel.Text = "Hent model";
+            this.GetModel.UseVisualStyleBackColor = true;
+            this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 13);
+            this.label16.TabIndex = 44;
+            this.label16.Text = "ModelID";
+            // 
+            // ModelID
+            // 
+            this.ModelID.Location = new System.Drawing.Point(3, 28);
+            this.ModelID.Name = "ModelID";
+            this.ModelID.Size = new System.Drawing.Size(100, 20);
+            this.ModelID.TabIndex = 43;
+            // 
             // ModelGridView
             // 
             this.ModelGridView.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -281,6 +307,7 @@
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
             this.ModelGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellClick);
+            this.ModelGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ModelGridView_CellMouseDoubleClick);
             // 
             // ComboModelSub
             // 
@@ -431,18 +458,18 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(6, 277);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 13);
+            this.label15.Size = new System.Drawing.Size(80, 13);
             this.label15.TabIndex = 62;
-            this.label15.Text = "Vælg tilbehør";
+            this.label15.Text = "Vælg tilbehørID";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(9, 129);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.Size = new System.Drawing.Size(100, 13);
             this.label14.TabIndex = 61;
-            this.label14.Text = "Vælg model";
+            this.label14.Text = "Vælg modelnummer";
             // 
             // AddAccModel
             // 
@@ -535,32 +562,6 @@
             this.AccModelView.Size = new System.Drawing.Size(447, 125);
             this.AccModelView.TabIndex = 43;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick);
-            // 
-            // ModelID
-            // 
-            this.ModelID.Location = new System.Drawing.Point(3, 28);
-            this.ModelID.Name = "ModelID";
-            this.ModelID.Size = new System.Drawing.Size(100, 20);
-            this.ModelID.TabIndex = 43;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 44;
-            this.label16.Text = "ModelID";
-            // 
-            // GetModel
-            // 
-            this.GetModel.Location = new System.Drawing.Point(111, 26);
-            this.GetModel.Name = "GetModel";
-            this.GetModel.Size = new System.Drawing.Size(75, 23);
-            this.GetModel.TabIndex = 45;
-            this.GetModel.Text = "Hent model";
-            this.GetModel.UseVisualStyleBackColor = true;
-            this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
             // 
             // Resource
             // 

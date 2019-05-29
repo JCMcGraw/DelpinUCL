@@ -293,6 +293,21 @@ namespace DelpinUI
             //phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
             //emailText.Text = (string)dataTable.Rows[0]["E-mail"];
         }
+
+        private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //if (e.RowIndex > -1)
+            //{
+            //    ShowStockModel
+            //        .Rows[e.RowIndex].Selected = true;
+
+            //    int modelID = Convert.ToInt32(ViewModelAva.Rows[e.RowIndex].Cells["ModelID"].Value);
+
+
+
+            //    ReadAccessoriesToComboBox(modelID);
+            //}
+        }
     }
 }
 
