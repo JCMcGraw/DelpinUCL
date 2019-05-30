@@ -57,9 +57,9 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
-            ComboModelMain.DataSource = dataTableMainGroup;
-            ComboModelMain.DisplayMember = "Category";
-            ComboModelMain.ValueMember = "MainGroupID";
+            //ComboModelMain.DataSource = dataTableMainGroup;
+            //ComboModelMain.DisplayMember = "Category";
+            //ComboModelMain.ValueMember = "MainGroupID";
 
 
             ComboModelSub.DataSource = dataTableSubGroup;
@@ -107,7 +107,7 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+                //dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
                 ComboModelSub.DataSource = dv.ToTable();
                 ComboModelSub.DisplayMember = "Category";
@@ -186,7 +186,7 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+                //dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
                 ComboModelSub.DataSource = dv.ToTable();
                 ComboModelSub.DisplayMember = "Category";
@@ -286,12 +286,10 @@ namespace DelpinUI
             DataTable dataTable = controller.SelectSpecificModel(Convert.ToInt32(ModelID.Text));
 
 
-            ModelName.Text = (string)dataTable.Rows[0]["Modelname"];
-            //ModelPrice.Text = (string)dataTable.Rows[0]["Pris"];
-            //Weight.Text = dataTable.Rows[0]["Vægt"]toString();
-            //ComboModelSub = dataTable.Rows[0]["Undergruppe"].ToString();
-            //phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
-            //emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+            ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
+            ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
+            Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
+            //ComboModelSub.ValueMember = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -307,6 +305,36 @@ namespace DelpinUI
 
                 //ReadAccessoriesToComboBox(modelID);
             }
+        }
+
+        private void UpdateModel_Click(object sender, EventArgs e)
+        {
+            CreateModel.Visible = false;
+            
+        }
+
+        private void AccModelView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AccModel.Text = AccModelView.CurrentCell.Value.ToString();
+        }
+
+        private void AccModelView_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            AccModel.Text = AccModelView.CurrentCell.Value.ToString();
+        }
+
+        private void SaveModel_Click(object sender, EventArgs e)
+        {
+            string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+            MessageBox.Show(succes);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+            MessageBox.Show(succes);
         }
     }
 }

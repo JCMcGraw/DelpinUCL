@@ -13,7 +13,21 @@ namespace DelpinUI
         {
             InitializeComponent();
             updateDatagridView();
+
         }
+       
+
+        //public static void CancelDelete()
+        //{
+        //    const string message = "Er du sikker på du vil slette brugeren?";
+        //    const string caption = "Annuller";
+        //    var result = MessageBox.Show(message, caption,
+        //                                 MessageBoxButtons.YesNo,
+        //                                 MessageBoxIcon.Question);
+
+        //    if (result == DialogResult.Yes)
+                
+        //}
         //update table
         private void ClearTextBox()
         {
@@ -63,11 +77,11 @@ namespace DelpinUI
             }
             else
             {
-                cprText.Visible = true;
-                cprLabel.Visible = true;
-                BnameLabel.Visible = false;
-                BnameText.Visible = false;
-                CreateDeb.Visible = true;
+                //cprText.Visible = true;
+                //cprLabel.Visible = true;
+                //BnameLabel.Visible = false;
+                //BnameText.Visible = false;
+                //CreateDeb.Visible = true;
                 //PfnameLabel.Visible = true;
                 //PfnameText.Visible = true;
                 //PlnameLabel.Visible = true;
@@ -186,6 +200,8 @@ namespace DelpinUI
             }
             if (radioButton2.Checked)
             {
+                
+
                 DataTable dataTable = controller.SelectSpecificPersonal(cprText.Text);
 
 
@@ -263,9 +279,25 @@ namespace DelpinUI
             //indsæt slet debtor metode
             if (radioButton1.Checked)
             {
-                string Success = controller.DeleteBusinessDebter(cvrText.Text);
-                MessageBox.Show(Success);
-                ClearTextBox();
+                //CancelDelete();
+                const string message = "Er du sikker på du vil slette Kunden?";
+                const string caption = "Annuller";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string Success = controller.DeleteBusinessDebter(cvrText.Text);
+                    MessageBox.Show(Success);
+                    ClearTextBox();
+                }
+                else
+                {
+                    
+                }
+
+                
             }
             if (radioButton2.Checked)
             {

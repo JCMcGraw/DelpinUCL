@@ -482,7 +482,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 450);
-            this.Controls.Add(this.DeleteDebtor);
             this.Controls.Add(this.GetBdeb);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -495,7 +494,6 @@
             this.Controls.Add(this.emailText);
             this.Controls.Add(this.phoneText);
             this.Controls.Add(this.postalcodeText);
-            this.Controls.Add(this.city);
             this.Controls.Add(this.adressText);
             this.Controls.Add(this.CvrLabel);
             this.Controls.Add(this.cprLabel);
@@ -506,11 +504,13 @@
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.ViewDeb);
-            this.Controls.Add(this.CancelUpdate);
             this.Controls.Add(this.UpdateDebtor);
-            this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.SaveDebtor);
             this.Controls.Add(this.cvrText);
+            this.Controls.Add(this.CancelUpdate);
+            this.Controls.Add(this.DeleteDebtor);
+            this.Controls.Add(this.CreateDeb);
+            this.Controls.Add(this.city);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);

@@ -32,7 +32,9 @@ namespace DelpinCore
 
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
-            string updateModel = $"update Model set ModelID={modelID}',ModelName='{modelName}',Price='{price}',SubGroupID='{subGroupID}',{weightKG}";
+            string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +
+                $",SubGroupID='{subGroupID}',{weightKG} where ModelID ={modelID}";  
+                                
 
             string isUpdateModel = DatabaseManager.CreateUpdateDeleteInDatabase(updateModel);
             if (isUpdateModel != "Success")
