@@ -197,7 +197,7 @@ namespace DelpinCore
                 $"         Debtor Inner Join " +
                 $"         Personal On Personal.CPR = Debtor.DebtorID) As AllDebtors On AllDebtors.KundeID = Lease.DebtorID " +
                 $"Where " +
-                $"    LeaseOrder.StartDate Between GetDate() And DateAdd(DAY, {daysInFuture}, GetDate()) " +
+                $"    LeaseOrder.StartDate Between DateAdd(DAY, -1, GetDate()) And DateAdd(DAY, {daysInFuture}, GetDate()) " +
                 $"    and Lease.BranchID = {branchID} " +
                 $"Group By Lease.LeaseID, AllDebtors.Navn, LeaseOrder.StartDate " +
                 $"Order By LeaseOrder.StartDate";

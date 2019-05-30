@@ -73,8 +73,9 @@ namespace DelpinCore
                 string deliveryStreet = dataRow["DeliveryStreet"].ToString();
                 int deliveryPostalCode = Convert.ToInt32(dataRow["DeliveryPostalCode"]);
                 string deliveryCity = dataRow["DeliveryCity"].ToString();
+                decimal deliveryPrice = Convert.ToDecimal(dataRow["DeliveryPrice"]);
 
-                leaseOrder.SetDeliveryAddress(deliveryStreet, deliveryPostalCode, deliveryCity);
+                leaseOrder.SetDeliveryAddress(deliveryStreet, deliveryPostalCode, deliveryCity, deliveryPrice);
                 leaseOrder.SetModelName(dataRow["ModelName"].ToString());
                 
                 lease.AddLeaseOrder(leaseOrder);
@@ -136,7 +137,7 @@ namespace DelpinCore
         //create insertstring for leaseorders
         private string GetLeaseOrderInsertString(Lease lease)
         {
-            string insertLeaseOrder = $"insert into LeaseOrder (StartDate, EndDate, LeasePrice, ResourcesID, LeaseID, DeliveryStreet, DeliveryPostalCode, DeliveryCity)\nvalues\n";
+            string insertLeaseOrder = $"insert into LeaseOrder (StartDate, EndDate, LeasePrice, ResourcesID, LeaseID, DeliveryStreet, DeliveryPostalCode, DeliveryCity, DeliveryPrice)\nvalues\n";
 
             for (int i = 0; i < lease.GetLeaseOrders().Count; i++)
             {
@@ -146,7 +147,7 @@ namespace DelpinCore
                     insertLeaseOrder += ", ";
                 }
                 insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
-                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalCode}, '{lo.deliveryCity}')";
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalCode}, '{lo.deliveryCity}', {lo.deliveryPrice})";
             }
             return insertLeaseOrder;
         }

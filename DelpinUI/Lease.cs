@@ -278,6 +278,7 @@ namespace DelpinUI
                 DateTime deliveryDate = Convert.ToDateTime(row.Cells["Leveringsdato"].Value.ToString());
                 DateTime returnDate = Convert.ToDateTime(row.Cells["Slutdato"].Value.ToString());
                 decimal price = Convert.ToDecimal(row.Cells["Dagspris"].Value.ToString());
+                decimal deliveryPrice = Convert.ToDecimal(row.Cells["Levering"].Value.ToString());
 
                 string deliveryAddrress = row.Cells["Gade"].Value.ToString();
 
@@ -290,7 +291,7 @@ namespace DelpinUI
                 string deliveryCity = row.Cells["By"].Value.ToString();
 
                 LeaseOrder leaseOrder = new LeaseOrder(deliveryDate, returnDate, price, resouceID);
-                leaseOrder.SetDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity);
+                leaseOrder.SetDeliveryAddress(deliveryAddrress, deliveryPostCode, deliveryCity, deliveryPrice);
                 lease.SetStatus("Åben");
 
                 lease.AddLeaseOrder(leaseOrder);

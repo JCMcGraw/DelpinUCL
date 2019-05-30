@@ -29,11 +29,12 @@ namespace DelpinCore
             this.resourceID = resourceID;
         }
 
-        public void SetDeliveryAddress(string deliveryStreet, int deliveryPostalCode, string deliveryCity)
+        public void SetDeliveryAddress(string deliveryStreet, int deliveryPostalCode, string deliveryCity, decimal deliveryPrice)
         {
             this.deliveryStreet = deliveryStreet;
             this.deliveryPostalCode = deliveryPostalCode;
             this.deliveryCity = deliveryCity;
+            this.deliveryPrice = deliveryPrice;
         }
 
         public void SetLeaseOrderID(int leaseOrderID)

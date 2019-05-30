@@ -138,9 +138,8 @@
             this.ordersForDeliveryLabel.AutoSize = true;
             this.ordersForDeliveryLabel.Location = new System.Drawing.Point(184, 270);
             this.ordersForDeliveryLabel.Name = "ordersForDeliveryLabel";
-            this.ordersForDeliveryLabel.Size = new System.Drawing.Size(17, 13);
+            this.ordersForDeliveryLabel.Size = new System.Drawing.Size(0, 13);
             this.ordersForDeliveryLabel.TabIndex = 9;
-            this.ordersForDeliveryLabel.Text = "\"\"";
             // 
             // saveBranch
             // 
