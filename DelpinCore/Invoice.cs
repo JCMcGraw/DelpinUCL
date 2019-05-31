@@ -169,11 +169,6 @@ namespace DelpinCore
                 new XRect(80, -100, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            //Ialt før Moms ------------------------------------------------------------------------------------------------------------------------------
-            gfx.DrawString($"leasePrice + leasePrice ", priceFat, XBrushes.Black,
-                new XRect(-60, -85, page.Width, page.Height),
-                XStringFormats.CenterRight);
-
             //Netto Moms Total + penge + Streg------------------------------------------------------------------------------------------------------------
             gfx.DrawString("Netto: ", companyAndDebtor, XBrushes.Black,
                new XRect(400, -20, page.Width, page.Height),
