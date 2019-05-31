@@ -57,14 +57,18 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
+            ComboModelSub.DataSource = dataTableSubGroup;
+            ComboModelSub.DisplayMember = "Category";
+            ComboModelSub.ValueMember = "SubGroupID";
+
+
+
             ComboModelMain.DataSource = dataTableMainGroup;
             ComboModelMain.DisplayMember = "Category";
             ComboModelMain.ValueMember = "MainGroupID";
 
 
-            ComboModelSub.DataSource = dataTableSubGroup;
-            ComboModelSub.DisplayMember = "Category";
-            ComboModelSub.ValueMember = "SubGroupID";
+            
 
 
             AccMain.DataSource = dataTableMainGroup;
@@ -313,7 +317,7 @@ namespace DelpinUI
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
             Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
-            ComboModelSub.ValueMember = dataTable.Rows[0]["Undergruppe"].ToString();
+            ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
