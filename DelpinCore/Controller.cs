@@ -324,5 +324,11 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
             return dataTable;
         }
+
+        public DataTable DisplaySpecificResources(int resourceID)
+        {
+            DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
+            return dataTable;
+        }
     }
 }
