@@ -14,7 +14,7 @@ namespace DelpinCore
         public string companyName { get; private set; }
 
         //Constructor Who has parameters from Base constructor in Debtor Class, + Business's own Variabels
-        public Business(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR,string companyName) :base (debtorID,street,postalCode,city,phone,email)
+        public Business(string debtorID, string street, int postalCode, string city, string phone, string email,string companyName) :base (debtorID,street,postalCode,city,phone,email)
         {
             this.CVR = CVR;
             this.companyName = companyName;
