@@ -153,9 +153,12 @@ namespace DelpinCore
 
             return dataTable;
         }
-        public DataTable DisplaySpecificModel(int ModelID)
+        public DataTable DisplaySpecificModel(int modelID)
         {
-            string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroupID as Undergruppe, weightKg as Vægt from Model where ModelID = '{ModelID}'";
+            string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
++$" join SubGroup on subgroup.SubGroupID = model.ModelID"
+ +$"join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
+  +$"where ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
