@@ -37,19 +37,22 @@
             this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.ResourceModelID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ResourceIDLabel = new System.Windows.Forms.Label();
             this.ressourceID = new System.Windows.Forms.TextBox();
             this.resourceGridView = new System.Windows.Forms.DataGridView();
             this.branchID = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.BranchLabel = new System.Windows.Forms.Label();
             this.DeleteRessource = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
+            this.ModelIDLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.CreateRessource = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ComboModelMain = new System.Windows.Forms.ComboBox();
             this.GetModel = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
+            this.ModelIDLbl = new System.Windows.Forms.Label();
             this.ModelID = new System.Windows.Forms.TextBox();
             this.ModelGridView = new System.Windows.Forms.DataGridView();
             this.ComboModelSub = new System.Windows.Forms.ComboBox();
@@ -64,6 +67,7 @@
             this.ModelPrice = new System.Windows.Forms.TextBox();
             this.ModelName = new System.Windows.Forms.TextBox();
             this.CreateModel = new System.Windows.Forms.Button();
+            this.SaveModel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -77,8 +81,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
-            this.SaveModel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.UpdateAcc = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.GetAcc = new System.Windows.Forms.Button();
+            this.AccID = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ShowAllAcc = new System.Windows.Forms.DataGridView();
+            this.AddAccMain = new System.Windows.Forms.ComboBox();
+            this.AddAccSub = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -91,6 +107,8 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).BeginInit();
             this.SuspendLayout();
             // 
             // subGroupBindingSource
@@ -128,6 +146,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -138,13 +157,13 @@
             // 
             this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.ResourceModelID);
-            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.ResourceIDLabel);
             this.tabPage3.Controls.Add(this.ressourceID);
             this.tabPage3.Controls.Add(this.resourceGridView);
             this.tabPage3.Controls.Add(this.branchID);
-            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.BranchLabel);
             this.tabPage3.Controls.Add(this.DeleteRessource);
-            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.ModelIDLabel);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.CreateRessource);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -155,6 +174,16 @@
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(139, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 23);
+            this.button1.TabIndex = 65;
+            this.button1.Text = "Hent Resurse";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ResourceModelID
             // 
             this.ResourceModelID.Location = new System.Drawing.Point(17, 73);
@@ -162,14 +191,14 @@
             this.ResourceModelID.Size = new System.Drawing.Size(100, 20);
             this.ResourceModelID.TabIndex = 64;
             // 
-            // label1
+            // ResourceIDLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "ResurseID";
+            this.ResourceIDLabel.AutoSize = true;
+            this.ResourceIDLabel.Location = new System.Drawing.Point(17, 14);
+            this.ResourceIDLabel.Name = "ResourceIDLabel";
+            this.ResourceIDLabel.Size = new System.Drawing.Size(57, 13);
+            this.ResourceIDLabel.TabIndex = 63;
+            this.ResourceIDLabel.Text = "ResurseID";
             // 
             // ressourceID
             // 
@@ -196,14 +225,14 @@
             this.branchID.Size = new System.Drawing.Size(121, 21);
             this.branchID.TabIndex = 60;
             // 
-            // label11
+            // BranchLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 103);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 13);
-            this.label11.TabIndex = 55;
-            this.label11.Text = "Afdeling";
+            this.BranchLabel.AutoSize = true;
+            this.BranchLabel.Location = new System.Drawing.Point(17, 103);
+            this.BranchLabel.Name = "BranchLabel";
+            this.BranchLabel.Size = new System.Drawing.Size(45, 13);
+            this.BranchLabel.TabIndex = 55;
+            this.BranchLabel.Text = "Afdeling";
             // 
             // DeleteRessource
             // 
@@ -215,14 +244,14 @@
             this.DeleteRessource.UseVisualStyleBackColor = true;
             this.DeleteRessource.Click += new System.EventHandler(this.DeleteRessource_Click);
             // 
-            // label12
+            // ModelIDLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 56);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 13);
-            this.label12.TabIndex = 53;
-            this.label12.Text = "ModelID";
+            this.ModelIDLabel.AutoSize = true;
+            this.ModelIDLabel.Location = new System.Drawing.Point(17, 56);
+            this.ModelIDLabel.Name = "ModelIDLabel";
+            this.ModelIDLabel.Size = new System.Drawing.Size(47, 13);
+            this.ModelIDLabel.TabIndex = 53;
+            this.ModelIDLabel.Text = "ModelID";
             // 
             // label13
             // 
@@ -245,8 +274,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.ComboModelMain);
             this.tabPage1.Controls.Add(this.GetModel);
-            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.ModelIDLbl);
             this.tabPage1.Controls.Add(this.ModelID);
             this.tabPage1.Controls.Add(this.ModelGridView);
             this.tabPage1.Controls.Add(this.ComboModelSub);
@@ -271,6 +302,24 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 166);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Hovedgruppe";
+            // 
+            // ComboModelMain
+            // 
+            this.ComboModelMain.FormattingEnabled = true;
+            this.ComboModelMain.Location = new System.Drawing.Point(6, 182);
+            this.ComboModelMain.Name = "ComboModelMain";
+            this.ComboModelMain.Size = new System.Drawing.Size(121, 21);
+            this.ComboModelMain.TabIndex = 47;
+            this.ComboModelMain.SelectedIndexChanged += new System.EventHandler(this.ComboModelMain_SelectedIndexChanged);
+            // 
             // GetModel
             // 
             this.GetModel.Location = new System.Drawing.Point(111, 26);
@@ -281,14 +330,14 @@
             this.GetModel.UseVisualStyleBackColor = true;
             this.GetModel.Click += new System.EventHandler(this.GetModel_Click);
             // 
-            // label16
+            // ModelIDLbl
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(47, 13);
-            this.label16.TabIndex = 44;
-            this.label16.Text = "ModelID";
+            this.ModelIDLbl.AutoSize = true;
+            this.ModelIDLbl.Location = new System.Drawing.Point(6, 7);
+            this.ModelIDLbl.Name = "ModelIDLbl";
+            this.ModelIDLbl.Size = new System.Drawing.Size(47, 13);
+            this.ModelIDLbl.TabIndex = 44;
+            this.ModelIDLbl.Text = "ModelID";
             // 
             // ModelID
             // 
@@ -312,12 +361,11 @@
             // ComboModelSub
             // 
             this.ComboModelSub.FormattingEnabled = true;
-            this.ComboModelSub.Location = new System.Drawing.Point(3, 180);
+            this.ComboModelSub.Location = new System.Drawing.Point(133, 182);
             this.ComboModelSub.Name = "ComboModelSub";
             this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
             this.ComboModelSub.TabIndex = 40;
-            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubGroup_SelectedIndexChanged_1);
-            this.ComboModelSub.Click += new System.EventHandler(this.comboBoxSubGroup_SelectedIndexChanged_1);
+            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -343,6 +391,7 @@
             this.DeleteModel.TabIndex = 35;
             this.DeleteModel.Text = "Slet model";
             this.DeleteModel.UseVisualStyleBackColor = true;
+            this.DeleteModel.Click += new System.EventHandler(this.DeleteModel_Click);
             // 
             // UpdateModel
             // 
@@ -366,7 +415,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(0, 164);
+            this.label4.Location = new System.Drawing.Point(130, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 31;
@@ -414,8 +463,22 @@
             this.CreateModel.UseVisualStyleBackColor = true;
             this.CreateModel.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // SaveModel
+            // 
+            this.SaveModel.Location = new System.Drawing.Point(7, 223);
+            this.SaveModel.Name = "SaveModel";
+            this.SaveModel.Size = new System.Drawing.Size(75, 23);
+            this.SaveModel.TabIndex = 46;
+            this.SaveModel.Text = "Gem model";
+            this.SaveModel.UseVisualStyleBackColor = true;
+            this.SaveModel.Click += new System.EventHandler(this.SaveModel_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.AddAccSub);
+            this.tabPage2.Controls.Add(this.AddAccMain);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.AddAccModel);
@@ -439,7 +502,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 277);
+            this.label15.Location = new System.Drawing.Point(6, 234);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(80, 13);
             this.label15.TabIndex = 62;
@@ -456,7 +519,7 @@
             // 
             // AddAccModel
             // 
-            this.AddAccModel.Location = new System.Drawing.Point(6, 296);
+            this.AddAccModel.Location = new System.Drawing.Point(6, 250);
             this.AddAccModel.Name = "AddAccModel";
             this.AddAccModel.Size = new System.Drawing.Size(100, 20);
             this.AddAccModel.TabIndex = 60;
@@ -468,7 +531,7 @@
             this.AccSub.Name = "AccSub";
             this.AccSub.Size = new System.Drawing.Size(98, 21);
             this.AccSub.TabIndex = 59;
-            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged);
+            this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged_1);
             // 
             // AccMain
             // 
@@ -537,31 +600,142 @@
             // 
             // AccModelView
             // 
-            this.AccModelView.Location = new System.Drawing.Point(404, 18);
+            this.AccModelView.Location = new System.Drawing.Point(306, 30);
             this.AccModelView.Name = "AccModelView";
-            this.AccModelView.Size = new System.Drawing.Size(349, 150);
+            this.AccModelView.Size = new System.Drawing.Size(447, 150);
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
             // 
-            // SaveModel
+            // tabPage4
             // 
-            this.SaveModel.Location = new System.Drawing.Point(7, 223);
-            this.SaveModel.Name = "SaveModel";
-            this.SaveModel.Size = new System.Drawing.Size(75, 23);
-            this.SaveModel.TabIndex = 46;
-            this.SaveModel.Text = "Gem model";
-            this.SaveModel.UseVisualStyleBackColor = true;
-            this.SaveModel.Click += new System.EventHandler(this.SaveModel_Click);
+            this.tabPage4.Controls.Add(this.UpdateAcc);
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.textBox3);
+            this.tabPage4.Controls.Add(this.GetAcc);
+            this.tabPage4.Controls.Add(this.AccID);
+            this.tabPage4.Controls.Add(this.textBox2);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.ShowAllAcc);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(921, 398);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Ret tilbehør";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // UpdateAcc
             // 
-            this.button1.Location = new System.Drawing.Point(139, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 65;
-            this.button1.Text = "Hent Resurse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.UpdateAcc.Location = new System.Drawing.Point(16, 191);
+            this.UpdateAcc.Name = "UpdateAcc";
+            this.UpdateAcc.Size = new System.Drawing.Size(75, 23);
+            this.UpdateAcc.TabIndex = 8;
+            this.UpdateAcc.Text = "Ret tilbehør";
+            this.UpdateAcc.UseVisualStyleBackColor = true;
+            this.UpdateAcc.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(19, 130);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(67, 13);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "AccessoryID";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 87);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "ModelID";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(16, 146);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 5;
+            // 
+            // GetAcc
+            // 
+            this.GetAcc.Location = new System.Drawing.Point(134, 52);
+            this.GetAcc.Name = "GetAcc";
+            this.GetAcc.Size = new System.Drawing.Size(75, 23);
+            this.GetAcc.TabIndex = 4;
+            this.GetAcc.Text = "Hent tilbehør";
+            this.GetAcc.UseVisualStyleBackColor = true;
+            this.GetAcc.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // AccID
+            // 
+            this.AccID.AutoSize = true;
+            this.AccID.Location = new System.Drawing.Point(16, 32);
+            this.AccID.Name = "AccID";
+            this.AccID.Size = new System.Drawing.Size(87, 13);
+            this.AccID.TabIndex = 3;
+            this.AccID.Text = "Tilbehørsnummer";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(16, 103);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 2;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // ShowAllAcc
+            // 
+            this.ShowAllAcc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShowAllAcc.Location = new System.Drawing.Point(303, 32);
+            this.ShowAllAcc.Name = "ShowAllAcc";
+            this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
+            this.ShowAllAcc.TabIndex = 0;
+            // 
+            // AddAccMain
+            // 
+            this.AddAccMain.FormattingEnabled = true;
+            this.AddAccMain.Location = new System.Drawing.Point(6, 294);
+            this.AddAccMain.Name = "AddAccMain";
+            this.AddAccMain.Size = new System.Drawing.Size(121, 21);
+            this.AddAccMain.TabIndex = 64;
+            this.AddAccMain.SelectedIndexChanged += new System.EventHandler(this.AddAccMain_SelectedIndexChanged);
+            // 
+            // AddAccSub
+            // 
+            this.AddAccSub.FormattingEnabled = true;
+            this.AddAccSub.Location = new System.Drawing.Point(133, 294);
+            this.AddAccSub.Name = "AddAccSub";
+            this.AddAccSub.Size = new System.Drawing.Size(121, 21);
+            this.AddAccSub.TabIndex = 65;
+            this.AddAccSub.SelectedIndexChanged += new System.EventHandler(this.AddAccSub_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 278);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 67;
+            this.label11.Text = "Hovedkategori";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(130, 278);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 66;
+            this.label12.Text = "Undergruppe";
             // 
             // Resource
             // 
@@ -587,6 +761,9 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -608,13 +785,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView AccModelView;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ResourceIDLabel;
         private System.Windows.Forms.TextBox ressourceID;
         private System.Windows.Forms.DataGridView resourceGridView;
         private System.Windows.Forms.ComboBox branchID;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label BranchLabel;
         private System.Windows.Forms.Button DeleteRessource;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label ModelIDLabel;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button CreateRessource;
         private System.Windows.Forms.Button DeleteModel;
@@ -639,8 +816,24 @@
         private System.Windows.Forms.TextBox AddAccModel;
         private System.Windows.Forms.TextBox ModelID;
         private System.Windows.Forms.Button GetModel;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label ModelIDLbl;
         private System.Windows.Forms.Button SaveModel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button GetAcc;
+        private System.Windows.Forms.Label AccID;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView ShowAllAcc;
+        private System.Windows.Forms.Button UpdateAcc;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox ComboModelMain;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox AddAccSub;
+        private System.Windows.Forms.ComboBox AddAccMain;
     }
 }

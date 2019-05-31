@@ -29,7 +29,7 @@ namespace DelpinUI
                 string ModelID = ModelGridView.SelectedRows[0].Cells[0].Value + string.Empty;
                 string ModelName = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
                 string Price = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
-                
+
 
                 //this.ModelID.Text = ModelID;
                 this.ModelName.Text = ModelName;
@@ -46,7 +46,7 @@ namespace DelpinUI
             // TODO: This line of code loads data into the 'dataSet3.SubGroup' table. You can move, or remove it, as needed.
             this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
 
-            
+
 
         }
 
@@ -57,9 +57,9 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
-            //ComboModelMain.DataSource = dataTableMainGroup;
-            //ComboModelMain.DisplayMember = "Category";
-            //ComboModelMain.ValueMember = "MainGroupID";
+            ComboModelMain.DataSource = dataTableMainGroup;
+            ComboModelMain.DisplayMember = "Category";
+            ComboModelMain.ValueMember = "MainGroupID";
 
 
             ComboModelSub.DataSource = dataTableSubGroup;
@@ -96,9 +96,9 @@ namespace DelpinUI
             AccModelView.DataSource = dataTableAccModel;
 
             DataTable dataTableAddAccModel = controller.DisplayAccModel();
-           
+
             AddAcc.DataSource = dataTableAddAccModel;
-            //AddAcc.DataSource = dataTableModel;
+            AddAcc.DataSource = dataTableModel;
         }
 
 
@@ -107,7 +107,7 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                //dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
                 ComboModelSub.DataSource = dv.ToTable();
                 ComboModelSub.DisplayMember = "Category";
@@ -136,31 +136,31 @@ namespace DelpinUI
 
         }
 
-       
 
-        
+
+
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
 
-       
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
+
 
             string sub;
             sub = ComboModelSub.ValueMember;
 
-            string succes = controller.CreateModel(ModelName.Text,Convert.ToInt32(ModelPrice.Text),
+            string succes = controller.CreateModel(ModelName.Text, Convert.ToInt32(ModelPrice.Text),
                 Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToInt32(Weight.Text));
             MessageBox.Show(succes);
         }
 
-      
-        
+
+
         private void AddAccesories_Click(object sender, EventArgs e)
         {
             //string addM = AccModelView.SelectedCells[1].ToString();
@@ -176,7 +176,7 @@ namespace DelpinUI
         }
 
         private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
-        
+
         {
 
         }
@@ -186,7 +186,7 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                //dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
                 ComboModelSub.DataSource = dv.ToTable();
                 ComboModelSub.DisplayMember = "Category";
@@ -199,12 +199,16 @@ namespace DelpinUI
         {
             try
             {
-                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(ComboModelSub.SelectedValue));
-                ModelGridView.DataSource = dataTable;
+                DataView dv = new DataView(dataTableSubGroup);
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+
+                ComboModelSub.DataSource = dv.ToTable();
+                ComboModelSub.DisplayMember = "Category";
+                ComboModelSub.ValueMember = "SubGroupID";
             }
             catch { }
-            }
-
+        }
+    
       
         private void CreateRessource_Click(object sender, EventArgs e)
         {
@@ -233,8 +237,23 @@ namespace DelpinUI
 
         private void DeleteRessource_Click(object sender, EventArgs e)
         {
-            string succes = controller.DeleteResource(Convert.ToInt32(ressourceID.Text));
-            MessageBox.Show(succes);
+            const string message = "Er du sikker på du vil slette Resursen?";
+            const string caption = "Annuller";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string succes = controller.DeleteResource(Convert.ToInt32(ressourceID.Text));
+                MessageBox.Show(succes);
+                
+            }
+            else
+            {
+
+            }
+            
         }
 
         private void AccMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,6 +354,79 @@ namespace DelpinUI
             string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
                 Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             MessageBox.Show(succes);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboModelMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dataTableSubGroup);
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+
+
+                ComboModelSub.DataSource = dv.ToTable();
+                ComboModelSub.DisplayMember = "Category";
+                ComboModelSub.ValueMember = "SubGroupID";
+            }
+            catch { }
+
+        }
+
+        private void AddAccMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dataTableSubGroup);
+                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+
+
+                AddAccSub.DataSource = dv.ToTable();
+                AddAccSub.DisplayMember = "Category";
+                AddAccSub.ValueMember = "SubGroupID";
+            }
+            catch { }
+        }
+
+        private void AddAccSub_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(AddAccSub.SelectedValue));
+                AddAcc.DataSource = dataTable;
+            }
+            catch { }
+
+        }
+
+        private void DeleteModel_Click(object sender, EventArgs e)
+        {
+            const string message = "Er du sikker på du vil slette Modellen?";
+            const string caption = "Annuller";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string succes = controller.DeleteModel(Convert.ToInt32(ModelID.Text));
+                MessageBox.Show(succes);
+
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

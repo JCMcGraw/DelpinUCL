@@ -16,7 +16,7 @@ namespace DelpinUI
 
         }
        
-
+        
         //public static void CancelDelete()
         //{
         //    const string message = "Er du sikker på du vil slette brugeren?";
@@ -147,15 +147,46 @@ namespace DelpinUI
         {
             if (radioButton1.Checked)
             {
-                string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
+               
+                if(Utility.CheckForValidCVRNumber(cvrText.Text) == false)
+                    {
+                    MessageBox.Show("Ugyldigt CVR-nummer");
+                    return;
+                    
+
+                    }
+                if (Utility.CheckForValidEmail(emailText.Text) == false)
+                    {
+                    MessageBox.Show("Ugyldigt CVR-nummer");
+                    return;
+                    }
+                
+                    string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
                     phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
-                MessageBox.Show(succes);
+                    MessageBox.Show(succes);
+                
+              
             }
             if(radioButton2.Checked)
             {
+                if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldigt CPR-nummer");
+                    return;
+
+
+                }
+                if (Utility.CheckForValidEmail(emailText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldigt E-mailadresse");
+                    return;
+                }
+
                 string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text, phoneText.Text, emailText.Text, cprText.Text,
-                    PfnameText.Text, PlnameText.Text);
-                MessageBox.Show(succes);
+                     PfnameText.Text, PlnameText.Text);
+                    MessageBox.Show(succes);
+                
+               
             }
 
 
@@ -243,15 +274,39 @@ namespace DelpinUI
         {
             if(radioButton1.Checked)
             {
+                if (Utility.CheckForValidEmail(emailText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldigt E-mailadresse");
+                    return;
+                }
+
+
                 string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
-                MessageBox.Show(succes);
+                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
+                    MessageBox.Show(succes);
+               
+
+
+                
             }
             if (radioButton2.Checked)
             {
+                if (Utility.CheckForValidEmail(emailText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldigt E-mailadresse");
+                    return;
+                }
+
+
+
                 string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text,PlnameText.Text);
-                MessageBox.Show(succes);
+                    phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text, PlnameText.Text);
+                    MessageBox.Show(succes);
+                
+
+
+
+                
 
             }
             CreateDeb.Visible = true;

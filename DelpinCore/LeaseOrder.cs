@@ -61,5 +61,11 @@ namespace DelpinCore
             
             return totalPrice;
         }
+
+        public int GetDaysRented()
+        {
+            int totalDaysRented = Convert.ToInt32((endDate - startDate).TotalDays);
+            return totalDaysRented;
+        }
     }
 }
