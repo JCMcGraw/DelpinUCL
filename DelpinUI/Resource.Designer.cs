@@ -37,7 +37,7 @@
             this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.GetResource = new System.Windows.Forms.Button();
             this.ResourceModelID = new System.Windows.Forms.TextBox();
             this.ResourceIDLabel = new System.Windows.Forms.Label();
             this.ressourceID = new System.Windows.Forms.TextBox();
@@ -69,6 +69,10 @@
             this.CreateModel = new System.Windows.Forms.Button();
             this.SaveModel = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.AddAccSub = new System.Windows.Forms.ComboBox();
+            this.AddAccMain = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.AddAccModel = new System.Windows.Forms.TextBox();
@@ -91,10 +95,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
-            this.AddAccMain = new System.Windows.Forms.ComboBox();
-            this.AddAccSub = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -155,7 +155,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.GetResource);
             this.tabPage3.Controls.Add(this.ResourceModelID);
             this.tabPage3.Controls.Add(this.ResourceIDLabel);
             this.tabPage3.Controls.Add(this.ressourceID);
@@ -174,15 +174,15 @@
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // GetResource
             // 
-            this.button1.Location = new System.Drawing.Point(139, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 23);
-            this.button1.TabIndex = 65;
-            this.button1.Text = "Hent Resurse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.GetResource.Location = new System.Drawing.Point(139, 33);
+            this.GetResource.Name = "GetResource";
+            this.GetResource.Size = new System.Drawing.Size(82, 23);
+            this.GetResource.TabIndex = 65;
+            this.GetResource.Text = "Hent Resurse";
+            this.GetResource.UseVisualStyleBackColor = true;
+            this.GetResource.Click += new System.EventHandler(this.button1_Click);
             // 
             // ResourceModelID
             // 
@@ -365,7 +365,7 @@
             this.ComboModelSub.Name = "ComboModelSub";
             this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
             this.ComboModelSub.TabIndex = 40;
-            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.comboBoxMainGroup_SelectedIndexChanged);
+            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.ComboModelSub_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -498,6 +498,42 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 278);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 67;
+            this.label11.Text = "Hovedkategori";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(130, 278);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 66;
+            this.label12.Text = "Undergruppe";
+            // 
+            // AddAccSub
+            // 
+            this.AddAccSub.FormattingEnabled = true;
+            this.AddAccSub.Location = new System.Drawing.Point(133, 294);
+            this.AddAccSub.Name = "AddAccSub";
+            this.AddAccSub.Size = new System.Drawing.Size(121, 21);
+            this.AddAccSub.TabIndex = 65;
+            this.AddAccSub.SelectedIndexChanged += new System.EventHandler(this.AddAccSub_SelectedIndexChanged);
+            // 
+            // AddAccMain
+            // 
+            this.AddAccMain.FormattingEnabled = true;
+            this.AddAccMain.Location = new System.Drawing.Point(6, 294);
+            this.AddAccMain.Name = "AddAccMain";
+            this.AddAccMain.Size = new System.Drawing.Size(121, 21);
+            this.AddAccMain.TabIndex = 64;
+            this.AddAccMain.SelectedIndexChanged += new System.EventHandler(this.AddAccMain_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -701,42 +737,6 @@
             this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
             this.ShowAllAcc.TabIndex = 0;
             // 
-            // AddAccMain
-            // 
-            this.AddAccMain.FormattingEnabled = true;
-            this.AddAccMain.Location = new System.Drawing.Point(6, 294);
-            this.AddAccMain.Name = "AddAccMain";
-            this.AddAccMain.Size = new System.Drawing.Size(121, 21);
-            this.AddAccMain.TabIndex = 64;
-            this.AddAccMain.SelectedIndexChanged += new System.EventHandler(this.AddAccMain_SelectedIndexChanged);
-            // 
-            // AddAccSub
-            // 
-            this.AddAccSub.FormattingEnabled = true;
-            this.AddAccSub.Location = new System.Drawing.Point(133, 294);
-            this.AddAccSub.Name = "AddAccSub";
-            this.AddAccSub.Size = new System.Drawing.Size(121, 21);
-            this.AddAccSub.TabIndex = 65;
-            this.AddAccSub.SelectedIndexChanged += new System.EventHandler(this.AddAccSub_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 278);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
-            this.label11.TabIndex = 67;
-            this.label11.Text = "Hovedkategori";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(130, 278);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 66;
-            this.label12.Text = "Undergruppe";
-            // 
             // Resource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,7 +818,7 @@
         private System.Windows.Forms.Button GetModel;
         private System.Windows.Forms.Label ModelIDLbl;
         private System.Windows.Forms.Button SaveModel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button GetResource;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button GetAcc;
         private System.Windows.Forms.Label AccID;

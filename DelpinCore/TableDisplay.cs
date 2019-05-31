@@ -72,7 +72,7 @@ namespace DelpinCore
         //Viser en specefik resource, dens modeltype og dens lokation, PR
         public DataTable DisplaySpecficResources(int resourceID )
         {
-            string selectResources = $"select ResourcesID as Resourcenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from ResourcesJoin Model on Model.ModelID = Resources.ModelIDjoin Branch on Resources.BranchID = Branch.BranchID where ResourceID='{resourceID}'";
+            string selectResources = $"select ResourcesID as Resursenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourceID='{resourceID}'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
