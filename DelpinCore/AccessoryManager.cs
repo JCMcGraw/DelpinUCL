@@ -39,9 +39,6 @@ namespace DelpinCore
         {
             string deleteAccessory = $"Delete from Accessory where AccessoryModelID={accessoryModelID}";
             
-
-
-
             string isdeleteAccessory = DatabaseManager.CreateUpdateDeleteInDatabase(deleteAccessory);
             if (isdeleteAccessory != "Success")
             {
