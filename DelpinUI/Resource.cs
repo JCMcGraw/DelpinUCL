@@ -364,7 +364,11 @@ namespace DelpinUI
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
 
             ResourceModelID.Text = dataTable.Rows[0]["Resursenummer"].ToString();
-            
+            ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
+           
+            ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
+            ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
+
             //string succes = controller.DisplaySpecificResources(ressourceID.Text));
             //MessageBox.Show(succes);
         }
