@@ -136,10 +136,10 @@ namespace DelpinCore
 
             return dataTable;
         }
-        //Viser hvilket tilbebehør der passer til hvilke modeller, PR
-        public DataTable DisplayAccessoriesByModelID(int modelID)
+        //Viser liste tilbehør, udfra et modelID, PR
+        public DataTable DisplaySpeceficAccessory(int modelID)
         {
-            string selectAccessory = $"select Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, m.ModelName as Tilbehør from Model join Accessory on Accessory.ModelID = Model.ModelID join Model m on M.ModelID = Accessory.AccessoryID where model.ModelID = {modelID}";
+            string selectAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory join model on Accessory.AccessoryID = Model.ModelID  join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
 
