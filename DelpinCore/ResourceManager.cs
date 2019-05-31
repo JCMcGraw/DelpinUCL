@@ -12,8 +12,8 @@ namespace DelpinCore
         //Daniel
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
-            string createResource = "Insert into Resources(ResourcesID, ModelID, BranchID) " +
-                                   $"values ('{resourceID}','{modelID}','{branchID}')";
+            string createResource = "Insert into Resources(ResourcesID, ModelID, BranchID, active) " +
+                                   $"values ('{resourceID}','{modelID}','{branchID}',1)";
 
             string isCreateResource = DatabaseManager.CreateUpdateDeleteInDatabase(createResource);
             if (isCreateResource != "Success")
@@ -26,7 +26,7 @@ namespace DelpinCore
 
         public string ReadResource()
         {
-            string readResource = "Select * from Resources";
+            string readResource = "Select * from Resources, where active ='1'";
             
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource));
         }
