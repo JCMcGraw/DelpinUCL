@@ -282,22 +282,12 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public double Moms(double totalPrice)
-        {
-            double momsPrice = invoice.Moms(totalPrice);
-            return momsPrice;
-        }
-
-        public double endPrice(double totalPrice, double momsPrice)
-        {
-            double endPrice = invoice.endPrice(totalPrice, momsPrice);
-            return endPrice;
-        }
-
-
         public void MakePDF(int LeaseID)
         {
-            leaseManager.ReadLeaseByLeaseID(LeaseID);
+            Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
+            Business business = debtorManager.ReadAllDebtorsByDebtorID(lease.debtorID);
+
+            invoice.MakePDF(lease,business);
         }
 
         public DataTable ReadAllBranches()
@@ -322,6 +312,12 @@ namespace DelpinCore
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
+            return dataTable;
+        }
+
+        public DataTable DisplaySpecificResources(int resourceID)
+        {
+            DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
             return dataTable;
         }
     }
