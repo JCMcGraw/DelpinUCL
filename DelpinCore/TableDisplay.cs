@@ -156,7 +156,7 @@ namespace DelpinCore
         public DataTable DisplaySpecificModel(int modelID)
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
-+$" join SubGroup on subgroup.SubGroupID = model.ModelID"
++$" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
  +$" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
   +$" where ModelID = {modelID} and Active ='1'";
 

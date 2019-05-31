@@ -317,6 +317,7 @@ namespace DelpinUI
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
             Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
+            ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
             ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
@@ -363,7 +364,11 @@ namespace DelpinUI
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
 
             ResourceModelID.Text = dataTable.Rows[0]["Resursenummer"].ToString();
+            ModelName.Text = (string)dataTable.Rows[0]["ModelID"];
+           
             
+            branchID.SelectedValue = dataTable.Rows[0]["Lokation"].ToString();
+
             //string succes = controller.DisplaySpecificResources(ressourceID.Text));
             //MessageBox.Show(succes);
         }
