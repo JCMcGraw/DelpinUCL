@@ -317,6 +317,7 @@ namespace DelpinUI
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
             Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
+            ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
             ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
