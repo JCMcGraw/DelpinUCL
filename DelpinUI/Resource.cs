@@ -154,8 +154,8 @@ namespace DelpinUI
             string sub;
             sub = ComboModelSub.ValueMember;
 
-            string succes = controller.CreateModel(ModelName.Text, Convert.ToInt32(ModelPrice.Text),
-                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToInt32(Weight.Text));
+            string succes = controller.CreateModel(ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             MessageBox.Show(succes);
         }
 
@@ -308,7 +308,7 @@ namespace DelpinUI
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
             Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
-            //ComboModelSub.ValueMember = dataTable.Rows[0]["Undergruppe"].ToString();
+            ComboModelSub.ValueMember = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -387,7 +387,7 @@ namespace DelpinUI
             try
             {
                 DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
+                dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
 
 
                 AddAccSub.DataSource = dv.ToTable();
@@ -427,6 +427,11 @@ namespace DelpinUI
 
             }
 
+        }
+
+        private void ComboModelSub_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

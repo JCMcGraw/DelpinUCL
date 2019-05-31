@@ -157,7 +157,7 @@ namespace DelpinUI
                     }
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
                     {
-                    MessageBox.Show("Ugyldigt CVR-nummer");
+                    MessageBox.Show("Ugyldig E-mailadresse");
                     return;
                     }
                 
