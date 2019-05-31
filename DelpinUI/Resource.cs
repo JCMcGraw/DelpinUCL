@@ -99,6 +99,11 @@ namespace DelpinUI
 
             AddAcc.DataSource = dataTableAddAccModel;
             AddAcc.DataSource = dataTableModel;
+
+            DataTable dataTableAccView = controller.DisplayAccModel();
+
+            AddAcc.DataSource = dataTableAddAccModel;
+            AddAcc.DataSource = dataTableModel;
         }
 
 
