@@ -282,12 +282,14 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public void MakePDF(int LeaseID)
+        public string MakePDF(int LeaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
             Business business = debtorManager.ReadAllDebtorsByDebtorID(lease.debtorID);
 
-            invoice.MakePDF(lease,business);
+            string pdfResult = invoice.MakePDF(lease,business);
+
+            return pdfResult;
         }
 
         public DataTable ReadAllBranches()

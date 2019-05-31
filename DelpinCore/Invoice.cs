@@ -17,22 +17,22 @@ namespace DelpinCore
         public decimal Moms(decimal totalPrice)
         {
             decimal momsPrice = (totalPrice * 1.25m)-totalPrice;
-            return momsPrice;
+            return Math.Round(momsPrice,2);
         }
 
         public decimal endPrice(decimal totalPrice,decimal momsPrice)
         {
             decimal endPrice= totalPrice + momsPrice;
-            return endPrice;
+            return Math.Round(endPrice,2);
         }
 
-        public void MakePDF(Lease lease,Business debtor)
+        public string MakePDF(Lease lease,Business debtor)
         {
             //Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
 
             //Her laver jeg et pdf dokument og kalder det Created with DPFsharp
-            document.Info.Title = "Created with PDFsharp";
+            document.Info.Title = "Faktura";
 
             // Her laves en tom side
             PdfPage page = document.AddPage();
@@ -141,67 +141,82 @@ namespace DelpinCore
                 new XRect(80, -125, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{lease.GetLeaseOrders()[0].modelName}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -110, page.Width, page.Height),
+            int lineSpace = 0;
+
+            for (int i = 0; i < lease.GetLeaseOrders().Count; i++)
+            {
+                lineSpace = 15 * i;
+
+                gfx.DrawString($"{lease.GetLeaseOrders()[i].modelName}", companyAndDebtor, XBrushes.Black,
+                new XRect(80, -110+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{5}", companyAndDebtor, XBrushes.Black,
-                new XRect(0, -110, page.Width, page.Height),
-                XStringFormats.Center);
+                gfx.DrawString($"{lease.GetLeaseOrders()[i].GetDaysRented()}", companyAndDebtor, XBrushes.Black,
+                    new XRect(0, -110+lineSpace, page.Width, page.Height),
+                    XStringFormats.Center);
 
-            gfx.DrawString($"Kr. {lease.GetLeaseOrders()[0].leasePrice} ", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -110, page.Width, page.Height),
-                XStringFormats.Center);
+                gfx.DrawString($"Kr. {lease.GetLeaseOrders()[i].leasePrice} ", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -110+lineSpace, page.Width, page.Height),
+                    XStringFormats.Center);
 
-            gfx.DrawString($"Kr.{lease.GetLeaseOrders()[0].deliveryPrice}", companyAndDebtor, XBrushes.Black,
-                new XRect(150, -110, page.Width, page.Height),
-                XStringFormats.Center);
+                gfx.DrawString($"Kr.{lease.GetLeaseOrders()[i].deliveryPrice}", companyAndDebtor, XBrushes.Black,
+                    new XRect(150, -110+lineSpace, page.Width, page.Height),
+                    XStringFormats.Center);
 
-            gfx.DrawString($"Kr. {lease.GetTotalPrice()}", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -110, page.Width, page.Height),
-                XStringFormats.CenterRight);
+                gfx.DrawString($"Kr. {lease.GetLeaseOrders()[i].GetTotalPrice()}", companyAndDebtor, XBrushes.Black,
+                    new XRect(-60, -110+lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterRight);
+            }
 
             gfx.DrawString("___________________________________________________________________________________________ ", smallHeadLine, XBrushes.Black,
-                new XRect(80, -100, page.Width, page.Height),
+                new XRect(80, -100+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             //Netto Moms Total + penge + Streg------------------------------------------------------------------------------------------------------------
             gfx.DrawString("Netto: ", companyAndDebtor, XBrushes.Black,
-               new XRect(400, -20, page.Width, page.Height),
+               new XRect(400, -20+lineSpace, page.Width, page.Height),
                XStringFormats.CenterLeft);
 
             gfx.DrawString("Moms (25%): ", companyAndDebtor, XBrushes.Black,
-                new XRect(400, -5, page.Width, page.Height),
+                new XRect(400, -5+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             gfx.DrawString("Total: ", priceFat, XBrushes.Black,
-                new XRect(400, 10, page.Width, page.Height),
+                new XRect(400, 10+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             gfx.DrawString($"Kr. {lease.GetTotalPrice()} ", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
-                new XRect(-60, -20, page.Width, page.Height),
+                new XRect(-60, -20+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString($"Kr. {Moms(lease.GetTotalPrice())} ", companyAndDebtor, XBrushes.Black, //Kan godt være ate den ikke acceptere denne linje
-                new XRect(-60, -5, page.Width, page.Height),
+                new XRect(-60, -5+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString($"Kr. {endPrice(Moms(lease.GetTotalPrice()), lease.GetTotalPrice())} ", priceFat, XBrushes.Black,
-                new XRect(-60, 10, page.Width, page.Height),
+                new XRect(-60, 10+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
-                new XRect(400, 15, page.Width, page.Height),
+                new XRect(400, 15+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             //Dette  er til at vælge Navnet på filen
-            const string filename = "Fakture.pdf";
+            string filename = $"Faktura{lease.leaseID}.pdf";
 
-            //Dette er til at gemme pdf
-            document.Save(filename);
-
+            try
+            {
+                //Dette er til at gemme pdf
+                document.Save(filename);
+            }
+            catch (Exception)
+            {
+                return "Filen kan ikke gemmes";
+            }
+            
             //Dette er til at vise PDF
             Process.Start(filename);
+            return "Success";
         }
     }
 }
