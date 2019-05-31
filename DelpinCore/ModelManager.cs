@@ -11,8 +11,8 @@ namespace DelpinCore
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
             
-            string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG) " +
-                                   $"values ('{modelName}',{price},{subGroupID},{weightKG})";
+            string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG,Active) " +
+                                   $"values ('{modelName}',{price},{subGroupID},{weightKG},'1')";
 
             string isCreateModel = DatabaseManager.CreateUpdateDeleteInDatabase(createModel);
             if (isCreateModel != "Success")
