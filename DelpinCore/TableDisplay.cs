@@ -166,6 +166,20 @@ namespace DelpinCore
 
         }
 
+        public DataTable DisplayAccesoryRelations()
+        {
+            DataTable dataTable = new DataTable();
+
+            string DisplayAccesoryRelations = "select model.ModelName as Modelnavn, m.ModelName as Tilbehør, Accessory.AccessoryModelID as Tilhørsnummer from model"
++ " join Accessory on Accessory.ModelID =Model.ModelID"
++ " join model m on m.ModelID = Accessory.AccessoryID"
++ " order by model.ModelName";
+            dataTable = DatabaseManager.ReadFromDatabase(DisplayAccesoryRelations);
+
+            return dataTable; 
+        }
+
+
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
             string deliveriesSQL = $"Select " +
