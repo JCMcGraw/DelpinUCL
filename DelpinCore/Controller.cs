@@ -328,7 +328,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable DisplayAccesoryRelations()
+        public DataTable DisplayAccesoryRelations() 
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplayAccesoryRelations();
