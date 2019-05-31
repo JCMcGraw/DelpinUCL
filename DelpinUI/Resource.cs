@@ -351,9 +351,12 @@ namespace DelpinUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
-                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
-            MessageBox.Show(succes);
+            DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
+
+            ResourceModelID.Text = dataTable.Rows[0]["Resursenummer"].ToString();
+            
+            //string succes = controller.DisplaySpecificResources(ressourceID.Text));
+            //MessageBox.Show(succes);
         }
 
         private void button2_Click(object sender, EventArgs e)
