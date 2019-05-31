@@ -15,20 +15,24 @@ namespace DelpinCore
 
         public int branchID { get; private set; }
 
-        public Resource(int resourceID,int modelID)
+        public bool activeResource { get; private set; }
+
+        public Resource(int resourceID,int modelID,bool activeResource = true)
         {
             this.resourceID = resourceID;
             this.modelID = modelID;
+            this.activeResource = activeResource;
         }
 
-        public Resource(int resourceID, int modelID, int branchID)
+        public Resource(int resourceID, int modelID, int branchID,bool activeResource = true)
         {
             this.resourceID = resourceID;
             this.modelID = modelID;
             this.branchID = branchID;
+            this.activeResource = activeResource;
         }
 
-        public Resource(int resourceID)
+        public Resource(int resourceID, bool activeResource = true)
         {
             this.resourceID = resourceID;
         }
