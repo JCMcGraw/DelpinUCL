@@ -18,6 +18,7 @@ namespace DelpinUI
         private Controller controller = new Controller();
 
         private DataTable dataTableSubGroup = new DataTable();
+        private DataTable dataTableAccSubGroup = new DataTable();
 
 
         public Resource()
@@ -68,17 +69,28 @@ namespace DelpinUI
             ComboModelMain.ValueMember = "MainGroupID";
 
 
-            
 
+            AccSub.DataSource = dataTableSubGroup;
+            AccSub.DisplayMember = "Category";
+            AccSub.ValueMember = "SubGroupID";
 
             AccMain.DataSource = dataTableMainGroup;
             AccMain.DisplayMember = "Category";
             AccMain.ValueMember = "MainGroupID";
 
 
-            AccSub.DataSource = dataTableSubGroup;
-            AccSub.DisplayMember = "Category";
-            AccSub.ValueMember = "SubGroupID";
+            dataTableAccSubGroup = dataTableSubGroup.Copy();
+            
+            AddAccSub.DataSource = dataTableAccSubGroup;
+            AddAccSub.DisplayMember = "Category";
+            AddAccSub.ValueMember = "SubGroupID";
+
+            DataTable AddAccView2 = dataTableMainGroup.Copy();
+
+            AddAccMain.DataSource = AddAccView2;
+            AddAccMain.DisplayMember = "Category";
+            AddAccMain.ValueMember = "MainGroupID";
+
 
 
 
@@ -363,11 +375,11 @@ namespace DelpinUI
         {
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
 
-            ResourceModelID.Text = dataTable.Rows[0]["Resursenummer"].ToString();
-            ModelName.Text = (string)dataTable.Rows[0]["ModelID"];
+            ResourceModelID.Text = dataTable.Rows[0]["Modelnummer"].ToString();
+            //ModelName.Text = dataTable.Rows[0]["Modelnummer"].ToString();
            
             
-            branchID.SelectedValue = dataTable.Rows[0]["Lokation"].ToString();
+            branchID.SelectedText = dataTable.Rows[0]["Lokation"].ToString();
 
             //string succes = controller.DisplaySpecificResources(ressourceID.Text));
             //MessageBox.Show(succes);
@@ -380,7 +392,7 @@ namespace DelpinUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            controller.DeleteAccessory(Convert.ToInt32(ressourceID.Text));
         }
 
         private void ComboModelMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -403,8 +415,8 @@ namespace DelpinUI
         {
             try
             {
-                DataView dv = new DataView(dataTableSubGroup);
-                dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
+                DataView dv = new DataView(dataTableAccSubGroup);
+                dv.RowFilter = $"MainGroup = {AddAccMain.SelectedValue}";
 
 
                 AddAccSub.DataSource = dv.ToTable();
@@ -449,6 +461,11 @@ namespace DelpinUI
         private void ComboModelSub_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void AccModelID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

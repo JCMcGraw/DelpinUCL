@@ -87,13 +87,6 @@
             this.AccModelView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.UpdateAcc = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.GetAcc = new System.Windows.Forms.Button();
-            this.AccID = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
@@ -143,8 +136,8 @@
             // 
             this.tabControl1.AccessibleDescription = "";
             this.tabControl1.AccessibleName = "";
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 3);
@@ -219,6 +212,7 @@
             // 
             // branchID
             // 
+            this.branchID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.branchID.FormattingEnabled = true;
             this.branchID.Location = new System.Drawing.Point(17, 119);
             this.branchID.Name = "branchID";
@@ -496,7 +490,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(921, 398);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Tilbehør";
+            this.tabPage2.Text = "Tilføj Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label11
@@ -645,89 +639,24 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.UpdateAcc);
-            this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.textBox3);
-            this.tabPage4.Controls.Add(this.GetAcc);
-            this.tabPage4.Controls.Add(this.AccID);
-            this.tabPage4.Controls.Add(this.textBox2);
-            this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Controls.Add(this.ShowAllAcc);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(921, 398);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Ret tilbehør";
+            this.tabPage4.Text = "Slet tilbehør";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // UpdateAcc
             // 
-            this.UpdateAcc.Location = new System.Drawing.Point(16, 191);
+            this.UpdateAcc.Location = new System.Drawing.Point(132, 32);
             this.UpdateAcc.Name = "UpdateAcc";
             this.UpdateAcc.Size = new System.Drawing.Size(75, 23);
             this.UpdateAcc.TabIndex = 8;
-            this.UpdateAcc.Text = "Ret tilbehør";
+            this.UpdateAcc.Text = "Slet tilbehør";
             this.UpdateAcc.UseVisualStyleBackColor = true;
             this.UpdateAcc.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(19, 130);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 13);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "AccessoryID";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "ModelID";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(16, 146);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
-            // 
-            // GetAcc
-            // 
-            this.GetAcc.Location = new System.Drawing.Point(134, 52);
-            this.GetAcc.Name = "GetAcc";
-            this.GetAcc.Size = new System.Drawing.Size(75, 23);
-            this.GetAcc.TabIndex = 4;
-            this.GetAcc.Text = "Hent tilbehør";
-            this.GetAcc.UseVisualStyleBackColor = true;
-            this.GetAcc.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // AccID
-            // 
-            this.AccID.AutoSize = true;
-            this.AccID.Location = new System.Drawing.Point(16, 32);
-            this.AccID.Name = "AccID";
-            this.AccID.Size = new System.Drawing.Size(87, 13);
-            this.AccID.TabIndex = 3;
-            this.AccID.Text = "Tilbehørsnummer";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(16, 103);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(16, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
             // 
             // ShowAllAcc
             // 
@@ -762,7 +691,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).EndInit();
             this.ResumeLayout(false);
 
@@ -820,15 +748,8 @@
         private System.Windows.Forms.Button SaveModel;
         private System.Windows.Forms.Button GetResource;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button GetAcc;
-        private System.Windows.Forms.Label AccID;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView ShowAllAcc;
         private System.Windows.Forms.Button UpdateAcc;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ComboModelMain;
         private System.Windows.Forms.Label label11;
