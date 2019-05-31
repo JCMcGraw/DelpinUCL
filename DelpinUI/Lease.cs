@@ -621,7 +621,7 @@ namespace DelpinUI
 
         private void buttonInvoice_Click(object sender, EventArgs e)
         {
-            //controller.MakePDF("Tom", "Hansen", "Vej 4", "Vejle", 7100, "01010101", "33333333", DateTime.Now, DateTime.Now, "Gravemaskine", 900, 5, 500, 2000, 500, 2500);
+            controller.MakePDF(Convert.ToInt32( textBoxLeaseNumber.Text));
         }
 
         private void dataGridViewLeaseOrders_DataError(object sender, DataGridViewDataErrorEventArgs e)
