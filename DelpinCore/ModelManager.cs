@@ -33,7 +33,7 @@ namespace DelpinCore
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
             string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +
-                $",SubGroupID='{subGroupID}',{weightKG} where ModelID ={modelID}";  
+                $",SubGroupID='{subGroupID}',WeightKg={weightKG} where ModelID ={modelID}";  
                                 
 
             string isUpdateModel = DatabaseManager.CreateUpdateDeleteInDatabase(updateModel);
@@ -42,12 +42,14 @@ namespace DelpinCore
                 return isUpdateModel;
             }
 
-            return $"Model {modelID}','{modelName}','{price}','{subGroupID}','{weightKG} er blevet Opdateret";
+            return $"Model {modelID},'{modelName}',{price},'{subGroupID}',{weightKG} er blevet Opdateret";
         }
 
         public string DeleteModel(int modelID)
         {
-            string deleteModel = $"Delete from Model where ModelID ={modelID}";
+            string deleteModel = $"update Model set Active ='0' where ModelID ={modelID}";
+
+
 
             string isDeleteModel = DatabaseManager.CreateUpdateDeleteInDatabase(deleteModel);
             if (isDeleteModel != "Success")

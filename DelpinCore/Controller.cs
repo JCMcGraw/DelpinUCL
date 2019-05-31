@@ -322,5 +322,10 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
             return dataTable;
         }
-    }
+        public DataTable DisplaySpeceficAccesory(int modelID)
+        {
+            DataTable dataTable = tableDisplay.DisplaySpeceficAccessory(modelID);
+            return dataTable;
+        }
+            }
 }

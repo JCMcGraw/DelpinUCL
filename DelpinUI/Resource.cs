@@ -57,14 +57,18 @@ namespace DelpinUI
             DataTable dataTableMainGroup = controller.GetMainGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
+            ComboModelSub.DataSource = dataTableSubGroup;
+            ComboModelSub.DisplayMember = "Category";
+            ComboModelSub.ValueMember = "SubGroupID";
+
+
+
             ComboModelMain.DataSource = dataTableMainGroup;
             ComboModelMain.DisplayMember = "Category";
             ComboModelMain.ValueMember = "MainGroupID";
 
 
-            ComboModelSub.DataSource = dataTableSubGroup;
-            ComboModelSub.DisplayMember = "Category";
-            ComboModelSub.ValueMember = "SubGroupID";
+            
 
 
             AccMain.DataSource = dataTableMainGroup;
@@ -96,6 +100,11 @@ namespace DelpinUI
             AccModelView.DataSource = dataTableAccModel;
 
             DataTable dataTableAddAccModel = controller.DisplayAccModel();
+
+            AddAcc.DataSource = dataTableAddAccModel;
+            AddAcc.DataSource = dataTableModel;
+
+            DataTable dataTableAccView = controller.DisplayAccModel();
 
             AddAcc.DataSource = dataTableAddAccModel;
             AddAcc.DataSource = dataTableModel;
@@ -308,7 +317,8 @@ namespace DelpinUI
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
             Weight.Text = (string)dataTable.Rows[0]["Vægt"].ToString();
-            ComboModelSub.ValueMember = dataTable.Rows[0]["Undergruppe"].ToString();
+            ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
+            ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
 
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -351,9 +361,16 @@ namespace DelpinUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
-                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
-            MessageBox.Show(succes);
+            DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
+
+            ResourceModelID.Text = dataTable.Rows[0]["Resursenummer"].ToString();
+            ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
+           
+            ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
+            ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
+
+            //string succes = controller.DisplaySpecificResources(ressourceID.Text));
+            //MessageBox.Show(succes);
         }
 
         private void button2_Click(object sender, EventArgs e)
