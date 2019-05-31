@@ -81,15 +81,15 @@ namespace DelpinCore
                 new XRect(-60, -380, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("Branch Vejnavn og nr ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString("Nordvesthavnsvej 60 ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -360, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("Branch by og postNr ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString("6400 Sønderborg ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -350, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
-            gfx.DrawString("Tlf ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString("Tlf 74 48 88 88 ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -320, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
@@ -114,10 +114,6 @@ namespace DelpinCore
             gfx.DrawString($"{lease.dateCreated} ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -170, page.Width, page.Height),
                 XStringFormats.CenterRight);
-
-            //gfx.DrawString($"{endDate} ", companyAndDebtor, XBrushes.Black,
-            //    new XRect(-60, -160, page.Width, page.Height),
-            //    XStringFormats.CenterRight);
 
             //Headlines Resurce Antal Pris Beløb-----------------------------------------------------------------------------------------------------------
             gfx.DrawString("Vare ", smallHeadLine, XBrushes.Black,
