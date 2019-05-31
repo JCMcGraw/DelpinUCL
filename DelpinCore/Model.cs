@@ -18,13 +18,16 @@ namespace DelpinCore
 
         public double weightKG { get; private set; }
 
-        public Model(int modelID, string modelName, double price, int subGroupID,double weightKG)
+        public bool active { get; private set; }
+
+        public Model(int modelID, string modelName, double price, int subGroupID,double weightKG , bool active = true)
         {
             this.modelID = modelID;
             this.modelName = modelName;
             this.price = price;
             this.subGroupID = subGroupID;
             this.weightKG = weightKG;
+            this.active = active;
         }
 
         public Model(int modelID)
