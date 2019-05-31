@@ -48,8 +48,17 @@ namespace DelpinUI
         {
             
             {
-                DataTable dataTable = controller.SelectAllBusiness();
-                ViewDeb.DataSource = dataTable;
+                if(radioButton1.Checked)
+                {
+                    DataTable dataTable = controller.SelectAllBusiness();
+                    ViewDeb.DataSource = dataTable;
+                }
+                else
+                {
+                    DataTable dataTable = controller.SelectAllPersonal();
+                    ViewDeb.DataSource = dataTable;
+                }
+                    
             }
             
         }
@@ -164,8 +173,9 @@ namespace DelpinUI
                     string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
                     phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
                     MessageBox.Show(succes);
-                
-              
+                    
+
+
             }
             if(radioButton2.Checked)
             {
@@ -188,7 +198,7 @@ namespace DelpinUI
                 
                
             }
-
+            updateDatagridView();
 
         }
 

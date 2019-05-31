@@ -62,7 +62,7 @@ namespace DelpinCore
         //Viser alle resourcerne, deres modeltype og deres lokation,PR
         public DataTable DisplayAllResources()
         {
-            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where model.active='1'";
+            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -72,7 +72,7 @@ namespace DelpinCore
         //Viser en specefik resource, dens modeltype og dens lokation, PR
         public DataTable DisplaySpecficResources(int resourceID )
         {
-            string selectResources = $"select ResourcesID as Resursenummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourceID='{resourceID}' and model.Active='1' and reources.active='1'";
+            string selectResources = $"select ResourcesID as Resursenummer, model.modelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourcesID='{resourceID}' and model.active='1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -121,7 +121,7 @@ namespace DelpinCore
         }
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
-            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID} where active ='1'";
+            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
@@ -129,7 +129,7 @@ namespace DelpinCore
         }
         public DataTable DisplayModel()
         {
-            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model where Active ='1'";
+            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
 
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
@@ -158,27 +158,13 @@ namespace DelpinCore
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
 +$" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
  +$" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
-  +$" where ModelID = {modelID} and Active ='1'";
+  +$" where ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
             return dataTable;
 
         }
-
-        public DataTable DisplayAccesoryRelations()
-        {
-            DataTable dataTable = new DataTable();
-
-            string DisplayAccesoryRelations = "select model.ModelName as Modelnavn, m.ModelName as Tilbehør, Accessory.AccessoryModelID as Tilhørsnummer from model"
-+ " join Accessory on Accessory.ModelID =Model.ModelID"
-+ " join model m on m.ModelID = Accessory.AccessoryID"
-+ " order by model.ModelName";
-            dataTable = DatabaseManager.ReadFromDatabase(DisplayAccesoryRelations);
-
-            return dataTable; 
-        }
-
 
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {

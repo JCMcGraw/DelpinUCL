@@ -505,12 +505,12 @@
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.ViewDeb);
             this.Controls.Add(this.UpdateDebtor);
-            this.Controls.Add(this.SaveDebtor);
             this.Controls.Add(this.cvrText);
             this.Controls.Add(this.CancelUpdate);
             this.Controls.Add(this.DeleteDebtor);
             this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.city);
+            this.Controls.Add(this.SaveDebtor);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
