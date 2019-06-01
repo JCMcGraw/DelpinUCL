@@ -74,13 +74,27 @@ namespace DelpinUI
 
         private void SetDeliveries()
         {
-            DataTable dataTable = controller.DisplayDeliveriesforNextNDays(Utility.BranchID, 1);
-
-            if (dataTable.Rows.Count > 0 && dataTable.Columns[0].ColumnName != "ErrorMessage")
+            try
             {
-                ordersForDeliveryLabel.Text = "Ordrer til levering i de næste 2 dage for afdeling " + chooseBranchComboBox.GetItemText(chooseBranchComboBox.SelectedItem);
-                deliveriesInNextTwoDays.DataSource = dataTable;
+                DataTable dataTable = controller.DisplayDeliveriesforNextNDays(Convert.ToInt32(chooseBranchComboBox.SelectedValue), 1);
+
+                if (dataTable.Rows.Count > 0 && dataTable.Columns[0].ColumnName != "ErrorMessage")
+                {
+                    ordersForDeliveryLabel.Text = "Ordrer til levering i de næste 2 dage for afdeling " + chooseBranchComboBox.GetItemText(chooseBranchComboBox.SelectedItem);
+                    deliveriesInNextTwoDays.DataSource = dataTable;
+                }
+                else if (dataTable.Rows.Count == 0)
+                {
+                    ordersForDeliveryLabel.Text = "Ingen ordrer til levering i de næste 2 dage for afdeling " + chooseBranchComboBox.GetItemText(chooseBranchComboBox.SelectedItem);
+                    deliveriesInNextTwoDays.DataSource = dataTable;
+                }
+                else
+                {
+                    ordersForDeliveryLabel.Text = "";
+                    deliveriesInNextTwoDays.DataSource = null;
+                }
             }
+            catch { }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +126,9 @@ namespace DelpinUI
             }
         }
 
-
+        private void chooseBranchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDeliveries();
+        }
     }
 }

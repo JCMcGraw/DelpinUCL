@@ -621,7 +621,12 @@ namespace DelpinUI
 
         private void buttonInvoice_Click(object sender, EventArgs e)
         {
-            controller.MakePDF(Convert.ToInt32( textBoxLeaseNumber.Text));
+            string pdfSuccess = controller.MakePDF(Convert.ToInt32( textBoxLeaseNumber.Text));
+
+            if (pdfSuccess == "Filen kan ikke gemmes")
+            {
+                MessageBox.Show("Fakturaen kunne ikke gemmes, tjek eventuelt om du allerede har fakturan åben.");
+            }
         }
 
         private void dataGridViewLeaseOrders_DataError(object sender, DataGridViewDataErrorEventArgs e)

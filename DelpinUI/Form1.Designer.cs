@@ -81,6 +81,7 @@
             this.chooseBranchComboBox.Name = "chooseBranchComboBox";
             this.chooseBranchComboBox.Size = new System.Drawing.Size(121, 21);
             this.chooseBranchComboBox.TabIndex = 3;
+            this.chooseBranchComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseBranchComboBox_SelectedIndexChanged);
             // 
             // chooseBranchLabel
             // 
