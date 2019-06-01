@@ -90,7 +90,7 @@
             this.textBoxFindLeaseByLeaseID = new System.Windows.Forms.TextBox();
             this.findLeaseByLeaseID = new System.Windows.Forms.Button();
             this.findLeasesByLeaseID = new System.Windows.Forms.Button();
-            this.comboBoxLeaseStatus = new System.Windows.Forms.ComboBox();
+            this.LeaseStatus = new System.Windows.Forms.ComboBox();
             this.labelLeaseStatus = new System.Windows.Forms.Label();
             this.buttonDeleteLease = new System.Windows.Forms.Button();
             this.buttonClearAll = new System.Windows.Forms.Button();
@@ -649,16 +649,16 @@
             this.findLeasesByLeaseID.UseVisualStyleBackColor = true;
             this.findLeasesByLeaseID.Click += new System.EventHandler(this.buttonFindLeases_Click);
             // 
-            // comboBoxLeaseStatus
+            // LeaseStatus
             // 
-            this.comboBoxLeaseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLeaseStatus.FormattingEnabled = true;
-            this.comboBoxLeaseStatus.Items.AddRange(new object[] {
+            this.LeaseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LeaseStatus.FormattingEnabled = true;
+            this.LeaseStatus.Items.AddRange(new object[] {
             "Ikke oprettet"});
-            this.comboBoxLeaseStatus.Location = new System.Drawing.Point(1096, 251);
-            this.comboBoxLeaseStatus.Name = "comboBoxLeaseStatus";
-            this.comboBoxLeaseStatus.Size = new System.Drawing.Size(123, 21);
-            this.comboBoxLeaseStatus.TabIndex = 61;
+            this.LeaseStatus.Location = new System.Drawing.Point(1096, 251);
+            this.LeaseStatus.Name = "LeaseStatus";
+            this.LeaseStatus.Size = new System.Drawing.Size(123, 21);
+            this.LeaseStatus.TabIndex = 61;
             // 
             // labelLeaseStatus
             // 
@@ -753,7 +753,7 @@
             this.Controls.Add(this.buttonClearAll);
             this.Controls.Add(this.buttonDeleteLease);
             this.Controls.Add(this.labelLeaseStatus);
-            this.Controls.Add(this.comboBoxLeaseStatus);
+            this.Controls.Add(this.LeaseStatus);
             this.Controls.Add(this.findLeasesByLeaseID);
             this.Controls.Add(this.findLeaseByLeaseID);
             this.Controls.Add(this.labelFindLeaseByLeaseID);
@@ -881,7 +881,7 @@
         private System.Windows.Forms.TextBox textBoxFindLeaseByLeaseID;
         private System.Windows.Forms.Button findLeaseByLeaseID;
         private System.Windows.Forms.Button findLeasesByLeaseID;
-        private System.Windows.Forms.ComboBox comboBoxLeaseStatus;
+        private System.Windows.Forms.ComboBox LeaseStatus;
         private System.Windows.Forms.Label labelLeaseStatus;
         private System.Windows.Forms.Button buttonDeleteLease;
         private System.Windows.Forms.Button buttonClearAll;

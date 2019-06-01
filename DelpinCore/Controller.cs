@@ -159,6 +159,12 @@ namespace DelpinCore
             return deactivateSuccess;
         }
 
+        public string ReactivateLease(int leaseID)
+        {
+            string reactivateSuccess = leaseManager.ReactivateLease(leaseID);
+            return reactivateSuccess;
+        }
+
         public string CreateLease(Lease lease)
         {
             string leaseSuccess = leaseManager.CreateLease(lease);

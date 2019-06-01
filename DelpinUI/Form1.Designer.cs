@@ -133,6 +133,7 @@
             this.deliveriesInNextTwoDays.ReadOnly = true;
             this.deliveriesInNextTwoDays.Size = new System.Drawing.Size(565, 121);
             this.deliveriesInNextTwoDays.TabIndex = 8;
+            this.deliveriesInNextTwoDays.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.deliveriesInNextTwoDays_CellMouseDoubleClick);
             // 
             // ordersForDeliveryLabel
             // 

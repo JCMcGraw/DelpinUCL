@@ -130,5 +130,17 @@ namespace DelpinUI
         {
             SetDeliveries();
         }
+
+        private void deliveriesInNextTwoDays_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                int leaseID = Convert.ToInt32(deliveriesInNextTwoDays.Rows[e.RowIndex].Cells["Ordrenummer"].Value.ToString());
+
+                Lease lease = new Lease();
+                lease.OpenLeaseAutomatically(leaseID);
+                lease.ShowDialog();
+            }
+        }
     }
 }

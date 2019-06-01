@@ -19,7 +19,7 @@ namespace DelpinCore
 
             if (dataTable.Rows.Count == 0)
             {
-                return new Lease("-1", -1);
+                return new Lease("-1", -1, false);
             }
 
             Lease lease = ConvertDataTabeToLease(dataTable);
@@ -46,8 +46,11 @@ namespace DelpinCore
             DateTime creationDate = Convert.ToDateTime(dataTable.Rows[0]["CreationDate"]);
             string debtorID = (string)dataTable.Rows[0]["DebtorID"];
             string status = (string)dataTable.Rows[0]["Status"];
+            string activeString = (string)dataTable.Rows[0]["Active"];
+            bool active = true;
+            if (activeString == "0") active = false;
 
-            Lease lease = new Lease(debtorID, branchID, leaseID, creationDate);
+            Lease lease = new Lease(debtorID, branchID, leaseID, creationDate, active);
 
             try
             {
@@ -118,8 +121,11 @@ namespace DelpinCore
         //inserts new Lease in database
         public string CreateLease(Lease lease)
         {
+            string active = "1";
+            if (lease.active == false) { active = "0"; }
+
             string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {lease.branchID}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 
@@ -198,6 +204,13 @@ namespace DelpinCore
         public string DeactivateLease(int leaseID)
         {
             string deactivateLease = $"update Lease set Lease.Active = 0 where LeaseID = {leaseID}";
+            string isSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deactivateLease);
+            return isSuccess;
+        }
+
+        public string ReactivateLease(int leaseID)
+        {
+            string deactivateLease = $"update Lease set Lease.Active = 1 where LeaseID = {leaseID}";
             string isSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deactivateLease);
             return isSuccess;
         }

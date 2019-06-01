@@ -180,7 +180,7 @@ namespace DelpinCore
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
             string deliveriesSQL = $"Select " +
-                $"    Lease.LeaseID, " +
+                $"    Lease.LeaseID As Ordrenummer, " +
                 $"    AllDebtors.Navn, " +
                 $"    LeaseOrder.StartDate As [Leveringsdato], " +
                 $"    Count(LeaseOrder.StartDate) As [Antal resurser] " +

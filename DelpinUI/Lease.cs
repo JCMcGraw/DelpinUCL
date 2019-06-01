@@ -20,8 +20,13 @@ namespace DelpinUI
         public Lease()
         {
             InitializeComponent();
-            comboBoxLeaseStatus.SelectedIndex = 0;
+            LeaseStatus.SelectedIndex = 0;
             deliveryZoneComboBox.SelectedIndex = 0;
+        }
+
+        public void OpenLeaseAutomatically(int leaseID)
+        {
+            GetLeaseByLeaseID(leaseID);
         }
 
         private void Lease_Load(object sender, EventArgs e)
@@ -234,7 +239,7 @@ namespace DelpinUI
             {
                 string leaseNumber = Regex.Match(leaseSuccess, @"^[^;]+").ToString();
                 textBoxLeaseNumber.Text = leaseNumber;
-                AddStatusesToComboBox();
+                AddOpenStatusesToComboBox();
 
 
                 buttonCreateOrder.Enabled = false;
@@ -264,7 +269,13 @@ namespace DelpinUI
 
         private DelpinCore.Lease GetLeaseFromForm()
         {
-            DelpinCore.Lease lease = new DelpinCore.Lease(debtorIDTextBox.Text, Utility.BranchID);
+            bool active = false;
+            if (LeaseStatus.SelectedText != "Slettet")
+            {
+                active = true;
+            }
+
+            DelpinCore.Lease lease = new DelpinCore.Lease(debtorIDTextBox.Text, Utility.BranchID, active);
 
             lease.SetContactDetails(textBoxContactFirstName.Text, textBoxContactLastName.Text, textBoxContactPhone.Text);
 
@@ -368,8 +379,16 @@ namespace DelpinUI
             textBoxContactPhone.Text = lease.contactPhone;
             textBoxLeaseNumber.Text = lease.leaseID.ToString();
 
-            AddStatusesToComboBox();
-            FillStatus(lease.status);
+
+            if (lease.active == true)
+            {
+                AddOpenStatusesToComboBox();
+                FillStatus(lease.status);
+            }
+            else
+            {
+                AddClosedStatusesToComboBox();
+            }
 
             foreach (LeaseOrder leaseOrder in lease.GetLeaseOrders())
             {
@@ -394,16 +413,16 @@ namespace DelpinUI
             switch (status)
             {
                 case "Åben":
-                    comboBoxLeaseStatus.SelectedIndex = 0;
+                    LeaseStatus.SelectedIndex = 0;
                     break;
                 case "Leveret":
-                    comboBoxLeaseStatus.SelectedIndex = 1;
+                    LeaseStatus.SelectedIndex = 1;
                     break;
                 case "Returneret":
-                    comboBoxLeaseStatus.SelectedIndex = 2;
+                    LeaseStatus.SelectedIndex = 2;
                     break;
                 case "Betalt":
-                    comboBoxLeaseStatus.SelectedIndex = 3;
+                    LeaseStatus.SelectedIndex = 3;
                     break;
             }
         }
@@ -499,25 +518,35 @@ namespace DelpinUI
             AddResourceToLease(Convert.ToInt32(accessoryComboBox.SelectedValue));
         }
 
-        private void AddStatusesToComboBox()
+        private void AddOpenStatusesToComboBox()
         {
-            comboBoxLeaseStatus.Items.Clear();
+            LeaseStatus.Items.Clear();
 
-            comboBoxLeaseStatus.Items.Add("Åben");
-            comboBoxLeaseStatus.Items.Add("Leveret");
-            comboBoxLeaseStatus.Items.Add("Returneret");
-            comboBoxLeaseStatus.Items.Add("Betalt");
+            LeaseStatus.Items.Add("Åben");
+            LeaseStatus.Items.Add("Leveret");
+            LeaseStatus.Items.Add("Returneret");
+            LeaseStatus.Items.Add("Betalt");
 
-            comboBoxLeaseStatus.SelectedIndex = 0;
+            LeaseStatus.SelectedIndex = 0;
+        }
+
+        private void AddClosedStatusesToComboBox()
+        {
+            LeaseStatus.Items.Clear();
+
+            LeaseStatus.Items.Add("Slettet");
+            LeaseStatus.Items.Add("Genåbn");
+
+            LeaseStatus.SelectedIndex = 0;
         }
 
         private void SetStatusComboBoxToDefault()
         {
-            comboBoxLeaseStatus.Items.Clear();
+            LeaseStatus.Items.Clear();
 
-            comboBoxLeaseStatus.Items.Add("Ikke oprettet");
+            LeaseStatus.Items.Add("Ikke oprettet");
 
-            comboBoxLeaseStatus.SelectedIndex = 0;
+            LeaseStatus.SelectedIndex = 0;
         }
 
         private void buttonDeleteLease_Click(object sender, EventArgs e)
@@ -529,7 +558,16 @@ namespace DelpinUI
                 DialogResult dialogResult = MessageBox.Show($"Vil du sletter ordre nummer {leaseID}", "Slet ordre", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    controller.DeactivateLease(leaseID);
+                    string deleteSuccess = controller.DeactivateLease(leaseID);
+                    if (deleteSuccess == "Success")
+                    {
+                        MessageBox.Show($"Ordre {leaseID} blev slettet");
+                        ClearAllTextBoxes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Der opstod en fejl, ordren blev ikke slettet");
+                    }
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -550,10 +588,22 @@ namespace DelpinUI
 
         private void buttonUpdateStatus_Click(object sender, EventArgs e)
         {
-            string status = comboBoxLeaseStatus.Items[comboBoxLeaseStatus.SelectedIndex].ToString();
+            string status = LeaseStatus.Items[LeaseStatus.SelectedIndex].ToString();
             int leaseID = Convert.ToInt32(textBoxLeaseNumber.Text);
-
-            string isSuccess = controller.UpdateLeaseStatus(status, leaseID);
+            if (status == "Genåbn")
+            {
+                controller.ReactivateLease(leaseID);
+                GetLeaseByLeaseID(leaseID);
+                
+            }
+            else if (status == "Slettet")
+            {
+                MessageBox.Show("Denne ordre er allerede slettet!");
+            }
+            else
+            {
+                string isSuccess = controller.UpdateLeaseStatus(status, leaseID);
+            }
         }
 
         private void comboBoxSubGroup_TextChanged(object sender, EventArgs e)
