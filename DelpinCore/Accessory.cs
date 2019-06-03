@@ -26,7 +26,5 @@ namespace DelpinCore
         {
             this.accessoryModelID = accessoryModelID;
         }
-
-
     }
 }

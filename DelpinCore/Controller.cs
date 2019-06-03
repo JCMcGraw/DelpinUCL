@@ -100,6 +100,7 @@ namespace DelpinCore
             dataTable = tableDisplay.DisplayAllBusinessDebtor();
             return dataTable;
         }
+
         public DataTable DisplayAllPersonalDebtor()
         {
             DataTable dataTable = new DataTable();
@@ -180,8 +181,8 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
             return dataTable;
         }
-       
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Resource (Done)
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
@@ -229,6 +230,7 @@ namespace DelpinCore
             return dataTable;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Model(Done)
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
@@ -254,8 +256,8 @@ namespace DelpinCore
             return deleteModel;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Lease
 
+        //Lease
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
@@ -312,6 +314,7 @@ namespace DelpinCore
             return isSuccess;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Accessory (Done)
         public string CreateAccessory(int modelID, int accessoryID)
         {
@@ -337,15 +340,15 @@ namespace DelpinCore
             return readOnlyAccessory;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Delivery
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
             double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone, ton);
             return deliveryPrice;
         }
-
-
         //------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Invoice (Done)
         public string MakePDF(int LeaseID)
         {
@@ -357,6 +360,7 @@ namespace DelpinCore
             return pdfResult;
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Branch (Done)
         public DataTable ReadAllBranches()
         {

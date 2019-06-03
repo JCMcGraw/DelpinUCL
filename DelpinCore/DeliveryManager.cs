@@ -23,6 +23,5 @@ namespace DelpinCore
 
             return deliveryPrice;
         }
-
     }
 }

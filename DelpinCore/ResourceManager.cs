@@ -27,7 +27,6 @@ namespace DelpinCore
         public string ReadResource()
         {
             string readResource = "Select * from Resources, where active ='1'";
-            
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource));
         }
 
@@ -70,13 +69,11 @@ namespace DelpinCore
             return $"Resources {resourceID} er blevet Slettet";
         }
 
-
         public DataTable ReadSpecefikSubCataegori(int SubGroupID)
         {
             string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
 
             DataTable dataTable= DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
-
             return dataTable;
         }
 

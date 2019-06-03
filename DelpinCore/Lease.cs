@@ -9,17 +9,24 @@ namespace DelpinCore
     public class Lease
     {
         public int leaseID { get; private set; }
+
         public string debtorID { get; private set; }
+
         public int branchID { get; private set; }
+
         public DateTime dateCreated { get; private set; }
+
         public string status { get; private set; }
+
         public bool active { get; private set; }
+
         private List<LeaseOrder> leaseOrders = new List<LeaseOrder>();
 
         public string contactFirstName { get; private set; }
-        public string contactLastName { get; private set; }
-        public string contactPhone { get; private set; }
 
+        public string contactLastName { get; private set; }
+
+        public string contactPhone { get; private set; }
 
         public Lease(string debtorID, int branchID, bool active)
         {
