@@ -125,7 +125,8 @@ namespace DelpinCore
             if (lease.active == false) { active = "0"; }
 
             string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName}', '{lease.contactLastName}', '{lease.contactPhone}', '{lease.status}')";
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName.Replace("'","''")}'," +
+                $" '{lease.contactLastName.Replace("'", "''")}', '{lease.contactPhone.Replace("'","''")}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 
@@ -153,7 +154,7 @@ namespace DelpinCore
                     insertLeaseOrder += ", ";
                 }
                 insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
-                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet}', {lo.deliveryPostalCode}, '{lo.deliveryCity}', {lo.deliveryPrice})";
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet.Replace("'", "''")}', {lo.deliveryPostalCode}, '{lo.deliveryCity.Replace("'", "''")}', {lo.deliveryPrice})";
             }
             return insertLeaseOrder;
         }
@@ -175,7 +176,7 @@ namespace DelpinCore
 
         private string UpdateLeaseTable(Lease lease)
         {
-            string updateLease = $"update Lease set ContactFname = '{lease.contactFirstName}', ContactLname = '{lease.contactLastName}', " +
+            string updateLease = $"update Lease set ContactFname = '{lease.contactFirstName.Replace("'", "''")}', ContactLname = '{lease.contactLastName.Replace("'", "''")}', " +
                 $"ContactPhone = '{lease.contactPhone}', DebtorID = '{lease.debtorID}' where LeaseID = {lease.leaseID}";
 
             string isUpdateSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(updateLease);
@@ -224,46 +225,6 @@ namespace DelpinCore
 
         private string GetAvailabilitySQL(int modelID, int branchID, string startDate, string endDate)
         {
-            //string sql = $"Select " +
-            //$"    Resources.ResourcesID as [ResurseID], " +
-            //$"    Model.ModelName as [Model], " +
-            //$"    Model.Price as [Dagspris], " +
-            //$"	Case " +
-            //$"		When ResourceAvailability.Tilgængelighed IS NULL then 'fri' " +
-            //$"		else ResourceAvailability.Tilgængelighed " +
-            //$"	end as Tilgængelighed, " +
-            //$"	Branch.City as Lokation, " +
-            //$"	Distance.DistanceKm as [Distance] " +
-            //$"From " +
-            //$"    Resources Inner Join " +
-            //$"    Model On Resources.ModelID = Model.ModelID left join " +
-            //$"(Select " +
-            //$"    LeaseOrder.ResourcesID, " +
-            //$"    LeaseOrder.StartDate, " +
-            //$"    LeaseOrder.EndDate, " +
-            //$"    Case " +
-            //$"        When LeaseOrder.StartDate <= '{startDate}' And LeaseOrder.EndDate >= '{endDate}' " +
-            //$"        Then 'Ikke fri' " +
-            //$"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
-            //$"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
-            //$"        Then 'Fri nogle dage' " +
-            //$"        Else 'fri' " +
-            //$"    End As Tilgængelighed " +
-            //$"From " +
-            //$"    LeaseOrder Inner Join " +
-            //$"    Resources On LeaseOrder.ResourcesID = Resources.ResourcesID Inner Join " +
-            //$"    Model On Resources.ModelID = Model.ModelID " +
-            //$"Where " +
-            //$"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '{startDate}' And " +
-            //$"            LeaseOrder.EndDate >= '{endDate}') Or " +
-            //$"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
-            //$"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as ResourceAvailability " +
-            //$"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
-            //$"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
-            //$"	and Distance.StartLocation = {branchID} " +
-            //$"	where Model.ModelID = {modelID} " +
-            //$"	order by Tilgængelighed, Distance; ";
-
             string sql = $"Select " +
             $"    Resources.ResourcesID as [ResurseID], " +
             $"    Model.ModelName as [Model], " +
