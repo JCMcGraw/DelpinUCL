@@ -100,8 +100,8 @@ namespace DelpinUI
 
         private void SetSelectionBoxes()
         {
-            DataTable dataTableMainGroup = controller.GetMainGroup();
-            dataTableSubGroup = controller.GetSubGroup();
+            DataTable dataTableMainGroup = controller.DisplayMainGroup();
+            dataTableSubGroup = controller.DisplaySubGroup();
 
             ComboModelSub.DataSource = dataTableSubGroup;
             ComboModelSub.DisplayMember = "Category";
@@ -342,14 +342,7 @@ namespace DelpinUI
             catch { }
         }
 
-        private void AddAcc_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            AddAccModel.Text = AddAcc.CurrentCell.Value.ToString();
-            
-
-
-        }
+       
 
         private void AccModel_TextChanged(object sender, EventArgs e)
         {
@@ -378,7 +371,7 @@ namespace DelpinUI
         }
         private void GetModelByModelID(int ModelID)
         {
-            DataTable dataTable = controller.SelectSpecificModel(ModelID);
+            DataTable dataTable = controller.DisplaySpecificModel(ModelID);
 
 
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
@@ -550,6 +543,7 @@ namespace DelpinUI
                 string Modelid = ModelGridView.SelectedRows[0].Cells[0].Value + string.Empty;
                 int Modelnummer = Convert.ToInt32(Modelid);
                 GetModelByModelID(Modelnummer);
+                ModelID.Text = Modelid;
 
             }
         }
@@ -584,6 +578,9 @@ namespace DelpinUI
             if (e.RowIndex > -1)
             {
                 AccModelView.Rows[e.RowIndex].Selected = true;
+
+                string accModel = AccModelView.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                AccModel.Text = accModel;
             }
 
         }
@@ -610,7 +607,12 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
+                
                 AddAcc.Rows[e.RowIndex].Selected = true;
+                string Addacc = AddAcc.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                 
+                AddAccModel.Text = Addacc;
+
             }
         }
 

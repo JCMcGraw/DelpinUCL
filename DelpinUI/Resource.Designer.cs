@@ -588,9 +588,7 @@
             this.AddAcc.Name = "AddAcc";
             this.AddAcc.Size = new System.Drawing.Size(447, 125);
             this.AddAcc.TabIndex = 57;
-            this.AddAcc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AddAcc_CellClick);
             this.AddAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseClick);
-            this.AddAcc.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseDoubleClick);
             // 
             // AccModel
             // 
@@ -645,7 +643,6 @@
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
             this.AccModelView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseClick);
-            this.AccModelView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseDoubleClick);
             // 
             // tabPage4
             // 
