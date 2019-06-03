@@ -533,21 +533,22 @@ namespace DelpinUI
                 {
                     ViewDeb.Rows[e.RowIndex].Selected = true;
                     getBusinessDebtor();
-                }
-                else
-                { }
-                if (radioButton2.Checked)
-                {
-                    if (e.RowIndex > -1)
-                    {
-                        ViewDeb.Rows[e.RowIndex].Selected = true;
-                        getPersonalDebtor();
-                    }
-                }
-                else
-                { }
 
+                }
+                else
+                { }   
             }
+            if (radioButton2.Checked)
+            {
+                if (e.RowIndex > -1)
+                {
+                    ViewDeb.Rows[e.RowIndex].Selected = true;
+                    getPersonalDebtor();
+                    
+                }
+            }
+            else
+            { }
         }
     }
 }
