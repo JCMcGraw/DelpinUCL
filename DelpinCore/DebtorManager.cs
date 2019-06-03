@@ -97,7 +97,7 @@ namespace DelpinCore
             string updateDebtor = $"update Debtor set Street='{street}'" +
                                   $",PostalCode={postalCode},City='{city}',Phone='{phone}',Email='{email}' where DebtorID='{debtorID}'";
 
-            string updatePersonalDebtor = $"update Personal set CPR='{CPR}', FirstName='{firstName}',LastName='{lastName}' where CPR='{CPR}'";
+            string updatePersonalDebtor = $"update Personal set FirstName='{firstName}',LastName='{lastName}' where CPR='{CPR}'";
 
             string isUpdateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateDebtor);
             if (isUpdateDebtor != "Success")
@@ -170,16 +170,16 @@ namespace DelpinCore
             string updateDebtor = $"update Debtor set Street='{street}'" +
                                   $",PostalCode={postalCode},City='{city}',Phone='{phone}',Email='{email}' where DebtorID= '{debtorID}'";
 
-            string updateBusinessDebtor = $"update Business set CVR={CVR},CompanyName='{companyName}' where CVR='{CVR}'";
+            string updateBusinessDebtor = $"update Business set CompanyName='{companyName}' where CVR='{CVR}'";
 
             string isUpdateDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateDebtor);
-            if (isUpdateDebtor != "Succes")
+            if (isUpdateDebtor != "Success")
             {
                 return isUpdateDebtor;
             }
 
             string isUpdateBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(updateBusinessDebtor);
-            if (isUpdateBusinessDebtor != "Succes")
+            if (isUpdateBusinessDebtor != "Success")
             {
                 return isUpdateBusinessDebtor;
             }
