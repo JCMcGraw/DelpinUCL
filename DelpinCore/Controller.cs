@@ -178,6 +178,13 @@ namespace DelpinCore
             return dataTable;
         }
 
+        public DataTable DisplayAccessoryRelationsBySubGroupID(int subGroupID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplayAccesoryRelationsBySubGroupID(subGroupID);
+            return dataTable;
+        }
+
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
