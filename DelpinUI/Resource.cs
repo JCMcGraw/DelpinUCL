@@ -389,6 +389,7 @@ namespace DelpinUI
 
             if (result == DialogResult.Yes)
             {
+               
                 string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
                  Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
                 MessageBox.Show(succes);
@@ -429,7 +430,7 @@ namespace DelpinUI
             //ModelName.Text = dataTable.Rows[0]["Modelnummer"].ToString();
            
             
-            branchID.SelectedText = dataTable.Rows[0]["Lokation"].ToString();
+            branchID.SelectedValue = dataTable.Rows[0]["Afdelingsnummer"].ToString();
 
             //string succes = controller.DisplaySpecificResources(ressourceID.Text));
             //MessageBox.Show(succes);
@@ -531,11 +532,12 @@ namespace DelpinUI
             {
                 ModelGridView.Rows[e.RowIndex].Selected = true;
 
+                string Modelid = ModelGridView.SelectedRows[0].Cells[0].Value + string.Empty;
                 string Modelname = ModelGridView.SelectedRows[0].Cells[1].Value + string.Empty;
                 string Modelprice = ModelGridView.SelectedRows[0].Cells[4].Value + string.Empty;
                 string weight = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
-                
 
+                ModelID.Text = Modelid;
                 ModelName.Text = Modelname;
                 ModelPrice.Text = Modelprice;
                 Weight.Text = weight;

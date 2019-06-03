@@ -153,8 +153,8 @@ namespace DelpinUI
                 string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
                 string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
                 string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+                string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
                 string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
                 string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
 
