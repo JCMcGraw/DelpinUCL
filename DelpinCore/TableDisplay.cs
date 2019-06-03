@@ -62,7 +62,7 @@ namespace DelpinCore
         //Viser alle resourcerne, deres modeltype og deres lokation,PR
         public DataTable DisplayAllResources()
         {
-            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID";
+            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where model.active='1' and resources.Active = '1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -72,7 +72,7 @@ namespace DelpinCore
         //Viser en specefik resource, dens modeltype og dens lokation, PR
         public DataTable DisplaySpecficResources(int resourceID )
         {
-            string selectResources = $"select ResourcesID as Resursenummer, model.modelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourcesID='{resourceID}' and model.active='1'";
+            string selectResources = $"select ResourcesID as Resursenummer, model.modelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourcesID='{resourceID}' and model.active='1' and resources.Active = '1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
