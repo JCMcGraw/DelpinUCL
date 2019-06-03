@@ -52,17 +52,17 @@ namespace DelpinUI
 
         private void SetSelectionBoxes()
         {
-            DataTable dataTableMainGroup = controller.DisplaySubGroup();
-            dataTableSubGroup = controller.GetSubGroup();
+            DataTable dataTableMainGroup = controller.DisplayMainGroup();
+            dataTableSubGroup = controller.DisplaySubGroup();
+
+            SubGroup.DataSource = dataTableSubGroup;
+            SubGroup.DisplayMember = "Category";
+            SubGroup.ValueMember = "SubGroupID";
 
             MainGroup.DataSource = dataTableMainGroup;
             MainGroup.DisplayMember = "Category";
             MainGroup.ValueMember = "MainGroupID";
 
-
-            SubGroup.DataSource = dataTableSubGroup;
-            SubGroup.DisplayMember = "Category";
-            SubGroup.ValueMember = "SubGroupID";
 
             UpdateResourceDataGrid(Convert.ToInt32(SubGroup.SelectedValue));
         }
