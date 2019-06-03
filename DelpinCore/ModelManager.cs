@@ -10,7 +10,6 @@ namespace DelpinCore
     {
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
-            
             string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG,Active) " +
                                    $"values ('{modelName}',{price},{subGroupID},{weightKG},'1')";
 
@@ -26,7 +25,6 @@ namespace DelpinCore
         public string ReadModel()
         {
             string readModel = "Select * from Model";
-
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readModel));
         }
 
@@ -35,7 +33,6 @@ namespace DelpinCore
             string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +
                 $",SubGroupID='{subGroupID}',WeightKg={weightKG} where ModelID ={modelID}";  
                                 
-
             string isUpdateModel = DatabaseManager.CreateUpdateDeleteInDatabase(updateModel);
             if (isUpdateModel != "Success")
             {
@@ -48,8 +45,6 @@ namespace DelpinCore
         public string DeleteModel(int modelID)
         {
             string deleteModel = $"update Model set Active ='0' where ModelID ={modelID}";
-
-
 
             string isDeleteModel = DatabaseManager.CreateUpdateDeleteInDatabase(deleteModel);
             if (isDeleteModel != "Success")

@@ -9,17 +9,24 @@ namespace DelpinCore
     public class LeaseOrder
     {
         public int leaseOrderID { get; private set; }
+
         public DateTime startDate { get; private set; }
+
         public DateTime endDate { get; private set; }
+
         public decimal leasePrice { get; private set; }
+
         public int resourceID { get; private set; }
+
         public string deliveryStreet { get; private set; }
+
         public int deliveryPostalCode { get; private set; }
+
         public string deliveryCity { get; private set; }
+
         public decimal deliveryPrice { get; private set; }
+
         public string modelName { get; private set; }
-
-
 
         public LeaseOrder(DateTime startDate, DateTime endDate, decimal leasePrice, int resourceID)
         {
