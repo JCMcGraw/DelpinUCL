@@ -57,6 +57,20 @@ namespace DelpinCore
             return $"Resources {resourceID} er blevet Slettet";
         }
 
+        public string DeactivateResource(int resourceID)
+        {
+            string deactivateResource = $"Update Resources set Active = '0' where ResourcesID={resourceID}";
+
+            string isDeactivateResource = DatabaseManager.CreateUpdateDeleteInDatabase(deactivateResource);
+            if (isDeactivateResource != "Success")
+            {
+                return isDeactivateResource;
+            }
+
+            return $"Resources {resourceID} er blevet Slettet";
+        }
+
+
         public DataTable ReadSpecefikSubCataegori(int SubGroupID)
         {
             string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";

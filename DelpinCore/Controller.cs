@@ -210,6 +210,12 @@ namespace DelpinCore
             return deleteResource;
         }
 
+        public string DeactivateResource(int resourceID)
+        {
+            string deactivateResource = resourceManager.DeactivateResource(resourceID);
+            return deactivateResource;
+        }
+
         public DataTable ReadSpecefikSubCataegori(int subGroupID)
         {
             DataTable dataTable = new DataTable();
