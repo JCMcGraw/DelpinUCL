@@ -23,7 +23,7 @@ namespace DelpinCore
             return $"Accessory {modelID}, {accessoryID} er blevet oprettet";
         }
 
-        //
+        //Denne inner joiner model tabellen med Accessory så vi kan se de fælles Kolonner som er i tabellen.
         public DataTable ReadAccessory(int modelID)
         {
             string readAccessory = "Select Model2.ModelID, Model2.ModelName From Model " +
@@ -47,7 +47,7 @@ namespace DelpinCore
             return $"Accessory {accessoryModelID} er blevet Slettet";
         }
 
-        //
+        //Her joiner vi Accessory med model og SubGroup og sætter danske Alias på så det framstår på dansk i Programmet.
         public DataTable ReadOnlyAccessory()
         {
             string readOnlyAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory" +

@@ -11,7 +11,7 @@ namespace DelpinCore
     class DeliveryManager
     {
         //Daniel
-        //
+        // Denne Metode henter Leverings Prisen ud fra databasen med parameterne Zone og vægt.
         public double GetItemsFromDeliveryTable(int zone,bool ton)
         {
             string itemsFromDeliveryTable = $"select * from Delivery where \"Zone\" = {zone} and \"8ton\" ={Convert.ToInt32(ton)}";

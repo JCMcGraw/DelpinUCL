@@ -20,7 +20,8 @@ namespace DelpinCore
         BranchManager branchManager = new BranchManager();
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Debtor (Done)
+        //Debtor
+        //Denne blive ikke brugt
         public string ReadDebtor()
         {
             string readDebtor = debtorManager.ReadDebtor();
@@ -79,8 +80,8 @@ namespace DelpinCore
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        //TableDisplay (Done)
-        public DataTable DisplaySpeceficBusinessDebtor(string debtorID) //Ikke samme Method Name as in TableDisplay
+        //TableDisplay
+        public DataTable DisplaySpeceficBusinessDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
@@ -150,6 +151,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Denne bliver ikke brugt
         public DataTable DisplaySpeceficAccesory(int modelID)
         {
             DataTable dataTable = tableDisplay.DisplaySpeceficAccessory(modelID);
@@ -183,25 +185,28 @@ namespace DelpinCore
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Resource (Done)
+        //Resource 
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
             string createResource = resourceManager.CreateResource(resourceID, modelID, branchID);
             return createResource;
         }
 
+        //Denne bliver ikke brugt
         public string ReadResource()
         {
             string readResource = resourceManager.ReadResource();
             return readResource;
         }
 
+        //Denne bliver ikke brugt
         public string UpdateResource(int resourceID, int modelID, int branchID)
         {
             string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID);
             return updateResource;
         }
 
+        //Denne bliver ikke brugt
         public string DeleteResource(int resourceID)
         {
             string deleteResource = resourceManager.DeleteResource(resourceID);
@@ -222,6 +227,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Denne bliver ikke brugt
         public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
         {
             DataTable dataTable = new DataTable();
@@ -231,13 +237,14 @@ namespace DelpinCore
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Model(Done)
+        //Model
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
             string createModel = modelManager.CreateModel(modelName, price, subGroupID, weightKG);
             return createModel;
         }
 
+        //Denne bliver ikke brugt
         public string ReadModel()
         {
             string readModel = modelManager.ReadModel();
@@ -273,6 +280,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Denne bliver ikke brugt
         public void DeleteLease(int leaseID)
         {
             leaseManager.DeleteLease(leaseID);
@@ -315,7 +323,7 @@ namespace DelpinCore
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Accessory (Done)
+        //Accessory 
         public string CreateAccessory(int modelID, int accessoryID)
         {
             string createAccessory = accessoryManager.CreateAccessory(modelID, accessoryID);
@@ -334,6 +342,7 @@ namespace DelpinCore
             return deleteAccessory;
         }
 
+        //Denne bliver ikke brugt
         public DataTable ReadOnlyAccessory()
         {
             DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
@@ -362,12 +371,14 @@ namespace DelpinCore
         //-------------------------------------------------------------------------------------------------------------------------------------------------
 
         //Branch (Done)
+        //Denne bliver ikke brugt
         public DataTable ReadAllBranches()
         {
             DataTable dataTable = branchManager.ReadAllBranches();
             return dataTable;
         }
 
+        //Denne bliver ikke brugt
         public Branch ReadBranchByBranchID(int branchID)
         {
             Branch branch = branchManager.ReadBranchByBranchID(branchID);

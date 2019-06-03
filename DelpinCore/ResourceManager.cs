@@ -74,7 +74,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //
+        //Bliver ikke brugt
         public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Model" +

@@ -40,7 +40,7 @@ namespace DelpinCore
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
         }
 
-        //Komentar
+        //Her bliver Debtorer joinet på så vi kan se alle atributter som en Personlig debtor har.
         public DataTable ReadPersonalDebtor(string debtorID)
         {
             string readPersonalDebtor = $"Select * from Personal" +
@@ -149,7 +149,7 @@ namespace DelpinCore
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email},'{CVR}','{companyName}'er blevet Oprettet";
         }
 
-        //Forklaring
+        //Her bliver Debtorer joinet på så vi kan se alle atributter som en Buisness debtor har.
         public DataTable ReadBusinessDebtor(string debtorID)
         {
             string readBusinessDebtor = $"Select * from Business "+
