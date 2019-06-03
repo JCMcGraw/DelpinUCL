@@ -41,7 +41,7 @@ namespace DelpinCore
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        //TableDisplay
+        //TableDisplay (Done)
         public DataTable SelectSpecificBusiness(string debtorID) //Ikke samme Method Name as in TableDisplay
         {
             DataTable dataTable = new DataTable();
