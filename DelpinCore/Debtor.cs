@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DelpinCore
 {
-    abstract class Debtor
+    abstract class Debtor 
     {
         //Daniel
         public string debtorID { get; private set; }

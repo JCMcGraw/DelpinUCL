@@ -25,7 +25,6 @@ namespace DelpinCore
             string createPersonal = "Insert into Personal(CPR, FirstName, LastName) " +
                   $"values ('{CPR}','{firstName}','{lastName}')";
            
-            
 
             string isCreateDebtorSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(createDebtor);
             if (isCreateDebtorSuccess != "Success")
@@ -38,14 +37,14 @@ namespace DelpinCore
             {
                 return isCreatePersonalSuccess;
             }
-
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
-            
         }
 
+        //Komentar
         public DataTable ReadPersonalDebtor(string debtorID)
         {
-            string readPersonalDebtor = $"Select * from Personal join Debtor on Personal.CPR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
+            string readPersonalDebtor = $"Select * from Personal" +
+                                        $"join Debtor on Personal.CPR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readPersonalDebtor);
 
@@ -55,7 +54,6 @@ namespace DelpinCore
         //Froklaring på denne
         public Business ReadAllDebtorsByDebtorID(string debtorID)
         {
-
             string readPersonalDebtor1 = $"Select * From " +
                                          $"(Select " +
                                          $"    Business.CompanyName As Navn, " +
@@ -82,8 +80,6 @@ namespace DelpinCore
                                          $"    Personal On Personal.CPR = Debtor.DebtorID) As AllDebtors " +
                                          $"Where AllDebtors.KundeID = '{debtorID}' ";
             
-
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readPersonalDebtor1);
 
             Business business = new Business(debtorID,(string)dataTable.Rows[0]["Adresse"], (int)dataTable.Rows[0]["PostKode"], (string)dataTable.Rows[0]["By"], (string)dataTable.Rows[0]["Telefon"], (string)dataTable.Rows[0]["Email"], (string)dataTable.Rows[0]["Navn"]);
@@ -109,7 +105,6 @@ namespace DelpinCore
             {
                 return isUpdatePersonalDebtor;
             }
-
             return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Updateret";
         }
 
@@ -129,7 +124,6 @@ namespace DelpinCore
             {
                 return isDeleteDebtor;
             }
-
             return $"Kunden '{CPR}' er blevet slettet";
         }
 
@@ -152,13 +146,15 @@ namespace DelpinCore
             {
                 return isCreateBusinessSuccess;
             }
-
             return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email},'{CVR}','{companyName}'er blevet Oprettet";
         }
 
+        //Forklaring
         public DataTable ReadBusinessDebtor(string debtorID)
         {
-            string readBusinessDebtor = $"Select * from Business join Debtor on Business.CVR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
+            string readBusinessDebtor = $"Select * from Business "+
+                $"join Debtor on Business.CVR = Debtor.DebtorID Where DebtorID = '{debtorID}'";
+
             DataTable dataTable = DatabaseManager.ReadFromDatabase(readBusinessDebtor);
 
             return dataTable;
@@ -190,7 +186,6 @@ namespace DelpinCore
             string deleteBusinessDebtor = $"Delete from Business where CVR='{CVR}'";
             string deleteDebtor = $"Delete from Debtor where DebtorID='{CVR}'";
             
-
             string isDeleteBusinessDebtor = DatabaseManager.CreateUpdateDeleteInDatabase(deleteBusinessDebtor);
             if (isDeleteBusinessDebtor != "Success")
             {
@@ -202,7 +197,6 @@ namespace DelpinCore
             {
                 return isDeleteDebtor;
             }
-
             return $"Kunden '{CVR}' er blevet slettet";
         }
     }

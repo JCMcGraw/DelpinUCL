@@ -20,13 +20,13 @@ namespace DelpinCore
             {
                 return isCreateResource;
             }
-
             return $"Resources {resourceID}','{modelID}','{branchID} er blevet Oprettet";
         }
 
         public string ReadResource()
         {
             string readResource = "Select * from Resources, where active ='1'";
+
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource));
         }
 
@@ -39,7 +39,6 @@ namespace DelpinCore
             {
                 return isUpdateResource;
             }
-
             return $"Resources {resourceID}','{modelID}','{branchID} er blevet Opdateret";
         }
 
@@ -52,7 +51,6 @@ namespace DelpinCore
             {
                 return isDeleteResource;
             }
-
             return $"Resources {resourceID} er blevet Slettet";
         }
 
@@ -65,7 +63,6 @@ namespace DelpinCore
             {
                 return isDeactivateResource;
             }
-
             return $"Resources {resourceID} er blevet Slettet";
         }
 
@@ -77,6 +74,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //
         public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Model" +

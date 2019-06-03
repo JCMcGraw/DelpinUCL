@@ -13,10 +13,10 @@ namespace DelpinCore
 
         public string companyName { get; private set; }
 
-        //Constructor Who has parameters from Base constructor in Debtor Class, + Business's own Variabels
-        public Business(string debtorID, string street, int postalCode, string city, string phone, string email,string companyName) :base (debtorID,street,postalCode,city,phone,email)
+        //Constructor Som har parameters fra Base Constructor i Debtor Classen, + Business's egne Variabeler
+        public Business(string debtorID, string street, int postalCode, string city, string phone, string email, string companyName) :base (debtorID,street,postalCode,city,phone,email)
         {
-            this.CVR = CVR;
+            this.CVR = CVR; //Skal denne ikke med 
             this.companyName = companyName;
         }
     }

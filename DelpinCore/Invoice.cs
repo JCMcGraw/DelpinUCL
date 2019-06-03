@@ -25,27 +25,26 @@ namespace DelpinCore
 
         public string MakePDF(Lease lease,Business debtor)
         {
-            //Her bruges classen pdfDocument.
+            // Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
 
-            //Her laver jeg et pdf dokument og kalder det Created with DPFsharp
+            // Her laver jeg et pdf dokument og kalder det Faktura
             document.Info.Title = "Faktura";
 
-            // Her laves en tom side
+            // Her laves en side
             PdfPage page = document.AddPage();
 
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            // Create a font (Dette er skrift størelse og sill)
+            // Opret skrift størelse og sill
             XFont companyAndDebtor = new XFont("Calibri", 10, XFontStyle.Regular);
             XFont fakture = new XFont("Calibri", 20, XFontStyle.Bold);
             XFont companyNames = new XFont("Calibri", 13, XFontStyle.Bold);
             XFont smallHeadLine = new XFont("Calibri", 10, XFontStyle.Bold);
             XFont priceFat = new XFont("Calibri", 10, XFontStyle.Bold);
 
-            // Draw the text Dette er hvad der skal være på teksten og hvor det skal være Der kan laves lige så mange som man vil 
-
+            // Draw the text. Dette er hvad der skal være på teksten, og hvor det skal være. Der kan laves lige så mange som man vil 
             //Kunde Oplysninger------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString($"{lease.contactFirstName} {lease.contactLastName}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -320, page.Width, page.Height),
@@ -138,10 +137,12 @@ namespace DelpinCore
                 new XRect(80, -125, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
+            //Her oprettes en variabel som sættes til 0
             int lineSpace = 0;
 
             for (int i = 0; i < lease.GetLeaseOrders().Count; i++)
             {
+                //Her bliver Variablen sat til 15. så hver gange der bliver kørt GetLeaseOrders(tilføjet en ny vare linje bliver der pludset 15 til y aksens position)
                 lineSpace = 15 * i;
 
                 gfx.DrawString($"{lease.GetLeaseOrders()[i].modelName}", companyAndDebtor, XBrushes.Black,
@@ -198,7 +199,7 @@ namespace DelpinCore
                 new XRect(400, 15+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            //Dette  er til at vælge Navnet på filen
+            //Her Laves navnet på filen
             string filename = $"Faktura{lease.leaseID}.pdf";
 
             try

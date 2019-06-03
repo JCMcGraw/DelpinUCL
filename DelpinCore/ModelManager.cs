@@ -11,34 +11,33 @@ namespace DelpinCore
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
             string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG,Active) " +
-                                   $"values ('{modelName}',{price},{subGroupID},{weightKG},'1')";
+                                $"values ('{modelName}',{price},{subGroupID},{weightKG},'1')";
 
             string isCreateModel = DatabaseManager.CreateUpdateDeleteInDatabase(createModel);
             if (isCreateModel != "Success")
             {
                 return isCreateModel;
             }
-
             return $"Model '{modelName}','{price}','{subGroupID}','{weightKG} er blevet Oprettet";
         }
 
         public string ReadModel()
         {
             string readModel = "Select * from Model";
+
             return Convert.ToString(DatabaseManager.ReadFromDatabase(readModel));
         }
 
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
             string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +
-                $",SubGroupID='{subGroupID}',WeightKg={weightKG} where ModelID ={modelID}";  
+                                 $",SubGroupID='{subGroupID}',WeightKg={weightKG} where ModelID ={modelID}";  
                                 
             string isUpdateModel = DatabaseManager.CreateUpdateDeleteInDatabase(updateModel);
             if (isUpdateModel != "Success")
             {
                 return isUpdateModel;
             }
-
             return $"Model {modelID},'{modelName}',{price},'{subGroupID}',{weightKG} er blevet Opdateret";
         }
 
@@ -51,7 +50,6 @@ namespace DelpinCore
             {
                 return isDeleteModel;
             }
-
             return $"Model {modelID} er blevet Slettet";
         }
     }

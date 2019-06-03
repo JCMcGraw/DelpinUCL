@@ -11,6 +11,7 @@ namespace DelpinCore
     class DeliveryManager
     {
         //Daniel
+        //
         public double GetItemsFromDeliveryTable(int zone,bool ton)
         {
             string itemsFromDeliveryTable = $"select * from Delivery where \"Zone\" = {zone} and \"8ton\" ={Convert.ToInt32(ton)}";
