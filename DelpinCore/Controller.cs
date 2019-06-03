@@ -80,32 +80,33 @@ namespace DelpinCore
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         //TableDisplay (Done)
-        public DataTable SelectSpecificBusiness(string debtorID) //Ikke samme Method Name as in TableDisplay
+        public DataTable DisplaySpeceficBusinessDebtor(string debtorID) //Ikke samme Method Name as in TableDisplay
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
             return dataTable;
         }
 
-        public DataTable SelectSpecificPersonal(string debtorID)
+        public DataTable DisplaySpeceficPersonalDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
             return dataTable;
         }
 
-        public DataTable SelectAllBusiness()
+        public DataTable DisplayAllBusinessDebtor()
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplayAllBusinessDebtor();
             return dataTable;
         }
-        public DataTable SelectAllPersonal()
+        public DataTable DisplayAllPersonalDebtor()
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplayAllPersonalDebtor();
             return dataTable;
         }
+        //Her til
 
         public DataTable DisplayAllResources()
         {
