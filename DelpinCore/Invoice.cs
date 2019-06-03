@@ -7,6 +7,7 @@ using PdfSharp.Drawing;//Denne skal bruges
 using PdfSharp.Pdf;//Denne skal bruges
 using System.Diagnostics;//Denne skal bruges
 
+
 namespace DelpinCore
 {
     class Invoice
@@ -43,6 +44,12 @@ namespace DelpinCore
             XFont companyNames = new XFont("Calibri", 13, XFontStyle.Bold);
             XFont smallHeadLine = new XFont("Calibri", 10, XFontStyle.Bold);
             XFont priceFat = new XFont("Calibri", 10, XFontStyle.Bold);
+
+            //gfx.DrawImage(XImage.FromFile("C:\\Users\\Admin\\source\\repos\\DelpinUCL2v16\\DelpinUI\\bin\\Debug\\Billede,jpg"), 0, 0);
+
+            //XImage xImage = XImage.FromFile("C:\\Users\\Admin\\source\\repos\\DelpinUCL2v16\\DelpinUI\\bin\\Debug\\Billede.jpg");
+            //gfx.DrawImage(xImage, 0, 0, xImage.PixelWidth, xImage.PixelWidth);
+
 
             // Draw the text. Dette er hvad der skal være på teksten, og hvor det skal være. Der kan laves lige så mange som man vil 
             //Kunde Oplysninger------------------------------------------------------------------------------------------------------------------------------
