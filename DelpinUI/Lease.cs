@@ -253,6 +253,7 @@ namespace DelpinUI
                 deleteLease.Enabled = true;
                 updateStatus.Enabled = true;
                 writeInvoice.Enabled = true;
+                MessageBox.Show($"Ordren blev oprettet med ordrenummer {leaseNumber}");
             }
 
         }

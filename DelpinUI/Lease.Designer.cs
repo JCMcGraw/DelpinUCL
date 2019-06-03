@@ -61,15 +61,6 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.createLease = new System.Windows.Forms.Button();
             this.leaseOrders = new System.Windows.Forms.DataGridView();
-            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainGroup = new System.Windows.Forms.ComboBox();
             this.SubGroup = new System.Windows.Forms.ComboBox();
             this.categoryLabel = new System.Windows.Forms.Label();
@@ -98,6 +89,15 @@
             this.deliveryZoneComboBox = new System.Windows.Forms.ComboBox();
             this.deliveryZoneLabel = new System.Windows.Forms.Label();
             this.writeInvoice = new System.Windows.Forms.Button();
+            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.leaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esourcesDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -402,60 +402,9 @@
             this.leaseOrders.Location = new System.Drawing.Point(482, 337);
             this.leaseOrders.MultiSelect = false;
             this.leaseOrders.Name = "leaseOrders";
-            this.leaseOrders.Size = new System.Drawing.Size(723, 186);
+            this.leaseOrders.Size = new System.Drawing.Size(764, 186);
             this.leaseOrders.TabIndex = 39;
             this.leaseOrders.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewLeaseOrders_DataError);
-            // 
-            // ResurseID
-            // 
-            this.ResurseID.HeaderText = "ResurseID";
-            this.ResurseID.Name = "ResurseID";
-            this.ResurseID.Visible = false;
-            // 
-            // Resurse
-            // 
-            this.Resurse.HeaderText = "Resurse";
-            this.Resurse.Name = "Resurse";
-            // 
-            // Leveringsdato
-            // 
-            this.Leveringsdato.HeaderText = "Leveringsdato";
-            this.Leveringsdato.Name = "Leveringsdato";
-            this.Leveringsdato.Width = 80;
-            // 
-            // Slutdato
-            // 
-            this.Slutdato.HeaderText = "Slutdato";
-            this.Slutdato.Name = "Slutdato";
-            this.Slutdato.Width = 80;
-            // 
-            // Dagspris
-            // 
-            this.Dagspris.HeaderText = "Dagspris";
-            this.Dagspris.Name = "Dagspris";
-            this.Dagspris.Width = 70;
-            // 
-            // Levering
-            // 
-            this.Levering.HeaderText = "Levering";
-            this.Levering.Name = "Levering";
-            // 
-            // Gade
-            // 
-            this.Gade.HeaderText = "Gade";
-            this.Gade.Name = "Gade";
-            // 
-            // Postkode
-            // 
-            this.Postkode.HeaderText = "Postkode";
-            this.Postkode.Name = "Postkode";
-            this.Postkode.Width = 60;
-            // 
-            // By
-            // 
-            this.By.HeaderText = "By";
-            this.By.Name = "By";
-            this.By.Width = 90;
             // 
             // MainGroup
             // 
@@ -750,6 +699,59 @@
             this.writeInvoice.UseVisualStyleBackColor = true;
             this.writeInvoice.Click += new System.EventHandler(this.buttonInvoice_Click);
             // 
+            // ResurseID
+            // 
+            this.ResurseID.HeaderText = "Resursenummer";
+            this.ResurseID.Name = "ResurseID";
+            this.ResurseID.Width = 90;
+            // 
+            // Resurse
+            // 
+            this.Resurse.HeaderText = "Resurse";
+            this.Resurse.Name = "Resurse";
+            // 
+            // Leveringsdato
+            // 
+            this.Leveringsdato.HeaderText = "Startdato";
+            this.Leveringsdato.Name = "Leveringsdato";
+            this.Leveringsdato.Width = 80;
+            // 
+            // Slutdato
+            // 
+            this.Slutdato.HeaderText = "Slutdato";
+            this.Slutdato.Name = "Slutdato";
+            this.Slutdato.Width = 80;
+            // 
+            // Dagspris
+            // 
+            this.Dagspris.HeaderText = "Dagspris";
+            this.Dagspris.Name = "Dagspris";
+            this.Dagspris.Width = 70;
+            // 
+            // Levering
+            // 
+            this.Levering.HeaderText = "Levering";
+            this.Levering.Name = "Levering";
+            this.Levering.Width = 60;
+            // 
+            // Gade
+            // 
+            this.Gade.HeaderText = "Gade";
+            this.Gade.Name = "Gade";
+            this.Gade.Width = 90;
+            // 
+            // Postkode
+            // 
+            this.Postkode.HeaderText = "Postkode";
+            this.Postkode.Name = "Postkode";
+            this.Postkode.Width = 60;
+            // 
+            // By
+            // 
+            this.By.HeaderText = "By";
+            this.By.Name = "By";
+            this.By.Width = 80;
+            // 
             // Lease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -871,15 +873,6 @@
         private System.Windows.Forms.CheckBox useBillingAddress;
         private System.Windows.Forms.RadioButton businessRadioButton;
         private System.Windows.Forms.RadioButton personalRadioButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Slutdato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dagspris;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Levering;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Postkode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn By;
         private System.Windows.Forms.TextBox leaseNumber;
         private System.Windows.Forms.Label labelLeaseNumber;
         private System.Windows.Forms.Button updateLease;
@@ -899,5 +892,14 @@
         private System.Windows.Forms.ComboBox deliveryZoneComboBox;
         private System.Windows.Forms.Label deliveryZoneLabel;
         private System.Windows.Forms.Button writeInvoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResurseID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Resurse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Leveringsdato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slutdato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dagspris;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Levering;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Postkode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn By;
     }
 }
