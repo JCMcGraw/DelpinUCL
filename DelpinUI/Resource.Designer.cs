@@ -87,12 +87,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.SubAcc = new System.Windows.Forms.ComboBox();
+            this.MainAcc = new System.Windows.Forms.ComboBox();
             this.UpdateAcc = new System.Windows.Forms.Button();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -191,6 +191,7 @@
             // 
             // ComboModelMain
             // 
+            this.ComboModelMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboModelMain.FormattingEnabled = true;
             this.ComboModelMain.Location = new System.Drawing.Point(6, 182);
             this.ComboModelMain.Name = "ComboModelMain";
@@ -240,6 +241,7 @@
             // 
             // ComboModelSub
             // 
+            this.ComboModelSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboModelSub.FormattingEnabled = true;
             this.ComboModelSub.Location = new System.Drawing.Point(133, 182);
             this.ComboModelSub.Name = "ComboModelSub";
@@ -521,6 +523,7 @@
             // 
             // AddAccSub
             // 
+            this.AddAccSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddAccSub.FormattingEnabled = true;
             this.AddAccSub.Location = new System.Drawing.Point(133, 344);
             this.AddAccSub.Name = "AddAccSub";
@@ -530,6 +533,7 @@
             // 
             // AddAccMain
             // 
+            this.AddAccMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddAccMain.FormattingEnabled = true;
             this.AddAccMain.Location = new System.Drawing.Point(6, 344);
             this.AddAccMain.Name = "AddAccMain";
@@ -564,6 +568,7 @@
             // 
             // AccSub
             // 
+            this.AccSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccSub.FormattingEnabled = true;
             this.AccSub.Location = new System.Drawing.Point(122, 60);
             this.AccSub.Name = "AccSub";
@@ -573,6 +578,7 @@
             // 
             // AccMain
             // 
+            this.AccMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccMain.FormattingEnabled = true;
             this.AccMain.Location = new System.Drawing.Point(9, 60);
             this.AccMain.Name = "AccMain";
@@ -649,8 +655,8 @@
             // 
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.comboBox2);
-            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.SubAcc);
+            this.tabPage4.Controls.Add(this.MainAcc);
             this.tabPage4.Controls.Add(this.UpdateAcc);
             this.tabPage4.Controls.Add(this.ShowAllAcc);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -658,8 +664,46 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(921, 498);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Slet tilbehør";
+            this.tabPage4.Text = "Fjern tilbehør";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(143, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Undergruppe";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Hovedkategori";
+            // 
+            // SubAcc
+            // 
+            this.SubAcc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubAcc.FormattingEnabled = true;
+            this.SubAcc.Location = new System.Drawing.Point(143, 50);
+            this.SubAcc.Name = "SubAcc";
+            this.SubAcc.Size = new System.Drawing.Size(121, 21);
+            this.SubAcc.TabIndex = 10;
+            this.SubAcc.SelectedIndexChanged += new System.EventHandler(this.SubAcc_SelectedIndexChanged);
+            // 
+            // MainAcc
+            // 
+            this.MainAcc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MainAcc.FormattingEnabled = true;
+            this.MainAcc.Location = new System.Drawing.Point(15, 50);
+            this.MainAcc.Name = "MainAcc";
+            this.MainAcc.Size = new System.Drawing.Size(121, 21);
+            this.MainAcc.TabIndex = 9;
+            this.MainAcc.SelectedIndexChanged += new System.EventHandler(this.MainAcc_SelectedIndexChanged);
             // 
             // UpdateAcc
             // 
@@ -667,7 +711,7 @@
             this.UpdateAcc.Name = "UpdateAcc";
             this.UpdateAcc.Size = new System.Drawing.Size(75, 23);
             this.UpdateAcc.TabIndex = 8;
-            this.UpdateAcc.Text = "Slet tilbehør";
+            this.UpdateAcc.Text = "Fjern tilbehør";
             this.UpdateAcc.UseVisualStyleBackColor = true;
             this.UpdateAcc.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -679,40 +723,6 @@
             this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(143, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 32);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 13);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Hovedkategori";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(143, 32);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 13);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Undergruppe";
             // 
             // Resource
             // 
@@ -808,7 +818,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox SubAcc;
+        private System.Windows.Forms.ComboBox MainAcc;
     }
 }

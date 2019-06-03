@@ -19,6 +19,7 @@ namespace DelpinUI
 
         private DataTable dataTableSubGroup = new DataTable();
         private DataTable dataTableAccSubGroup = new DataTable();
+        private DataTable dataTableAccDelete = new DataTable();
 
 
         public Resource()
@@ -50,6 +51,15 @@ namespace DelpinUI
 
 
         }
+        private void DeleteAcc()
+        {
+            var selectedRows = ShowAllAcc.SelectedRows;
+            int selectedRow = selectedRows[0].Index;
+            int AccModelID = Convert.ToInt32(ShowAllAcc.Rows[selectedRow].Cells["Tilhørsnummer"].Value);
+            controller.DeleteAccessory(AccModelID);
+            UpdateAccTable();
+        }
+       
         private void UpdateAccTable()
         {
             DataTable dataTableViewAcc = controller.DisplayAccesoryRelations();
@@ -138,6 +148,13 @@ namespace DelpinUI
 
 
 
+            DataTable AddAccDelete = dataTableMainGroup.Copy();
+
+            AddAccMain.DataSource = AddAccView2;
+            AddAccMain.DisplayMember = "Category";
+            AddAccMain.ValueMember = "MainGroupID";
+
+
 
 
             DataTable dataTableBranch = controller.DisplayBranch();
@@ -151,6 +168,12 @@ namespace DelpinUI
 
             DataTable dataTableAcc = controller.DisplayAccesoryRelations();
             ShowAllAcc.DataSource = dataTableAcc;
+
+
+            //DataTable dataTableAccDelete = controller.DisplayAccessoryRelationsBySubGroupID();
+            MainAcc.DataSource = dataTableAccDelete;
+            MainAcc.DisplayMember = "";
+            MainAcc.ValueMember = "subGroupID";
 
             DataTable dataTableModel = controller.DisplayModel();
             ModelGridView.DataSource = dataTableModel;
@@ -166,8 +189,13 @@ namespace DelpinUI
 
             DataTable dataTableAccView = controller.DisplayAccModel();
 
+            DataTable dataTableDeleteAcc = controller.DisplayAccesoryRelations();
+            //dataTable = controller.DisplayAccessoryRelationsBySubGroupID();
+
             AddAcc.DataSource = dataTableAddAccModel;
             AddAcc.DataSource = dataTableModel;
+
+            
         }
 
 
@@ -451,10 +479,26 @@ namespace DelpinUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var selectedRows = ShowAllAcc.SelectedRows;
-            int selectedRow = selectedRows[0].Index;
-            int AccModelID = Convert.ToInt32(ShowAllAcc.Rows[selectedRow].Cells["Tilhørsnummer"].Value);
-            controller.DeleteAccessory(AccModelID);
+
+            
+            const string message = ("Vil du fjerne tilbehøret fra");
+            const string caption = "Annuller";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+
+                DeleteAcc();
+
+            }
+            else
+            {
+
+            }
+            UpdateAccTable();
+            ClearAllTextBoxes();
 
         }
 
@@ -626,7 +670,26 @@ namespace DelpinUI
 
         }
 
-        
+        private void MainAcc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dataTableAccDelete);
+                dv.RowFilter = $"MainGroup = {MainAcc.SelectedValue}";
+
+
+                SubAcc.DataSource = dv.ToTable();
+                SubAcc.DisplayMember = "Category";
+                SubAcc.ValueMember = "SubGroupID";
+            }
+            catch { }
+
+        }
+
+        private void SubAcc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
 

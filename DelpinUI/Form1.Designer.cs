@@ -105,7 +105,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DelpinUI.Properties.Resources.delpinlogo;
-            this.pictureBox1.Location = new System.Drawing.Point(187, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(378, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(171, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -116,11 +116,11 @@
             // 
             this.headlineLabel.AutoSize = true;
             this.headlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headlineLabel.Location = new System.Drawing.Point(396, 57);
+            this.headlineLabel.Location = new System.Drawing.Point(388, 131);
             this.headlineLabel.Name = "headlineLabel";
-            this.headlineLabel.Size = new System.Drawing.Size(280, 26);
+            this.headlineLabel.Size = new System.Drawing.Size(161, 26);
             this.headlineLabel.TabIndex = 7;
-            this.headlineLabel.Text = "Delpin A/S resursemanager";
+            this.headlineLabel.Text = "Bookingsystem";
             // 
             // deliveriesInNextTwoDays
             // 
