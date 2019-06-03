@@ -306,8 +306,6 @@ namespace DelpinCore
             return isSuccess;
         }
 
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
             DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
@@ -339,7 +337,7 @@ namespace DelpinCore
             return readOnlyAccessory;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        //Delivery
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
             double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone, ton);
