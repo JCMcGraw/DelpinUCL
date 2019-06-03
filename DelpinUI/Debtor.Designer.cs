@@ -79,8 +79,6 @@
             this.businessTableAdapter2 = new DelpinUI.DataSet7TableAdapters.BusinessTableAdapter();
             this.GetBdeb = new System.Windows.Forms.Button();
             this.UpdateDebtor = new System.Windows.Forms.Button();
-            this.SaveDebtor = new System.Windows.Forms.Button();
-            this.CancelUpdate = new System.Windows.Forms.Button();
             this.DeleteDebtor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).BeginInit();
@@ -311,6 +309,7 @@
             this.ViewDeb.Size = new System.Drawing.Size(812, 425);
             this.ViewDeb.TabIndex = 33;
             this.ViewDeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);
+            this.ViewDeb.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ViewDeb_CellMouseClick);
             // 
             // businessBindingSource3
             // 
@@ -445,28 +444,6 @@
             this.UpdateDebtor.UseVisualStyleBackColor = true;
             this.UpdateDebtor.Click += new System.EventHandler(this.UpdateDebtor_Click);
             // 
-            // SaveDebtor
-            // 
-            this.SaveDebtor.Location = new System.Drawing.Point(19, 403);
-            this.SaveDebtor.Name = "SaveDebtor";
-            this.SaveDebtor.Size = new System.Drawing.Size(75, 23);
-            this.SaveDebtor.TabIndex = 38;
-            this.SaveDebtor.Text = "Gem Debitor";
-            this.SaveDebtor.UseVisualStyleBackColor = true;
-            this.SaveDebtor.Visible = false;
-            this.SaveDebtor.Click += new System.EventHandler(this.SaveDebtor_Click);
-            // 
-            // CancelUpdate
-            // 
-            this.CancelUpdate.Location = new System.Drawing.Point(103, 403);
-            this.CancelUpdate.Name = "CancelUpdate";
-            this.CancelUpdate.Size = new System.Drawing.Size(75, 23);
-            this.CancelUpdate.TabIndex = 39;
-            this.CancelUpdate.Text = "Annuller";
-            this.CancelUpdate.UseVisualStyleBackColor = true;
-            this.CancelUpdate.Visible = false;
-            this.CancelUpdate.Click += new System.EventHandler(this.CancelUpdate_Click);
-            // 
             // DeleteDebtor
             // 
             this.DeleteDebtor.Location = new System.Drawing.Point(184, 403);
@@ -482,6 +459,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 450);
+            this.Controls.Add(this.ViewDeb);
             this.Controls.Add(this.GetBdeb);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
@@ -503,14 +481,11 @@
             this.Controls.Add(this.BnameText);
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
-            this.Controls.Add(this.ViewDeb);
-            this.Controls.Add(this.UpdateDebtor);
             this.Controls.Add(this.cvrText);
-            this.Controls.Add(this.CancelUpdate);
             this.Controls.Add(this.DeleteDebtor);
-            this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.city);
-            this.Controls.Add(this.SaveDebtor);
+            this.Controls.Add(this.CreateDeb);
+            this.Controls.Add(this.UpdateDebtor);
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
@@ -589,8 +564,6 @@
         private DataSet7TableAdapters.BusinessTableAdapter businessTableAdapter2;
         private System.Windows.Forms.Button GetBdeb;
         private System.Windows.Forms.Button UpdateDebtor;
-        private System.Windows.Forms.Button SaveDebtor;
-        private System.Windows.Forms.Button CancelUpdate;
         private System.Windows.Forms.Button DeleteDebtor;
     }
 }

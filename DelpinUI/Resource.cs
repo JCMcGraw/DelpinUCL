@@ -50,6 +50,42 @@ namespace DelpinUI
 
 
         }
+        private void UpdateAccTable()
+        {
+            DataTable dataTableViewAcc = controller.DisplayAccesoryRelations();
+            ShowAllAcc.DataSource = dataTableViewAcc;
+        }
+        private void SetStatusComboBoxToDefault()
+        {
+            
+
+            ComboModelMain.SelectedIndex = 0;
+
+
+            ComboModelSub.SelectedIndex = 0;
+        }
+        private void ClearAllTextBoxes()
+        {
+            foreach (Control c in this.Controls)
+            {
+                string getType = c.GetType().ToString();
+                if (c.GetType().ToString() == "System.Windows.Forms.TextBox")
+                {
+                    c.Text = "";
+                }
+            }
+            SetStatusComboBoxToDefault();
+
+        }
+        private void updateDatagridViewModel()
+        {
+
+
+            DataTable dataTable = controller.DisplayModel();
+            ModelGridView.DataSource = dataTable;
+
+
+        }
 
 
 
@@ -103,6 +139,9 @@ namespace DelpinUI
 
             DataTable dataTable = controller.DisplayAllResources();
             resourceGridView.DataSource = dataTable;
+
+            DataTable dataTableAcc = controller.DisplayAccModel();
+            ShowAllAcc.DataSource = dataTableAcc;
 
             DataTable dataTableModel = controller.DisplayModel();
             ModelGridView.DataSource = dataTableModel;
@@ -337,21 +376,32 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
-                //ShowStockModel
-                //    StockGridView.Rows[e.RowIndex].Selected = true;
-
-                //int modelID = Convert.ToInt32(StockGridView.Rows[e.RowIndex].Cells["ModelID"].Value);
-
-
-
-                //ReadAccessoriesToComboBox(modelID);
+                ModelGridView.Rows[e.RowIndex].Selected = true;
             }
         }
-
         private void UpdateModel_Click(object sender, EventArgs e)
         {
-            CreateModel.Visible = false;
-            
+            const string message = "Vil du rette resursen?";
+            const string caption = "Annuller";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+                 Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+                MessageBox.Show(succes);
+
+            }
+            else
+            {
+
+            }
+            updateDatagridViewModel();
+            ClearAllTextBoxes();
+
+
         }
 
         private void AccModelView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -366,9 +416,9 @@ namespace DelpinUI
 
         private void SaveModel_Click(object sender, EventArgs e)
         {
-            string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
-                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
-            MessageBox.Show(succes);
+            //string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+            //    Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+            //MessageBox.Show(succes);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -392,7 +442,11 @@ namespace DelpinUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            controller.DeleteAccessory(Convert.ToInt32(ressourceID.Text));
+            var selectedRows = ShowAllAcc.SelectedRows;
+            int selectedRow = selectedRows[0].Index;
+            int AccModelID = Convert.ToInt32(ShowAllAcc.Rows[selectedRow].Cells["Tilhørsnummer"].Value);
+            controller.DeleteAccessory(AccModelID);
+
         }
 
         private void ComboModelMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -455,6 +509,9 @@ namespace DelpinUI
             {
 
             }
+            ClearAllTextBoxes();
+            updateDatagridViewModel();
+
 
         }
 
@@ -464,6 +521,84 @@ namespace DelpinUI
         }
 
         private void AccModelID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModelGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                ModelGridView.Rows[e.RowIndex].Selected = true;
+
+                string Modelname = ModelGridView.SelectedRows[0].Cells[1].Value + string.Empty;
+                string Modelprice = ModelGridView.SelectedRows[0].Cells[4].Value + string.Empty;
+                string weight = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+                
+
+                ModelName.Text = Modelname;
+                ModelPrice.Text = Modelprice;
+                Weight.Text = weight;
+              
+            }
+        }
+
+        private void resourceGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                resourceGridView.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void AccModelView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                AccModelView.Rows[e.RowIndex].Selected = true;
+            }
+        }
+        private void AccModelView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                AccModelView.Rows[e.RowIndex].Selected = true;
+            }
+
+        }
+
+        private void AddAcc_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                AddAcc.Rows[e.RowIndex].Selected = true;
+            }
+        }
+      
+
+
+        private void ShowAllAcc_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                ShowAllAcc.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void AddAcc_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                AddAcc.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void Weight_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModelGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
