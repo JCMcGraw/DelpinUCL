@@ -7,6 +7,7 @@ using System.Data;
 
 namespace DelpinCore
 {
+    //JC
     class LeaseManager
     {
         public Lease ReadLeaseByLeaseID(int leaseID)
@@ -90,31 +91,24 @@ namespace DelpinCore
         //Method to delete a Lease
         public string DeleteLease(int leaseID)
         {
-            //sql to delete all LeaseOrders from the Lease
             string deleteLeaseOrders = $"delete from LeaseOrder where LeaseID = {leaseID}";
-
-            //sql to delete the Lease
+            
             string deleteLease = $"delete from Lease where LeaseID = {leaseID}";
-
-            //send sql to delete LeaseOrders
+            
             string isDeleteLeaseOrderSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLeaseOrders);
-
-            //if deletion of LeaseOrders was not a success return the error message
+            
             if (isDeleteLeaseOrderSuccess != "Success")
             {
                 return isDeleteLeaseOrderSuccess;
             }
-
-            //send sql to delete Lease
+            
             string isDeleteLeaseSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLease);
             
-            //if deletion of LeaseOrders was not a success return the error message
             if (isDeleteLeaseSuccess != "Success")
             {
                 return isDeleteLeaseSuccess;
             }
-
-            //if everything went right, return message that Lease was deleted
+            
             return $"Lejekontrakt {leaseID} er blevet slettet";
         }
 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace DelpinUI
 {
+    //JC
     public partial class FormSelectFromTable : Form
     {
         public int returnValue { get; private set; }

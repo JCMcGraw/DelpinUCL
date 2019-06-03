@@ -12,6 +12,7 @@ using DelpinCore;
 
 namespace DelpinUI
 {
+    //JC
     public partial class Lease : Form
     {
         private Controller controller = new Controller();

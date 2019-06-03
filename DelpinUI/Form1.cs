@@ -14,16 +14,19 @@ namespace DelpinUI
 {
     public partial class saveBranch : Form
     {
+        //SØ
         private Controller controller = new Controller();
         private DataTable dataTableSubGroup = new DataTable();
 
+        //SØ
         public saveBranch()
         {
             InitializeComponent();
             this.Icon = Properties.Resources.delpinikon;
             SetSelectionBoxes();
         }
-       
+        
+        //SØ
         private void SetSelectionBoxes()
         {
             Utility.Branches = controller.DisplayBranch();
@@ -47,6 +50,7 @@ namespace DelpinUI
 
         }
 
+        //JC
         private void SetSavedBranch(string branchID)
         {
             try
@@ -72,6 +76,7 @@ namespace DelpinUI
             }
         }
 
+        //JC
         private void SetDeliveries()
         {
             try
@@ -97,24 +102,28 @@ namespace DelpinUI
             catch { }
         }
 
+        //SØ
         private void button1_Click(object sender, EventArgs e)
         {
             Debtor d = new Debtor();
             d.ShowDialog();
         }
 
+        //SØ
         private void button2_Click(object sender, EventArgs e)
         {
             Resource r = new Resource();
             r.ShowDialog();
         }
 
+        //SØ
         private void button3_Click(object sender, EventArgs e)
         {
             Lease l = new Lease();
             l.ShowDialog();
         }
 
+        //JC
         private void saveBranchButton_Click(object sender, EventArgs e)
         {
             Utility.BranchID = (int)chooseBranchComboBox.SelectedValue;
@@ -126,11 +135,13 @@ namespace DelpinUI
             }
         }
 
+        //JC
         private void chooseBranchComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetDeliveries();
         }
 
+        //JC
         private void deliveriesInNextTwoDays_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1)
