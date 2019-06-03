@@ -19,6 +19,8 @@ namespace DelpinCore
         Invoice invoice = new Invoice();
         BranchManager branchManager = new BranchManager();
 
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Debtor
         public string ReadDebtor()
         {
             string readDebtor = debtorManager.ReadDebtor();
@@ -37,12 +39,23 @@ namespace DelpinCore
             dataTable = debtorManager.ReadPersonalDebtor(debtorID);
             return dataTable;
         }
-        public DataTable SelectSpecificBusiness(string debtorID)
+
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        //TableDisplay (Done)
+        public DataTable SelectSpecificBusiness(string debtorID) //Ikke samme Method Name as in TableDisplay
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
             return dataTable;
         }
+
+        public DataTable SelectSpecificPersonal(string debtorID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
+            return dataTable;
+        }
+
         public DataTable SelectAllBusiness()
         {
             DataTable dataTable = new DataTable();
@@ -55,12 +68,83 @@ namespace DelpinCore
             dataTable = tableDisplay.DisplayAllPersonalDebtor();
             return dataTable;
         }
-        public DataTable SelectSpecificPersonal(string debtorID)
+
+        public DataTable DisplayAllResources()
         {
-            DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
+            DataTable dataTable = tableDisplay.DisplayAllResources();
             return dataTable;
         }
+
+        public DataTable DisplaySpecificResources(int resourceID)
+        {
+            DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
+            return dataTable;
+        }
+
+        public DataTable GetMainGroup()
+        {
+            DataTable dataTable = tableDisplay.DisplayMainGroup();
+            return dataTable;
+        }
+
+        public DataTable GetSubGroup()
+        {
+            DataTable dataTable = tableDisplay.DisplaySubGroup();
+            return dataTable;
+        }
+
+        public DataTable DisplayBranch()
+        {
+            DataTable dataTable = tableDisplay.DisplayBranch();
+            return dataTable;
+        }
+
+        public DataTable DisplayModelBySubgroupID(int ModelID)
+        {
+            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(ModelID);
+            return dataTable;
+        }
+
+        public DataTable DisplayModel()
+        {
+            DataTable dataTable = tableDisplay.DisplayModel();
+            return dataTable;
+        }
+
+        public DataTable DisplaySpeceficAccesory(int modelID)
+        {
+            DataTable dataTable = tableDisplay.DisplaySpeceficAccessory(modelID);
+            return dataTable;
+        }
+
+        public DataTable DisplayAccModel()
+        {
+            DataTable dataTable = tableDisplay.DisplayAccModel();
+            return dataTable;
+        }
+
+        public DataTable SelectSpecificModel(int ModelID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplaySpecificModel(ModelID);
+            return dataTable;
+        }
+
+        public DataTable DisplayAccesoryRelations()
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = tableDisplay.DisplayAccesoryRelations();
+            return dataTable;
+        }
+
+        public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
+        {
+            DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
+            return dataTable;
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
@@ -99,7 +183,9 @@ namespace DelpinCore
             string deleteBusinessDebter = debtorManager.DeleteBusinessDebtor(debtorID);
             return deleteBusinessDebter;
         }
-
+        
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Resource (Done)
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
             string createResource = resourceManager.CreateResource(resourceID, modelID, branchID);
@@ -124,6 +210,23 @@ namespace DelpinCore
             return deleteResource;
         }
 
+        public DataTable ReadSpecefikSubCataegori(int subGroupID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
+
+            return dataTable;
+        }
+
+        public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
+
+            return dataTable;
+        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Model(Done)
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
             string createModel = modelManager.CreateModel(modelName, price, subGroupID, weightKG);
@@ -147,22 +250,27 @@ namespace DelpinCore
             string deleteModel = modelManager.DeleteModel(modelID);
             return deleteModel;
         }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Lease (Done)
+
+        public Lease ReadLeaseByLeaseID(int leaseID)
+        {
+            Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
+
+            return lease;
+        }
+
+        public DataTable ReadLeasesByDebtor(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
+
+            return dataTable;
+        }
 
         public void DeleteLease(int leaseID)
         {
             leaseManager.DeleteLease(leaseID);
-        }
-
-        public string DeactivateLease(int leaseID)
-        {
-            string deactivateSuccess = leaseManager.DeactivateLease(leaseID);
-            return deactivateSuccess;
-        }
-
-        public string ReactivateLease(int leaseID)
-        {
-            string reactivateSuccess = leaseManager.ReactivateLease(leaseID);
-            return reactivateSuccess;
         }
 
         public string CreateLease(Lease lease)
@@ -177,33 +285,33 @@ namespace DelpinCore
             return isUpdateSuccess;
         }
 
+        public string DeactivateLease(int leaseID)
+        {
+            string deactivateSuccess = leaseManager.DeactivateLease(leaseID);
+            return deactivateSuccess;
+        }
+
+        public string ReactivateLease(int leaseID)
+        {
+            string reactivateSuccess = leaseManager.ReactivateLease(leaseID);
+            return reactivateSuccess;
+        }
+
         public string UpdateLeaseStatus(string status, int leaseID)
         {
             string isSuccess = leaseManager.UpdateStatus(status, leaseID);
             return isSuccess;
         }
 
-        public DataTable ReadLeasesByDebtor(string debtorID)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
-
-            return dataTable;
-        }
-
-        public Lease ReadLeaseByLeaseID(int leaseID)
-        {
-            Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
-
-            return lease;
-        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
             DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
             return dataTable;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Accessory (Done)
         public string CreateAccessory(int modelID, int accessoryID)
         {
             string createAccessory = accessoryManager.CreateAccessory(modelID, accessoryID);
@@ -222,21 +330,12 @@ namespace DelpinCore
             return deleteAccessory;
         }
 
-        public DataTable ReadSpecefikSubCataegori(int subGroupID)
+        public DataTable ReadOnlyAccessory()
         {
-            DataTable dataTable = new DataTable();
-            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
-
-            return dataTable;
+            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
+            return readOnlyAccessory;
         }
-
-        public DataTable ReadSpecefikModelResourcesBranch(int resurceID)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable = resourceManager.ReadSpecefikModelResourcesBranch(resurceID);
-
-            return dataTable;
-        }
+        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
@@ -245,49 +344,8 @@ namespace DelpinCore
         }
 
 
-        public DataTable GetMainGroup()
-        {
-            DataTable dataTable = tableDisplay.DisplayMainGroup();
-            return dataTable;
-        }
-
-        public DataTable GetSubGroup()
-        {
-            DataTable dataTable = tableDisplay.DisplaySubGroup();
-            return dataTable;
-        }
-        public DataTable DisplayModelBySubgroupID(int ModelID)
-        {
-            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(ModelID);
-            return dataTable;
-        }
-        public DataTable DisplayBranch()
-        {
-            DataTable dataTable = tableDisplay.DisplayBranch();
-            return dataTable;
-        }
-        public DataTable DisplayAllResources()
-        {
-            DataTable dataTable = tableDisplay.DisplayAllResources();
-            return dataTable;
-        }
-        public DataTable DisplayModel()
-        {
-            DataTable dataTable = tableDisplay.DisplayModel();
-            return dataTable;
-        }
-        public DataTable SelectSpecificModel(int ModelID)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplaySpecificModel(ModelID);
-            return dataTable;
-        }
-        public DataTable DisplayAccModel()
-        {
-            DataTable dataTable = tableDisplay.DisplayAccModel();
-            return dataTable;
-        }
-
+        //------------------------------------------------------------------------------------------------------------------------------------------------
+        //Invoice
         public string MakePDF(int LeaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
@@ -297,6 +355,7 @@ namespace DelpinCore
 
             return pdfResult;
         }
+        //-------------------------------------------------------------------------------------------------------------------------------------------------
 
         public DataTable ReadAllBranches()
         {
@@ -310,35 +369,5 @@ namespace DelpinCore
 
             return branch;
         }
-
-        public DataTable ReadOnlyAccessory()
-        {
-            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
-            return readOnlyAccessory;
-        }
-
-        public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
-        {
-            DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
-            return dataTable;
-        }
-
-        public DataTable DisplaySpecificResources(int resourceID)
-        {
-            DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
-            return dataTable;
-        }
-        public DataTable DisplaySpeceficAccesory(int modelID)
-        {
-            DataTable dataTable = tableDisplay.DisplaySpeceficAccessory(modelID);
-            return dataTable;
-        }
-
-        public DataTable DisplayAccesoryRelations() 
-        {
-            DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplayAccesoryRelations();
-            return dataTable;
-        }
-            }
+    }
 }
