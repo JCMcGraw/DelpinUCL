@@ -20,7 +20,7 @@ namespace DelpinCore
         BranchManager branchManager = new BranchManager();
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Debtor
+        //Debtor (Done)
         public string ReadDebtor()
         {
             string readDebtor = debtorManager.ReadDebtor();
@@ -38,6 +38,44 @@ namespace DelpinCore
             DataTable dataTable = new DataTable();
             dataTable = debtorManager.ReadPersonalDebtor(debtorID);
             return dataTable;
+        }
+
+        public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
+        {
+            string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR, firstName, lastName);
+            return updatePersonalDebtor;
+        }
+
+        public string DeletePersonalDebtor(string debtorID)
+        {
+            string deletePersonalDebtor = debtorManager.DeletePersonalDebtor(debtorID);
+            return deletePersonalDebtor;
+        }
+
+        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName)
+        {
+            string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName);
+            return createBusinessDebtor;
+        }
+
+        public DataTable ReadBusinessDebtor(string debtorID)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable = debtorManager.ReadBusinessDebtor(debtorID);
+
+            return dataTable;
+        }
+
+        public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName)
+        {
+            string updateBusinessDebtor = debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName);
+            return updateBusinessDebtor;
+        }
+
+        public string DeleteBusinessDebter(string debtorID)
+        {
+            string deleteBusinessDebter = debtorManager.DeleteBusinessDebtor(debtorID);
+            return deleteBusinessDebter;
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
@@ -146,43 +184,7 @@ namespace DelpinCore
         //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
-        {
-            string updatePersonalDebtor = debtorManager.UpdatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR, firstName, lastName);
-            return updatePersonalDebtor;
-        }
-
-        public string DeletePersonalDebtor(string debtorID)
-        {
-            string deletePersonalDebtor = debtorManager.DeletePersonalDebtor(debtorID);
-            return deletePersonalDebtor;
-        }
-
-        public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName)
-        {
-            string createBusinessDebtor = debtorManager.CreateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName);
-            return createBusinessDebtor;
-        }
-
-        public DataTable ReadBusinessDebtor(string debtorID)
-        {
-            DataTable dataTable = new DataTable();
-            dataTable = debtorManager.ReadBusinessDebtor(debtorID);
-
-            return dataTable;
-        }
-
-        public string UpdateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName)
-        {
-            string updateBusinessDebtor = debtorManager.UpdateBusinessDebtor(debtorID, street, postalCode, city, phone, email, CVR, companyName);
-            return updateBusinessDebtor;
-        }
-
-        public string DeleteBusinessDebter(string debtorID)
-        {
-            string deleteBusinessDebter = debtorManager.DeleteBusinessDebtor(debtorID);
-            return deleteBusinessDebter;
-        }
+       
         
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Resource (Done)
