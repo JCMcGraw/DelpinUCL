@@ -90,13 +90,14 @@ namespace DelpinCore
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
             return dataTable;
         }
-        public DataTable DisplayModelBySubgroupID(int ModelID) //Hvad skal denne bruges til.? 
-        {
-            string DisplayModelBySubgroupID = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
-                $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where Accessory.ModelID = {ModelID}";
 
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayModelBySubgroupID);
-            return dataTable;
-        }
+        //public DataTable DisplayModelBySubgroupID(int ModelID) //Hvad skal denne bruges til.? 
+        //{
+        //    string DisplayModelBySubgroupID = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
+        //        $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where Accessory.ModelID = {ModelID}";
+
+        //    DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayModelBySubgroupID);
+        //    return dataTable;
+        //}
     }
 }

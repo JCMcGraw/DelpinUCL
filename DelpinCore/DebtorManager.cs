@@ -52,6 +52,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Froklaring på denne
         public Business ReadAllDebtorsByDebtorID(string debtorID)
         {
 
