@@ -13,7 +13,7 @@ namespace DelpinCore
         public string CreateAccessory(int modelID, int accessoryID)
         {
             string createAccessory = "Insert into Accessory(ModelID, accessoryID) " +
-                                   $"values ({modelID},{accessoryID})";
+                                     $"values ({modelID},{accessoryID})";
 
             string isCreateAccessory = DatabaseManager.CreateUpdateDeleteInDatabase(createAccessory);
             if (isCreateAccessory != "Success")
@@ -47,6 +47,7 @@ namespace DelpinCore
 
             return $"Accessory {accessoryModelID} er blevet Slettet";
         }
+
         public DataTable ReadOnlyAccessory()
         {
             string readOnlyAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory" +
