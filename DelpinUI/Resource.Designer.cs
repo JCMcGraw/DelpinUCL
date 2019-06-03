@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resource));
             this.subGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet3 = new DelpinUI.DataSet3();
             this.subGroupTableAdapter = new DelpinUI.DataSet3TableAdapters.SubGroupTableAdapter();
@@ -47,13 +48,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.Weight = new System.Windows.Forms.TextBox();
             this.DeleteModel = new System.Windows.Forms.Button();
-            this.UpdateModel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ModelPrice = new System.Windows.Forms.TextBox();
             this.ModelName = new System.Windows.Forms.TextBox();
+            this.UpdateModel = new System.Windows.Forms.Button();
             this.CreateModel = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.GetResource = new System.Windows.Forms.Button();
@@ -269,16 +270,6 @@
             this.DeleteModel.UseVisualStyleBackColor = true;
             this.DeleteModel.Click += new System.EventHandler(this.DeleteModel_Click);
             // 
-            // UpdateModel
-            // 
-            this.UpdateModel.Location = new System.Drawing.Point(102, 223);
-            this.UpdateModel.Name = "UpdateModel";
-            this.UpdateModel.Size = new System.Drawing.Size(84, 23);
-            this.UpdateModel.TabIndex = 33;
-            this.UpdateModel.Text = "Ret Model";
-            this.UpdateModel.UseVisualStyleBackColor = true;
-            this.UpdateModel.Click += new System.EventHandler(this.UpdateModel_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -328,6 +319,16 @@
             this.ModelName.Name = "ModelName";
             this.ModelName.Size = new System.Drawing.Size(100, 20);
             this.ModelName.TabIndex = 26;
+            // 
+            // UpdateModel
+            // 
+            this.UpdateModel.Location = new System.Drawing.Point(102, 223);
+            this.UpdateModel.Name = "UpdateModel";
+            this.UpdateModel.Size = new System.Drawing.Size(84, 23);
+            this.UpdateModel.TabIndex = 33;
+            this.UpdateModel.Text = "Ret Model";
+            this.UpdateModel.UseVisualStyleBackColor = true;
+            this.UpdateModel.Click += new System.EventHandler(this.UpdateModel_Click);
             // 
             // CreateModel
             // 
@@ -680,6 +681,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 664);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Resource";
             this.Text = "Resource";
             this.Load += new System.EventHandler(this.Resource_Load);

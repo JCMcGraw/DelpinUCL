@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lease));
             this.DeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.returnDateLabel = new System.Windows.Forms.Label();
@@ -807,6 +808,7 @@
             this.Controls.Add(this.returnDateLabel);
             this.Controls.Add(this.startDateLabel);
             this.Controls.Add(this.DeliveryDate);
+            this.Icon = Properties.Resources.delpinikon;
             this.Name = "Lease";
             this.Text = "Leasing";
             this.Load += new System.EventHandler(this.Lease_Load);

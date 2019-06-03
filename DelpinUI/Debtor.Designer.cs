@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Debtor));
             this.PfnameText = new System.Windows.Forms.TextBox();
             this.PlnameText = new System.Windows.Forms.TextBox();
             this.adressText = new System.Windows.Forms.TextBox();
@@ -486,6 +487,7 @@
             this.Controls.Add(this.city);
             this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.UpdateDebtor);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debtor";
             this.Text = "Debtor";
             this.Load += new System.EventHandler(this.Debtor_Load);
