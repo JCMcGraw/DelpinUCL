@@ -100,6 +100,7 @@ namespace DelpinCore
             dataTable = tableDisplay.DisplayAllBusinessDebtor();
             return dataTable;
         }
+
         public DataTable DisplayAllPersonalDebtor()
         {
             DataTable dataTable = new DataTable();
@@ -180,8 +181,8 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
             return dataTable;
         }
-       
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Resource (Done)
         public string CreateResource(int resourceID, int modelID, int branchID)
         {
@@ -229,6 +230,7 @@ namespace DelpinCore
             return dataTable;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Model(Done)
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
@@ -254,8 +256,8 @@ namespace DelpinCore
             return deleteModel;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Lease
 
+        //Lease
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(leaseID);
@@ -263,7 +265,7 @@ namespace DelpinCore
             return lease;
         }
 
-        public DataTable ReadLeasesByDebtor(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
+        public DataTable ReadLeasesByDebtorID(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
         {
             DataTable dataTable = new DataTable();
             dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
@@ -300,20 +302,19 @@ namespace DelpinCore
             return reactivateSuccess;
         }
 
-        public string UpdateLeaseStatus(string status, int leaseID)
-        {
-            string isSuccess = leaseManager.UpdateStatus(status, leaseID);
-            return isSuccess;
-        }
-
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
             DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
             return dataTable;
         }
+
+        public string UpdateLeaseStatus(string status, int leaseID)
+        {
+            string isSuccess = leaseManager.UpdateLeaseStatus(status, leaseID);
+            return isSuccess;
+        }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Accessory (Done)
         public string CreateAccessory(int modelID, int accessoryID)
         {
@@ -340,14 +341,14 @@ namespace DelpinCore
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        //Delivery
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
             double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone, ton);
             return deliveryPrice;
         }
-
-
         //------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Invoice (Done)
         public string MakePDF(int LeaseID)
         {
@@ -359,6 +360,7 @@ namespace DelpinCore
             return pdfResult;
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------
+
         //Branch (Done)
         public DataTable ReadAllBranches()
         {

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using PdfSharp; //Denne skal bruges
 using PdfSharp.Drawing;//Denne skal bruges
 using PdfSharp.Pdf;//Denne skal bruges
-//using PdfSharp.Pdf.IO;//Denne skal bruges
-//using System.IO;//Denne skal bruges
 using System.Diagnostics;//Denne skal bruges
 
 namespace DelpinCore

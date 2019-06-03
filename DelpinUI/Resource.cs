@@ -86,6 +86,15 @@ namespace DelpinUI
 
 
         }
+        private void updateDatagridViewResource()
+        {
+
+
+            DataTable dataTable = controller.DisplayAllResources();
+            resourceGridView.DataSource = dataTable;
+
+
+        }
 
 
 
@@ -140,7 +149,7 @@ namespace DelpinUI
             DataTable dataTable = controller.DisplayAllResources();
             resourceGridView.DataSource = dataTable;
 
-            DataTable dataTableAcc = controller.DisplayAccModel();
+            DataTable dataTableAcc = controller.DisplayAccesoryRelations();
             ShowAllAcc.DataSource = dataTableAcc;
 
             DataTable dataTableModel = controller.DisplayModel();
@@ -274,6 +283,7 @@ namespace DelpinUI
         {
             string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(ResourceModelID.Text), Convert.ToInt32(branchID.SelectedValue));
             MessageBox.Show(succes);
+            updateDatagridViewResource();
         }
 
         private void AccModelView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -305,14 +315,15 @@ namespace DelpinUI
 
             if (result == DialogResult.Yes)
             {
-                string succes = controller.DeleteResource(Convert.ToInt32(ressourceID.Text));
+                string succes = controller.DeactivateResource(Convert.ToInt32(ressourceID.Text));
                 MessageBox.Show(succes);
-                
+                updateDatagridViewResource();
             }
             else
             {
 
             }
+
             
         }
 
@@ -331,14 +342,7 @@ namespace DelpinUI
             catch { }
         }
 
-        private void AddAcc_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            AddAccModel.Text = AddAcc.CurrentCell.Value.ToString();
-            
-
-
-        }
+       
 
         private void AccModel_TextChanged(object sender, EventArgs e)
         {
@@ -362,7 +366,12 @@ namespace DelpinUI
 
         private void GetModel_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.DisplaySpecificModel(Convert.ToInt32(ModelID.Text));
+
+            GetModelByModelID(Convert.ToInt32(ModelID.Text));
+        }
+        private void GetModelByModelID(int ModelID)
+        {
+            DataTable dataTable = controller.DisplaySpecificModel(ModelID);
 
 
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
@@ -371,7 +380,6 @@ namespace DelpinUI
             ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
             ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
-
         private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -531,25 +539,30 @@ namespace DelpinUI
             if (e.RowIndex > -1)
             {
                 ModelGridView.Rows[e.RowIndex].Selected = true;
-
+                
                 string Modelid = ModelGridView.SelectedRows[0].Cells[0].Value + string.Empty;
-                string Modelname = ModelGridView.SelectedRows[0].Cells[1].Value + string.Empty;
-                string Modelprice = ModelGridView.SelectedRows[0].Cells[4].Value + string.Empty;
-                string weight = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
-
+                int Modelnummer = Convert.ToInt32(Modelid);
+                GetModelByModelID(Modelnummer);
                 ModelID.Text = Modelid;
-                ModelName.Text = Modelname;
-                ModelPrice.Text = Modelprice;
-                Weight.Text = weight;
-              
+
             }
         }
+        
 
         private void resourceGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1)
             {
                 resourceGridView.Rows[e.RowIndex].Selected = true;
+
+                string Resourceid = resourceGridView.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                string ModelId = resourceGridView.Rows[e.RowIndex].Cells[1].Value + string.Empty;
+                string BranchID = resourceGridView.Rows[e.RowIndex].Cells[4].Value + string.Empty;
+
+                
+                ressourceID.Text = Resourceid;
+                ResourceModelID.Text = ModelId;
+                branchID.SelectedValue = BranchID;
             }
         }
 
@@ -565,6 +578,9 @@ namespace DelpinUI
             if (e.RowIndex > -1)
             {
                 AccModelView.Rows[e.RowIndex].Selected = true;
+
+                string accModel = AccModelView.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                AccModel.Text = accModel;
             }
 
         }
@@ -591,7 +607,12 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
+                
                 AddAcc.Rows[e.RowIndex].Selected = true;
+                string Addacc = AddAcc.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                 
+                AddAccModel.Text = Addacc;
+
             }
         }
 
@@ -604,6 +625,8 @@ namespace DelpinUI
         {
 
         }
+
+        
     }
 }
 

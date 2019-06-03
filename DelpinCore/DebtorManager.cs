@@ -91,7 +91,6 @@ namespace DelpinCore
             return business;
         }
 
-
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string updateDebtor = $"update Debtor set Street='{street}'" +

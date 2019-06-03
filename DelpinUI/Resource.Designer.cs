@@ -89,6 +89,10 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.UpdateAcc = new System.Windows.Forms.Button();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -585,9 +589,7 @@
             this.AddAcc.Name = "AddAcc";
             this.AddAcc.Size = new System.Drawing.Size(447, 125);
             this.AddAcc.TabIndex = 57;
-            this.AddAcc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AddAcc_CellClick);
             this.AddAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseClick);
-            this.AddAcc.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseDoubleClick);
             // 
             // AccModel
             // 
@@ -642,10 +644,13 @@
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
             this.AccModelView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseClick);
-            this.AccModelView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseDoubleClick);
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.comboBox2);
+            this.tabPage4.Controls.Add(this.comboBox1);
             this.tabPage4.Controls.Add(this.UpdateAcc);
             this.tabPage4.Controls.Add(this.ShowAllAcc);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -658,7 +663,7 @@
             // 
             // UpdateAcc
             // 
-            this.UpdateAcc.Location = new System.Drawing.Point(132, 32);
+            this.UpdateAcc.Location = new System.Drawing.Point(15, 77);
             this.UpdateAcc.Name = "UpdateAcc";
             this.UpdateAcc.Size = new System.Drawing.Size(75, 23);
             this.UpdateAcc.TabIndex = 8;
@@ -674,6 +679,40 @@
             this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(15, 50);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(143, 50);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 10;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Hovedkategori";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(143, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Undergruppe";
             // 
             // Resource
             // 
@@ -701,6 +740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddAcc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).EndInit();
             this.ResumeLayout(false);
 
@@ -766,5 +806,9 @@
         private System.Windows.Forms.ComboBox AddAccSub;
         private System.Windows.Forms.ComboBox AddAccMain;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

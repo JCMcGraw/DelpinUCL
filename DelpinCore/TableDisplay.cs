@@ -95,9 +95,7 @@ namespace DelpinCore
         public DataTable DisplayMainGroup()
         {
             string selectMainGroup = $"select * from MainGroup";
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectMainGroup);
-
             return dataTable;
         }
 
@@ -105,54 +103,51 @@ namespace DelpinCore
         public DataTable DisplaySubGroup()
         {
             string selectSubGroup = $"select * from SubGroup";
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectSubGroup);
-
             return dataTable;
         }
+
         //Sim og PR
         public DataTable DisplayBranch()
         {
             string selectBranch = $"select * from Branch";
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
-
             return dataTable;
         }
+
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
-            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
+            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori,"+"" +
+                                 "Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
-
             return dataTable;
         }
+
         public DataTable DisplayModel()
         {
             string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
-
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
-
             return dataTable;
         }
+
         //Viser liste tilbehør, udfra et modelID, PR
         public DataTable DisplaySpeceficAccessory(int modelID)
         {
-            string selectAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory join model on Accessory.AccessoryID = Model.ModelID  join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
+            string selectAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory"+
+                " join model on Accessory.AccessoryID = Model.ModelID join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
-
             return dataTable;
         }
+
         public DataTable DisplayAccModel(   )
         {
             string DisplayAccModel = $"Select *From Model";
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayAccModel);
-
             return dataTable;
         }
+
         public DataTable DisplaySpecificModel(int modelID)
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
@@ -161,9 +156,7 @@ namespace DelpinCore
                                 +$" where ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
-
             return dataTable;
-
         }
 
         public DataTable DisplayAccesoryRelations()
@@ -172,9 +165,9 @@ namespace DelpinCore
                                               +" join Accessory on Accessory.ModelID = Model.ModelID"
                                               +" join model m on m.ModelID = Accessory.AccessoryID"
                                               +" order by model.ModelName";
+
             DataTable dataTable = DatabaseManager.ReadFromDatabase(displayAccessoryRelations);
             return dataTable;
-
         }
 
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
@@ -217,7 +210,6 @@ namespace DelpinCore
                 $"Order By LeaseOrder.StartDate";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(deliveriesSQL);
-
             return dataTable;
         }
     }
