@@ -13,6 +13,7 @@ namespace DelpinCore
         public int branchID { get; private set; }
         public DateTime dateCreated { get; private set; }
         public string status { get; private set; }
+        public bool active { get; private set; }
         private List<LeaseOrder> leaseOrders = new List<LeaseOrder>();
 
         public string contactFirstName { get; private set; }
@@ -20,18 +21,20 @@ namespace DelpinCore
         public string contactPhone { get; private set; }
 
 
-        public Lease(string debtorID, int branchID)
+        public Lease(string debtorID, int branchID, bool active)
         {
             this.debtorID = debtorID;
             this.branchID = branchID;
+            this.active = active;
             this.dateCreated = DateTime.Now;
         }
 
-        public Lease(string debtorID, int branchID, int leaseID, DateTime dateCreated)
+        public Lease(string debtorID, int branchID, int leaseID, DateTime dateCreated, bool active)
         {
             this.leaseID = leaseID;
             this.debtorID = debtorID;
             this.branchID = branchID;
+            this.active = active;
             this.dateCreated = dateCreated;
         }
 

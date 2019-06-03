@@ -156,9 +156,9 @@ namespace DelpinCore
         public DataTable DisplaySpecificModel(int modelID)
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
-+$" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
- +$" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
-  +$" where ModelID = {modelID}";
+                                +$" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
+                                +$" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
+                                +$" where ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
 
@@ -169,9 +169,9 @@ namespace DelpinCore
         public DataTable DisplayAccesoryRelations()
         {
             string displayAccessoryRelations = "select model.ModelName as Modelnavn, m.ModelName as Tilbehør, Accessory.AccessoryModelID as Tilhørsnummer from model"
-+" join Accessory on Accessory.ModelID = Model.ModelID"
-+" join model m on m.ModelID = Accessory.AccessoryID"
-+" order by model.ModelName";
+                                              +" join Accessory on Accessory.ModelID = Model.ModelID"
+                                              +" join model m on m.ModelID = Accessory.AccessoryID"
+                                              +" order by model.ModelName";
             DataTable dataTable = DatabaseManager.ReadFromDatabase(displayAccessoryRelations);
             return dataTable;
 
@@ -180,7 +180,7 @@ namespace DelpinCore
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
             string deliveriesSQL = $"Select " +
-                $"    Lease.LeaseID, " +
+                $"    Lease.LeaseID As Ordrenummer, " +
                 $"    AllDebtors.Navn, " +
                 $"    LeaseOrder.StartDate As [Leveringsdato], " +
                 $"    Count(LeaseOrder.StartDate) As [Antal resurser] " +
@@ -220,6 +220,5 @@ namespace DelpinCore
 
             return dataTable;
         }
-
     }
 }

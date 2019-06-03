@@ -81,6 +81,7 @@
             this.chooseBranchComboBox.Name = "chooseBranchComboBox";
             this.chooseBranchComboBox.Size = new System.Drawing.Size(121, 21);
             this.chooseBranchComboBox.TabIndex = 3;
+            this.chooseBranchComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseBranchComboBox_SelectedIndexChanged);
             // 
             // chooseBranchLabel
             // 
@@ -132,6 +133,7 @@
             this.deliveriesInNextTwoDays.ReadOnly = true;
             this.deliveriesInNextTwoDays.Size = new System.Drawing.Size(565, 121);
             this.deliveriesInNextTwoDays.TabIndex = 8;
+            this.deliveriesInNextTwoDays.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.deliveriesInNextTwoDays_CellMouseDoubleClick);
             // 
             // ordersForDeliveryLabel
             // 
