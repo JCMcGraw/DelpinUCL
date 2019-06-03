@@ -465,7 +465,7 @@ namespace DelpinUI
 
         private void FindLeasesByDebtorID(string debtorID)
         {
-            DataTable dataTable = controller.ReadLeasesByDebtor(debtorID);
+            DataTable dataTable = controller.ReadLeasesByDebtorID(debtorID);
 
             if (dataTable.Rows.Count == 0)
             {

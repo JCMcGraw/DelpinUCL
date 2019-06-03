@@ -173,7 +173,6 @@ namespace DelpinCore
             }
         }
 
-
         private string UpdateLeaseTable(Lease lease)
         {
             string updateLease = $"update Lease set ContactFname = '{lease.contactFirstName.Replace("'", "''")}', ContactLname = '{lease.contactLastName.Replace("'", "''")}', " +
@@ -275,7 +274,7 @@ namespace DelpinCore
             return sql;
         }
 
-        public string UpdateStatus(string status, int leaseID)
+        public string UpdateLeaseStatus(string status, int leaseID)
         {
             string updateStatus = $"update Lease set Status = '{status}' where leaseID = {leaseID}";
             string isSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(updateStatus);

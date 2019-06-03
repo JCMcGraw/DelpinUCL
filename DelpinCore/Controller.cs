@@ -263,7 +263,7 @@ namespace DelpinCore
             return lease;
         }
 
-        public DataTable ReadLeasesByDebtor(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
+        public DataTable ReadLeasesByDebtorID(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
         {
             DataTable dataTable = new DataTable();
             dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
@@ -300,16 +300,16 @@ namespace DelpinCore
             return reactivateSuccess;
         }
 
-        public string UpdateLeaseStatus(string status, int leaseID)
-        {
-            string isSuccess = leaseManager.UpdateStatus(status, leaseID);
-            return isSuccess;
-        }
-
         public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
             DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
             return dataTable;
+        }
+
+        public string UpdateLeaseStatus(string status, int leaseID)
+        {
+            string isSuccess = leaseManager.UpdateLeaseStatus(status, leaseID);
+            return isSuccess;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Accessory (Done)
