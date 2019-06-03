@@ -65,12 +65,12 @@ namespace DelpinUI
             {
                 if(radioButton1.Checked)
                 {
-                    DataTable dataTable = controller.SelectAllBusiness();
+                    DataTable dataTable = controller.DisplayAllBusinessDebtor();
                     ViewDeb.DataSource = dataTable;
                 }
                 else
                 {
-                    DataTable dataTable = controller.SelectAllPersonal();
+                    DataTable dataTable = controller.DisplayAllPersonalDebtor();
                     ViewDeb.DataSource = dataTable;
                 }
                     
@@ -81,7 +81,7 @@ namespace DelpinUI
         {
             if (radioButton1.Checked)
             {
-                DataTable dataTable = controller.SelectAllBusiness();
+                DataTable dataTable = controller.DisplayAllBusinessDebtor();
                 ViewDeb.DataSource = dataTable;
 
                 cvrText.Visible = true;
@@ -125,7 +125,7 @@ namespace DelpinUI
             if (radioButton2.Checked)
             {
 
-                DataTable dataTable = controller.SelectAllPersonal();
+                DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
                 cvrText.Visible = false;
@@ -289,7 +289,7 @@ namespace DelpinUI
         {
             if (radioButton1.Checked)
             {
-                DataTable dataTable = controller.SelectSpecificBusiness(cvrText.Text);
+                DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
 
 
                 BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
@@ -303,7 +303,7 @@ namespace DelpinUI
             {
                 
 
-                DataTable dataTable = controller.SelectSpecificPersonal(cprText.Text);
+                DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
 
 
                 PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];

@@ -80,27 +80,27 @@ namespace DelpinCore
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         //TableDisplay (Done)
-        public DataTable SelectSpecificBusiness(string debtorID) //Ikke samme Method Name as in TableDisplay
+        public DataTable DisplaySpeceficBusinessDebtor(string debtorID) //Ikke samme Method Name as in TableDisplay
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
             return dataTable;
         }
 
-        public DataTable SelectSpecificPersonal(string debtorID)
+        public DataTable DisplaySpeceficPersonalDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
             return dataTable;
         }
 
-        public DataTable SelectAllBusiness()
+        public DataTable DisplayAllBusinessDebtor()
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplayAllBusinessDebtor();
             return dataTable;
         }
-        public DataTable SelectAllPersonal()
+        public DataTable DisplayAllPersonalDebtor()
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplayAllPersonalDebtor();
@@ -119,13 +119,13 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable GetMainGroup()
+        public DataTable DisplayMainGroup()
         {
             DataTable dataTable = tableDisplay.DisplayMainGroup();
             return dataTable;
         }
 
-        public DataTable GetSubGroup()
+        public DataTable DisplaySubGroup()
         {
             DataTable dataTable = tableDisplay.DisplaySubGroup();
             return dataTable;
@@ -161,7 +161,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable SelectSpecificModel(int ModelID)
+        public DataTable DisplaySpecificModel(int ModelID)
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpecificModel(ModelID);
@@ -180,12 +180,7 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
             return dataTable;
         }
-
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
        
-        
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Resource (Done)
         public string CreateResource(int resourceID, int modelID, int branchID)
@@ -268,7 +263,7 @@ namespace DelpinCore
             return lease;
         }
 
-        public DataTable ReadLeasesByDebtor(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
+        public DataTable ReadLeasesByDebtorID(string debtorID) //Denne Hedder ikke det samme som den gør i LeaseManager
         {
             DataTable dataTable = new DataTable();
             dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
@@ -305,18 +300,16 @@ namespace DelpinCore
             return reactivateSuccess;
         }
 
-        public string UpdateLeaseStatus(string status, int leaseID)
-        {
-            string isSuccess = leaseManager.UpdateStatus(status, leaseID);
-            return isSuccess;
-        }
-
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         public DataTable GetAvailableResourcesForPeriod(int modelID, int branchID, string startDate, string endDate)
         {
             DataTable dataTable = leaseManager.GetAvailableResourcesForPeriod(modelID, branchID, startDate, endDate);
             return dataTable;
+        }
+
+        public string UpdateLeaseStatus(string status, int leaseID)
+        {
+            string isSuccess = leaseManager.UpdateLeaseStatus(status, leaseID);
+            return isSuccess;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Accessory (Done)
@@ -344,7 +337,7 @@ namespace DelpinCore
             return readOnlyAccessory;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        //Delivery
         public double GetItemsFromDeliveryTable(int zone, bool ton)
         {
             double deliveryPrice = deliveryManager.GetItemsFromDeliveryTable(zone, ton);
