@@ -106,7 +106,6 @@ namespace DelpinCore
             dataTable = tableDisplay.DisplayAllPersonalDebtor();
             return dataTable;
         }
-        //Her til
 
         public DataTable DisplayAllResources()
         {
@@ -120,13 +119,13 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable GetMainGroup()
+        public DataTable DisplayMainGroup()
         {
             DataTable dataTable = tableDisplay.DisplayMainGroup();
             return dataTable;
         }
 
-        public DataTable GetSubGroup()
+        public DataTable DisplaySubGroup()
         {
             DataTable dataTable = tableDisplay.DisplaySubGroup();
             return dataTable;
@@ -162,7 +161,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        public DataTable SelectSpecificModel(int ModelID)
+        public DataTable DisplaySpecificModel(int ModelID)
         {
             DataTable dataTable = new DataTable();
             dataTable = tableDisplay.DisplaySpecificModel(ModelID);
@@ -181,12 +180,7 @@ namespace DelpinCore
             DataTable dataTable = tableDisplay.DisplayDeliveriesforNextNDays(branchID, daysInFuture);
             return dataTable;
         }
-
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
        
-        
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Resource (Done)
         public string CreateResource(int resourceID, int modelID, int branchID)

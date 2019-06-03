@@ -52,7 +52,7 @@ namespace DelpinUI
 
         private void SetSelectionBoxes()
         {
-            DataTable dataTableMainGroup = controller.GetMainGroup();
+            DataTable dataTableMainGroup = controller.DisplaySubGroup();
             dataTableSubGroup = controller.GetSubGroup();
 
             MainGroup.DataSource = dataTableMainGroup;

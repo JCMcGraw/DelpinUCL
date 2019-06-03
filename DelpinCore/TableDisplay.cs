@@ -80,14 +80,14 @@ namespace DelpinCore
         }
 
         //Viser antal af en bestemt model på de forskellige lokationer, PR
-        public DataTable CountModelPerBranch(int modelID)
-        {
-            string selectResources = $"select Model.ModelName as Modelnavn, Branch.City as Lokation, count(Model.ModelID) as Antal from Model join Resources on Model.ModelID = Resources.ModelID join Branch on Branch.BranchID = Resources.BranchID where Model.ModelID = {modelID} group by Branch.City, Model.ModelName'";
+        //public DataTable CountModelPerBranch(int modelID)
+        //{
+        //    string selectResources = $"select Model.ModelName as Modelnavn, Branch.City as Lokation, count(Model.ModelID) as Antal from Model join Resources on Model.ModelID = Resources.ModelID join Branch on Branch.BranchID = Resources.BranchID where Model.ModelID = {modelID} group by Branch.City, Model.ModelName'";
 
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
+        //    DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
-            return dataTable;
-        }
+        //    return dataTable;
+        //}
 
 
 

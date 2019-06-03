@@ -91,8 +91,8 @@ namespace DelpinUI
 
         private void SetSelectionBoxes()
         {
-            DataTable dataTableMainGroup = controller.GetMainGroup();
-            dataTableSubGroup = controller.GetSubGroup();
+            DataTable dataTableMainGroup = controller.DisplayMainGroup();
+            dataTableSubGroup = controller.DisplaySubGroup();
 
             ComboModelSub.DataSource = dataTableSubGroup;
             ComboModelSub.DisplayMember = "Category";
@@ -362,7 +362,7 @@ namespace DelpinUI
 
         private void GetModel_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = controller.SelectSpecificModel(Convert.ToInt32(ModelID.Text));
+            DataTable dataTable = controller.DisplaySpecificModel(Convert.ToInt32(ModelID.Text));
 
 
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
