@@ -210,6 +210,12 @@ namespace DelpinCore
             return deleteResource;
         }
 
+        public string DeactivateResource(int resourceID)
+        {
+            string deactivateResource = resourceManager.DeactivateResource(resourceID);
+            return deactivateResource;
+        }
+
         public DataTable ReadSpecefikSubCataegori(int subGroupID)
         {
             DataTable dataTable = new DataTable();
@@ -251,7 +257,7 @@ namespace DelpinCore
             return deleteModel;
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Lease (Done)
+        //Lease
 
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
@@ -345,7 +351,7 @@ namespace DelpinCore
 
 
         //------------------------------------------------------------------------------------------------------------------------------------------------
-        //Invoice
+        //Invoice (Done)
         public string MakePDF(int LeaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
@@ -356,7 +362,7 @@ namespace DelpinCore
             return pdfResult;
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------
-
+        //Branch (Done)
         public DataTable ReadAllBranches()
         {
             DataTable dataTable = branchManager.ReadAllBranches();
@@ -366,8 +372,8 @@ namespace DelpinCore
         public Branch ReadBranchByBranchID(int branchID)
         {
             Branch branch = branchManager.ReadBranchByBranchID(branchID);
-
             return branch;
         }
+        //--------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }
