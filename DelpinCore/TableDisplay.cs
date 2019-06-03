@@ -119,6 +119,7 @@ namespace DelpinCore
 
             return dataTable;
         }
+
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
             string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
@@ -127,6 +128,7 @@ namespace DelpinCore
 
             return dataTable;
         }
+
         public DataTable DisplayModel()
         {
             string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
@@ -136,6 +138,7 @@ namespace DelpinCore
 
             return dataTable;
         }
+
         //Viser liste tilbehør, udfra et modelID, PR
         public DataTable DisplaySpeceficAccessory(int modelID)
         {
@@ -145,6 +148,7 @@ namespace DelpinCore
 
             return dataTable;
         }
+
         public DataTable DisplayAccModel(   )
         {
             string DisplayAccModel = $"Select *From Model";
@@ -153,6 +157,7 @@ namespace DelpinCore
 
             return dataTable;
         }
+
         public DataTable DisplaySpecificModel(int modelID)
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
