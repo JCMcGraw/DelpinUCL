@@ -272,16 +272,25 @@ namespace DelpinUI
 
         private void AddAccesories_Click(object sender, EventArgs e)
         {
-            //string addM = AccModelView.SelectedCells[1].ToString();
-            //string addA = AddAcc.SelectedCells[1].ToString();
+            const string message = "Er du sikker på du vil slette Resursen?";
+            const string caption = "Annuller";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
 
-            //int m = Convert.ToInt32(addM);
-
-            //int a = Convert.ToInt32(addA);
-
-            string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
+            if (result == DialogResult.Yes)
+            {
+                string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
                 Convert.ToInt32(AddAccModel.Text));
-            MessageBox.Show(succes);
+                MessageBox.Show(succes);
+                UpdateAccTable();
+            }
+            else
+            {
+
+            }
+
+            
         }
 
         private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
