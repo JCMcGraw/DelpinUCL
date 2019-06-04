@@ -194,7 +194,7 @@ namespace DelpinCore
         public DataTable ReadSpecefikSubCataegori(int subGroupID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
+            dataTable = modelManager.ReadSpecefikSubCataegori(subGroupID);
 
             return dataTable;
         }

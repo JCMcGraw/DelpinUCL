@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -44,6 +45,14 @@ namespace DelpinCore
                 return isDeleteModel;
             }
             return $"Model er blevet Slettet";
+        }
+
+        public DataTable ReadSpecefikSubCataegori(int SubGroupID)
+        {
+            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
+            return dataTable;
         }
     }
 }
