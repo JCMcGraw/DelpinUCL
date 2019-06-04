@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace DelpinCore
 {
@@ -44,6 +45,42 @@ namespace DelpinCore
                 return isDeleteModel;
             }
             return $"Model er blevet Slettet";
+        }
+
+        public DataTable ReadSpecefikSubCataegori(int SubGroupID)
+        {
+            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
+            return dataTable;
+        }
+
+
+        public DataTable DisplayModelBySubgroupID(int subgroupID)
+        {
+            string selectModel = $"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model " +
+                                $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
+            return dataTable;
+        }
+
+        public DataTable DisplayModel()
+        {
+            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
+            return dataTable;
+        }
+
+        public DataTable DisplaySpecificModel(int modelID)
+        {
+            string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
+                                + $" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
+                                + $" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
+                                + $" where ModelID = {modelID}";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
+            return dataTable;
         }
     }
 }
