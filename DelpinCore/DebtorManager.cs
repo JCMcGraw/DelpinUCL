@@ -192,5 +192,49 @@ namespace DelpinCore
             }
             return $"Debitor er blevet slettet";
         }
+
+        //Viser en business debtor ud fra et specefikt CVR-nummer,PR
+        public DataTable DisplaySpeceficBusinessDebtor(string CVR)
+        {
+            string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business" +
+                $" inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
+
+            return dataTable;
+        }
+
+        //Viser specefik debtor ud fra et CPR-nummer,PR
+        public DataTable DisplaySpeceficPersonalDebtor(string CPR)
+        {
+            string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal" +
+                $" inner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
+
+            return dataTable;
+        }
+
+        //Viser alle businessdebtore,PR
+        public DataTable DisplayAllBusinessDebtor()
+        {
+            string selectBusiness = "select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummmer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business " +
+                " inner join Debtor on Debtor.DebtorID = Business.CVR";
+
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
+
+            return dataTable;
+        }
+
+        //Viser alle Personlige Debtore,PR
+        public DataTable DisplayAllPersonalDebtor()
+        {
+            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from " +
+                "Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
+            ;
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
+
+            return dataTable;
+        }
     }
 }

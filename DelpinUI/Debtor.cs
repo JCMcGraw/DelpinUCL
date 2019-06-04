@@ -42,6 +42,9 @@ namespace DelpinUI
         //    phoneText.Clear();
         //    emailText.Clear();
         //}
+
+
+        //Clears all available Textboxes
         private void ClearAllTextBoxes()
         {
            
@@ -58,7 +61,7 @@ namespace DelpinUI
           
         }
 
-
+        //updates the debtor datagridview
         private void updateDatagridView()
         {
             
@@ -77,6 +80,8 @@ namespace DelpinUI
             }
             
         }
+        //Display create debtor forms with radiobutton 
+        //Display create debtor forms with radiobutton 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -145,53 +150,7 @@ namespace DelpinUI
             
 
         }
-
-        private void getBusinessDebtor()
-        {
-            { 
-
-                string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-
-                cvrText.Text = cvr;
-                BnameText.Text = bName;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
-        }
-        private void getPersonalDebtor()
-        {
-            {
-
-                string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
-
-                cprText.Text = cpr;
-                PfnameText.Text = Fname;
-                PlnameText.Text = Lname;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
-        }
-      
-
+        
        
 
         private void Debtor_Load(object sender, EventArgs e)
@@ -252,26 +211,60 @@ namespace DelpinUI
             ClearAllTextBoxes();
 
         }
-
-
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        //Get Businessdebtor from CVR
+        private void getBusinessDebtor()
         {
-            try
             {
-                //this.debtorTableAdapter.FillBy(this.dataSet1.Debtor);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
 
+                string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+                string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+                string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+                string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+                string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+                string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
+
+                cvrText.Text = cvr;
+                BnameText.Text = bName;
+                adressText.Text = adresse;
+                city.Text = City;
+                postalcodeText.Text = pCode;
+                phoneText.Text = phoneN;
+                emailText.Text = eMail;
+            }
         }
 
 
-        
 
-        
+
+        //Get PersonalDebtor from ssn
+        private void getPersonalDebtor()
+        {
+            {
+
+                string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+                string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+                string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+                string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+                string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+                string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
+                string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
+
+                cprText.Text = cpr;
+                PfnameText.Text = Fname;
+                PlnameText.Text = Lname;
+                adressText.Text = adresse;
+                city.Text = City;
+                postalcodeText.Text = pCode;
+                phoneText.Text = phoneN;
+                emailText.Text = eMail;
+            }
+        }
+
+
+
+           
         // get specific debtor Business or Personal
         private void button1_Click(object sender, EventArgs e)
         {
@@ -317,8 +310,8 @@ namespace DelpinUI
                     MessageBox.Show("Ugyldigt E-mailadresse");
                     return;
                 }
-                const string message = "Vil du rette kunden?";
-                const string caption = "Annuller";
+                string message = "Vil du rette kunden?";
+                string caption = "Annuller";
                 var result = MessageBox.Show(message, caption,
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
@@ -354,8 +347,8 @@ namespace DelpinUI
                     MessageBox.Show("Ugyldigt E-mailadresse");
                     return;
                 }
-                const string message = "Vil du rette kunden?";
-                const string caption = "Annuller";
+                string message = "Vil du rette kunden?";
+                string caption = "Annuller";
                 var result = MessageBox.Show(message, caption,
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
@@ -404,74 +397,17 @@ namespace DelpinUI
         }
        
 
-        private void SaveDebtor_Click(object sender, EventArgs e)
-        {
-            //if(radioButton1.Checked)
-            //{
-            //    if (Utility.CheckForValidEmail(emailText.Text) == false)
-            //    {
-            //        MessageBox.Show("Ugyldigt E-mailadresse");
-            //        return;
-            //    }
-
-
-            //    string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-            //        phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
-            //        MessageBox.Show(succes);
-               
-
-
-                
-            //}
-            //if (radioButton2.Checked)
-            //{
-            //    if (Utility.CheckForValidEmail(emailText.Text) == false)
-            //    {
-            //        MessageBox.Show("Ugyldigt E-mailadresse");
-            //        return;
-            //    }
-
-
-
-            //    string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-            //        phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text, PlnameText.Text);
-            //        MessageBox.Show(succes);
-                
-
-
-
-                
-
-            //}
-            //updateDatagridView();
-            //CreateDeb.Visible = true;
-            //UpdateDebtor.Visible = true;
-            //SaveDebtor.Visible = false;
-            //CancelUpdate.Visible = false;
-            //ClearTextBox();
-         
-        }
-        //cancel update function
-        private void CancelUpdate_Click(object sender, EventArgs e)
-        {
-            //CreateDeb.Visible = true;
-            //UpdateDebtor.Visible = true;
-            //SaveDebtor.Visible = false;
-            //CancelUpdate.Visible = false;
-            //ClearTextBox();
-         
-
-
-        }
+        
+        
         //Delete debtor and updates datagridview
         private void DeleteDebtor_Click(object sender, EventArgs e)
         {
             //indsæt slet debtor metode
             if (radioButton1.Checked)
             {
-                //CancelBusinessDebtorDelete();
-                const string message = "Er du sikker på du vil slette Kunden?";
-                const string caption = "Annuller";
+                
+                string message = "Er du sikker på du vil slette Kunden?";
+                string caption = "Annuller";
                 var result = MessageBox.Show(message, caption,
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
@@ -491,9 +427,9 @@ namespace DelpinUI
             }
             if (radioButton2.Checked)
             {
-                //CancelBusinessDebtorDelete();
-                const string message = "Er du sikker på du vil slette Kunden?";
-                const string caption = "Annuller";
+                
+                string message = "Er du sikker på du vil slette Kunden?";
+                string caption = "Annuller";
                 var result = MessageBox.Show(message, caption,
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);

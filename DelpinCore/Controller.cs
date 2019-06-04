@@ -77,40 +77,40 @@ namespace DelpinCore
         public DataTable DisplaySpeceficBusinessDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplaySpeceficBusinessDebtor(debtorID);
+            dataTable = debtorManager.DisplaySpeceficBusinessDebtor(debtorID);
             return dataTable;
         }
 
         public DataTable DisplaySpeceficPersonalDebtor(string debtorID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplaySpeceficPersonalDebtor(debtorID);
+            dataTable = debtorManager.DisplaySpeceficPersonalDebtor(debtorID);
             return dataTable;
         }
 
         public DataTable DisplayAllBusinessDebtor()
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplayAllBusinessDebtor();
+            dataTable = debtorManager.DisplayAllBusinessDebtor();
             return dataTable;
         }
 
         public DataTable DisplayAllPersonalDebtor()
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplayAllPersonalDebtor();
+            dataTable = debtorManager.DisplayAllPersonalDebtor();
             return dataTable;
         }
 
         public DataTable DisplayAllResources()
         {
-            DataTable dataTable = tableDisplay.DisplayAllResources();
+            DataTable dataTable = resourceManager.DisplayAllResources();
             return dataTable;
         }
 
         public DataTable DisplaySpecificResources(int resourceID)
         {
-            DataTable dataTable = tableDisplay.DisplaySpecficResources(resourceID);
+            DataTable dataTable = resourceManager.DisplaySpecficResources(resourceID);
             return dataTable;
         }
 
@@ -128,19 +128,19 @@ namespace DelpinCore
 
         public DataTable DisplayBranch()
         {
-            DataTable dataTable = tableDisplay.DisplayBranch();
+            DataTable dataTable = branchManager.DisplayBranch();
             return dataTable;
         }
 
         public DataTable DisplayModelBySubgroupID(int ModelID)
         {
-            DataTable dataTable = tableDisplay.DisplayModelBySubgroupID(ModelID);
+            DataTable dataTable = modelManager.DisplayModelBySubgroupID(ModelID);
             return dataTable;
         }
 
         public DataTable DisplayModel()
         {
-            DataTable dataTable = tableDisplay.DisplayModel();
+            DataTable dataTable = modelManager.DisplayModel();
             return dataTable;
         }
 
@@ -153,21 +153,21 @@ namespace DelpinCore
         public DataTable DisplaySpecificModel(int ModelID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplaySpecificModel(ModelID);
+            dataTable = modelManager.DisplaySpecificModel(ModelID);
             return dataTable;
         }
 
         public DataTable DisplayAccesoryRelations()
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplayAccesoryRelations();
+            dataTable = accessoryManager.DisplayAccesoryRelations();
             return dataTable;
         }
 
         public DataTable DisplayAccessoryRelationsBySubGroupID(int subGroupID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = tableDisplay.DisplayAccesoryRelationsBySubGroupID(subGroupID);
+            dataTable = accessoryManager.DisplayAccesoryRelationsBySubGroupID(subGroupID);
             return dataTable;
         }
 
@@ -194,7 +194,7 @@ namespace DelpinCore
         public DataTable ReadSpecefikSubCataegori(int subGroupID)
         {
             DataTable dataTable = new DataTable();
-            dataTable = resourceManager.ReadSpecefikSubCataegori(subGroupID);
+            dataTable = modelManager.ReadSpecefikSubCataegori(subGroupID);
 
             return dataTable;
         }
