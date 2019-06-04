@@ -96,21 +96,21 @@ namespace DelpinUI
                 PfnameText.Visible = false;
                 PlnameLabel.Visible = false;
                 PlnameText.Visible = false;
-                
-          
+
+
             }
             else
             {
-                //cprText.Visible = true;
-                //cprLabel.Visible = true;
+                cprText.Visible = true;
+                cprLabel.Visible = true;
                 //BnameLabel.Visible = false;
                 //BnameText.Visible = false;
-                //CreateDeb.Visible = true;
-                //PfnameLabel.Visible = true;
-                //PfnameText.Visible = true;
-                //PlnameLabel.Visible = true;
-                //PlnameText.Visible = true;
-             
+                CreateDeb.Visible = true;
+                PfnameLabel.Visible = true;
+                PfnameText.Visible = true;
+                PlnameLabel.Visible = true;
+                PlnameText.Visible = true;
+
 
             }
             ClearAllTextBoxes();
@@ -128,12 +128,12 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
-                cvrText.Visible = false;
-                CvrLabel.Visible = false;
+                //cvrText.Visible = false;
+                //CvrLabel.Visible = false;
                 cprText.Visible = true;
                 cprLabel.Visible = true;
-                BnameLabel.Visible = false;
-                BnameText.Visible = false;
+                //BnameLabel.Visible = false;
+                //BnameText.Visible = false;
                 PfnameLabel.Visible = true;
                 PfnameText.Visible = true;
                 PlnameLabel.Visible = true;
