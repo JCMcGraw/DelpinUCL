@@ -37,7 +37,7 @@ namespace DelpinCore
             {
                 return isCreatePersonalSuccess;
             }
-            return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email}','{CPR}','{firstName}','{lastName} er blevet Oprettet";
+            return $"Debitor er blevet Oprettet";
         }
 
         //Her bliver Debtorer joinet på så vi kan se alle atributter som en Personlig debtor har.
@@ -105,7 +105,7 @@ namespace DelpinCore
             {
                 return isUpdatePersonalDebtor;
             }
-            return $"Kunden {debtorID},'{street},'{postalCode},'{city},'{phone},'{email},'{CPR},'{firstName},'{lastName} er blevet Updateret";
+            return $"Debitor er blevet Updateret";
         }
 
         public string DeletePersonalDebtor(string CPR)
@@ -124,7 +124,7 @@ namespace DelpinCore
             {
                 return isDeleteDebtor;
             }
-            return $"Kunden '{CPR}' er blevet slettet";
+            return $"Debitor er blevet slettet";
         }
 
         public string CreateBusinessDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CVR, string companyName)
@@ -146,7 +146,7 @@ namespace DelpinCore
             {
                 return isCreateBusinessSuccess;
             }
-            return $"Kunden '{debtorID}','{street}','{postalCode}','{city}','{phone}','{email},'{CVR}','{companyName}'er blevet Oprettet";
+            return $"Debitor er blevet Oprettet";
         }
 
         //Her bliver Debtorer joinet på så vi kan se alle atributter som en Buisness debtor har.
@@ -178,7 +178,7 @@ namespace DelpinCore
             {
                 return isUpdateBusinessDebtor;
             }
-            return $"Kunden '{debtorID}','{street}',{postalCode},'{city}','{phone}','{email}','{CVR}','{companyName}'er blevet Opdateret";
+            return $"Debitor er blevet Opdateret";
         }
 
         public string DeleteBusinessDebtor(string CVR)
@@ -197,7 +197,7 @@ namespace DelpinCore
             {
                 return isDeleteDebtor;
             }
-            return $"Kunden '{CVR}' er blevet slettet";
+            return $"Debitor er blevet slettet";
         }
     }
 }
