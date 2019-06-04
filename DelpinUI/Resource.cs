@@ -249,10 +249,8 @@ namespace DelpinUI
 
 
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
+        
 
 
 
@@ -282,11 +280,7 @@ namespace DelpinUI
             
         }
 
-        private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
-
-        {
-
-        }
+       
 
         private void comboBoxMainGroup_SelectedIndexChanged_2(object sender, EventArgs e)
         {
@@ -382,10 +376,7 @@ namespace DelpinUI
 
        
 
-        private void AccModel_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AccSub_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -397,10 +388,7 @@ namespace DelpinUI
             catch { }
         }
 
-        private void ModelGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+      
 
         private void GetModel_Click(object sender, EventArgs e)
         {
@@ -482,10 +470,7 @@ namespace DelpinUI
             //MessageBox.Show(succes);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -579,15 +564,9 @@ namespace DelpinUI
 
         }
 
-        private void ComboModelSub_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
 
-        private void AccModelID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void ModelGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -671,15 +650,9 @@ namespace DelpinUI
             }
         }
 
-        private void Weight_TextChanged(object sender, EventArgs e)
-        {
+     
 
-        }
-
-        private void ModelGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void MainAcc_SelectedIndexChanged(object sender, EventArgs e)
         {
