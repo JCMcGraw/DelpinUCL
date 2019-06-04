@@ -20,7 +20,7 @@ namespace DelpinCore
             {
                 return isCreateAccessory;
             }
-            return $"Accessory {modelID}, {accessoryID} er blevet oprettet";
+            return $"Accessory er blevet oprettet";
         }
 
         //Denne inner joiner model tabellen med Accessory så vi kan se de fælles Kolonner som er i tabellen.
