@@ -76,18 +76,6 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Viser antal af en bestemt model på de forskellige lokationer, PR
-        //public DataTable CountModelPerBranch(int modelID)
-        //{
-        //    string selectResources = $"select Model.ModelName as Modelnavn, Branch.City as Lokation, count(Model.ModelID) as Antal from Model join Resources on Model.ModelID = Resources.ModelID join Branch on Branch.BranchID = Resources.BranchID where Model.ModelID = {modelID} group by Branch.City, Model.ModelName'";
-
-        //    DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
-
-        //    return dataTable;
-        //}
-
-
-
         //Table for maingroups
         public DataTable DisplayMainGroup()
         {
@@ -125,16 +113,6 @@ namespace DelpinCore
         {
             string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
-            return dataTable;
-        }
-
-        //Viser liste tilbehør, udfra et modelID, PR
-        public DataTable DisplaySpeceficAccessory(int modelID)
-        {
-            string selectAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory"+
-                $" join model on Accessory.AccessoryID = Model.ModelID join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
-
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
             return dataTable;
         }
 

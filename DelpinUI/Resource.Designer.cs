@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resource));
             this.subGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet3 = new DelpinUI.DataSet3();
-            this.subGroupTableAdapter = new DelpinUI.DataSet3TableAdapters.SubGroupTableAdapter();
             this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet4 = new DelpinUI.DataSet4();
             this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
@@ -93,8 +91,9 @@
             this.MainAcc = new System.Windows.Forms.ComboBox();
             this.UpdateAcc = new System.Windows.Forms.Button();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
+            this.dataSet3 = new DelpinUI.DataSet3();
+            this.subGroupTableAdapter = new DelpinUI.DataSet3TableAdapters.SubGroupTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -107,21 +106,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             this.SuspendLayout();
             // 
             // subGroupBindingSource
             // 
             this.subGroupBindingSource.DataMember = "SubGroup";
-            this.subGroupBindingSource.DataSource = this.dataSet3;
-            // 
-            // dataSet3
-            // 
-            this.dataSet3.DataSetName = "DataSet3";
-            this.dataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // subGroupTableAdapter
-            // 
-            this.subGroupTableAdapter.ClearBeforeFill = true;
             // 
             // modelBindingSource
             // 
@@ -145,10 +135,10 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(929, 524);
+            this.tabControl1.Size = new System.Drawing.Size(911, 524);
             this.tabControl1.TabIndex = 24;
             // 
             // tabPage1
@@ -174,11 +164,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(921, 498);
+            this.tabPage1.Size = new System.Drawing.Size(903, 498);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Model";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // label1
             // 
@@ -236,10 +225,7 @@
             this.ModelGridView.ReadOnly = true;
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
-            this.ModelGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellClick);
-            this.ModelGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellContentClick);
             this.ModelGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ModelGridView_CellMouseClick);
-            this.ModelGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ModelGridView_CellMouseDoubleClick);
             // 
             // ComboModelSub
             // 
@@ -249,7 +235,6 @@
             this.ComboModelSub.Name = "ComboModelSub";
             this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
             this.ComboModelSub.TabIndex = 50;
-            this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.ComboModelSub_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -266,7 +251,6 @@
             this.Weight.Name = "Weight";
             this.Weight.Size = new System.Drawing.Size(100, 20);
             this.Weight.TabIndex = 48;
-            this.Weight.TextChanged += new System.EventHandler(this.Weight_TextChanged);
             // 
             // DeleteModel
             // 
@@ -364,7 +348,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(921, 498);
+            this.tabPage3.Size = new System.Drawing.Size(903, 498);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -411,7 +395,7 @@
             this.resourceGridView.Location = new System.Drawing.Point(316, 44);
             this.resourceGridView.Name = "resourceGridView";
             this.resourceGridView.ReadOnly = true;
-            this.resourceGridView.Size = new System.Drawing.Size(447, 177);
+            this.resourceGridView.Size = new System.Drawing.Size(562, 177);
             this.resourceGridView.TabIndex = 61;
             this.resourceGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.resourceGridView_CellMouseClick);
             // 
@@ -493,7 +477,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(921, 498);
+            this.tabPage2.Size = new System.Drawing.Size(903, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tilføj Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -599,7 +583,7 @@
             this.AddAcc.Location = new System.Drawing.Point(306, 241);
             this.AddAcc.Name = "AddAcc";
             this.AddAcc.ReadOnly = true;
-            this.AddAcc.Size = new System.Drawing.Size(447, 125);
+            this.AddAcc.Size = new System.Drawing.Size(560, 125);
             this.AddAcc.TabIndex = 57;
             this.AddAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseClick);
             // 
@@ -609,7 +593,6 @@
             this.AccModel.Name = "AccModel";
             this.AccModel.Size = new System.Drawing.Size(100, 20);
             this.AccModel.TabIndex = 67;
-            this.AccModel.TextChanged += new System.EventHandler(this.AccModel_TextChanged);
             // 
             // AddAccesories
             // 
@@ -654,7 +637,7 @@
             this.AccModelView.Location = new System.Drawing.Point(306, 30);
             this.AccModelView.Name = "AccModelView";
             this.AccModelView.ReadOnly = true;
-            this.AccModelView.Size = new System.Drawing.Size(447, 150);
+            this.AccModelView.Size = new System.Drawing.Size(560, 150);
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
             this.AccModelView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseClick);
@@ -670,7 +653,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(921, 498);
+            this.tabPage4.Size = new System.Drawing.Size(903, 498);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Fjern tilbehør";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -730,22 +713,30 @@
             this.ShowAllAcc.Location = new System.Drawing.Point(303, 32);
             this.ShowAllAcc.Name = "ShowAllAcc";
             this.ShowAllAcc.ReadOnly = true;
-            this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
+            this.ShowAllAcc.Size = new System.Drawing.Size(357, 355);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
+            // 
+            // dataSet3
+            // 
+            this.dataSet3.DataSetName = "DataSet3";
+            this.dataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // subGroupTableAdapter
+            // 
+            this.subGroupTableAdapter.ClearBeforeFill = true;
             // 
             // Resource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 664);
+            this.ClientSize = new System.Drawing.Size(937, 540);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Resource";
             this.Text = "Resource";
             this.Load += new System.EventHandler(this.Resource_Load);
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -762,14 +753,13 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DataSet3 dataSet3;
         private System.Windows.Forms.BindingSource subGroupBindingSource;
-        private DataSet3TableAdapters.SubGroupTableAdapter subGroupTableAdapter;
         private DataSet4 dataSet4;
         private System.Windows.Forms.BindingSource modelBindingSource;
         private DataSet4TableAdapters.ModelTableAdapter modelTableAdapter;
@@ -830,5 +820,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox SubAcc;
         private System.Windows.Forms.ComboBox MainAcc;
+        private DataSet3 dataSet3;
+        private DataSet3TableAdapters.SubGroupTableAdapter subGroupTableAdapter;
     }
 }

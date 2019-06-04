@@ -46,16 +46,5 @@ namespace DelpinCore
             }
             return $"Tilbehør er blevet Fjernet";
         }
-
-        //Her joiner vi Accessory med model og SubGroup og sætter danske Alias på så det framstår på dansk i Programmet.
-        public DataTable ReadOnlyAccessory()
-        {
-            string readOnlyAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory" +
-                "join model on Accessory.AccessoryID = Model.ModelID"+
-                "join SubGroup on SubGroup.SubGroupID = Model.SubGroupID";
-
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(readOnlyAccessory);
-            return dataTable;
-        }
     }
 }

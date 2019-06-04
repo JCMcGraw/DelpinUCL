@@ -23,37 +23,6 @@ namespace DelpinCore
             return $"Resurse er blevet Oprettet";
         }
 
-        public string ReadResource()
-        {
-            string readResource = "Select * from Resources, where active ='1'";
-
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readResource));
-        }
-
-        public string UpdateResource(int resourceID, int modelID, int branchID)
-        {
-            string updateResource = $"update Resources set ResourcesID={resourceID}','ModelID='{modelID}','BrancID='{branchID}";
-            
-            string isUpdateResource = DatabaseManager.CreateUpdateDeleteInDatabase(updateResource);
-            if (isUpdateResource != "Success")
-            {
-                return isUpdateResource;
-            }
-            return $"Resurse er blevet Opdateret";
-        }
-
-        public string DeleteResource(int resourceID)
-        {
-            string deleteResource = $"Delete from Resources where ResourcesID={resourceID}";
-            
-            string isDeleteResource = DatabaseManager.CreateUpdateDeleteInDatabase(deleteResource);
-            if (isDeleteResource != "Success")
-            {
-                return isDeleteResource;
-            }
-            return $"Resurse er blevet Slettet";
-        }
-
         public string DeactivateResource(int resourceID)
         {
             string deactivateResource = $"Update Resources set Active = '0' where ResourcesID={resourceID}";
@@ -74,7 +43,6 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Bliver ikke brugt
         public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Model" +
@@ -85,14 +53,5 @@ namespace DelpinCore
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ReadSpecefikModelResourcesBranch);
             return dataTable;
         }
-
-        //public DataTable DisplayModelBySubgroupID(int ModelID) //Hvad skal denne bruges til.? 
-        //{
-        //    string DisplayModelBySubgroupID = $"Select *From Model Inner Join Accessory On Accessory.ModelID = Model.ModelID" +
-        //        $" Inner Join Model Model1 On Accessory.AccessoryID = Model1.ModelID Where Accessory.ModelID = {ModelID}";
-
-        //    DataTable dataTable = DatabaseManager.ReadFromDatabase(DisplayModelBySubgroupID);
-        //    return dataTable;
-        //}
     }
 }

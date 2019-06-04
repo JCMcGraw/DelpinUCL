@@ -96,21 +96,21 @@ namespace DelpinUI
                 PfnameText.Visible = false;
                 PlnameLabel.Visible = false;
                 PlnameText.Visible = false;
-                
-          
+
+
             }
             else
             {
-                //cprText.Visible = true;
-                //cprLabel.Visible = true;
+                cprText.Visible = true;
+                cprLabel.Visible = true;
                 //BnameLabel.Visible = false;
                 //BnameText.Visible = false;
-                //CreateDeb.Visible = true;
-                //PfnameLabel.Visible = true;
-                //PfnameText.Visible = true;
-                //PlnameLabel.Visible = true;
-                //PlnameText.Visible = true;
-             
+                CreateDeb.Visible = true;
+                PfnameLabel.Visible = true;
+                PfnameText.Visible = true;
+                PlnameLabel.Visible = true;
+                PlnameText.Visible = true;
+
 
             }
             ClearAllTextBoxes();
@@ -128,12 +128,12 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
-                cvrText.Visible = false;
-                CvrLabel.Visible = false;
+                //cvrText.Visible = false;
+                //CvrLabel.Visible = false;
                 cprText.Visible = true;
                 cprLabel.Visible = true;
-                BnameLabel.Visible = false;
-                BnameText.Visible = false;
+                //BnameLabel.Visible = false;
+                //BnameText.Visible = false;
                 PfnameLabel.Visible = true;
                 PfnameText.Visible = true;
                 PlnameLabel.Visible = true;
@@ -190,15 +190,9 @@ namespace DelpinUI
                 emailText.Text = eMail;
             }
         }
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
+      
 
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Debtor_Load(object sender, EventArgs e)
         {
@@ -206,10 +200,7 @@ namespace DelpinUI
 
         }
 
-        private void PlnameText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
         //create debtor and refreshes datagridview
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
@@ -278,10 +269,7 @@ namespace DelpinUI
         }
 
 
-        private void ViewBdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+        
 
         
         // get specific debtor Business or Personal
