@@ -33,5 +33,13 @@ namespace DelpinCore
 
             return branch;
         }
+
+        //Sim og PR
+        public DataTable DisplayBranch()
+        {
+            string selectBranch = $"select * from Branch";
+            DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBranch);
+            return dataTable;
+        }
     }
 }
