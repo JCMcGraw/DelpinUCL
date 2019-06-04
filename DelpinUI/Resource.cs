@@ -49,8 +49,6 @@ namespace DelpinUI
             // TODO: This line of code loads data into the 'dataSet3.SubGroup' table. You can move, or remove it, as needed.
             this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
 
-
-
         }
         private void DeleteAcc()
         {
