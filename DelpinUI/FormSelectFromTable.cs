@@ -24,7 +24,6 @@ namespace DelpinUI
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //lease.SetResourceID(-1);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

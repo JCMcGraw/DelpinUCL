@@ -182,8 +182,7 @@ namespace DelpinUI
         {
             DateTime startDate = DeliveryDate.Value;
             DateTime endDate = ReturnDate.Value;
-
-            //DataTable dataTable = controller.ReadSpecefikModelResourcesBranch(modelID);
+            
             DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, Utility.BranchID, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
 
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
@@ -204,11 +203,9 @@ namespace DelpinUI
             leaseOrders.Rows.Add();
             int lastRow = leaseOrders.Rows.GetLastRow(DataGridViewElementStates.Visible);
             leaseOrders.Rows[lastRow].Cells["ResurseID"].Value = resourceID;
-            //dataGridViewLeaseOrders.Rows[lastRow].Cells["Resurse"].Value = dataGridViewResources.Rows[selectedRow].Cells["ModelName"].Value.ToString();
             leaseOrders.Rows[lastRow].Cells["Resurse"].Value = formSelectFromTable.modelName;
             leaseOrders.Rows[lastRow].Cells["Leveringsdato"].Value = DeliveryDate.Value.ToString("yyyy/MM/dd");
             leaseOrders.Rows[lastRow].Cells["Slutdato"].Value = ReturnDate.Value.ToString("yyyy/MM/dd");
-            //dataGridViewLeaseOrders.Rows[lastRow].Cells["Dagspris"].Value = dataGridViewResources.Rows[selectedRow].Cells["Price"].Value.ToString();
             leaseOrders.Rows[lastRow].Cells["Dagspris"].Value = formSelectFromTable.dailyPrice.ToString("N2");
 
             leaseOrders.Rows[lastRow].Cells["Gade"].Value = deliveryAddressTextBox.Text;
