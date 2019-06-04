@@ -303,10 +303,12 @@
             // 
             // ViewDeb
             // 
+            this.ViewDeb.AllowUserToAddRows = false;
             this.ViewDeb.AllowUserToOrderColumns = true;
             this.ViewDeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ViewDeb.Location = new System.Drawing.Point(286, 13);
             this.ViewDeb.Name = "ViewDeb";
+            this.ViewDeb.ReadOnly = true;
             this.ViewDeb.Size = new System.Drawing.Size(812, 425);
             this.ViewDeb.TabIndex = 33;
             this.ViewDeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);

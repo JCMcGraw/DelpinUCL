@@ -148,7 +148,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(929, 524);
+            this.tabControl1.Size = new System.Drawing.Size(911, 524);
             this.tabControl1.TabIndex = 24;
             // 
             // tabPage1
@@ -364,7 +364,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(921, 498);
+            this.tabPage3.Size = new System.Drawing.Size(903, 498);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Resurse";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -411,7 +411,7 @@
             this.resourceGridView.Location = new System.Drawing.Point(316, 44);
             this.resourceGridView.Name = "resourceGridView";
             this.resourceGridView.ReadOnly = true;
-            this.resourceGridView.Size = new System.Drawing.Size(447, 177);
+            this.resourceGridView.Size = new System.Drawing.Size(562, 177);
             this.resourceGridView.TabIndex = 61;
             this.resourceGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.resourceGridView_CellMouseClick);
             // 
@@ -493,7 +493,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(921, 498);
+            this.tabPage2.Size = new System.Drawing.Size(903, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tilføj Tilbehør";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -599,7 +599,7 @@
             this.AddAcc.Location = new System.Drawing.Point(306, 241);
             this.AddAcc.Name = "AddAcc";
             this.AddAcc.ReadOnly = true;
-            this.AddAcc.Size = new System.Drawing.Size(447, 125);
+            this.AddAcc.Size = new System.Drawing.Size(560, 125);
             this.AddAcc.TabIndex = 57;
             this.AddAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseClick);
             // 
@@ -654,7 +654,7 @@
             this.AccModelView.Location = new System.Drawing.Point(306, 30);
             this.AccModelView.Name = "AccModelView";
             this.AccModelView.ReadOnly = true;
-            this.AccModelView.Size = new System.Drawing.Size(447, 150);
+            this.AccModelView.Size = new System.Drawing.Size(560, 150);
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
             this.AccModelView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AccModelView_CellMouseClick);
@@ -670,7 +670,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(921, 498);
+            this.tabPage4.Size = new System.Drawing.Size(903, 498);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Fjern tilbehør";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -730,7 +730,7 @@
             this.ShowAllAcc.Location = new System.Drawing.Point(303, 32);
             this.ShowAllAcc.Name = "ShowAllAcc";
             this.ShowAllAcc.ReadOnly = true;
-            this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
+            this.ShowAllAcc.Size = new System.Drawing.Size(357, 355);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
             // 
@@ -738,7 +738,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 664);
+            this.ClientSize = new System.Drawing.Size(937, 540);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Resource";
