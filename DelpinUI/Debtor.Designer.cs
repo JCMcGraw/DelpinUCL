@@ -106,7 +106,7 @@
             this.PfnameText.Location = new System.Drawing.Point(12, 102);
             this.PfnameText.Name = "PfnameText";
             this.PfnameText.Size = new System.Drawing.Size(100, 20);
-            this.PfnameText.TabIndex = 0;
+            this.PfnameText.TabIndex = 3;
             this.PfnameText.Visible = false;
             // 
             // PlnameText
@@ -114,7 +114,7 @@
             this.PlnameText.Location = new System.Drawing.Point(126, 102);
             this.PlnameText.Name = "PlnameText";
             this.PlnameText.Size = new System.Drawing.Size(100, 20);
-            this.PlnameText.TabIndex = 1;
+            this.PlnameText.TabIndex = 5;
             this.PlnameText.Visible = false;
             this.PlnameText.TextChanged += new System.EventHandler(this.PlnameText_TextChanged);
             // 
@@ -123,35 +123,35 @@
             this.adressText.Location = new System.Drawing.Point(15, 140);
             this.adressText.Name = "adressText";
             this.adressText.Size = new System.Drawing.Size(100, 20);
-            this.adressText.TabIndex = 4;
+            this.adressText.TabIndex = 6;
             // 
             // city
             // 
             this.city.Location = new System.Drawing.Point(15, 179);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(100, 20);
-            this.city.TabIndex = 5;
+            this.city.TabIndex = 7;
             // 
             // postalcodeText
             // 
             this.postalcodeText.Location = new System.Drawing.Point(130, 179);
             this.postalcodeText.Name = "postalcodeText";
             this.postalcodeText.Size = new System.Drawing.Size(61, 20);
-            this.postalcodeText.TabIndex = 6;
+            this.postalcodeText.TabIndex = 8;
             // 
             // phoneText
             // 
             this.phoneText.Location = new System.Drawing.Point(15, 224);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(100, 20);
-            this.phoneText.TabIndex = 7;
+            this.phoneText.TabIndex = 9;
             // 
             // emailText
             // 
             this.emailText.Location = new System.Drawing.Point(15, 267);
             this.emailText.Name = "emailText";
             this.emailText.Size = new System.Drawing.Size(100, 20);
-            this.emailText.TabIndex = 8;
+            this.emailText.TabIndex = 10;
             // 
             // PfnameLabel
             // 
@@ -205,7 +205,7 @@
             this.cprText.Location = new System.Drawing.Point(12, 64);
             this.cprText.Name = "cprText";
             this.cprText.Size = new System.Drawing.Size(100, 20);
-            this.cprText.TabIndex = 12;
+            this.cprText.TabIndex = 1;
             this.cprText.Visible = false;
             // 
             // cprLabel
@@ -280,7 +280,7 @@
             this.BnameText.Location = new System.Drawing.Point(13, 102);
             this.BnameText.Name = "BnameText";
             this.BnameText.Size = new System.Drawing.Size(163, 20);
-            this.BnameText.TabIndex = 1;
+            this.BnameText.TabIndex = 4;
             // 
             // BnameLabel
             // 
@@ -296,7 +296,7 @@
             this.CreateDeb.Location = new System.Drawing.Point(19, 403);
             this.CreateDeb.Name = "CreateDeb";
             this.CreateDeb.Size = new System.Drawing.Size(75, 23);
-            this.CreateDeb.TabIndex = 32;
+            this.CreateDeb.TabIndex = 11;
             this.CreateDeb.Text = "Opret";
             this.CreateDeb.UseVisualStyleBackColor = true;
             this.CreateDeb.Click += new System.EventHandler(this.CreateBdeb_Click);
@@ -430,7 +430,7 @@
             this.GetBdeb.Location = new System.Drawing.Point(118, 62);
             this.GetBdeb.Name = "GetBdeb";
             this.GetBdeb.Size = new System.Drawing.Size(75, 23);
-            this.GetBdeb.TabIndex = 36;
+            this.GetBdeb.TabIndex = 2;
             this.GetBdeb.Text = "Hent debitor";
             this.GetBdeb.UseVisualStyleBackColor = true;
             this.GetBdeb.Click += new System.EventHandler(this.button1_Click);
@@ -440,7 +440,7 @@
             this.UpdateDebtor.Location = new System.Drawing.Point(103, 403);
             this.UpdateDebtor.Name = "UpdateDebtor";
             this.UpdateDebtor.Size = new System.Drawing.Size(75, 23);
-            this.UpdateDebtor.TabIndex = 37;
+            this.UpdateDebtor.TabIndex = 12;
             this.UpdateDebtor.Text = "Ret Debitor";
             this.UpdateDebtor.UseVisualStyleBackColor = true;
             this.UpdateDebtor.Click += new System.EventHandler(this.UpdateDebtor_Click);
@@ -450,7 +450,7 @@
             this.DeleteDebtor.Location = new System.Drawing.Point(184, 403);
             this.DeleteDebtor.Name = "DeleteDebtor";
             this.DeleteDebtor.Size = new System.Drawing.Size(75, 23);
-            this.DeleteDebtor.TabIndex = 40;
+            this.DeleteDebtor.TabIndex = 13;
             this.DeleteDebtor.Text = "Slet";
             this.DeleteDebtor.UseVisualStyleBackColor = true;
             this.DeleteDebtor.Click += new System.EventHandler(this.DeleteDebtor_Click);
@@ -479,7 +479,6 @@
             this.Controls.Add(this.cprText);
             this.Controls.Add(this.PfnameLabel);
             this.Controls.Add(this.BnameLabel);
-            this.Controls.Add(this.BnameText);
             this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.cvrText);
@@ -487,6 +486,7 @@
             this.Controls.Add(this.city);
             this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.UpdateDebtor);
+            this.Controls.Add(this.BnameText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debtor";
             this.Text = "Debtor";

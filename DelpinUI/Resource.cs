@@ -18,6 +18,7 @@ namespace DelpinUI
         private Controller controller = new Controller();
 
         private DataTable dataTableSubGroup = new DataTable();
+        private DataTable dataTableModelSubGroup = new DataTable();
         private DataTable dataTableAccSubGroup = new DataTable();
         private DataTable dataTableAccDelete = new DataTable();
 
@@ -112,7 +113,7 @@ namespace DelpinUI
         {
             DataTable dataTableMainGroup = controller.DisplayMainGroup();
             dataTableSubGroup = controller.DisplaySubGroup();
-
+            //model tab
             ComboModelSub.DataSource = dataTableSubGroup;
             ComboModelSub.DisplayMember = "Category";
             ComboModelSub.ValueMember = "SubGroupID";
@@ -123,17 +124,35 @@ namespace DelpinUI
             ComboModelMain.DisplayMember = "Category";
             ComboModelMain.ValueMember = "MainGroupID";
 
+            //DeleteAcc tab
+            dataTableAccDelete = dataTableSubGroup.Copy();
+
+            SubAcc.DataSource = dataTableAccDelete;
+            SubAcc.DisplayMember = "Category";
+            SubAcc.ValueMember = "SubGroupID";
+
+            DataTable dataTableAccMainDelete = dataTableMainGroup.Copy();
+
+            MainAcc.DataSource = dataTableAccMainDelete;
+            MainAcc.DisplayMember = "Category";
+            MainAcc.ValueMember = "MainGroupID";
 
 
-            AccSub.DataSource = dataTableSubGroup;
+            //AccModel
+
+            dataTableModelSubGroup = dataTableSubGroup.Copy();
+
+            AccSub.DataSource = dataTableModelSubGroup;
             AccSub.DisplayMember = "Category";
             AccSub.ValueMember = "SubGroupID";
 
-            AccMain.DataSource = dataTableMainGroup;
+            DataTable dataTableModelMainGroup = dataTableMainGroup.Copy();
+
+            AccMain.DataSource = dataTableModelMainGroup;
             AccMain.DisplayMember = "Category";
             AccMain.ValueMember = "MainGroupID";
 
-
+            //AddAccModel 
             dataTableAccSubGroup = dataTableSubGroup.Copy();
             
             AddAccSub.DataSource = dataTableAccSubGroup;
@@ -148,11 +167,7 @@ namespace DelpinUI
 
 
 
-            DataTable AddAccDelete = dataTableMainGroup.Copy();
-
-            AddAccMain.DataSource = AddAccView2;
-            AddAccMain.DisplayMember = "Category";
-            AddAccMain.ValueMember = "MainGroupID";
+            
 
 
 
@@ -170,10 +185,7 @@ namespace DelpinUI
             ShowAllAcc.DataSource = dataTableAcc;
 
 
-            //DataTable dataTableAccDelete = controller.DisplayAccessoryRelationsBySubGroupID();
-            MainAcc.DataSource = dataTableAccDelete;
-            MainAcc.DisplayMember = "";
-            MainAcc.ValueMember = "subGroupID";
+           
 
             DataTable dataTableModel = controller.DisplayModel();
             ModelGridView.DataSource = dataTableModel;
@@ -189,11 +201,11 @@ namespace DelpinUI
 
             DataTable dataTableAccView = controller.DisplayAccModel();
 
-            DataTable dataTableDeleteAcc = controller.DisplayAccesoryRelations();
+            //DataTable dataTableDeleteAcc = controller.DisplayAccesoryRelations();
             //dataTable = controller.DisplayAccessoryRelationsBySubGroupID();
 
-            AddAcc.DataSource = dataTableAddAccModel;
-            AddAcc.DataSource = dataTableModel;
+            //AddAcc.DataSource = dataTableAddAccModel;
+            //AddAcc.DataSource = dataTableModel;
 
             
         }
@@ -359,7 +371,7 @@ namespace DelpinUI
         {
             try
             {
-                DataView dv = new DataView(dataTableSubGroup);
+                DataView dv = new DataView(dataTableModelSubGroup);
                 dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
                 
 
@@ -479,10 +491,11 @@ namespace DelpinUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            
-            const string message = ("Vil du fjerne tilbehøret fra");
-            const string caption = "Annuller";
+            var selectedrows = ShowAllAcc.SelectedRows;
+            int selectedrow = selectedrows[0].Index;
+            string ModelName = ShowAllAcc.Rows[selectedrow].Cells[0].Value + string.Empty;
+            string message = ("Vil du fjerne tilbehøret fra "+ModelName);
+            string caption = "Annuller";
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
@@ -619,7 +632,7 @@ namespace DelpinUI
         }
         private void AccModelView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex > -1)
+            //if (e.RowIndex > -1)
             {
                 AccModelView.Rows[e.RowIndex].Selected = true;
 
@@ -688,7 +701,12 @@ namespace DelpinUI
 
         private void SubAcc_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            try
+            {
+                DataTable dataTable = controller.DisplayAccessoryRelationsBySubGroupID(Convert.ToInt32(SubAcc.SelectedValue));
+                ShowAllAcc.DataSource = dataTable;
+            }
+            catch { }
         }
     }
 }
