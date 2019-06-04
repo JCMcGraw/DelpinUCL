@@ -109,7 +109,7 @@ namespace DelpinCore
                 return isDeleteLeaseSuccess;
             }
             
-            return $"Lejekontrakt {leaseID} er blevet slettet";
+            return $"Lejekontrakt er blevet slettet";
         }
 
         //inserts new Lease in database
@@ -192,7 +192,6 @@ namespace DelpinCore
             string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
 
             return isInsertSuccess;
-
         }
 
         public string DeactivateLease(int leaseID)

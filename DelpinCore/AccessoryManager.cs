@@ -20,7 +20,7 @@ namespace DelpinCore
             {
                 return isCreateAccessory;
             }
-            return $"Accessory er blevet oprettet";
+            return $"Tilbehør er blevet oprettet";
         }
 
         //Denne inner joiner model tabellen med Accessory så vi kan se de fælles Kolonner som er i tabellen.
@@ -44,7 +44,7 @@ namespace DelpinCore
             {
                 return deleteAccessory;
             }
-            return $"Accessory {accessoryModelID} er blevet Slettet";
+            return $"Tilbehør er blevet Fjernet";
         }
 
         //Her joiner vi Accessory med model og SubGroup og sætter danske Alias på så det framstår på dansk i Programmet.
