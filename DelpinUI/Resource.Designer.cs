@@ -87,12 +87,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.AccModelView = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.SubAcc = new System.Windows.Forms.ComboBox();
+            this.MainAcc = new System.Windows.Forms.ComboBox();
             this.UpdateAcc = new System.Windows.Forms.Button();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
@@ -191,11 +191,12 @@
             // 
             // ComboModelMain
             // 
+            this.ComboModelMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboModelMain.FormattingEnabled = true;
             this.ComboModelMain.Location = new System.Drawing.Point(6, 182);
             this.ComboModelMain.Name = "ComboModelMain";
             this.ComboModelMain.Size = new System.Drawing.Size(121, 21);
-            this.ComboModelMain.TabIndex = 47;
+            this.ComboModelMain.TabIndex = 49;
             this.ComboModelMain.SelectedIndexChanged += new System.EventHandler(this.ComboModelMain_SelectedIndexChanged);
             // 
             // GetModel
@@ -240,11 +241,12 @@
             // 
             // ComboModelSub
             // 
+            this.ComboModelSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboModelSub.FormattingEnabled = true;
             this.ComboModelSub.Location = new System.Drawing.Point(133, 182);
             this.ComboModelSub.Name = "ComboModelSub";
             this.ComboModelSub.Size = new System.Drawing.Size(121, 21);
-            this.ComboModelSub.TabIndex = 40;
+            this.ComboModelSub.TabIndex = 50;
             this.ComboModelSub.SelectedIndexChanged += new System.EventHandler(this.ComboModelSub_SelectedIndexChanged);
             // 
             // label8
@@ -261,7 +263,7 @@
             this.Weight.Location = new System.Drawing.Point(3, 141);
             this.Weight.Name = "Weight";
             this.Weight.Size = new System.Drawing.Size(100, 20);
-            this.Weight.TabIndex = 37;
+            this.Weight.TabIndex = 48;
             this.Weight.TextChanged += new System.EventHandler(this.Weight_TextChanged);
             // 
             // DeleteModel
@@ -269,7 +271,7 @@
             this.DeleteModel.Location = new System.Drawing.Point(208, 223);
             this.DeleteModel.Name = "DeleteModel";
             this.DeleteModel.Size = new System.Drawing.Size(75, 23);
-            this.DeleteModel.TabIndex = 35;
+            this.DeleteModel.TabIndex = 53;
             this.DeleteModel.Text = "Slet model";
             this.DeleteModel.UseVisualStyleBackColor = true;
             this.DeleteModel.Click += new System.EventHandler(this.DeleteModel_Click);
@@ -315,21 +317,21 @@
             this.ModelPrice.Location = new System.Drawing.Point(4, 103);
             this.ModelPrice.Name = "ModelPrice";
             this.ModelPrice.Size = new System.Drawing.Size(100, 20);
-            this.ModelPrice.TabIndex = 27;
+            this.ModelPrice.TabIndex = 47;
             // 
             // ModelName
             // 
             this.ModelName.Location = new System.Drawing.Point(3, 66);
             this.ModelName.Name = "ModelName";
             this.ModelName.Size = new System.Drawing.Size(100, 20);
-            this.ModelName.TabIndex = 26;
+            this.ModelName.TabIndex = 46;
             // 
             // UpdateModel
             // 
             this.UpdateModel.Location = new System.Drawing.Point(102, 223);
             this.UpdateModel.Name = "UpdateModel";
             this.UpdateModel.Size = new System.Drawing.Size(84, 23);
-            this.UpdateModel.TabIndex = 33;
+            this.UpdateModel.TabIndex = 52;
             this.UpdateModel.Text = "Ret Model";
             this.UpdateModel.UseVisualStyleBackColor = true;
             this.UpdateModel.Click += new System.EventHandler(this.UpdateModel_Click);
@@ -339,7 +341,7 @@
             this.CreateModel.Location = new System.Drawing.Point(6, 223);
             this.CreateModel.Name = "CreateModel";
             this.CreateModel.Size = new System.Drawing.Size(75, 23);
-            this.CreateModel.TabIndex = 24;
+            this.CreateModel.TabIndex = 51;
             this.CreateModel.Text = "Opret model";
             this.CreateModel.UseVisualStyleBackColor = true;
             this.CreateModel.Click += new System.EventHandler(this.button1_Click_1);
@@ -370,7 +372,7 @@
             this.GetResource.Location = new System.Drawing.Point(139, 33);
             this.GetResource.Name = "GetResource";
             this.GetResource.Size = new System.Drawing.Size(82, 23);
-            this.GetResource.TabIndex = 65;
+            this.GetResource.TabIndex = 63;
             this.GetResource.Text = "Hent Resurse";
             this.GetResource.UseVisualStyleBackColor = true;
             this.GetResource.Click += new System.EventHandler(this.button1_Click);
@@ -416,7 +418,7 @@
             this.branchID.Location = new System.Drawing.Point(17, 119);
             this.branchID.Name = "branchID";
             this.branchID.Size = new System.Drawing.Size(121, 21);
-            this.branchID.TabIndex = 60;
+            this.branchID.TabIndex = 65;
             // 
             // BranchLabel
             // 
@@ -432,7 +434,7 @@
             this.DeleteRessource.Location = new System.Drawing.Point(124, 270);
             this.DeleteRessource.Name = "DeleteRessource";
             this.DeleteRessource.Size = new System.Drawing.Size(75, 23);
-            this.DeleteRessource.TabIndex = 54;
+            this.DeleteRessource.TabIndex = 67;
             this.DeleteRessource.Text = "Slet resurse";
             this.DeleteRessource.UseVisualStyleBackColor = true;
             this.DeleteRessource.Click += new System.EventHandler(this.DeleteRessource_Click);
@@ -460,7 +462,7 @@
             this.CreateRessource.Location = new System.Drawing.Point(20, 270);
             this.CreateRessource.Name = "CreateRessource";
             this.CreateRessource.Size = new System.Drawing.Size(83, 23);
-            this.CreateRessource.TabIndex = 45;
+            this.CreateRessource.TabIndex = 66;
             this.CreateRessource.Text = "Opret Resurse";
             this.CreateRessource.UseVisualStyleBackColor = true;
             this.CreateRessource.Click += new System.EventHandler(this.CreateRessource_Click);
@@ -521,20 +523,22 @@
             // 
             // AddAccSub
             // 
+            this.AddAccSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddAccSub.FormattingEnabled = true;
             this.AddAccSub.Location = new System.Drawing.Point(133, 344);
             this.AddAccSub.Name = "AddAccSub";
             this.AddAccSub.Size = new System.Drawing.Size(121, 21);
-            this.AddAccSub.TabIndex = 65;
+            this.AddAccSub.TabIndex = 70;
             this.AddAccSub.SelectedIndexChanged += new System.EventHandler(this.AddAccSub_SelectedIndexChanged);
             // 
             // AddAccMain
             // 
+            this.AddAccMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddAccMain.FormattingEnabled = true;
             this.AddAccMain.Location = new System.Drawing.Point(6, 344);
             this.AddAccMain.Name = "AddAccMain";
             this.AddAccMain.Size = new System.Drawing.Size(121, 21);
-            this.AddAccMain.TabIndex = 64;
+            this.AddAccMain.TabIndex = 69;
             this.AddAccMain.SelectedIndexChanged += new System.EventHandler(this.AddAccMain_SelectedIndexChanged);
             // 
             // label15
@@ -560,24 +564,26 @@
             this.AddAccModel.Location = new System.Drawing.Point(6, 300);
             this.AddAccModel.Name = "AddAccModel";
             this.AddAccModel.Size = new System.Drawing.Size(100, 20);
-            this.AddAccModel.TabIndex = 60;
+            this.AddAccModel.TabIndex = 68;
             // 
             // AccSub
             // 
+            this.AccSub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccSub.FormattingEnabled = true;
             this.AccSub.Location = new System.Drawing.Point(122, 60);
             this.AccSub.Name = "AccSub";
             this.AccSub.Size = new System.Drawing.Size(98, 21);
-            this.AccSub.TabIndex = 59;
+            this.AccSub.TabIndex = 66;
             this.AccSub.SelectedIndexChanged += new System.EventHandler(this.AccSub_SelectedIndexChanged_1);
             // 
             // AccMain
             // 
+            this.AccMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccMain.FormattingEnabled = true;
             this.AccMain.Location = new System.Drawing.Point(9, 60);
             this.AccMain.Name = "AccMain";
             this.AccMain.Size = new System.Drawing.Size(100, 21);
-            this.AccMain.TabIndex = 58;
+            this.AccMain.TabIndex = 65;
             this.AccMain.SelectedIndexChanged += new System.EventHandler(this.AccMain_SelectedIndexChanged);
             // 
             // AddAcc
@@ -596,7 +602,7 @@
             this.AccModel.Location = new System.Drawing.Point(6, 148);
             this.AccModel.Name = "AccModel";
             this.AccModel.Size = new System.Drawing.Size(100, 20);
-            this.AccModel.TabIndex = 56;
+            this.AccModel.TabIndex = 67;
             this.AccModel.TextChanged += new System.EventHandler(this.AccModel_TextChanged);
             // 
             // AddAccesories
@@ -604,7 +610,7 @@
             this.AddAccesories.Location = new System.Drawing.Point(12, 391);
             this.AddAccesories.Name = "AddAccesories";
             this.AddAccesories.Size = new System.Drawing.Size(102, 23);
-            this.AddAccesories.TabIndex = 55;
+            this.AddAccesories.TabIndex = 71;
             this.AddAccesories.Text = "Tilføj tilbehør";
             this.AddAccesories.UseVisualStyleBackColor = true;
             this.AddAccesories.Click += new System.EventHandler(this.AddAccesories_Click);
@@ -649,8 +655,8 @@
             // 
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.comboBox2);
-            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.SubAcc);
+            this.tabPage4.Controls.Add(this.MainAcc);
             this.tabPage4.Controls.Add(this.UpdateAcc);
             this.tabPage4.Controls.Add(this.ShowAllAcc);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -658,16 +664,54 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(921, 498);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Slet tilbehør";
+            this.tabPage4.Text = "Fjern tilbehør";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(143, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Undergruppe";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Hovedkategori";
+            // 
+            // SubAcc
+            // 
+            this.SubAcc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubAcc.FormattingEnabled = true;
+            this.SubAcc.Location = new System.Drawing.Point(143, 50);
+            this.SubAcc.Name = "SubAcc";
+            this.SubAcc.Size = new System.Drawing.Size(121, 21);
+            this.SubAcc.TabIndex = 73;
+            this.SubAcc.SelectedIndexChanged += new System.EventHandler(this.SubAcc_SelectedIndexChanged);
+            // 
+            // MainAcc
+            // 
+            this.MainAcc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MainAcc.FormattingEnabled = true;
+            this.MainAcc.Location = new System.Drawing.Point(15, 50);
+            this.MainAcc.Name = "MainAcc";
+            this.MainAcc.Size = new System.Drawing.Size(121, 21);
+            this.MainAcc.TabIndex = 72;
+            this.MainAcc.SelectedIndexChanged += new System.EventHandler(this.MainAcc_SelectedIndexChanged);
             // 
             // UpdateAcc
             // 
             this.UpdateAcc.Location = new System.Drawing.Point(15, 77);
             this.UpdateAcc.Name = "UpdateAcc";
             this.UpdateAcc.Size = new System.Drawing.Size(75, 23);
-            this.UpdateAcc.TabIndex = 8;
-            this.UpdateAcc.Text = "Slet tilbehør";
+            this.UpdateAcc.TabIndex = 74;
+            this.UpdateAcc.Text = "Fjern tilbehør";
             this.UpdateAcc.UseVisualStyleBackColor = true;
             this.UpdateAcc.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -679,40 +723,6 @@
             this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(143, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(15, 32);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 13);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Hovedkategori";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(143, 32);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 13);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Undergruppe";
             // 
             // Resource
             // 
@@ -808,7 +818,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox SubAcc;
+        private System.Windows.Forms.ComboBox MainAcc;
     }
 }

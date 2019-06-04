@@ -175,8 +175,8 @@ namespace DelpinUI
                 string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
                 string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
                 string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+                string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
                 string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
                 string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
 
@@ -229,8 +229,8 @@ namespace DelpinUI
                     return;
                     }
                 
-                    string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
+                    string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
+                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
                     
 
@@ -251,8 +251,8 @@ namespace DelpinUI
                     return;
                 }
 
-                string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text, phoneText.Text, emailText.Text, cprText.Text,
-                     PfnameText.Text, PlnameText.Text);
+                string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"), phoneText.Text, emailText.Text, cprText.Text,
+                     PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
                 
                
@@ -337,8 +337,8 @@ namespace DelpinUI
 
                 if (result == DialogResult.Yes)
                 {
-                    string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                   phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text);
+                    string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
+                   phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
                 }
                 else
@@ -374,8 +374,8 @@ namespace DelpinUI
 
                 if (result == DialogResult.Yes)
                 {
-                    string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text, Convert.ToInt32(postalcodeText.Text), city.Text,
-                     phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text, PlnameText.Text);
+                    string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
+                     phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
 
                 }
