@@ -167,16 +167,12 @@ namespace DelpinUI
 
 
 
-            
 
 
 
 
-            DataTable dataTableBranch = controller.DisplayBranch();
 
-            branchID.DataSource = dataTableBranch;
-            branchID.DisplayMember = "City";
-            branchID.ValueMember = "BranchID";
+            SetBranches();
 
             DataTable dataTable = controller.DisplayAllResources();
             resourceGridView.DataSource = dataTable;
@@ -209,6 +205,14 @@ namespace DelpinUI
 
             
         }
+        private void SetBranches()
+        {
+            DataTable dataTableBranch = Utility.Branches.Copy();
+
+            branchID.DataSource = dataTableBranch;
+            branchID.DisplayMember = "City";
+            branchID.ValueMember = "BranchID";
+        }
 
 
         private void comboBoxMainGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -224,24 +228,6 @@ namespace DelpinUI
             }
             catch { }
         }
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -638,10 +624,6 @@ namespace DelpinUI
 
             }
         }
-
-     
-
-        
 
         private void MainAcc_SelectedIndexChanged(object sender, EventArgs e)
         {
