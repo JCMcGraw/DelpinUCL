@@ -35,14 +35,6 @@ namespace DelpinCore
             return $"Resurse er blevet Slettet";
         }
 
-        //public DataTable ReadSpecefikSubCataegori(int SubGroupID)
-        //{
-        //    string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
-
-        //    DataTable dataTable= DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
-        //    return dataTable;
-        //}
-
         public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Model" +
