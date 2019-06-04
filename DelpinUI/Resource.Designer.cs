@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resource));
-            this.subGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.modelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet4 = new DelpinUI.DataSet4();
-            this.modelTableAdapter = new DelpinUI.DataSet4TableAdapters.ModelTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -91,11 +86,6 @@
             this.MainAcc = new System.Windows.Forms.ComboBox();
             this.UpdateAcc = new System.Windows.Forms.Button();
             this.ShowAllAcc = new System.Windows.Forms.DataGridView();
-            this.dataSet3 = new DelpinUI.DataSet3();
-            this.subGroupTableAdapter = new DelpinUI.DataSet3TableAdapters.SubGroupTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModelGridView)).BeginInit();
@@ -106,26 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AccModelView)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // subGroupBindingSource
-            // 
-            this.subGroupBindingSource.DataMember = "SubGroup";
-            // 
-            // modelBindingSource
-            // 
-            this.modelBindingSource.DataMember = "Model";
-            this.modelBindingSource.DataSource = this.dataSet4;
-            // 
-            // dataSet4
-            // 
-            this.dataSet4.DataSetName = "DataSet4";
-            this.dataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // modelTableAdapter
-            // 
-            this.modelTableAdapter.ClearBeforeFill = true;
             // 
             // tabControl1
             // 
@@ -717,15 +688,6 @@
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
             // 
-            // dataSet3
-            // 
-            this.dataSet3.DataSetName = "DataSet3";
-            this.dataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // subGroupTableAdapter
-            // 
-            this.subGroupTableAdapter.ClearBeforeFill = true;
-            // 
             // Resource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -734,11 +696,8 @@
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Resource";
-            this.Text = "Resource";
+            this.Text = "Resurser";
             this.Load += new System.EventHandler(this.Resource_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.subGroupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet4)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -753,16 +712,11 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowAllAcc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource subGroupBindingSource;
-        private DataSet4 dataSet4;
-        private System.Windows.Forms.BindingSource modelBindingSource;
-        private DataSet4TableAdapters.ModelTableAdapter modelTableAdapter;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -820,7 +774,5 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox SubAcc;
         private System.Windows.Forms.ComboBox MainAcc;
-        private DataSet3 dataSet3;
-        private DataSet3TableAdapters.SubGroupTableAdapter subGroupTableAdapter;
     }
 }
