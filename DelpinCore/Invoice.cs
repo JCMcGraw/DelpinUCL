@@ -45,72 +45,64 @@ namespace DelpinCore
             XFont smallHeadLine = new XFont("Calibri", 10, XFontStyle.Bold);
             XFont priceFat = new XFont("Calibri", 10, XFontStyle.Bold);
 
-            //gfx.DrawImage(XImage.FromFile("C:\\Users\\Admin\\source\\repos\\DelpinUCL2v16\\DelpinUI\\bin\\Debug\\Billede,jpg"), 0, 0);
-
-            //XImage xImage = XImage.FromFile("C:\\Users\\Admin\\source\\repos\\DelpinUCL2v16\\DelpinUI\\bin\\Debug\\Billede.jpg");
-            //gfx.DrawImage(xImage, 0, 0, xImage.PixelWidth, xImage.PixelWidth);
-
-
             // Draw the text. Dette er hvad der skal være på teksten, og hvor det skal være. Der kan laves lige så mange som man vil 
             //Kunde Oplysninger------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString($"{lease.contactFirstName} {lease.contactLastName}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -320, page.Width, page.Height),
-                XStringFormats.CenterLeft);
-
-            gfx.DrawString($"{debtor.street}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -310, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{debtor.city} {debtor.postalCode}", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"{debtor.street}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -300, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{lease.contactPhone}", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"{debtor.city} {debtor.postalCode}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -290, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
+            gfx.DrawString($"{lease.contactPhone}", companyAndDebtor, XBrushes.Black,
+                new XRect(80, -280, page.Width, page.Height),
+                XStringFormats.CenterLeft);
 
             gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -260, page.Width, page.Height),
+                new XRect(80, -250, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             //FAKTURA---------------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString("FAKTURA", fakture, XBrushes.Black,
-                new XRect(80, -210, page.Width, page.Height),
+                new XRect(80, -180, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
             //Firma informationer----------------------------------------------------------------------------------------------------------------------------
-            gfx.DrawString("Delpin", companyNames, XBrushes.Black,
-                new XRect(-60, -380, page.Width, page.Height),
-                XStringFormats.CenterRight);
+            XImage xImage = XImage.FromFile("Delpinlogo.png");
+            gfx.DrawImage(xImage, 405, 35);
 
             gfx.DrawString("Nordvesthavnsvej 60 ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -360, page.Width, page.Height),
+                new XRect(-60, -310, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("6400 Sønderborg ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -350, page.Width, page.Height),
+                new XRect(-60, -300, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("Tlf 74 48 88 88 ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -320, page.Width, page.Height),
+                new XRect(-60, -290, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             //BankOplysninger------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString("Bank ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -280, page.Width, page.Height),
+                new XRect(-60, -250, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("Reg. Nr:0000 ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -270, page.Width, page.Height),
+                new XRect(-60, -240, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             gfx.DrawString("Konto Nr:000000000000 ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -260, page.Width, page.Height),
+                new XRect(-60, -230, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
             //Fakture Nr dato og betalings dato------------------------------------------------------------------------------------------------------------
-            gfx.DrawString("Fakture Nr 1 ", companyAndDebtor, XBrushes.Black,
+            gfx.DrawString($"Faktura Nr.{lease.leaseID} ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -180, page.Width, page.Height),
                 XStringFormats.CenterRight);
 
