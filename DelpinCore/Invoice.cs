@@ -76,6 +76,16 @@ namespace DelpinCore
             XImage xImage = XImage.FromFile("Delpinlogo.png");
             gfx.DrawImage(xImage, 405, 35);
 
+
+            //System.Reflection.Assembly thisExe = System.Reflection.Assembly.GetExecutingAssembly();
+            //System.IO.Stream file =
+            //    thisExe.GetManifestResourceStream("Properties.Resources.Delpinlogo.png");
+
+            //var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("DelpinCore.Properties.Resources.Delpinlogo.png");
+            //XImage xImage= XImage.FromStream(stream);
+            //gfx.DrawImage(xImage, 405, 35);
+
+
             gfx.DrawString("Nordvesthavnsvej 60 ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -310, page.Width, page.Height),
                 XStringFormats.CenterRight);
