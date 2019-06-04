@@ -21,13 +21,6 @@ namespace DelpinCore
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Debtor
-        //Denne blive ikke brugt
-        public string ReadDebtor()
-        {
-            string readDebtor = debtorManager.ReadDebtor();
-            return readDebtor;
-        }
-
         public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string createPersonalDebtor = debtorManager.CreatePersonalDebtor(debtorID, street, postalCode, city, phone, email, CPR, firstName, lastName);
@@ -151,13 +144,6 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Denne bliver ikke brugt
-        public DataTable DisplaySpeceficAccesory(int modelID)
-        {
-            DataTable dataTable = tableDisplay.DisplaySpeceficAccessory(modelID);
-            return dataTable;
-        }
-
         public DataTable DisplayAccModel()
         {
             DataTable dataTable = tableDisplay.DisplayAccModel();
@@ -199,27 +185,6 @@ namespace DelpinCore
             return createResource;
         }
 
-        //Denne bliver ikke brugt
-        public string ReadResource()
-        {
-            string readResource = resourceManager.ReadResource();
-            return readResource;
-        }
-
-        //Denne bliver ikke brugt
-        public string UpdateResource(int resourceID, int modelID, int branchID)
-        {
-            string updateResource = resourceManager.UpdateResource(resourceID, modelID, branchID);
-            return updateResource;
-        }
-
-        //Denne bliver ikke brugt
-        public string DeleteResource(int resourceID)
-        {
-            string deleteResource = resourceManager.DeleteResource(resourceID);
-            return deleteResource;
-        }
-
         public string DeactivateResource(int resourceID)
         {
             string deactivateResource = resourceManager.DeactivateResource(resourceID);
@@ -251,13 +216,6 @@ namespace DelpinCore
             return createModel;
         }
 
-        //Denne bliver ikke brugt
-        public string ReadModel()
-        {
-            string readModel = modelManager.ReadModel();
-            return readModel;
-        }
-
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
             string updateModel = modelManager.UpdateModel(modelID, modelName, price, subGroupID, weightKG);
@@ -285,12 +243,6 @@ namespace DelpinCore
             dataTable = leaseManager.ReadLeasesByDebtorID(debtorID);
 
             return dataTable;
-        }
-
-        //Denne bliver ikke brugt
-        public void DeleteLease(int leaseID)
-        {
-            leaseManager.DeleteLease(leaseID);
         }
 
         public string CreateLease(Lease lease)
@@ -348,13 +300,6 @@ namespace DelpinCore
             string deleteAccessory = accessoryManager.DeleteAccessory(accessoryModelID);
             return deleteAccessory;
         }
-
-        //Denne bliver ikke brugt
-        public DataTable ReadOnlyAccessory()
-        {
-            DataTable readOnlyAccessory = accessoryManager.ReadOnlyAccessory();
-            return readOnlyAccessory;
-        }
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //Delivery
@@ -365,7 +310,7 @@ namespace DelpinCore
         }
         //------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Invoice (Done)
+        //Invoice
         public string MakePDF(int LeaseID)
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
@@ -377,8 +322,8 @@ namespace DelpinCore
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Branch (Done)
-        //Denne bliver ikke brugt
+        //Branch 
+        //De bliver ikke brugt
         public DataTable ReadAllBranches()
         {
             DataTable dataTable = branchManager.ReadAllBranches();

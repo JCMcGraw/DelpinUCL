@@ -21,13 +21,6 @@ namespace DelpinCore
             return $"Model er blevet Oprettet";
         }
 
-        public string ReadModel()
-        {
-            string readModel = "Select * from Model";
-
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readModel));
-        }
-
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
             string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +

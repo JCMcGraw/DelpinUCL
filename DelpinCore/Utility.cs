@@ -26,17 +26,5 @@ namespace DelpinCore
                 connectionString = value;
             }
         }
-
-        static public bool CheckForValidPostCode(string cprNumber)
-        {
-            if (cprNumber.All(char.IsNumber) && cprNumber.Length == 4)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }

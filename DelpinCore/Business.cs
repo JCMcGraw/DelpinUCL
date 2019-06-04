@@ -16,7 +16,7 @@ namespace DelpinCore
         //Constructor Som har parameters fra Base Constructor i Debtor Classen, + Business's egne Variabeler
         public Business(string debtorID, string street, int postalCode, string city, string phone, string email, string companyName) :base (debtorID,street,postalCode,city,phone,email)
         {
-            this.CVR = CVR; //Skal denne ikke med 
+            this.CVR = debtorID; //Skal denne ikke med 
             this.companyName = companyName;
         }
     }
