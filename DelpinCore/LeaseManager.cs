@@ -88,30 +88,6 @@ namespace DelpinCore
             return lease;
         }
 
-        //Method to delete a Lease
-        public string DeleteLease(int leaseID)
-        {
-            string deleteLeaseOrders = $"delete from LeaseOrder where LeaseID = {leaseID}";
-            
-            string deleteLease = $"delete from Lease where LeaseID = {leaseID}";
-            
-            string isDeleteLeaseOrderSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLeaseOrders);
-            
-            if (isDeleteLeaseOrderSuccess != "Success")
-            {
-                return isDeleteLeaseOrderSuccess;
-            }
-            
-            string isDeleteLeaseSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(deleteLease);
-            
-            if (isDeleteLeaseSuccess != "Success")
-            {
-                return isDeleteLeaseSuccess;
-            }
-            
-            return $"Lejekontrakt er blevet slettet";
-        }
-
         //inserts new Lease in database
         public string CreateLease(Lease lease)
         {

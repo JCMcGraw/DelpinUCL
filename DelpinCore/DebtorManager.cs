@@ -10,13 +10,6 @@ namespace DelpinCore
     class DebtorManager
     {
         //Daniel
-        public string ReadDebtor()
-        {
-            string readAllDebtor= "Select * from Debtor";
-
-            return Convert.ToString(DatabaseManager.ReadFromDatabase(readAllDebtor));
-        }
-
         public string CreatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string createDebtor = "Insert into Debtor(DebtorID, Street, PostalCode,City,Phone,Email) " +
