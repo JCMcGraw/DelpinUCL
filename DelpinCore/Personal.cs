@@ -16,9 +16,9 @@ namespace DelpinCore
         public string lastName { get; private set; }
 
         //Constructor Who has parameters from Base constructor in Debtor Class, + Personal's own Variabels.
-        public Personal(string debtorID, string street, int postalCode, string city, string phone, string email,string CPR,string firstName,string lastName) : base(debtorID, street, postalCode, city, phone, email)
+        public Personal(string debtorID, string street, int postalCode, string city, string phone, string email,string firstName,string lastName) : base(debtorID, street, postalCode, city, phone, email)
         {
-            this.CPR = CPR;
+            this.CPR = debtorID;
             this.firstName = firstName;
             this.lastName = lastName;
         }
