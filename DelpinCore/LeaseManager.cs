@@ -95,7 +95,7 @@ namespace DelpinCore
             if (lease.active == false) { active = "0"; }
 
             string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, {lease.debtorID}, {lease.branchID}, '{lease.contactFirstName.Replace("'","''")}'," +
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, '{lease.debtorID}', {lease.branchID}, '{lease.contactFirstName.Replace("'","''")}'," +
                 $" '{lease.contactLastName.Replace("'", "''")}', '{lease.contactPhone.Replace("'","''")}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
@@ -238,6 +238,7 @@ namespace DelpinCore
             $"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +
             $"	and Distance.StartLocation = {branchID} " +
             $"	where Model.ModelID = {modelID} " +
+            $"  and Resources.Active = '1'" +
             $"	order by Tilgængelighed, Distance; ";
 
             return sql;
