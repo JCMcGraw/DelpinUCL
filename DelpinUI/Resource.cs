@@ -272,23 +272,12 @@ namespace DelpinUI
 
         private void AddAccesories_Click(object sender, EventArgs e)
         {
-            const string message = "Er du sikker på du vil slette Resursen?";
-            const string caption = "Annuller";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
+            
                 string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
                 Convert.ToInt32(AddAccModel.Text));
                 MessageBox.Show(succes);
                 UpdateAccTable();
-            }
-            else
-            {
-
-            }
+            
 
             
         }
