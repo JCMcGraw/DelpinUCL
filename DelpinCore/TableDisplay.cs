@@ -118,7 +118,7 @@ namespace DelpinCore
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
             string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori,"+"" +
-                                 "Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
+                                 $"Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
             return dataTable;
@@ -135,7 +135,7 @@ namespace DelpinCore
         public DataTable DisplaySpeceficAccessory(int modelID)
         {
             string selectAccessory = $"select  model.ModelName as Tilbehør, SubGroup.Category as Kategori, Model.weightKg as vægt, model.Price from Accessory"+
-                " join model on Accessory.AccessoryID = Model.ModelID join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
+                $" join model on Accessory.AccessoryID = Model.ModelID join SubGroup on SubGroup.SubGroupID = Model.SubGroupID  where model.ModelID = {modelID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectAccessory);
             return dataTable;
