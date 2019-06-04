@@ -227,11 +227,13 @@
             // 
             // ModelGridView
             // 
+            this.ModelGridView.AllowUserToAddRows = false;
             this.ModelGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ModelGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ModelGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ModelGridView.Location = new System.Drawing.Point(319, 39);
             this.ModelGridView.Name = "ModelGridView";
+            this.ModelGridView.ReadOnly = true;
             this.ModelGridView.Size = new System.Drawing.Size(559, 177);
             this.ModelGridView.TabIndex = 42;
             this.ModelGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ModelGridView_CellClick);
@@ -402,11 +404,13 @@
             // 
             // resourceGridView
             // 
+            this.resourceGridView.AllowUserToAddRows = false;
             this.resourceGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.resourceGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.resourceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resourceGridView.Location = new System.Drawing.Point(316, 44);
             this.resourceGridView.Name = "resourceGridView";
+            this.resourceGridView.ReadOnly = true;
             this.resourceGridView.Size = new System.Drawing.Size(447, 177);
             this.resourceGridView.TabIndex = 61;
             this.resourceGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.resourceGridView_CellMouseClick);
@@ -588,11 +592,13 @@
             // 
             // AddAcc
             // 
+            this.AddAcc.AllowUserToAddRows = false;
             this.AddAcc.BackgroundColor = System.Drawing.SystemColors.Control;
             this.AddAcc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AddAcc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AddAcc.Location = new System.Drawing.Point(306, 241);
             this.AddAcc.Name = "AddAcc";
+            this.AddAcc.ReadOnly = true;
             this.AddAcc.Size = new System.Drawing.Size(447, 125);
             this.AddAcc.TabIndex = 57;
             this.AddAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AddAcc_CellMouseClick);
@@ -644,8 +650,10 @@
             // 
             // AccModelView
             // 
+            this.AccModelView.AllowUserToAddRows = false;
             this.AccModelView.Location = new System.Drawing.Point(306, 30);
             this.AccModelView.Name = "AccModelView";
+            this.AccModelView.ReadOnly = true;
             this.AccModelView.Size = new System.Drawing.Size(447, 150);
             this.AccModelView.TabIndex = 63;
             this.AccModelView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccModelView_CellClick_1);
@@ -717,9 +725,11 @@
             // 
             // ShowAllAcc
             // 
+            this.ShowAllAcc.AllowUserToAddRows = false;
             this.ShowAllAcc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ShowAllAcc.Location = new System.Drawing.Point(303, 32);
             this.ShowAllAcc.Name = "ShowAllAcc";
+            this.ShowAllAcc.ReadOnly = true;
             this.ShowAllAcc.Size = new System.Drawing.Size(530, 286);
             this.ShowAllAcc.TabIndex = 0;
             this.ShowAllAcc.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ShowAllAcc_CellMouseClick);
