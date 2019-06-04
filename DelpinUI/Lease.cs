@@ -433,6 +433,15 @@ namespace DelpinUI
         {
             string debtorID = lease.debtorID;
 
+            if (debtorID.Length == 10)
+            {
+                personalRadioButton.Checked = true;
+            }
+            else
+            {
+                businessRadioButton.Checked = true;
+            }
+
             debtorIDTextBox.Text = debtorID;
             GetDebtoryByID(debtorID);
 

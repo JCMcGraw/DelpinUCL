@@ -49,7 +49,7 @@ namespace DelpinCore
 
         public DataTable ReadSpecefikSubCataegori(int SubGroupID)
         {
-            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID}";
+            string SpecefikSubCataegori = $"Select * from Model where SubGroupID={SubGroupID} and Model.Active = '1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(SpecefikSubCataegori);
             return dataTable;
