@@ -20,7 +20,7 @@ namespace DelpinCore
             {
                 return isCreateResource;
             }
-            return $"Resources {resourceID}','{modelID}','{branchID} er blevet Oprettet";
+            return $"Resurse er blevet Oprettet";
         }
 
         public string ReadResource()
@@ -39,7 +39,7 @@ namespace DelpinCore
             {
                 return isUpdateResource;
             }
-            return $"Resources {resourceID}','{modelID}','{branchID} er blevet Opdateret";
+            return $"Resurse er blevet Opdateret";
         }
 
         public string DeleteResource(int resourceID)
@@ -51,7 +51,7 @@ namespace DelpinCore
             {
                 return isDeleteResource;
             }
-            return $"Resources {resourceID} er blevet Slettet";
+            return $"Resurse er blevet Slettet";
         }
 
         public string DeactivateResource(int resourceID)
@@ -63,7 +63,7 @@ namespace DelpinCore
             {
                 return isDeactivateResource;
             }
-            return $"Resources {resourceID} er blevet Slettet";
+            return $"Resurse er blevet Slettet";
         }
 
         public DataTable ReadSpecefikSubCataegori(int SubGroupID)

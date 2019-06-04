@@ -18,7 +18,7 @@ namespace DelpinCore
             {
                 return isCreateModel;
             }
-            return $"Model '{modelName}','{price}','{subGroupID}','{weightKG} er blevet Oprettet";
+            return $"Model er blevet Oprettet";
         }
 
         public string ReadModel()
@@ -38,7 +38,7 @@ namespace DelpinCore
             {
                 return isUpdateModel;
             }
-            return $"Model {modelID},'{modelName}',{price},'{subGroupID}',{weightKG} er blevet Opdateret";
+            return $"Model er blevet Opdateret";
         }
 
         public string DeleteModel(int modelID)
@@ -50,7 +50,7 @@ namespace DelpinCore
             {
                 return isDeleteModel;
             }
-            return $"Model {modelID} er blevet Slettet";
+            return $"Model er blevet Slettet";
         }
     }
 }

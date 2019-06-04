@@ -13,8 +13,8 @@ namespace DelpinCore
         //Viser en business debtor ud fra et specefikt CVR-nummer,PR
         public DataTable DisplaySpeceficBusinessDebtor(string CVR)
         {
-            string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
-
+            string selectBusiness = $"select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business"+
+                $" inner join Debtor on Debtor.DebtorID = Business.CVR where CVR = '{CVR}'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
 
@@ -24,45 +24,41 @@ namespace DelpinCore
         //Viser specefik debtor ud fra et CPR-nummer,PR
         public DataTable DisplaySpeceficPersonalDebtor(string CPR)
         {
-            string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
+            string selectPersonal = $"select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal"+
+                $" inner join Debtor on Debtor.DebtorID = Personal.CPR where CPR = '{CPR}'";
             
-
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
 
-            return dataTable;
-            
+            return dataTable; 
         }
 
         //Viser alle businessdebtore,PR
         public DataTable DisplayAllBusinessDebtor()
         {
-            string selectBusiness = "select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummmer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business inner join Debtor on Debtor.DebtorID = Business.CVR";
-
+            string selectBusiness = "select CVR, CompanyName as Firmanavn, Street as Gade, PostalCode as Postnummmer, City as \"By\", Phone as Telefonnummer, Email as \"E-mail\" from Business "+
+                " inner join Debtor on Debtor.DebtorID = Business.CVR";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectBusiness);
 
             return dataTable;
-            
         }
 
         //Viser alle Personlige Debtore,PR
         public DataTable DisplayAllPersonalDebtor()
         {
-            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
+            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from "+
+                "Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
 ;
-
-
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
 
             return dataTable;
-            
         }
 
         //Viser alle resourcerne, deres modeltype og deres lokation,PR
         public DataTable DisplayAllResources()
         {
-            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where model.active='1' and resources.Active = '1'";
+            string selectResources = "select ResourcesID as Resourcenummer, Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources"+
+                " Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where model.active='1' and resources.Active = '1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -72,7 +68,8 @@ namespace DelpinCore
         //Viser en specefik resource, dens modeltype og dens lokation, PR
         public DataTable DisplaySpecficResources(int resourceID )
         {
-            string selectResources = $"select ResourcesID as Resursenummer, model.modelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourcesID='{resourceID}' and model.active='1' and resources.Active = '1'";
+            string selectResources = $"select ResourcesID as Resursenummer, model.modelID as Modelnummer, Model.ModelName as Modelnavn, Branch.City as Lokation, Branch.BranchID as Afdelingsnummer from Resources"+
+                $" Join Model on Model.ModelID = Resources.ModelID join Branch on Resources.BranchID = Branch.BranchID where ResourcesID='{resourceID}' and model.active='1' and resources.Active = '1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectResources);
 
@@ -117,8 +114,8 @@ namespace DelpinCore
 
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
-            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori,"+"" +
-                                 $"Price as Pris from Model Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
+            string selectModel =$"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model "+
+                                $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
             return dataTable;
