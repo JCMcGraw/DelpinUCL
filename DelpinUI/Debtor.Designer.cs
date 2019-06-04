@@ -324,7 +324,6 @@
             this.Controls.Add(this.cprText);
             this.Controls.Add(this.PfnameLabel);
             this.Controls.Add(this.BnameLabel);
-            this.Controls.Add(this.PfnameText);
             this.Controls.Add(this.PlnameText);
             this.Controls.Add(this.cvrText);
             this.Controls.Add(this.DeleteDebtor);
@@ -332,6 +331,7 @@
             this.Controls.Add(this.CreateDeb);
             this.Controls.Add(this.UpdateDebtor);
             this.Controls.Add(this.BnameText);
+            this.Controls.Add(this.PfnameText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debtor";
             this.Text = "Debitor";

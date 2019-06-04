@@ -237,6 +237,7 @@ namespace DelpinUI
             string succes = controller.CreateModel(ModelName.Text, Convert.ToDouble(ModelPrice.Text),
                 Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             MessageBox.Show(succes);
+            updateDatagridViewModel();
         }
 
 

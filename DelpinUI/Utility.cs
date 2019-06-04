@@ -63,6 +63,7 @@ namespace DelpinUI
                 return false;
             }
         }
+        
 
         public static string WriteToTextFile(string fileName, string content)
         {

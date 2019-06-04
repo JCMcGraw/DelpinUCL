@@ -82,6 +82,21 @@ namespace DelpinUI
         }
         //Display create debtor forms with radiobutton 
         //Display create debtor forms with radiobutton 
+        private void showBdebtor()
+        {
+            cvrText.Visible = true;
+            CvrLabel.Visible = true;
+            cprText.Visible = false;
+            cprLabel.Visible = false;
+            BnameLabel.Visible = true;
+            BnameText.Visible = true;
+            CreateDeb.Visible = true;
+            ViewDeb.Visible = true;
+            PfnameLabel.Visible = false;
+            PfnameText.Visible = false;
+            PlnameLabel.Visible = false;
+            PlnameText.Visible = false;
+        }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -89,40 +104,58 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAllBusinessDebtor();
                 ViewDeb.DataSource = dataTable;
 
-                cvrText.Visible = true;
-                CvrLabel.Visible = true;
-                cprText.Visible = false;
-                cprLabel.Visible = false;
-                BnameLabel.Visible = true;
-                BnameText.Visible = true;
-                CreateDeb.Visible = true;
-                ViewDeb.Visible = true;
-                PfnameLabel.Visible = false;
-                PfnameText.Visible = false;
-                PlnameLabel.Visible = false;
-                PlnameText.Visible = false;
-
-
-            }
-            else
-            {
-                cprText.Visible = true;
-                cprLabel.Visible = true;
-                //BnameLabel.Visible = false;
-                //BnameText.Visible = false;
-                CreateDeb.Visible = true;
-                PfnameLabel.Visible = true;
-                PfnameText.Visible = true;
-                PlnameLabel.Visible = true;
-                PlnameText.Visible = true;
-
+                //cvrText.Visible = true;
+                //CvrLabel.Visible = true;
+                //cprText.Visible = false;
+                //cprLabel.Visible = false;
+                //BnameLabel.Visible = true;
+                //BnameText.Visible = true;
+                //CreateDeb.Visible = true;
+                //ViewDeb.Visible = true;
+                //PfnameLabel.Visible = false;
+                //PfnameText.Visible = false;
+                //PlnameLabel.Visible = false;
+                //PlnameText.Visible = false;
+                showBdebtor();
 
             }
+            //else
+            //{
+            //    cvrText.Visible = false;
+            //    CvrLabel.Visible = false;
+            //    cprText.Visible = true;
+            //    cprLabel.Visible = true;
+            //    BnameLabel.Visible = false;
+            //    BnameText.Visible = false;
+            //    CreateDeb.Visible = true;
+            //    PfnameLabel.Visible = true;
+            //    PfnameText.Visible = true;
+            //    PlnameLabel.Visible = true;
+            //    PlnameText.Visible = true;
+
+
+            //}
             ClearAllTextBoxes();
          
 
 
 
+        }
+        private void ShowPdebtor()
+        {
+            cvrText.Visible = false;
+            CvrLabel.Visible = false;
+            cprText.Visible = true;
+            cprLabel.Visible = true;
+            BnameLabel.Visible = false;
+            BnameText.Visible = false;
+            PfnameLabel.Visible = true;
+            PfnameText.Visible = true;
+            PlnameLabel.Visible = true;
+            PlnameText.Visible = true;
+            CreateDeb.Visible = true;
+
+            ViewDeb.Visible = true;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -135,17 +168,18 @@ namespace DelpinUI
 
                 //cvrText.Visible = false;
                 //CvrLabel.Visible = false;
-                cprText.Visible = true;
-                cprLabel.Visible = true;
+                //cprText.Visible = true;
+                //cprLabel.Visible = true;
                 //BnameLabel.Visible = false;
                 //BnameText.Visible = false;
-                PfnameLabel.Visible = true;
-                PfnameText.Visible = true;
-                PlnameLabel.Visible = true;
-                PlnameText.Visible = true;
-                CreateDeb.Visible = true;
-           
-                ViewDeb.Visible = true;
+                //PfnameLabel.Visible = true;
+                //PfnameText.Visible = true;
+                //PlnameLabel.Visible = true;
+                //PlnameText.Visible = true;
+                //CreateDeb.Visible = true;
+
+                //ViewDeb.Visible = true;
+                ShowPdebtor();
             }
             
 
@@ -214,7 +248,9 @@ namespace DelpinUI
         //Get Businessdebtor from CVR
         private void getBusinessDebtor()
         {
+            
             {
+            
 
                 string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
                 string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
@@ -270,32 +306,54 @@ namespace DelpinUI
         {
             if (radioButton1.Checked)
             {
-                DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
+                if (Utility.CheckForValidCVRNumber(cvrText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldig CVRnummer");
+                    return;
 
 
-                BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
-                adressText.Text = (string)dataTable.Rows[0]["Gade"];
-                city.Text = dataTable.Rows[0]["By"].ToString();
-                postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
-                phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
-                emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+                }
+                else
+                {
+                    DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
+
+
+                    BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
+                    adressText.Text = (string)dataTable.Rows[0]["Gade"];
+                    city.Text = dataTable.Rows[0]["By"].ToString();
+                    postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
+                    phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+                    emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+                }
             }
+            
+            
             if (radioButton2.Checked)
             {
-                
+                if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldig CPRnummer");
+                    return;
 
-                DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
+
+                }
+                else
+                {
+                    DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
 
 
-                PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
-                PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
-                adressText.Text = (string)dataTable.Rows[0]["Gade"];
-                city.Text = dataTable.Rows[0]["By"].ToString();
-                postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
-                phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
-                emailText.Text = (string)dataTable.Rows[0]["E-mail"];
-
+                    PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
+                    PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
+                    adressText.Text = (string)dataTable.Rows[0]["Gade"];
+                    city.Text = dataTable.Rows[0]["By"].ToString();
+                    postalcodeText.Text = dataTable.Rows[0]["Postnummer"].ToString();
+                    phoneText.Text = (string)dataTable.Rows[0]["Telefonnummer"];
+                    emailText.Text = (string)dataTable.Rows[0]["E-mail"];
+                }
             }
+           
+           
+
 
 
 
