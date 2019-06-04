@@ -45,9 +45,9 @@ namespace DelpinUI
         {
             SetSelectionBoxes();
             // TODO: This line of code loads data into the 'dataSet4.Model' table. You can move, or remove it, as needed.
-            this.modelTableAdapter.Fill(this.dataSet4.Model);
+            //this.modelTableAdapter.Fill(this.dataSet4.Model);
             // TODO: This line of code loads data into the 'dataSet3.SubGroup' table. You can move, or remove it, as needed.
-            this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
+            //this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
 
         }
         private void DeleteAcc()
@@ -230,25 +230,14 @@ namespace DelpinUI
 
 
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.subGroupTableAdapter.FillBy(this.dataSet3.SubGroup);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
+      
 
 
 
 
 
-       
-        
+
+
 
 
 

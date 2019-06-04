@@ -259,7 +259,7 @@ namespace DelpinUI
         {
             try
             {
-                this.debtorTableAdapter.FillBy(this.dataSet1.Debtor);
+                //this.debtorTableAdapter.FillBy(this.dataSet1.Debtor);
             }
             catch (System.Exception ex)
             {
