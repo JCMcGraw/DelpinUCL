@@ -45,11 +45,9 @@ namespace DelpinUI
         {
             SetSelectionBoxes();
             // TODO: This line of code loads data into the 'dataSet4.Model' table. You can move, or remove it, as needed.
-            this.modelTableAdapter.Fill(this.dataSet4.Model);
+            //this.modelTableAdapter.Fill(this.dataSet4.Model);
             // TODO: This line of code loads data into the 'dataSet3.SubGroup' table. You can move, or remove it, as needed.
-            this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
-
-
+            //this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
 
         }
         private void DeleteAcc()
@@ -232,27 +230,14 @@ namespace DelpinUI
 
 
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.subGroupTableAdapter.FillBy(this.dataSet3.SubGroup);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
+      
 
 
 
 
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
 
-        }
+
 
 
 
@@ -282,11 +267,7 @@ namespace DelpinUI
             
         }
 
-        private void comboBoxSubGroup_SelectedIndexChanged(object sender, EventArgs e)
-
-        {
-
-        }
+       
 
         private void comboBoxMainGroup_SelectedIndexChanged_2(object sender, EventArgs e)
         {
@@ -382,10 +363,7 @@ namespace DelpinUI
 
        
 
-        private void AccModel_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void AccSub_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -397,10 +375,7 @@ namespace DelpinUI
             catch { }
         }
 
-        private void ModelGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+      
 
         private void GetModel_Click(object sender, EventArgs e)
         {
@@ -482,10 +457,7 @@ namespace DelpinUI
             //MessageBox.Show(succes);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -579,15 +551,9 @@ namespace DelpinUI
 
         }
 
-        private void ComboModelSub_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+       
 
-        private void AccModelID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void ModelGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -671,15 +637,9 @@ namespace DelpinUI
             }
         }
 
-        private void Weight_TextChanged(object sender, EventArgs e)
-        {
+     
 
-        }
-
-        private void ModelGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
 
         private void MainAcc_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -128,17 +128,17 @@
             this.deliveriesInNextTwoDays.BackgroundColor = System.Drawing.SystemColors.Control;
             this.deliveriesInNextTwoDays.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.deliveriesInNextTwoDays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.deliveriesInNextTwoDays.Location = new System.Drawing.Point(187, 296);
+            this.deliveriesInNextTwoDays.Location = new System.Drawing.Point(218, 199);
             this.deliveriesInNextTwoDays.Name = "deliveriesInNextTwoDays";
             this.deliveriesInNextTwoDays.ReadOnly = true;
-            this.deliveriesInNextTwoDays.Size = new System.Drawing.Size(565, 121);
+            this.deliveriesInNextTwoDays.Size = new System.Drawing.Size(520, 193);
             this.deliveriesInNextTwoDays.TabIndex = 8;
             this.deliveriesInNextTwoDays.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.deliveriesInNextTwoDays_CellMouseDoubleClick);
             // 
             // ordersForDeliveryLabel
             // 
             this.ordersForDeliveryLabel.AutoSize = true;
-            this.ordersForDeliveryLabel.Location = new System.Drawing.Point(184, 270);
+            this.ordersForDeliveryLabel.Location = new System.Drawing.Point(295, 183);
             this.ordersForDeliveryLabel.Name = "ordersForDeliveryLabel";
             this.ordersForDeliveryLabel.Size = new System.Drawing.Size(0, 13);
             this.ordersForDeliveryLabel.TabIndex = 9;

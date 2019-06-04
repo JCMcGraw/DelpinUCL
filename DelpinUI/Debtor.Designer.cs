@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Debtor));
             this.PfnameText = new System.Windows.Forms.TextBox();
             this.PlnameText = new System.Windows.Forms.TextBox();
@@ -54,51 +53,10 @@
             this.BnameLabel = new System.Windows.Forms.Label();
             this.CreateDeb = new System.Windows.Forms.Button();
             this.ViewDeb = new System.Windows.Forms.DataGridView();
-            this.businessBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet7 = new DelpinUI.DataSet7();
-            this.businessBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet5 = new DelpinUI.DataSet5();
-            this.businessBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new DelpinUI.DataSet1();
-            this.debtorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.personalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.businessBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.personalBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet6 = new DelpinUI.DataSet6();
-            this.businessTableAdapter = new DelpinUI.DataSet1TableAdapters.BusinessTableAdapter();
-            this.debtorTableAdapter = new DelpinUI.DataSet1TableAdapters.DebtorTableAdapter();
-            this.personalTableAdapter = new DelpinUI.DataSet1TableAdapters.PersonalTableAdapter();
-            this.debtorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet2 = new DelpinUI.DataSet2();
-            this.debtorBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.debtorTableAdapter1 = new DelpinUI.DataSet2TableAdapters.DebtorTableAdapter();
-            this.fKBusinessDebtor4830B400BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKPersonalDebtor45544755BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.businessTableAdapter1 = new DelpinUI.DataSet5TableAdapters.BusinessTableAdapter();
-            this.personalTableAdapter1 = new DelpinUI.DataSet6TableAdapters.PersonalTableAdapter();
-            this.businessTableAdapter2 = new DelpinUI.DataSet7TableAdapters.BusinessTableAdapter();
             this.GetBdeb = new System.Windows.Forms.Button();
             this.UpdateDebtor = new System.Windows.Forms.Button();
             this.DeleteDebtor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKBusinessDebtor4830B400BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPersonalDebtor45544755BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // PfnameText
@@ -116,7 +74,6 @@
             this.PlnameText.Size = new System.Drawing.Size(100, 20);
             this.PlnameText.TabIndex = 5;
             this.PlnameText.Visible = false;
-            this.PlnameText.TextChanged += new System.EventHandler(this.PlnameText_TextChanged);
             // 
             // adressText
             // 
@@ -311,121 +268,7 @@
             this.ViewDeb.ReadOnly = true;
             this.ViewDeb.Size = new System.Drawing.Size(812, 425);
             this.ViewDeb.TabIndex = 33;
-            this.ViewDeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewBdeb_CellContentClick);
             this.ViewDeb.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ViewDeb_CellMouseClick);
-            // 
-            // businessBindingSource3
-            // 
-            this.businessBindingSource3.DataMember = "Business";
-            this.businessBindingSource3.DataSource = this.dataSet7;
-            // 
-            // dataSet7
-            // 
-            this.dataSet7.DataSetName = "DataSet7";
-            this.dataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // businessBindingSource2
-            // 
-            this.businessBindingSource2.DataMember = "Business";
-            this.businessBindingSource2.DataSource = this.dataSet5;
-            // 
-            // dataSet5
-            // 
-            this.dataSet5.DataSetName = "DataSet5";
-            this.dataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // businessBindingSource
-            // 
-            this.businessBindingSource.DataMember = "Business";
-            this.businessBindingSource.DataSource = this.dataSet1BindingSource;
-            // 
-            // dataSet1BindingSource
-            // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // debtorBindingSource
-            // 
-            this.debtorBindingSource.DataMember = "Debtor";
-            this.debtorBindingSource.DataSource = this.dataSet1BindingSource;
-            // 
-            // personalBindingSource
-            // 
-            this.personalBindingSource.DataMember = "Personal";
-            this.personalBindingSource.DataSource = this.dataSet1BindingSource;
-            // 
-            // businessBindingSource1
-            // 
-            this.businessBindingSource1.DataMember = "Business";
-            this.businessBindingSource1.DataSource = this.dataSet1BindingSource;
-            // 
-            // personalBindingSource1
-            // 
-            this.personalBindingSource1.DataMember = "Personal";
-            this.personalBindingSource1.DataSource = this.dataSet6;
-            // 
-            // dataSet6
-            // 
-            this.dataSet6.DataSetName = "DataSet6";
-            this.dataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // businessTableAdapter
-            // 
-            this.businessTableAdapter.ClearBeforeFill = true;
-            // 
-            // debtorTableAdapter
-            // 
-            this.debtorTableAdapter.ClearBeforeFill = true;
-            // 
-            // personalTableAdapter
-            // 
-            this.personalTableAdapter.ClearBeforeFill = true;
-            // 
-            // debtorBindingSource1
-            // 
-            this.debtorBindingSource1.DataMember = "Debtor";
-            this.debtorBindingSource1.DataSource = this.dataSet1BindingSource;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // debtorBindingSource2
-            // 
-            this.debtorBindingSource2.DataMember = "Debtor";
-            this.debtorBindingSource2.DataSource = this.dataSet2;
-            // 
-            // debtorTableAdapter1
-            // 
-            this.debtorTableAdapter1.ClearBeforeFill = true;
-            // 
-            // fKBusinessDebtor4830B400BindingSource
-            // 
-            this.fKBusinessDebtor4830B400BindingSource.DataMember = "FK__Business__Debtor__4830B400";
-            this.fKBusinessDebtor4830B400BindingSource.DataSource = this.debtorBindingSource;
-            // 
-            // fKPersonalDebtor45544755BindingSource
-            // 
-            this.fKPersonalDebtor45544755BindingSource.DataMember = "FK__Personal__Debtor__45544755";
-            this.fKPersonalDebtor45544755BindingSource.DataSource = this.debtorBindingSource1;
-            // 
-            // businessTableAdapter1
-            // 
-            this.businessTableAdapter1.ClearBeforeFill = true;
-            // 
-            // personalTableAdapter1
-            // 
-            this.personalTableAdapter1.ClearBeforeFill = true;
-            // 
-            // businessTableAdapter2
-            // 
-            this.businessTableAdapter2.ClearBeforeFill = true;
             // 
             // GetBdeb
             // 
@@ -491,26 +334,9 @@
             this.Controls.Add(this.BnameText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debtor";
-            this.Text = "Debtor";
+            this.Text = "Debitor";
             this.Load += new System.EventHandler(this.Debtor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.businessBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.personalBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.debtorBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKBusinessDebtor4830B400BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKPersonalDebtor45544755BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,30 +368,6 @@
         private System.Windows.Forms.TextBox PlnameText;
         private System.Windows.Forms.Button CreateDeb;
         private System.Windows.Forms.DataGridView ViewDeb;
-        private System.Windows.Forms.BindingSource dataSet1BindingSource;
-        private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource businessBindingSource;
-        private DataSet1TableAdapters.BusinessTableAdapter businessTableAdapter;
-        private System.Windows.Forms.BindingSource debtorBindingSource;
-        private DataSet1TableAdapters.DebtorTableAdapter debtorTableAdapter;
-        private System.Windows.Forms.BindingSource personalBindingSource;
-        private DataSet1TableAdapters.PersonalTableAdapter personalTableAdapter;
-        private System.Windows.Forms.BindingSource businessBindingSource1;
-        private System.Windows.Forms.BindingSource fKBusinessDebtor4830B400BindingSource;
-        private System.Windows.Forms.BindingSource debtorBindingSource1;
-        private DataSet2 dataSet2;
-        private System.Windows.Forms.BindingSource debtorBindingSource2;
-        private DataSet2TableAdapters.DebtorTableAdapter debtorTableAdapter1;
-        private System.Windows.Forms.BindingSource fKPersonalDebtor45544755BindingSource;
-        private DataSet5 dataSet5;
-        private System.Windows.Forms.BindingSource businessBindingSource2;
-        private DataSet5TableAdapters.BusinessTableAdapter businessTableAdapter1;
-        private DataSet6 dataSet6;
-        private System.Windows.Forms.BindingSource personalBindingSource1;
-        private DataSet6TableAdapters.PersonalTableAdapter personalTableAdapter1;
-        private DataSet7 dataSet7;
-        private System.Windows.Forms.BindingSource businessBindingSource3;
-        private DataSet7TableAdapters.BusinessTableAdapter businessTableAdapter2;
         private System.Windows.Forms.Button GetBdeb;
         private System.Windows.Forms.Button UpdateDebtor;
         private System.Windows.Forms.Button DeleteDebtor;

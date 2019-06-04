@@ -190,15 +190,9 @@ namespace DelpinUI
                 emailText.Text = eMail;
             }
         }
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
+      
 
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Debtor_Load(object sender, EventArgs e)
         {
@@ -206,10 +200,7 @@ namespace DelpinUI
 
         }
 
-        private void PlnameText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
         //create debtor and refreshes datagridview
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
@@ -268,7 +259,7 @@ namespace DelpinUI
         {
             try
             {
-                this.debtorTableAdapter.FillBy(this.dataSet1.Debtor);
+                //this.debtorTableAdapter.FillBy(this.dataSet1.Debtor);
             }
             catch (System.Exception ex)
             {
@@ -278,10 +269,7 @@ namespace DelpinUI
         }
 
 
-        private void ViewBdeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+        
 
         
         // get specific debtor Business or Personal
