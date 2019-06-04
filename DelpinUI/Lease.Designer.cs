@@ -61,6 +61,15 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.createLease = new System.Windows.Forms.Button();
             this.leaseOrders = new System.Windows.Forms.DataGridView();
+            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainGroup = new System.Windows.Forms.ComboBox();
             this.SubGroup = new System.Windows.Forms.ComboBox();
             this.categoryLabel = new System.Windows.Forms.Label();
@@ -89,15 +98,6 @@
             this.deliveryZoneComboBox = new System.Windows.Forms.ComboBox();
             this.deliveryZoneLabel = new System.Windows.Forms.Label();
             this.writeInvoice = new System.Windows.Forms.Button();
-            this.ResurseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resurse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Leveringsdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slutdato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dagspris = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Levering = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Postkode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.leaseOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.esourcesDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -406,6 +406,59 @@
             this.leaseOrders.TabIndex = 39;
             this.leaseOrders.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewLeaseOrders_DataError);
             // 
+            // ResurseID
+            // 
+            this.ResurseID.HeaderText = "Resursenummer";
+            this.ResurseID.Name = "ResurseID";
+            this.ResurseID.Width = 90;
+            // 
+            // Resurse
+            // 
+            this.Resurse.HeaderText = "Resurse";
+            this.Resurse.Name = "Resurse";
+            // 
+            // Leveringsdato
+            // 
+            this.Leveringsdato.HeaderText = "Startdato";
+            this.Leveringsdato.Name = "Leveringsdato";
+            this.Leveringsdato.Width = 80;
+            // 
+            // Slutdato
+            // 
+            this.Slutdato.HeaderText = "Slutdato";
+            this.Slutdato.Name = "Slutdato";
+            this.Slutdato.Width = 80;
+            // 
+            // Dagspris
+            // 
+            this.Dagspris.HeaderText = "Dagspris";
+            this.Dagspris.Name = "Dagspris";
+            this.Dagspris.Width = 70;
+            // 
+            // Levering
+            // 
+            this.Levering.HeaderText = "Levering";
+            this.Levering.Name = "Levering";
+            this.Levering.Width = 60;
+            // 
+            // Gade
+            // 
+            this.Gade.HeaderText = "Gade";
+            this.Gade.Name = "Gade";
+            this.Gade.Width = 90;
+            // 
+            // Postkode
+            // 
+            this.Postkode.HeaderText = "Postkode";
+            this.Postkode.Name = "Postkode";
+            this.Postkode.Width = 60;
+            // 
+            // By
+            // 
+            this.By.HeaderText = "By";
+            this.By.Name = "By";
+            this.By.Width = 80;
+            // 
             // MainGroup
             // 
             this.MainGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -698,59 +751,6 @@
             this.writeInvoice.Text = "Udskriv faktura";
             this.writeInvoice.UseVisualStyleBackColor = true;
             this.writeInvoice.Click += new System.EventHandler(this.buttonInvoice_Click);
-            // 
-            // ResurseID
-            // 
-            this.ResurseID.HeaderText = "Resursenummer";
-            this.ResurseID.Name = "ResurseID";
-            this.ResurseID.Width = 90;
-            // 
-            // Resurse
-            // 
-            this.Resurse.HeaderText = "Resurse";
-            this.Resurse.Name = "Resurse";
-            // 
-            // Leveringsdato
-            // 
-            this.Leveringsdato.HeaderText = "Startdato";
-            this.Leveringsdato.Name = "Leveringsdato";
-            this.Leveringsdato.Width = 80;
-            // 
-            // Slutdato
-            // 
-            this.Slutdato.HeaderText = "Slutdato";
-            this.Slutdato.Name = "Slutdato";
-            this.Slutdato.Width = 80;
-            // 
-            // Dagspris
-            // 
-            this.Dagspris.HeaderText = "Dagspris";
-            this.Dagspris.Name = "Dagspris";
-            this.Dagspris.Width = 70;
-            // 
-            // Levering
-            // 
-            this.Levering.HeaderText = "Levering";
-            this.Levering.Name = "Levering";
-            this.Levering.Width = 60;
-            // 
-            // Gade
-            // 
-            this.Gade.HeaderText = "Gade";
-            this.Gade.Name = "Gade";
-            this.Gade.Width = 90;
-            // 
-            // Postkode
-            // 
-            this.Postkode.HeaderText = "Postkode";
-            this.Postkode.Name = "Postkode";
-            this.Postkode.Width = 60;
-            // 
-            // By
-            // 
-            this.By.HeaderText = "By";
-            this.By.Name = "By";
-            this.By.Width = 80;
             // 
             // Lease
             // 

@@ -730,7 +730,5 @@ namespace DelpinUI
                 deliveryPostCodeTextBox.Text = "";
             }
         }
-
-
     }
 }
