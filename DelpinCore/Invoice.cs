@@ -73,6 +73,9 @@ namespace DelpinCore
                 XStringFormats.CenterLeft);
 
             //Firma informationer----------------------------------------------------------------------------------------------------------------------------
+            var imgStream =
+    System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(
+    "DelpinCore.resources.DelpinLogo.png");
             XImage xImage = XImage.FromFile("Delpinlogo.png");
             gfx.DrawImage(xImage, 405, 35);
 
