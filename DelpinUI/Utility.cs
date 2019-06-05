@@ -64,7 +64,6 @@ namespace DelpinUI
             }
         }
         
-
         public static string WriteToTextFile(string fileName, string content)
         {
             try

@@ -26,7 +26,8 @@ namespace DelpinUI
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-        public void ShowResources(DataTable dataTable)
+
+        public void ShowResources(DataTable dataTable) //Ingen referance
         {
             StockGridView.DataSource = dataTable;
             AutoSizeAllColumns();
@@ -40,12 +41,9 @@ namespace DelpinUI
             }
         }
 
-        public void SetTitle(string title)
+        public void SetTitle(string title)  //Ingen referance
         {
             this.Text = title;
         }
-
-       
-    
     }
 }
