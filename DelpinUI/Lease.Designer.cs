@@ -226,6 +226,7 @@
             this.billingPostCode.Size = new System.Drawing.Size(100, 20);
             this.billingPostCode.TabIndex = 20;
             this.billingPostCode.TabStop = false;
+            this.billingPostCode.TextChanged += new System.EventHandler(this.billingPostCode_TextChanged);
             // 
             // debtorEmail
             // 
