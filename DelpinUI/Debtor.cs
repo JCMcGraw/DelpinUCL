@@ -88,6 +88,7 @@ namespace DelpinUI
             PlnameLabel.Visible = false;
             PlnameText.Visible = false;
         }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -108,8 +109,8 @@ namespace DelpinUI
                 //PlnameLabel.Visible = false;
                 //PlnameText.Visible = false;
                 showBdebtor();
-
             }
+
             //else
             //{
             //    cvrText.Visible = false;
@@ -123,15 +124,10 @@ namespace DelpinUI
             //    PfnameText.Visible = true;
             //    PlnameLabel.Visible = true;
             //    PlnameText.Visible = true;
-
-
             //}
             ClearAllTextBoxes();
-         
-
-
-
         }
+
         private void ShowPdebtor()
         {
             cvrText.Visible = false;
@@ -145,7 +141,6 @@ namespace DelpinUI
             PlnameLabel.Visible = true;
             PlnameText.Visible = true;
             CreateDeb.Visible = true;
-
             ViewDeb.Visible = true;
         }
 
@@ -153,7 +148,6 @@ namespace DelpinUI
         {
             if (radioButton2.Checked)
             {
-
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
@@ -168,58 +162,47 @@ namespace DelpinUI
                 //PlnameLabel.Visible = true;
                 //PlnameText.Visible = true;
                 //CreateDeb.Visible = true;
-
                 //ViewDeb.Visible = true;
                 ShowPdebtor();
             }
-            
-
         }
         
-       
-
-        private void Debtor_Load(object sender, EventArgs e)
+        private void Debtor_Load(object sender, EventArgs e) //Denne bliver ikke brugt Den skal fjernes Correct
         {
 
 
         }
 
-       
         //create debtor and refreshes datagridview
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
-               
                 if(Utility.CheckForValidCVRNumber(cvrText.Text) == false)
-                    {
+                {
                     MessageBox.Show("Ugyldigt CVR-nummer");
                     return;
-                    
+                }
 
-                    }
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
-                    {
+                {
                     MessageBox.Show("Ugyldig E-mailadresse");
                     return;
-                    }
-                
-                    string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
-                    MessageBox.Show(succes);
-                    
+                }
 
-
+                string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
+                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
+                MessageBox.Show(succes);
             }
+
             if(radioButton2.Checked)
             {
                 if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
                 {
                     MessageBox.Show("Ugyldigt CPR-nummer");
                     return;
-
-
                 }
+
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
                 {
                     MessageBox.Show("Ugyldigt E-mailadresse");
@@ -227,19 +210,16 @@ namespace DelpinUI
                 }
 
                 string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"), phoneText.Text, emailText.Text, cprText.Text,
-                     PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
-                    MessageBox.Show(succes);
-                
-               
+                PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
+                MessageBox.Show(succes);
             }
             updateDatagridView();
             ClearAllTextBoxes();
-
         }
+
         //Get Businessdebtor from CVR
         private void getBusinessDebtor()
         {
-            
             {
             
 
