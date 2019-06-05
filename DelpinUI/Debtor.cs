@@ -16,7 +16,6 @@ namespace DelpinUI
 
         }
        
-        
         //public static void CancelDelete()
         //{
         //    const string message = "Er du sikker på du vil slette brugeren?";
@@ -43,12 +42,10 @@ namespace DelpinUI
         //    emailText.Clear();
         //}
 
-
         //Clears all available Textboxes
+
         private void ClearAllTextBoxes()
         {
-           
-
             foreach (Control c in this.Controls)
             {
                 string getType = c.GetType().ToString();
@@ -56,31 +53,25 @@ namespace DelpinUI
                 {
                     c.Text = "";
                 }
-            }
-
-          
+            } 
         }
 
         //updates the debtor datagridview
         private void updateDatagridView()
         {
-            
+            if(radioButton1.Checked)
             {
-                if(radioButton1.Checked)
-                {
-                    DataTable dataTable = controller.DisplayAllBusinessDebtor();
-                    ViewDeb.DataSource = dataTable;
-                }
-                else
-                {
-                    DataTable dataTable = controller.DisplayAllPersonalDebtor();
-                    ViewDeb.DataSource = dataTable;
-                }
-                    
+                DataTable dataTable = controller.DisplayAllBusinessDebtor();
+                ViewDeb.DataSource = dataTable;
             }
-            
+
+            else
+            {
+                DataTable dataTable = controller.DisplayAllPersonalDebtor();
+                ViewDeb.DataSource = dataTable;
+            }       
         }
-        //Display create debtor forms with radiobutton 
+ 
         //Display create debtor forms with radiobutton 
         private void showBdebtor()
         {
