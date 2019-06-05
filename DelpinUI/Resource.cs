@@ -13,7 +13,6 @@ using DelpinCore;
 namespace DelpinUI
 {
     public partial class Resource : Form
-
     {
         private Controller controller = new Controller();
 
@@ -22,8 +21,8 @@ namespace DelpinUI
         private DataTable dataTableAccSubGroup = new DataTable();
         private DataTable dataTableAccDelete = new DataTable();
 
-
         public Resource()
+
         {
             InitializeComponent();
 
@@ -33,23 +32,24 @@ namespace DelpinUI
                 string ModelName = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
                 string Price = ModelGridView.SelectedRows[0].Cells[2].Value + string.Empty;
 
-
-                //this.ModelID.Text = ModelID;
+                //this.ModelID.Text = ModelID;    HVAD skal denne?
                 this.ModelName.Text = ModelName;
                 ModelPrice.Text = Price;
             }
-
-
         }
+
         private void Resource_Load(object sender, EventArgs e)
         {
             SetSelectionBoxes();
+
+            //Hvad skal dette under?????????
+
             // TODO: This line of code loads data into the 'dataSet4.Model' table. You can move, or remove it, as needed.
             //this.modelTableAdapter.Fill(this.dataSet4.Model);
             // TODO: This line of code loads data into the 'dataSet3.SubGroup' table. You can move, or remove it, as needed.
             //this.subGroupTableAdapter.Fill(this.dataSet3.SubGroup);
-
         }
+
         private void DeleteAcc()
         {
             var selectedRows = ShowAllAcc.SelectedRows;
@@ -64,15 +64,13 @@ namespace DelpinUI
             DataTable dataTableViewAcc = controller.DisplayAccesoryRelations();
             ShowAllAcc.DataSource = dataTableViewAcc;
         }
+
         private void SetStatusComboBoxToDefault()
         {
-            
-
             ComboModelMain.SelectedIndex = 0;
-
-
             ComboModelSub.SelectedIndex = 0;
         }
+
         private void ClearAllTextBoxes()
         {
             foreach (Control c in this.Controls)
@@ -84,39 +82,29 @@ namespace DelpinUI
                 }
             }
             SetStatusComboBoxToDefault();
-
         }
+
         private void updateDatagridViewModel()
         {
-
-
             DataTable dataTable = controller.DisplayModel();
             ModelGridView.DataSource = dataTable;
-
-
         }
+
         private void updateDatagridViewResource()
         {
-
-
             DataTable dataTable = controller.DisplayAllResources();
             resourceGridView.DataSource = dataTable;
-
-
         }
-
-
 
         private void SetSelectionBoxes()
         {
             DataTable dataTableMainGroup = controller.DisplayMainGroup();
             dataTableSubGroup = controller.DisplaySubGroup();
+
             //model tab
             ComboModelSub.DataSource = dataTableSubGroup;
             ComboModelSub.DisplayMember = "Category";
             ComboModelSub.ValueMember = "SubGroupID";
-
-
 
             ComboModelMain.DataSource = dataTableMainGroup;
             ComboModelMain.DisplayMember = "Category";
@@ -124,7 +112,6 @@ namespace DelpinUI
 
             //DeleteAcc tab
             dataTableAccDelete = dataTableSubGroup.Copy();
-
             SubAcc.DataSource = dataTableAccDelete;
             SubAcc.DisplayMember = "Category";
             SubAcc.ValueMember = "SubGroupID";
@@ -135,11 +122,8 @@ namespace DelpinUI
             MainAcc.DisplayMember = "Category";
             MainAcc.ValueMember = "MainGroupID";
 
-
             //AccModel
-
             dataTableModelSubGroup = dataTableSubGroup.Copy();
-
             AccSub.DataSource = dataTableModelSubGroup;
             AccSub.DisplayMember = "Category";
             AccSub.ValueMember = "SubGroupID";
@@ -152,7 +136,6 @@ namespace DelpinUI
 
             //AddAccModel 
             dataTableAccSubGroup = dataTableSubGroup.Copy();
-            
             AddAccSub.DataSource = dataTableAccSubGroup;
             AddAccSub.DisplayMember = "Category";
             AddAccSub.ValueMember = "SubGroupID";
@@ -163,13 +146,6 @@ namespace DelpinUI
             AddAccMain.DisplayMember = "Category";
             AddAccMain.ValueMember = "MainGroupID";
 
-
-
-
-
-
-
-
             SetBranches();
 
             DataTable dataTable = controller.DisplayAllResources();
@@ -177,9 +153,6 @@ namespace DelpinUI
 
             DataTable dataTableAcc = controller.DisplayAccesoryRelations();
             ShowAllAcc.DataSource = dataTableAcc;
-
-
-           
 
             DataTable dataTableModel = controller.DisplayModel();
             ModelGridView.DataSource = dataTableModel;
@@ -200,9 +173,8 @@ namespace DelpinUI
 
             //AddAcc.DataSource = dataTableAddAccModel;
             //AddAcc.DataSource = dataTableModel;
-
-            
         }
+
         private void SetBranches()
         {
             DataTable dataTableBranch = Utility.Branches.Copy();
@@ -212,8 +184,7 @@ namespace DelpinUI
             branchID.ValueMember = "BranchID";
         }
 
-
-        private void comboBoxMainGroup_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxMainGroup_SelectedIndexChanged(object sender, EventArgs e) //Denne metode har ingen referance
         {
             try
             {
@@ -229,34 +200,23 @@ namespace DelpinUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
-
-            string sub;
-            sub = ComboModelSub.ValueMember;
+            string sub = ComboModelSub.ValueMember;
 
             string succes = controller.CreateModel(ModelName.Text, Convert.ToDouble(ModelPrice.Text),
-                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+            Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             MessageBox.Show(succes);
             updateDatagridViewModel();
         }
 
-
-
         private void AddAccesories_Click(object sender, EventArgs e)
         {
-            
-                string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
-                Convert.ToInt32(AddAccModel.Text));
-                MessageBox.Show(succes);
-                UpdateAccTable();
-            
-
-            
+            string succes = controller.CreateAccessory(Convert.ToInt32(AccModel.Text),
+            Convert.ToInt32(AddAccModel.Text));
+            MessageBox.Show(succes);
+            UpdateAccTable();   
         }
 
-       
-
-        private void comboBoxMainGroup_SelectedIndexChanged_2(object sender, EventArgs e)
+        private void comboBoxMainGroup_SelectedIndexChanged_2(object sender, EventArgs e) //Denne har ingen referance
         {
             try
             {
@@ -284,7 +244,6 @@ namespace DelpinUI
             catch { }
         }
     
-      
         private void CreateRessource_Click(object sender, EventArgs e)
         {
             string succes = controller.CreateResource(Convert.ToInt32(ressourceID.Text),Convert.ToInt32(ResourceModelID.Text), Convert.ToInt32(branchID.SelectedValue));
@@ -292,7 +251,7 @@ namespace DelpinUI
             updateDatagridViewResource();
         }
 
-        private void AccModelView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void AccModelView_CellClick(object sender, DataGridViewCellEventArgs e) //denne har ingen reference
         {
             AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
@@ -315,9 +274,7 @@ namespace DelpinUI
         {
             const string message = "Er du sikker på du vil slette Resursen?";
             const string caption = "Annuller";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -325,12 +282,6 @@ namespace DelpinUI
                 MessageBox.Show(succes);
                 updateDatagridViewResource();
             }
-            else
-            {
-
-            }
-
-            
         }
 
         private void AccMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -340,17 +291,15 @@ namespace DelpinUI
                 DataView dv = new DataView(dataTableModelSubGroup);
                 dv.RowFilter = $"MainGroup = {AccMain.SelectedValue}";
                 
-
                 AccSub.DataSource = dv.ToTable();
                 AccSub.DisplayMember = "Category";
                 AccSub.ValueMember = "SubGroupID";
             }
-            catch { }
+            catch
+            {
+
+            }
         }
-
-       
-
-       
 
         private void AccSub_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -359,18 +308,17 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(AccSub.SelectedValue));
                 AccModelView.DataSource = dataTable;
             }
-            catch { }
-        }
+            catch
+            {
 
-      
+            }
+        }
 
         private void GetModel_Click(object sender, EventArgs e)
         {
-
             GetModelByModelID(Convert.ToInt32(ModelID.Text));
-
-
         }
+
         private void GetModelByModelID(int ModelID)
         {
             DataTable dataTable = controller.DisplaySpecificModel(ModelID);
@@ -386,28 +334,26 @@ namespace DelpinUI
             ComboModelMain.SelectedValue = dataTable.Rows[0]["Hovedgruppe"].ToString();
             ComboModelSub.SelectedValue = dataTable.Rows[0]["Undergruppe"].ToString();
         }
-        private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+
+        private void ModelGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) //Denne har ingen refereance
         {
             if (e.RowIndex > -1)
             {
                 ModelGridView.Rows[e.RowIndex].Selected = true;
             }
         }
+
         private void UpdateModel_Click(object sender, EventArgs e)
         {
             const string message = "Vil du rette resursen?";
             const string caption = "Annuller";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-               
                 string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
-                 Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
+                Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
                 MessageBox.Show(succes);
-
             }
             else
             {
@@ -415,11 +361,9 @@ namespace DelpinUI
             }
             updateDatagridViewModel();
             ClearAllTextBoxes();
-
-
         }
 
-        private void AccModelView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AccModelView_CellContentClick(object sender, DataGridViewCellEventArgs e) //Denne har ingen refereance
         {
             AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
@@ -429,14 +373,14 @@ namespace DelpinUI
             AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
 
-        private void SaveModel_Click(object sender, EventArgs e)
+        private void SaveModel_Click(object sender, EventArgs e) //HVad skal denne den har ingen referance
         {
             //string succes = controller.UpdateModel(Convert.ToInt32(ModelID.Text), ModelName.Text, Convert.ToDouble(ModelPrice.Text),
             //    Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             //MessageBox.Show(succes);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Tjekkes
         {
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
             if (dataTable.Rows.Count == 0)
@@ -448,14 +392,11 @@ namespace DelpinUI
             ResourceModelID.Text = dataTable.Rows[0]["Modelnummer"].ToString();
             //ModelName.Text = dataTable.Rows[0]["Modelnummer"].ToString();
            
-            
             branchID.SelectedValue = dataTable.Rows[0]["Afdelingsnummer"].ToString();
 
             //string succes = controller.DisplaySpecificResources(ressourceID.Text));
             //MessageBox.Show(succes);
         }
-
-       
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -464,23 +405,15 @@ namespace DelpinUI
             string ModelName = ShowAllAcc.Rows[selectedrow].Cells[0].Value + string.Empty;
             string message = ("Vil du fjerne tilbehøret fra "+ModelName);
             string caption = "Annuller";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-
                 DeleteAcc();
-
             }
-            else
-            {
-
-            }
+            
             UpdateAccTable();
             ClearAllTextBoxes();
-
         }
 
         private void ComboModelMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -490,13 +423,14 @@ namespace DelpinUI
                 DataView dv = new DataView(dataTableSubGroup);
                 dv.RowFilter = $"MainGroup = {ComboModelMain.SelectedValue}";
 
-
                 ComboModelSub.DataSource = dv.ToTable();
                 ComboModelSub.DisplayMember = "Category";
                 ComboModelSub.ValueMember = "SubGroupID";
             }
-            catch { }
+            catch
+            {
 
+            }
         }
 
         private void AddAccMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -506,12 +440,14 @@ namespace DelpinUI
                 DataView dv = new DataView(dataTableAccSubGroup);
                 dv.RowFilter = $"MainGroup = {AddAccMain.SelectedValue}";
 
-
                 AddAccSub.DataSource = dv.ToTable();
                 AddAccSub.DisplayMember = "Category";
                 AddAccSub.ValueMember = "SubGroupID";
             }
-            catch { }
+            catch
+            {
+
+            }
         }
 
         private void AddAccSub_SelectedIndexChanged(object sender, EventArgs e)
@@ -521,7 +457,10 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayModelBySubgroupID(Convert.ToInt32(AddAccSub.SelectedValue));
                 AddAcc.DataSource = dataTable;
             }
-            catch { }
+            catch
+            {
+
+            }
 
         }
 
@@ -529,29 +468,17 @@ namespace DelpinUI
         {
             const string message = "Er du sikker på du vil slette Modellen?";
             const string caption = "Annuller";
-            var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 string succes = controller.DeleteModel(Convert.ToInt32(ModelID.Text));
                 MessageBox.Show(succes);
-
             }
-            else
-            {
-
-            }
+            
             ClearAllTextBoxes();
             updateDatagridViewModel();
-
-
         }
-
-       
-
-      
 
         private void ModelGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -563,11 +490,9 @@ namespace DelpinUI
                 int Modelnummer = Convert.ToInt32(Modelid);
                 GetModelByModelID(Modelnummer);
                 ModelID.Text = Modelid;
-
             }
         }
         
-
         private void resourceGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -578,7 +503,6 @@ namespace DelpinUI
                 string ModelId = resourceGridView.Rows[e.RowIndex].Cells[1].Value + string.Empty;
                 string BranchID = resourceGridView.Rows[e.RowIndex].Cells[4].Value + string.Empty;
 
-                
                 ressourceID.Text = Resourceid;
                 ResourceModelID.Text = ModelId;
                 branchID.SelectedValue = BranchID;
