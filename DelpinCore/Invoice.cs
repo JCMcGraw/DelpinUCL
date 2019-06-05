@@ -24,7 +24,7 @@ namespace DelpinCore
             return Math.Round(endPrice,2);
         }
 
-        public string MakePDF(Lease lease, Business debtor)
+        public string MakePDF(Lease lease, Business business,Personal personal)
         {
             // Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -46,21 +46,43 @@ namespace DelpinCore
 
             // Draw the text. Dette er hvad der skal være på teksten, og hvor det skal være. Der kan laves lige så mange som man vil 
             //Kunde Oplysninger------------------------------------------------------------------------------------------------------------------------------
-            gfx.DrawString($"{lease.contactFirstName} {lease.contactLastName}", companyAndDebtor, XBrushes.Black,
+            if (business.CVR.Length ==8)
+            {
+                gfx.DrawString($"{business.companyName}", companyAndDebtor, XBrushes.Black,
                 new XRect(80, -270, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{debtor.street}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -260, page.Width, page.Height),
+                gfx.DrawString($"{business.street}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -260, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+
+                gfx.DrawString($"{business.postalCode} {business.city}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -250, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+
+                gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -230, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+
+            }
+            if (personal.CPR.Length==10)
+            {
+                gfx.DrawString($"{personal.firstName} {personal.lastName}", companyAndDebtor, XBrushes.Black,
+                new XRect(80, -270, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            gfx.DrawString($"{debtor.postalCode} {debtor.city}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -250, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                gfx.DrawString($"{personal.street}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -260, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
 
-            gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -230, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                gfx.DrawString($"{personal.postalCode} {personal.city}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -250, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+
+                gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
+                    new XRect(80, -230, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+            }
 
             //FAKTURA---------------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString("FAKTURA", fakture, XBrushes.Black,
@@ -169,7 +191,7 @@ namespace DelpinCore
                 XStringFormats.CenterLeft);
 
             //Hvis det er Privat person
-            if (debtor.CVR.Length == 10)
+            if (personal.CPR.Length == 10)
             {
                 gfx.DrawString("Netto: ", companyAndDebtor, XBrushes.Black,
                new XRect(400, -20 + lineSpace, page.Width, page.Height),
@@ -200,7 +222,7 @@ namespace DelpinCore
                 XStringFormats.CenterLeft);
             }
             //Hvis det er Erhvervs Kunde
-            else
+            if (business.CVR.Length==8)
             {
                 gfx.DrawString("Total: ", priceFat, XBrushes.Black,
                     new XRect(400, -20 + lineSpace, page.Width, page.Height),

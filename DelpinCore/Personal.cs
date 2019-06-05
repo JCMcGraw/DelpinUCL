@@ -22,5 +22,11 @@ namespace DelpinCore
             this.firstName = firstName;
             this.lastName = lastName;
         }
+
+        public Personal(string debtorID, string street, int postalCode, string city, string phone, string email, string firstName) : base(debtorID, street, postalCode, city, phone, email)
+        {
+            this.CPR = debtorID;
+            this.firstName = firstName;
+        }
     }
 }
