@@ -315,7 +315,7 @@ namespace DelpinCore
         {
             Lease lease = leaseManager.ReadLeaseByLeaseID(LeaseID);
             Business business = debtorManager.ReadAllDebtorsByDebtorID(lease.debtorID);
-
+            
             string pdfResult = invoice.MakePDF(lease,business);
 
             return pdfResult;
