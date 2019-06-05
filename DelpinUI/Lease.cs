@@ -30,7 +30,6 @@ namespace DelpinUI
             GetLeaseByLeaseID(leaseID);
         }
 
-
         //Functions to set selection boxes during load
         private void Lease_Load(object sender, EventArgs e)
         {
@@ -65,7 +64,6 @@ namespace DelpinUI
             MainGroup.DataSource = dataTableMainGroup;
             MainGroup.DisplayMember = "Category";
             MainGroup.ValueMember = "MainGroupID";
-
 
             UpdateResourceDataGrid(Convert.ToInt32(SubGroup.SelectedValue));
         }
@@ -244,7 +242,6 @@ namespace DelpinUI
                 this.leaseNumber.Text = leaseNumber;
                 AddOpenStatusesToComboBox();
 
-
                 createLease.Enabled = false;
                 updateLease.Enabled = true;
                 deleteLease.Enabled = true;
@@ -252,7 +249,6 @@ namespace DelpinUI
                 writeInvoice.Enabled = true;
                 MessageBox.Show($"Ordren blev oprettet med ordrenummer {leaseNumber}");
             }
-
         }
 
         private bool CheckOrderIsGood()
@@ -345,7 +341,6 @@ namespace DelpinUI
                 debtorIDLabel.Text = "CPR-nummer";
             }
         }
-
 
         //functions to get lease loaded to form
         private void buttonFindLeaseByLeaseID_Click(object sender, EventArgs e)
@@ -450,7 +445,6 @@ namespace DelpinUI
             contactPhone.Text = lease.contactPhone;
             leaseNumber.Text = lease.leaseID.ToString();
 
-
             if (lease.active == true)
             {
                 AddOpenStatusesToComboBox();
@@ -476,7 +470,6 @@ namespace DelpinUI
                 leaseOrders.Rows[lastRow].Cells["Postkode"].Value = leaseOrder.deliveryPostalCode.ToString();
                 leaseOrders.Rows[lastRow].Cells["By"].Value = leaseOrder.deliveryCity;
             }
-
         }
 
         private void ClearAllTextBoxes()
@@ -509,8 +502,6 @@ namespace DelpinUI
 
             MessageBox.Show(isUpdateSuccess);
         }
-
-        
 
         private void dateTimePickerDeliveryDate_ValueChanged(object sender, EventArgs e)
         {
@@ -615,7 +606,6 @@ namespace DelpinUI
                 {
                     return;
                 }
-
             }
             else
             {
