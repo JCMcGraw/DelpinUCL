@@ -268,9 +268,8 @@ namespace DelpinUI
                 {
                     MessageBox.Show("Ugyldig CVRnummer");
                     return;
-
-
                 }
+
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
@@ -279,7 +278,6 @@ namespace DelpinUI
                         MessageBox.Show("Der blev ikke fundet nogle debitorer, prøv at indtaste CVR-nummeret igen.");
                         return;
                     }
-
 
                     BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
                     adressText.Text = (string)dataTable.Rows[0]["Gade"];
@@ -290,16 +288,14 @@ namespace DelpinUI
                 }
             }
             
-            
             if (radioButton2.Checked)
             {
                 if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
                 {
                     MessageBox.Show("Ugyldig CPRnummer");
                     return;
-
-
                 }
+
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
@@ -309,8 +305,7 @@ namespace DelpinUI
                         return;
                     }
 
-
-                        PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
+                    PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
                     PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
                     adressText.Text = (string)dataTable.Rows[0]["Gade"];
                     city.Text = dataTable.Rows[0]["By"].ToString();
@@ -319,12 +314,6 @@ namespace DelpinUI
                     emailText.Text = (string)dataTable.Rows[0]["E-mail"];
                 }
             }
-           
-           
-
-
-
-
         }
         
         private void UpdateDebtor_Click(object sender, EventArgs e)
@@ -338,29 +327,16 @@ namespace DelpinUI
                 }
                 string message = "Vil du rette kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                   phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
+                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
                 }
-                else
-                {
-
-                }
-
-
-
-             
-
-
-
-
             }
+
             if (radioButton2.Checked)
             {
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
@@ -375,30 +351,14 @@ namespace DelpinUI
                 }
                 string message = "Vil du rette kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                     phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
+                    phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
-
                 }
-                else
-                {
-
-                }
-
-
-
-                
-
-
-
-
-
             }
             
             CreateDeb.Visible = true;
@@ -419,12 +379,8 @@ namespace DelpinUI
             //    CancelUpdate.Visible = true;
             //    UpdateDebtor.Visible = false;
             //}
-
         }
        
-
-        
-        
         //Delete debtor and updates datagridview
         private void DeleteDebtor_Click(object sender, EventArgs e)
         {
