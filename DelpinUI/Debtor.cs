@@ -15,8 +15,8 @@ namespace DelpinUI
             updateDatagridView();
 
         }
-       
-        //public static void CancelDelete()
+
+        //public static void CancelDelete() //Hvis denne ikke bruges skal den slettes
         //{
         //    const string message = "Er du sikker på du vil slette brugeren?";
         //    const string caption = "Annuller";
@@ -25,7 +25,7 @@ namespace DelpinUI
         //                                 MessageBoxIcon.Question);
 
         //    if (result == DialogResult.Yes)
-                
+
         //}
         //update table
         //private void ClearTextBox()
@@ -42,7 +42,7 @@ namespace DelpinUI
         //    emailText.Clear();
         //}
 
-        //Clears all available Textboxes
+        //Clears all available Textboxes 
 
         private void ClearAllTextBoxes()
         {
@@ -387,12 +387,9 @@ namespace DelpinUI
             //indsæt slet debtor metode
             if (radioButton1.Checked)
             {
-                
                 string message = "Er du sikker på du vil slette Kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -400,21 +397,13 @@ namespace DelpinUI
                     MessageBox.Show(Success);
                     ClearAllTextBoxes();
                 }
-                else
-                {
-                    
-                }
-
-                
             }
+
             if (radioButton2.Checked)
             {
-                
                 string message = "Er du sikker på du vil slette Kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -422,11 +411,6 @@ namespace DelpinUI
                     MessageBox.Show(Success);
                     ClearAllTextBoxes();
                 }
-                else
-                {
-
-                }
-               
             }
             updateDatagridView();
         }
@@ -439,22 +423,17 @@ namespace DelpinUI
                 {
                     ViewDeb.Rows[e.RowIndex].Selected = true;
                     getBusinessDebtor();
-
                 }
-                else
-                { }   
             }
+
             if (radioButton2.Checked)
             {
                 if (e.RowIndex > -1)
                 {
                     ViewDeb.Rows[e.RowIndex].Selected = true;
                     getPersonalDebtor();
-                    
                 }
             }
-            else
-            { }
         }
     }
 }
