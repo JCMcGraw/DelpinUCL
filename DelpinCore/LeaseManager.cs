@@ -219,8 +219,10 @@ namespace DelpinCore
             $"    Case " +
             $"        When LeaseOrder.StartDate <= '{startDate}' And LeaseOrder.EndDate >= '{endDate}' " +
             $"        Then 'Ikke fri' " +
-            $"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
-            $"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
+            //$"        When LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            //$"            LeaseOrder.EndDate Between '{startDate}' And '{endDate}' " +
+            $"        When (LeaseOrder.StartDate >= '{startDate}' And LeaseOrder.StartDate < '{endDate}') Or " +
+            $"            (LeaseOrder.EndDate > '{startDate}' And LeaseOrder.EndDate <= '{endDate}') " +
             $"        Then 'Ikke fri' " +
             $"        Else 'Fri' " +
             $"    End As Tilgængelighed " +
@@ -231,8 +233,10 @@ namespace DelpinCore
             $"Where " +
             $"    Model.ModelID = {modelID} and ((LeaseOrder.StartDate <= '{startDate}' And " +
             $"            LeaseOrder.EndDate >= '{endDate}') Or " +
-            $"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
-            $"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as TestDates " +
+            //$"        LeaseOrder.StartDate Between '{startDate}' And '{endDate}' Or " +
+            //$"        LeaseOrder.EndDate Between '{startDate}' And '{endDate}')) as TestDates " +
+            $"        (LeaseOrder.StartDate >= '{startDate}' And LeaseOrder.StartDate < '{endDate}') Or " +
+            $"        (LeaseOrder.EndDate > '{startDate}' And LeaseOrder.EndDate <= '{endDate}'))) as TestDates " +
             $"Group by TestDates.ResourcesID, TestDates.Tilgængelighed) as ResourceAvailability " +
             $"	on ResourceAvailability.ResourcesID = Resources.ResourcesID join " +
             $"	Branch on Branch.BranchID = Resources.BranchID join Distance on Resources.BranchID = Distance.EndLocation  " +

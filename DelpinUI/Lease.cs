@@ -183,6 +183,10 @@ namespace DelpinUI
             
             DataTable dataTable = controller.GetAvailableResourcesForPeriod(modelID, Utility.BranchID, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
 
+            Dictionary<string, string> dictionary = GetLeaseOrdersThatClashWithDates();
+
+            dataTable = SetBookedItems(dataTable, dictionary);
+
             FormSelectFromTable formSelectFromTable = new FormSelectFromTable();
             formSelectFromTable.ShowResources(dataTable);
             formSelectFromTable.SetTitle("Vælg resurse");
@@ -194,6 +198,43 @@ namespace DelpinUI
 
                 SelectResource(resourceID, formSelectFromTable);
             }
+        }
+
+
+        private DataTable SetBookedItems(DataTable dataTable, Dictionary<string, string> dictionary)
+        {
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                string resourceID = ((int)dataTable.Rows[i]["ResurseID"]).ToString();
+
+                if (dictionary.ContainsKey(resourceID))
+                {
+                    dataTable.Rows[i]["Tilgængelighed"] = "Ikke fri";
+                    dataTable.Rows[i]["Datoer udlejet"] = dictionary[resourceID];
+                }
+            }
+
+            return dataTable;
+        }
+
+        private Dictionary<string, string> GetLeaseOrdersThatClashWithDates()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+
+            DateTime deliveryDate = DeliveryDate.Value.Date;
+            DateTime returnDate = ReturnDate.Value.Date;
+
+            for( int i = 0; i < leaseOrders.Rows.Count; i++)
+            {
+                DateTime startDate = Convert.ToDateTime(leaseOrders.Rows[i].Cells["Leveringsdato"].Value);
+                DateTime endDate = Convert.ToDateTime(leaseOrders.Rows[i].Cells["Slutdato"].Value);
+
+                if ((startDate < deliveryDate && endDate >= returnDate) || (startDate >= deliveryDate && startDate < returnDate) || (endDate > deliveryDate && endDate <= returnDate))
+                {
+                    dictionary.Add(leaseOrders.Rows[i].Cells["ResurseID"].Value.ToString(), startDate.ToString("dd/MM/yy") + " - " + endDate.ToString("dd/MM/yy"));
+                }
+            }
+            return dictionary;
         }
 
         private void SelectResource(int resourceID, FormSelectFromTable formSelectFromTable)
@@ -727,6 +768,17 @@ namespace DelpinUI
             {
                 MessageBox.Show("Den indtastede postkode er ikke korrekt, indtast den venligst igen!");
                 deliveryPostCodeTextBox.Text = "";
+            }
+        }
+
+
+        private void billingPostCode_TextChanged(object sender, EventArgs e)
+        {
+            if (useBillingAddress.Checked == true)
+            {
+                deliveryAddressTextBox.Text = billingAddress.Text;
+                deliveryCityTextBox.Text = billingCity.Text;
+                deliveryPostCodeTextBox.Text = billingPostCode.Text;
             }
         }
     }
