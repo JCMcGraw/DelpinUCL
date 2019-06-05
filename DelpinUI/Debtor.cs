@@ -316,6 +316,11 @@ namespace DelpinUI
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Der blev ikke fundet nogle debitorer, prøv at indtaste CVR-nummeret igen.");
+                        return;
+                    }
 
 
                     BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
@@ -340,9 +345,14 @@ namespace DelpinUI
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Der blev ikke fundet nogle debitorer, prøv at indtaste CPR-nummeret igen.");
+                        return;
+                    }
 
 
-                    PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
+                        PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
                     PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
                     adressText.Text = (string)dataTable.Rows[0]["Gade"];
                     city.Text = dataTable.Rows[0]["By"].ToString();
