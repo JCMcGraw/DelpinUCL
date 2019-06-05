@@ -368,11 +368,17 @@ namespace DelpinUI
         {
 
             GetModelByModelID(Convert.ToInt32(ModelID.Text));
+
+
         }
         private void GetModelByModelID(int ModelID)
         {
             DataTable dataTable = controller.DisplaySpecificModel(ModelID);
-
+            if (dataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Der blev ikke fundet nogle modeller, prøv at et nyt Modelnummer.");
+                return;
+            }
 
             ModelName.Text = (string)dataTable.Rows[0]["Modelnavn"];
             ModelPrice.Text = dataTable.Rows[0]["Pris"].ToString();
@@ -433,6 +439,11 @@ namespace DelpinUI
         private void button1_Click(object sender, EventArgs e)
         {
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
+            if (dataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Der blev ikke fundet nogle resurser, prøv at indtaste resursenummeret igen.");
+                return;
+            }
 
             ResourceModelID.Text = dataTable.Rows[0]["Modelnummer"].ToString();
             //ModelName.Text = dataTable.Rows[0]["Modelnummer"].ToString();

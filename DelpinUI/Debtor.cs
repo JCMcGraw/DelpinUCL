@@ -15,9 +15,8 @@ namespace DelpinUI
             updateDatagridView();
 
         }
-       
-        
-        //public static void CancelDelete()
+
+        //public static void CancelDelete() //Hvis denne ikke bruges skal den slettes
         //{
         //    const string message = "Er du sikker på du vil slette brugeren?";
         //    const string caption = "Annuller";
@@ -26,7 +25,7 @@ namespace DelpinUI
         //                                 MessageBoxIcon.Question);
 
         //    if (result == DialogResult.Yes)
-                
+
         //}
         //update table
         //private void ClearTextBox()
@@ -43,12 +42,10 @@ namespace DelpinUI
         //    emailText.Clear();
         //}
 
+        //Clears all available Textboxes 
 
-        //Clears all available Textboxes
         private void ClearAllTextBoxes()
         {
-           
-
             foreach (Control c in this.Controls)
             {
                 string getType = c.GetType().ToString();
@@ -56,31 +53,25 @@ namespace DelpinUI
                 {
                     c.Text = "";
                 }
-            }
-
-          
+            } 
         }
 
         //updates the debtor datagridview
         private void updateDatagridView()
         {
-            
+            if(radioButton1.Checked)
             {
-                if(radioButton1.Checked)
-                {
-                    DataTable dataTable = controller.DisplayAllBusinessDebtor();
-                    ViewDeb.DataSource = dataTable;
-                }
-                else
-                {
-                    DataTable dataTable = controller.DisplayAllPersonalDebtor();
-                    ViewDeb.DataSource = dataTable;
-                }
-                    
+                DataTable dataTable = controller.DisplayAllBusinessDebtor();
+                ViewDeb.DataSource = dataTable;
             }
-            
+
+            else
+            {
+                DataTable dataTable = controller.DisplayAllPersonalDebtor();
+                ViewDeb.DataSource = dataTable;
+            }       
         }
-        //Display create debtor forms with radiobutton 
+ 
         //Display create debtor forms with radiobutton 
         private void showBdebtor()
         {
@@ -97,6 +88,7 @@ namespace DelpinUI
             PlnameLabel.Visible = false;
             PlnameText.Visible = false;
         }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -117,8 +109,8 @@ namespace DelpinUI
                 //PlnameLabel.Visible = false;
                 //PlnameText.Visible = false;
                 showBdebtor();
-
             }
+
             //else
             //{
             //    cvrText.Visible = false;
@@ -132,15 +124,10 @@ namespace DelpinUI
             //    PfnameText.Visible = true;
             //    PlnameLabel.Visible = true;
             //    PlnameText.Visible = true;
-
-
             //}
             ClearAllTextBoxes();
-         
-
-
-
         }
+
         private void ShowPdebtor()
         {
             cvrText.Visible = false;
@@ -154,7 +141,6 @@ namespace DelpinUI
             PlnameLabel.Visible = true;
             PlnameText.Visible = true;
             CreateDeb.Visible = true;
-
             ViewDeb.Visible = true;
         }
 
@@ -162,7 +148,6 @@ namespace DelpinUI
         {
             if (radioButton2.Checked)
             {
-
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
@@ -177,58 +162,47 @@ namespace DelpinUI
                 //PlnameLabel.Visible = true;
                 //PlnameText.Visible = true;
                 //CreateDeb.Visible = true;
-
                 //ViewDeb.Visible = true;
                 ShowPdebtor();
             }
-            
-
         }
         
-       
-
-        private void Debtor_Load(object sender, EventArgs e)
+        private void Debtor_Load(object sender, EventArgs e) //Denne bliver ikke brugt Den skal fjernes Correct
         {
 
 
         }
 
-       
         //create debtor and refreshes datagridview
         private void CreateBdeb_Click(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
-               
                 if(Utility.CheckForValidCVRNumber(cvrText.Text) == false)
-                    {
+                {
                     MessageBox.Show("Ugyldigt CVR-nummer");
                     return;
-                    
+                }
 
-                    }
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
-                    {
+                {
                     MessageBox.Show("Ugyldig E-mailadresse");
                     return;
-                    }
-                
-                    string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
-                    MessageBox.Show(succes);
-                    
+                }
 
-
+                string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
+                phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
+                MessageBox.Show(succes);
             }
+
             if(radioButton2.Checked)
             {
                 if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
                 {
                     MessageBox.Show("Ugyldigt CPR-nummer");
                     return;
-
-
                 }
+
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
                 {
                     MessageBox.Show("Ugyldigt E-mailadresse");
@@ -236,71 +210,55 @@ namespace DelpinUI
                 }
 
                 string succes = controller.CreatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"), phoneText.Text, emailText.Text, cprText.Text,
-                     PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
-                    MessageBox.Show(succes);
-                
-               
+                PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
+                MessageBox.Show(succes);
             }
             updateDatagridView();
             ClearAllTextBoxes();
-
         }
+
         //Get Businessdebtor from CVR
         private void getBusinessDebtor()
         {
-            
-            {
-            
+            string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+            string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+            string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+            string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+            string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+            string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+            string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
 
-                string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-
-                cvrText.Text = cvr;
-                BnameText.Text = bName;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
+            cvrText.Text = cvr;
+            BnameText.Text = bName;
+            adressText.Text = adresse;
+            city.Text = City;
+            postalcodeText.Text = pCode;
+            phoneText.Text = phoneN;
+            emailText.Text = eMail;
         }
-
-
-
 
         //Get PersonalDebtor from ssn
         private void getPersonalDebtor()
         {
-            {
+            string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+            string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+            string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+            string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+            string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+            string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+            string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
+            string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
 
-                string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
-
-                cprText.Text = cpr;
-                PfnameText.Text = Fname;
-                PlnameText.Text = Lname;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
+            cprText.Text = cpr;
+            PfnameText.Text = Fname;
+            PlnameText.Text = Lname;
+            adressText.Text = adresse;
+            city.Text = City;
+            postalcodeText.Text = pCode;
+            phoneText.Text = phoneN;
+            emailText.Text = eMail;
         }
 
-
-
-           
         // get specific debtor Business or Personal
         private void button1_Click(object sender, EventArgs e)
         {
@@ -310,13 +268,16 @@ namespace DelpinUI
                 {
                     MessageBox.Show("Ugyldig CVRnummer");
                     return;
-
-
                 }
+
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficBusinessDebtor(cvrText.Text);
-
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Der blev ikke fundet nogle debitorer, prøv at indtaste CVR-nummeret igen.");
+                        return;
+                    }
 
                     BnameText.Text = (string)dataTable.Rows[0]["Firmanavn"];
                     adressText.Text = (string)dataTable.Rows[0]["Gade"];
@@ -327,20 +288,22 @@ namespace DelpinUI
                 }
             }
             
-            
             if (radioButton2.Checked)
             {
                 if (Utility.CheckForValidCPRNumber(cprText.Text) == false)
                 {
                     MessageBox.Show("Ugyldig CPRnummer");
                     return;
-
-
                 }
+
                 else
                 {
                     DataTable dataTable = controller.DisplaySpeceficPersonalDebtor(cprText.Text);
-
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Der blev ikke fundet nogle debitorer, prøv at indtaste CPR-nummeret igen.");
+                        return;
+                    }
 
                     PfnameText.Text = (string)dataTable.Rows[0]["Fornavn"];
                     PlnameText.Text = (string)dataTable.Rows[0]["Efternavn"];
@@ -351,12 +314,6 @@ namespace DelpinUI
                     emailText.Text = (string)dataTable.Rows[0]["E-mail"];
                 }
             }
-           
-           
-
-
-
-
         }
         
         private void UpdateDebtor_Click(object sender, EventArgs e)
@@ -370,29 +327,16 @@ namespace DelpinUI
                 }
                 string message = "Vil du rette kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     string succes = controller.UpdateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                   phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
+                    phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
                 }
-                else
-                {
-
-                }
-
-
-
-             
-
-
-
-
             }
+
             if (radioButton2.Checked)
             {
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
@@ -407,30 +351,14 @@ namespace DelpinUI
                 }
                 string message = "Vil du rette kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
                     string succes = controller.UpdatePersonalDebtor(cprText.Text, adressText.Text.Replace("'", "''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
-                     phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
+                    phoneText.Text, emailText.Text, cprText.Text, PfnameText.Text.Replace("'", "''"), PlnameText.Text.Replace("'", "''"));
                     MessageBox.Show(succes);
-
                 }
-                else
-                {
-
-                }
-
-
-
-                
-
-
-
-
-
             }
             
             CreateDeb.Visible = true;
@@ -451,24 +379,17 @@ namespace DelpinUI
             //    CancelUpdate.Visible = true;
             //    UpdateDebtor.Visible = false;
             //}
-
         }
        
-
-        
-        
         //Delete debtor and updates datagridview
         private void DeleteDebtor_Click(object sender, EventArgs e)
         {
             //indsæt slet debtor metode
             if (radioButton1.Checked)
             {
-                
                 string message = "Er du sikker på du vil slette Kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -476,21 +397,13 @@ namespace DelpinUI
                     MessageBox.Show(Success);
                     ClearAllTextBoxes();
                 }
-                else
-                {
-                    
-                }
-
-                
             }
+
             if (radioButton2.Checked)
             {
-                
                 string message = "Er du sikker på du vil slette Kunden?";
                 string caption = "Annuller";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -498,11 +411,6 @@ namespace DelpinUI
                     MessageBox.Show(Success);
                     ClearAllTextBoxes();
                 }
-                else
-                {
-
-                }
-               
             }
             updateDatagridView();
         }
@@ -515,22 +423,17 @@ namespace DelpinUI
                 {
                     ViewDeb.Rows[e.RowIndex].Selected = true;
                     getBusinessDebtor();
-
                 }
-                else
-                { }   
             }
+
             if (radioButton2.Checked)
             {
                 if (e.RowIndex > -1)
                 {
                     ViewDeb.Rows[e.RowIndex].Selected = true;
                     getPersonalDebtor();
-                    
                 }
             }
-            else
-            { }
         }
     }
 }

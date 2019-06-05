@@ -265,7 +265,7 @@ namespace DelpinCore
         {
             string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from " +
                 "Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
-            ;
+            
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
 
             return dataTable;

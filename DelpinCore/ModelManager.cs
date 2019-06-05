@@ -59,7 +59,7 @@ namespace DelpinCore
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
             string selectModel = $"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model " +
-                                $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID}";
+                                $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID} and Model.Active ='1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
             return dataTable;
@@ -67,7 +67,7 @@ namespace DelpinCore
 
         public DataTable DisplayModel()
         {
-            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model";
+            string ShowModel = $"Select ModelID as Modelnummer, ModelName as Modelnavn, weightKg as Vægt, SubGroupID as Katagori, price as Pris from Model where Active ='1'";
             DataTable dataTable = DatabaseManager.ReadFromDatabase(ShowModel);
             return dataTable;
         }
@@ -77,7 +77,7 @@ namespace DelpinCore
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"
                                 + $" join SubGroup on subgroup.SubGroupID = model.SubGroupID"
                                 + $" join MainGroup on MainGroup.MainGroupID = subgroup.MainGroup"
-                                + $" where ModelID = {modelID}";
+                                + $" where ModelID = {modelID} and active ='1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
             return dataTable;
