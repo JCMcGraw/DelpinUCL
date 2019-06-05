@@ -230,7 +230,7 @@ namespace DelpinUI
             catch { }
         }
 
-        private void comboBoxSubGroup_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void comboBoxSubGroup_SelectedIndexChanged_1(object sender, EventArgs e) //Denne har ingen referance
         {
             try
             {
@@ -256,7 +256,7 @@ namespace DelpinUI
             AccModel.Text = AccModelView.CurrentCell.Value.ToString();
         }
 
-        private void AccSub_SelectedIndexChanged(object sender, EventArgs e)
+        private void AccSub_SelectedIndexChanged(object sender, EventArgs e) //Denne har ingen referance
         {
             try
             {
@@ -509,13 +509,14 @@ namespace DelpinUI
             }
         }
 
-        private void AccModelView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void AccModelView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) //Denne har ingen referance
         {
             if (e.RowIndex > -1)
             {
                 AccModelView.Rows[e.RowIndex].Selected = true;
             }
         }
+
         private void AccModelView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //if (e.RowIndex > -1)
@@ -525,10 +526,9 @@ namespace DelpinUI
                 string accModel = AccModelView.Rows[e.RowIndex].Cells[0].Value + string.Empty;
                 AccModel.Text = accModel;
             }
-
         }
 
-        private void AddAcc_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void AddAcc_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) //denne har ingen refereance
         {
             if (e.RowIndex > -1)
             {
@@ -536,8 +536,6 @@ namespace DelpinUI
             }
         }
       
-
-
         private void ShowAllAcc_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex > -1)
@@ -550,12 +548,10 @@ namespace DelpinUI
         {
             if (e.RowIndex > -1)
             {
-                
                 AddAcc.Rows[e.RowIndex].Selected = true;
-                string Addacc = AddAcc.Rows[e.RowIndex].Cells[0].Value + string.Empty;
-                 
-                AddAccModel.Text = Addacc;
 
+                string Addacc = AddAcc.Rows[e.RowIndex].Cells[0].Value + string.Empty;
+                AddAccModel.Text = Addacc;
             }
         }
 
@@ -566,13 +562,14 @@ namespace DelpinUI
                 DataView dv = new DataView(dataTableAccDelete);
                 dv.RowFilter = $"MainGroup = {MainAcc.SelectedValue}";
 
-
                 SubAcc.DataSource = dv.ToTable();
                 SubAcc.DisplayMember = "Category";
                 SubAcc.ValueMember = "SubGroupID";
             }
-            catch { }
+            catch
+            {
 
+            }
         }
 
         private void SubAcc_SelectedIndexChanged(object sender, EventArgs e)
@@ -582,7 +579,10 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAccessoryRelationsBySubGroupID(Convert.ToInt32(SubAcc.SelectedValue));
                 ShowAllAcc.DataSource = dataTable;
             }
-            catch { }
+            catch
+            {
+
+            }
         }
     }
 }
