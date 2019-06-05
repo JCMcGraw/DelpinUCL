@@ -94,6 +94,7 @@ namespace DelpinUI
             if (radioButton1.Checked)
             {
                 DataTable dataTable = controller.DisplayAllBusinessDebtor();
+                ViewDeb.DataSource = null;
                 ViewDeb.DataSource = dataTable;
 
                 //cvrText.Visible = true;
@@ -148,6 +149,7 @@ namespace DelpinUI
         {
             if (radioButton2.Checked)
             {
+                ViewDeb.DataSource = null;
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 

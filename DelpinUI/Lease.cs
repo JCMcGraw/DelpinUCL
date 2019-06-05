@@ -526,6 +526,9 @@ namespace DelpinUI
                 }
             }
 
+            deliveryAddressTextBox.Text = "";
+            deliveryCityTextBox.Text = "";
+
             createLease.Enabled = true;
             updateLease.Enabled = false;
             deleteLease.Enabled = false;
