@@ -38,7 +38,6 @@ namespace DelpinUI
             }
 
             int selectedRow = selectedRows[0].Index;
-
             SelectRow(selectedRow);
         }
 
@@ -64,7 +63,6 @@ namespace DelpinUI
                 int leaseID = Convert.ToInt32(dataGridViewResources.Rows[rowIndex].Cells["Ordrenummer"].Value);
                 returnValue = leaseID;
             }
-
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -106,7 +104,6 @@ namespace DelpinUI
             if (e.RowIndex > -1)
             {
                 dataGridViewResources.Rows[e.RowIndex].Selected = true;
-
                 SelectRow(e.RowIndex);
             }
         }

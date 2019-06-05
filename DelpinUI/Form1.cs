@@ -47,7 +47,6 @@ namespace DelpinUI
                 SetSavedBranch(savedBranch);
                 SetDeliveries();
             }
-
         }
 
         //JC
