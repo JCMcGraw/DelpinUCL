@@ -49,8 +49,8 @@ namespace DelpinCore
             if (business.CVR.Length ==8)
             {
                 gfx.DrawString($"{business.companyName}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -270, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                    new XRect(80, -270, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
 
                 gfx.DrawString($"{business.street}", companyAndDebtor, XBrushes.Black,
                     new XRect(80, -260, page.Width, page.Height),
@@ -68,8 +68,8 @@ namespace DelpinCore
             if (personal.CPR.Length==10)
             {
                 gfx.DrawString($"{personal.firstName} {personal.lastName}", companyAndDebtor, XBrushes.Black,
-                new XRect(80, -270, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                    new XRect(80, -270, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
 
                 gfx.DrawString($"{personal.street}", companyAndDebtor, XBrushes.Black,
                     new XRect(80, -260, page.Width, page.Height),
@@ -177,7 +177,7 @@ namespace DelpinCore
                     new XRect(80, -110+lineSpace, page.Width, page.Height),
                     XStringFormats.Center);
 
-                gfx.DrawString($"Kr.{lease.GetLeaseOrders()[i].deliveryPrice}", companyAndDebtor, XBrushes.Black,
+                gfx.DrawString($"Kr. {lease.GetLeaseOrders()[i].deliveryPrice}", companyAndDebtor, XBrushes.Black,
                     new XRect(150, -110+lineSpace, page.Width, page.Height),
                     XStringFormats.Center);
 
@@ -206,20 +206,20 @@ namespace DelpinCore
                     XStringFormats.CenterLeft);
 
                 gfx.DrawString($"Kr. {lease.GetTotalPrice()} ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -20 + lineSpace, page.Width, page.Height),
-                XStringFormats.CenterRight);
+                    new XRect(-60, -20 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterRight);
 
                 gfx.DrawString($"Kr. {Moms(lease.GetTotalPrice())} ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -5 + lineSpace, page.Width, page.Height),
-                XStringFormats.CenterRight);
+                    new XRect(-60, -5 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterRight);
 
                 gfx.DrawString($"Kr. {endPrice(Moms(lease.GetTotalPrice()), lease.GetTotalPrice())} ", priceFat, XBrushes.Black,
                     new XRect(-60, 10 + lineSpace, page.Width, page.Height),
                     XStringFormats.CenterRight);
 
                 gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
-                new XRect(400, 15 + lineSpace, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                    new XRect(400, 15 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
             }
             //Hvis det er Erhvervs Kunde
             if (business.CVR.Length==8)
@@ -229,12 +229,12 @@ namespace DelpinCore
                     XStringFormats.CenterLeft);
 
                 gfx.DrawString($"Kr. {lease.GetTotalPrice()} ", companyAndDebtor, XBrushes.Black,
-                new XRect(-60, -20 + lineSpace, page.Width, page.Height),
-                XStringFormats.CenterRight);
+                    new XRect(-60, -20 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterRight);
 
                 gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
-                new XRect(400, -15 + lineSpace, page.Width, page.Height),
-                XStringFormats.CenterLeft);
+                    new XRect(400, -15 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
             }
 
             //Her Laves navnet på filen
