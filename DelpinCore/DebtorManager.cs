@@ -263,9 +263,10 @@ namespace DelpinCore
         //Viser alle Personlige Debtore,PR
         public DataTable DisplayAllPersonalDebtor()
         {
-            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, Postalcode as Postnummer, City as \"By\", phone as Telefonnummer, Email as \"E-mail\" from " +
-                "Personal inner join Debtor on Debtor.DebtorID = Personal.CPR";
-            ;
+            string selectPersonal = "select CPR, FirstName as Fornavn, LastName as Efternavn, Street as Gade, PostalCode as Postnummer, City as \"by\", Phone as tlf, Email as \"E-mail\" from Personal " +
+                " inner join Debtor on Debtor.DebtorID = Personal.CPR";
+
+
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectPersonal);
 
             return dataTable;
