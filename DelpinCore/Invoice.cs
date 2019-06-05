@@ -177,7 +177,7 @@ namespace DelpinCore
                     new XRect(80, -110+lineSpace, page.Width, page.Height),
                     XStringFormats.Center);
 
-                gfx.DrawString($"Kr.{lease.GetLeaseOrders()[i].deliveryPrice}", companyAndDebtor, XBrushes.Black,
+                gfx.DrawString($"Kr. {lease.GetLeaseOrders()[i].deliveryPrice}", companyAndDebtor, XBrushes.Black,
                     new XRect(150, -110+lineSpace, page.Width, page.Height),
                     XStringFormats.Center);
 
