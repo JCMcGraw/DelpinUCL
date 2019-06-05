@@ -220,58 +220,45 @@ namespace DelpinUI
         //Get Businessdebtor from CVR
         private void getBusinessDebtor()
         {
-            {
-            
+            string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+            string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+            string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+            string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+            string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+            string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+            string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
 
-                string cvr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string bName = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-
-                cvrText.Text = cvr;
-                BnameText.Text = bName;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
+            cvrText.Text = cvr;
+            BnameText.Text = bName;
+            adressText.Text = adresse;
+            city.Text = City;
+            postalcodeText.Text = pCode;
+            phoneText.Text = phoneN;
+            emailText.Text = eMail;
         }
-
-
-
 
         //Get PersonalDebtor from ssn
         private void getPersonalDebtor()
         {
-            {
+            string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
+            string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
+            string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
+            string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
+            string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
+            string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
+            string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
+            string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
 
-                string cpr = ViewDeb.SelectedRows[0].Cells[0].Value + string.Empty;
-                string Fname = ViewDeb.SelectedRows[0].Cells[1].Value + string.Empty;
-                string Lname = ViewDeb.SelectedRows[0].Cells[2].Value + string.Empty;
-                string adresse = ViewDeb.SelectedRows[0].Cells[3].Value + string.Empty;
-                string City = ViewDeb.SelectedRows[0].Cells[5].Value + string.Empty;
-                string pCode = ViewDeb.SelectedRows[0].Cells[4].Value + string.Empty;
-                string phoneN = ViewDeb.SelectedRows[0].Cells[6].Value + string.Empty;
-                string eMail = ViewDeb.SelectedRows[0].Cells[7].Value + string.Empty;
-
-                cprText.Text = cpr;
-                PfnameText.Text = Fname;
-                PlnameText.Text = Lname;
-                adressText.Text = adresse;
-                city.Text = City;
-                postalcodeText.Text = pCode;
-                phoneText.Text = phoneN;
-                emailText.Text = eMail;
-            }
+            cprText.Text = cpr;
+            PfnameText.Text = Fname;
+            PlnameText.Text = Lname;
+            adressText.Text = adresse;
+            city.Text = City;
+            postalcodeText.Text = pCode;
+            phoneText.Text = phoneN;
+            emailText.Text = eMail;
         }
 
-
-
-           
         // get specific debtor Business or Personal
         private void button1_Click(object sender, EventArgs e)
         {
