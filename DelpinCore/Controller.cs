@@ -323,15 +323,13 @@ namespace DelpinCore
         }
         //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-        //Branch 
-        //De bliver ikke brugt
+        //Branch De bliver ikke brugt
         public DataTable ReadAllBranches()
         {
             DataTable dataTable = branchManager.ReadAllBranches();
             return dataTable;
         }
 
-        //Denne bliver ikke brugt
         public Branch ReadBranchByBranchID(int branchID)
         {
             Branch branch = branchManager.ReadBranchByBranchID(branchID);
