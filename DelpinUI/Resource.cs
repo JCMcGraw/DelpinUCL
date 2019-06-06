@@ -261,7 +261,7 @@ namespace DelpinUI
 
         private void UpdateModel_Click(object sender, EventArgs e)
         {
-            const string message = "Vil du rette resursen?";
+            const string message = "Vil du opdatere modellen?";
             const string caption = "Annuller";
             var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

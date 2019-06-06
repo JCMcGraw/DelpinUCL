@@ -170,9 +170,9 @@
             this.cprLabel.AutoSize = true;
             this.cprLabel.Location = new System.Drawing.Point(11, 46);
             this.cprLabel.Name = "cprLabel";
-            this.cprLabel.Size = new System.Drawing.Size(63, 13);
+            this.cprLabel.Size = new System.Drawing.Size(69, 13);
             this.cprLabel.TabIndex = 13;
-            this.cprLabel.Text = "Cpr-nummer";
+            this.cprLabel.Text = "CPR-nummer";
             // 
             // label7
             // 
@@ -226,11 +226,11 @@
             // CvrLabel
             // 
             this.CvrLabel.AutoSize = true;
-            this.CvrLabel.Location = new System.Drawing.Point(11, 46);
+            this.CvrLabel.Location = new System.Drawing.Point(10, 46);
             this.CvrLabel.Name = "CvrLabel";
-            this.CvrLabel.Size = new System.Drawing.Size(63, 13);
+            this.CvrLabel.Size = new System.Drawing.Size(69, 13);
             this.CvrLabel.TabIndex = 25;
-            this.CvrLabel.Text = "Cvr-nummer";
+            this.CvrLabel.Text = "CVR-nummer";
             // 
             // BnameText
             // 

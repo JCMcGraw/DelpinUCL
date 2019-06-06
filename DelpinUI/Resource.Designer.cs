@@ -227,7 +227,7 @@
             // 
             this.DeleteModel.Location = new System.Drawing.Point(208, 223);
             this.DeleteModel.Name = "DeleteModel";
-            this.DeleteModel.Size = new System.Drawing.Size(75, 23);
+            this.DeleteModel.Size = new System.Drawing.Size(83, 23);
             this.DeleteModel.TabIndex = 53;
             this.DeleteModel.Text = "Slet model";
             this.DeleteModel.UseVisualStyleBackColor = true;
@@ -287,9 +287,9 @@
             // 
             this.UpdateModel.Location = new System.Drawing.Point(102, 223);
             this.UpdateModel.Name = "UpdateModel";
-            this.UpdateModel.Size = new System.Drawing.Size(84, 23);
+            this.UpdateModel.Size = new System.Drawing.Size(92, 23);
             this.UpdateModel.TabIndex = 52;
-            this.UpdateModel.Text = "Ret Model";
+            this.UpdateModel.Text = "Opdater Model";
             this.UpdateModel.UseVisualStyleBackColor = true;
             this.UpdateModel.Click += new System.EventHandler(this.UpdateModel_Click);
             // 
@@ -297,7 +297,7 @@
             // 
             this.CreateModel.Location = new System.Drawing.Point(6, 223);
             this.CreateModel.Name = "CreateModel";
-            this.CreateModel.Size = new System.Drawing.Size(75, 23);
+            this.CreateModel.Size = new System.Drawing.Size(83, 23);
             this.CreateModel.TabIndex = 51;
             this.CreateModel.Text = "Opret model";
             this.CreateModel.UseVisualStyleBackColor = true;
