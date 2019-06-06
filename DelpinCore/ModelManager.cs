@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Globalization;
 
 namespace DelpinCore
 {
@@ -12,7 +13,7 @@ namespace DelpinCore
         public string CreateModel(string modelName, double price, int subGroupID, double weightKG)
         {
             string createModel = "Insert into Model(ModelName, Price, SubGroupID, weightKG,Active) " +
-                                $"values ('{modelName}',{price},{subGroupID},{weightKG},'1')";
+                                $"values ('{modelName}',{price.ToString("G", new CultureInfo("en-US"))},{subGroupID},{weightKG.ToString("G", new CultureInfo("en-US"))},'1')";
 
             string isCreateModel = DatabaseManager.CreateUpdateDeleteInDatabase(createModel);
             if (isCreateModel != "Success")
@@ -24,8 +25,8 @@ namespace DelpinCore
 
         public string UpdateModel(int modelID, string modelName, double price, int subGroupID, double weightKG)
         {
-            string updateModel = $"update Model set ModelName='{modelName}',Price={price}" +
-                                 $",SubGroupID='{subGroupID}',WeightKg={weightKG} where ModelID ={modelID}";  
+            string updateModel = $"update Model set ModelName='{modelName}',Price={price.ToString("G", new CultureInfo("en-US"))}" +
+                                 $",SubGroupID='{subGroupID}',WeightKg={weightKG.ToString("G", new CultureInfo("en-US"))} where ModelID ={modelID}";  
                                 
             string isUpdateModel = DatabaseManager.CreateUpdateDeleteInDatabase(updateModel);
             if (isUpdateModel != "Success")
