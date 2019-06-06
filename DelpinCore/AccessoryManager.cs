@@ -47,6 +47,7 @@ namespace DelpinCore
             return $"Tilbehør er blevet Fjernet";
         }
 
+        //Denne joiner Model med accessery så vi kan se Modelnavn tilbehør og tihørsnummer og sotere efter modelName
         public DataTable DisplayAccesoryRelations()
         {
             string displayAccessoryRelations = "select model.ModelName as Modelnavn, m.ModelName as Tilbehør, Accessory.AccessoryModelID as Tilhørsnummer from model"
@@ -58,6 +59,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Denne joiner Model med accessery så vi kan se Modelnavn tilbehør og tihørsnummer og søge efter spscefikt subGroupID og sotere efter modelName.
         public DataTable DisplayAccesoryRelationsBySubGroupID(int subGroupID)
         {
             string displayAccessoryRelations = "select model.ModelName as Modelnavn, m.ModelName as Tilbehør, Accessory.AccessoryModelID as Tilhørsnummer from model"
