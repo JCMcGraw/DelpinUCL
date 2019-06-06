@@ -13,8 +13,8 @@ namespace DelpinCore
     {
         public Lease ReadLeaseByLeaseID(int leaseID)
         {
-            string selectLeases = $"Select * From Lease Inner Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID join Resources " +
-                $"on LeaseOrder.ResourcesID = Resources.ResourcesID join Model on Resources.ModelID = Model.ModelID Where Lease.LeaseID = {leaseID}";
+            string selectLeases = $"Select * From Lease Left Join LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Left join Resources " +
+                $"on LeaseOrder.ResourcesID = Resources.ResourcesID Left join Model on Resources.ModelID = Model.ModelID Where Lease.LeaseID = {leaseID}";
 
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectLeases);
@@ -32,7 +32,7 @@ namespace DelpinCore
         public DataTable ReadLeasesByDebtorID(string debtorID)
         {
             string selectLeases = "Select Lease.LeaseID As Ordrenummer, Branch.City As Afdeling, Lease.Active As Åben, " +
-                "Lease.CreationDate As Dato, Lease.DebtorID As Kundenummer, Lease.ContactFname + ' ' + Lease.ContactLname As Kontakt, Lease.ContactPhone As Kontaktnummer " +
+                "Lease.CreationDate As Dato, Lease.DebtorID As Kundenummer, Lease.ContactFname + ' ' + Lease.ContactLname As Kontakt, Lease.ContactPhone As Kontaktnummer, Lease.Status " +
                 "From Lease Inner Join Branch On Lease.BranchID = Branch.BranchID " +
                 $"Where Lease.DebtorID = '{debtorID}' and Lease.Active = 1 " +
                 "Order By Lease.CreationDate Desc";
@@ -68,6 +68,7 @@ namespace DelpinCore
 
             foreach(DataRow dataRow in dataTable.Rows)
             {
+                if (dataRow["StartDate"] == DBNull.Value) { continue; }
                 DateTime startDate = Convert.ToDateTime(dataRow["StartDate"]);
                 DateTime endDate = Convert.ToDateTime(dataRow["EndDate"]);
                 int resourcesID = Convert.ToInt32(dataRow["ResourcesID"]);
@@ -96,20 +97,27 @@ namespace DelpinCore
             if (lease.active == false) { active = "0"; }
 
             string insertLease = $"insert into Lease (CreationDate, Active, DebtorID, BranchID, ContactFname, ContactLname, ContactPhone, Status) output inserted.LeaseID " +
-                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, '{lease.debtorID}', {lease.branchID}, '{lease.contactFirstName.Replace("'","''")}'," +
-                $" '{lease.contactLastName.Replace("'", "''")}', '{lease.contactPhone.Replace("'","''")}', '{lease.status}')";
+                $"Values (CONVERT (date, CURRENT_TIMESTAMP), {active}, '{lease.debtorID}', {lease.branchID}, '{lease.contactFirstName.Replace("'", "''")}'," +
+                $" '{lease.contactLastName.Replace("'", "''")}', '{lease.contactPhone.Replace("'", "''")}', '{lease.status}')";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(insertLease);
 
             int leaseID = (int)dataTable.Rows[0][0];
 
-            lease.SetLeaseID(leaseID);
+            if (lease.GetLeaseOrders().Count > 0)
+            {
+                lease.SetLeaseID(leaseID);
 
-            string insertLeaseOrder = GetLeaseOrderInsertString(lease);
+                string insertLeaseOrder = GetLeaseOrderInsertString(lease);
 
-            string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
+                string isInsertSuccess = DatabaseManager.CreateUpdateDeleteInDatabase(insertLeaseOrder);
 
-            return leaseID.ToString() + ";" + isInsertSuccess;
+                return leaseID.ToString() + ";" + isInsertSuccess;
+            }
+            else
+            {
+                return leaseID.ToString() + ";Success";
+            }
         }
 
         //create insertstring for leaseorders
@@ -163,6 +171,8 @@ namespace DelpinCore
             {
                 return isDeleteSuccess;
             }
+
+            if (lease.GetLeaseOrders().Count == 0) { return "Success"; }
 
             string insertLeaseOrder = GetLeaseOrderInsertString(lease);
 

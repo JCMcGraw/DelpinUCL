@@ -290,6 +290,12 @@ namespace DelpinUI
                 writeInvoice.Enabled = true;
                 MessageBox.Show($"Ordren blev oprettet med ordrenummer {leaseNumber}");
             }
+            else
+            {
+                string errorMessage = Regex.Match(leaseSuccess, @"[^;]+$").ToString();
+                MessageBox.Show($"Der opstod en fejl ved oprettelsen af ordren:\n" + errorMessage);
+
+            }
         }
 
         private bool CheckOrderIsGood()
