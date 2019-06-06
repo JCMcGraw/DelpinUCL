@@ -173,7 +173,7 @@ namespace DelpinUI
         {
             string sub = ComboModelSub.ValueMember;
 
-            string succes = controller.CreateModel(ModelName.Text, Convert.ToDouble(ModelPrice.Text),
+            string succes = controller.CreateModel(ModelName.Text.Replace("'", "''"), Convert.ToDouble(ModelPrice.Text),
             Convert.ToInt32(ComboModelSub.SelectedValue), Convert.ToDouble(Weight.Text));
             MessageBox.Show(succes);
             updateDatagridViewModel();

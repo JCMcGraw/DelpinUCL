@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Globalization;
 
 namespace DelpinCore
 {
@@ -123,8 +124,8 @@ namespace DelpinCore
                 {
                     insertLeaseOrder += ", ";
                 }
-                insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice}," +
-                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet.Replace("'", "''")}', {lo.deliveryPostalCode}, '{lo.deliveryCity.Replace("'", "''")}', {lo.deliveryPrice})";
+                insertLeaseOrder += $"('{lo.startDate.ToString("yyyy-MM-dd")}', '{lo.endDate.ToString("yyyy-MM-dd")}', {lo.leasePrice.ToString("G", new CultureInfo("en-US"))}," +
+                    $" {lo.resourceID}, {lease.leaseID}, '{lo.deliveryStreet.Replace("'", "''")}', {lo.deliveryPostalCode}, '{lo.deliveryCity.Replace("'", "''")}', {lo.deliveryPrice.ToString("G", new CultureInfo("en-US"))})";
             }
             return insertLeaseOrder;
         }
