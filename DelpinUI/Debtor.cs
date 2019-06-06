@@ -16,34 +16,6 @@ namespace DelpinUI
 
         }
 
-        //public static void CancelDelete() //Hvis denne ikke bruges skal den slettes
-        //{
-        //    const string message = "Er du sikker på du vil slette brugeren?";
-        //    const string caption = "Annuller";
-        //    var result = MessageBox.Show(message, caption,
-        //                                 MessageBoxButtons.YesNo,
-        //                                 MessageBoxIcon.Question);
-
-        //    if (result == DialogResult.Yes)
-
-        //}
-        //update table
-        //private void ClearTextBox()
-        //{
-        //    cprText.Clear();
-        //    cvrText.Clear();
-        //    BnameText.Clear();
-        //    PfnameText.Clear();
-        //    PlnameText.Clear();
-        //    adressText.Clear();
-        //    city.Clear();
-        //    postalcodeText.Clear();
-        //    phoneText.Clear();
-        //    emailText.Clear();
-        //}
-
-        //Clears all available Textboxes 
-
         private void ClearAllTextBoxes()
         {
             foreach (Control c in this.Controls)
@@ -96,36 +68,8 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAllBusinessDebtor();
                 ViewDeb.DataSource = null;
                 ViewDeb.DataSource = dataTable;
-
-                //cvrText.Visible = true;
-                //CvrLabel.Visible = true;
-                //cprText.Visible = false;
-                //cprLabel.Visible = false;
-                //BnameLabel.Visible = true;
-                //BnameText.Visible = true;
-                //CreateDeb.Visible = true;
-                //ViewDeb.Visible = true;
-                //PfnameLabel.Visible = false;
-                //PfnameText.Visible = false;
-                //PlnameLabel.Visible = false;
-                //PlnameText.Visible = false;
                 showBdebtor();
             }
-
-            //else
-            //{
-            //    cvrText.Visible = false;
-            //    CvrLabel.Visible = false;
-            //    cprText.Visible = true;
-            //    cprLabel.Visible = true;
-            //    BnameLabel.Visible = false;
-            //    BnameText.Visible = false;
-            //    CreateDeb.Visible = true;
-            //    PfnameLabel.Visible = true;
-            //    PfnameText.Visible = true;
-            //    PlnameLabel.Visible = true;
-            //    PlnameText.Visible = true;
-            //}
             ClearAllTextBoxes();
         }
 
@@ -153,18 +97,6 @@ namespace DelpinUI
                 DataTable dataTable = controller.DisplayAllPersonalDebtor();
                 ViewDeb.DataSource = dataTable;
 
-                //cvrText.Visible = false;
-                //CvrLabel.Visible = false;
-                //cprText.Visible = true;
-                //cprLabel.Visible = true;
-                //BnameLabel.Visible = false;
-                //BnameText.Visible = false;
-                //PfnameLabel.Visible = true;
-                //PfnameText.Visible = true;
-                //PlnameLabel.Visible = true;
-                //PlnameText.Visible = true;
-                //CreateDeb.Visible = true;
-                //ViewDeb.Visible = true;
                 ShowPdebtor();
             }
         }
@@ -367,20 +299,6 @@ namespace DelpinUI
             UpdateDebtor.Visible = true;
             updateDatagridView();
             ClearAllTextBoxes();
-            //if(radioButton1.Checked)
-            //{
-            //    CreateDeb.Visible = false;
-            //    SaveDebtor.Visible = true;
-            //    CancelUpdate.Visible = true;
-            //    UpdateDebtor.Visible = false;
-            //}
-            //if (radioButton2.Checked)
-            //{
-            //    CreateDeb.Visible = false;
-            //    SaveDebtor.Visible = true;
-            //    CancelUpdate.Visible = true;
-            //    UpdateDebtor.Visible = false;
-            //}
         }
        
         //Delete debtor and updates datagridview

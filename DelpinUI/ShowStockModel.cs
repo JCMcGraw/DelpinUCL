@@ -27,11 +27,11 @@ namespace DelpinUI
             this.Close();
         }
 
-        public void ShowResources(DataTable dataTable) //Ingen referance
-        {
-            StockGridView.DataSource = dataTable;
-            AutoSizeAllColumns();
-        }
+        //public void ShowResources(DataTable dataTable) //Ingen referance
+        //{
+        //    StockGridView.DataSource = dataTable;
+        //    AutoSizeAllColumns();
+        //}
 
         private void AutoSizeAllColumns()
         {
