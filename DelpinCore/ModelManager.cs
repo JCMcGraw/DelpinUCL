@@ -56,11 +56,11 @@ namespace DelpinCore
             return dataTable;
         }
 
-
+        //Denne joiner model med subgroup så man kan se hvilken subgroup modellen tilhøre.
         public DataTable DisplayModelBySubgroupID(int subgroupID)
         {
             string selectModel = $"select  Model.ModelID as Modelnummer, Model.ModelName as Modelnavn, Model.weightKg as Vægt, SubGroup.Category as Katagori, Price as Pris from Model " +
-                                $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID} and Model.Active ='1'";
+                                 $" Join SubGroup on subgroup.subgroupID = Model.subgroupID where Model.SubGroupID = {subgroupID} and Model.Active ='1'";
 
             DataTable dataTable = DatabaseManager.ReadFromDatabase(selectModel);
             return dataTable;
@@ -73,6 +73,7 @@ namespace DelpinCore
             return dataTable;
         }
 
+        //Denne joiner model med subgroup og maingroup så man kan se på modellen hvilken subgroup og maingroup den tilhøre.
         public DataTable DisplaySpecificModel(int modelID)
         {
             string selectModel = $"select ModelID, ModelName as Modelnavn, Price as Pris, SubGroup.SubGroupID as Undergruppe, MainGroup.MainGroupID as Hovedgruppe, weightKg as Vægt from Model"

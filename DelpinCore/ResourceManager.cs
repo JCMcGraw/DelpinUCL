@@ -35,6 +35,7 @@ namespace DelpinCore
             return $"Resurse er blevet Slettet";
         }
 
+        //Denne gør at vi kan se hvilke modeller som ligger på hvilke afdelinger og hvilke resource nr de har
         public DataTable ReadSpecefikModelResourcesBranch(int ModelID)
         {
             string ReadSpecefikModelResourcesBranch = $"select * from Model" +

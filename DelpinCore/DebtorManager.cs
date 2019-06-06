@@ -44,7 +44,7 @@ namespace DelpinCore
             return dataTable;
         }
 
-        //Froklaring på denne
+        //Denne bruges til fakturaen så vi på fakturen får vist de rigtige værdier alt efter om det er en privat eller erhvervs kunde der er tale om database navne bliver også ændret så de er danske.
         public Business ReadAllDebtorsByDebtorID(string debtorID)
         {
             string readPersonalDebtor1 = $"Select * From " +

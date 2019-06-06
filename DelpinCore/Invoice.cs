@@ -18,6 +18,7 @@ namespace DelpinCore
             return Math.Round(momsPrice,2);
         }
 
+        //Slutprisen ink moms
         public decimal endPrice(decimal totalPrice,decimal momsPrice)
         {
             decimal endPrice= totalPrice + momsPrice;
@@ -68,7 +69,7 @@ namespace DelpinCore
                 new XRect(80, -170, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-            //Firma informationer----------------------------------------------------------------------------------------------------------------------------
+            //Billede af Delpin----------------------------------------------------------------------------------------------------------------------------
             var image = DelpinCore.Properties.Resources.Delpinlogo;
             System.IO.MemoryStream stream = new System.IO.MemoryStream();
             image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -76,6 +77,7 @@ namespace DelpinCore
             XImage xImage = XImage.FromStream(stream);
             gfx.DrawImage(xImage, 405, 35);
 
+            //Firma informationer----------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString("Nordvesthavnsvej 60 ", companyAndDebtor, XBrushes.Black,
                 new XRect(-60, -300, page.Width, page.Height),
                 XStringFormats.CenterRight);
@@ -169,7 +171,7 @@ namespace DelpinCore
                 new XRect(80, -100+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
-
+            //Hvis det er erhvers person
             if (business.CVR.Length == 8)
             {
                 gfx.DrawString("Total: ", priceFat, XBrushes.Black,
