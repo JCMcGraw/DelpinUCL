@@ -80,40 +80,6 @@ namespace DelpinCore
             return business;
         }
 
-        public Personal ReadAllPersonalDebtorsByDebtorID(string debtorID)
-        {
-            string readPersonalDebtor1 = $"Select * From " +
-                                         $"(Select " +
-                                         $"    Business.CompanyName As Navn, " +
-                                         $"    Business.CVR As KundeID, " +
-                                         $"    Debtor.Street As Adresse, " +
-                                         $"    Debtor.Postalcode As Postkode, " +
-                                         $"    Debtor.City As [By], " +
-                                         $"    Debtor.Phone As Telefon, " +
-                                         $"    Debtor.Email As Email " +
-                                         $"From " +
-                                         $"    Debtor Inner Join " +
-                                         $"    Business On Business.CVR = Debtor.DebtorID " +
-                                         $"Union " +
-                                         $"Select " +
-                                         $"    Personal.FirstName + ' ' + Personal.LastName As Navn, " +
-                                         $"    Personal.CPR As KundeID, " +
-                                         $"    Debtor.Street As Adresse, " +
-                                         $"    Debtor.Postalcode As Postkode, " +
-                                         $"    Debtor.City As [By], " +
-                                         $"    Debtor.Phone As Telefon, " +
-                                         $"    Debtor.Email As Email " +
-                                         $"From " +
-                                         $"    Debtor Inner Join " +
-                                         $"    Personal On Personal.CPR = Debtor.DebtorID) As AllDebtors " +
-                                         $"Where AllDebtors.KundeID = '{debtorID}' ";
-
-            DataTable dataTable = DatabaseManager.ReadFromDatabase(readPersonalDebtor1);
-
-            Personal personal = new Personal(debtorID, (string)dataTable.Rows[0]["Adresse"], (int)dataTable.Rows[0]["PostKode"], (string)dataTable.Rows[0]["By"], (string)dataTable.Rows[0]["Telefon"], (string)dataTable.Rows[0]["Email"], (string)dataTable.Rows[0]["Navn"]);
-            return personal;
-        }
-
         public string UpdatePersonalDebtor(string debtorID, string street, int postalCode, string city, string phone, string email, string CPR, string firstName, string lastName)
         {
             string updateDebtor = $"update Debtor set Street='{street}'" +

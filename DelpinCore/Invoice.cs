@@ -24,7 +24,7 @@ namespace DelpinCore
             return Math.Round(endPrice,2);
         }
 
-        public string MakePDF(Lease lease, Business business,Personal personal)
+        public string MakePDF(Lease lease, Business business)
         {
             // Her bruges classen pdfDocument.
             PdfDocument document = new PdfDocument();
@@ -46,8 +46,7 @@ namespace DelpinCore
 
             // Draw the text. Dette er hvad der skal være på teksten, og hvor det skal være. Der kan laves lige så mange som man vil 
             //Kunde Oplysninger------------------------------------------------------------------------------------------------------------------------------
-            if (business.CVR.Length ==8)
-            {
+            
                 gfx.DrawString($"{business.companyName}", companyAndDebtor, XBrushes.Black,
                     new XRect(80, -270, page.Width, page.Height),
                     XStringFormats.CenterLeft);
@@ -63,27 +62,7 @@ namespace DelpinCore
                 gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
                     new XRect(80, -230, page.Width, page.Height),
                     XStringFormats.CenterLeft);
-
-            }
-            if (personal.CPR.Length==10)
-            {
-                gfx.DrawString($"{personal.firstName} {personal.lastName}", companyAndDebtor, XBrushes.Black,
-                    new XRect(80, -270, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-
-                gfx.DrawString($"{personal.street}", companyAndDebtor, XBrushes.Black,
-                    new XRect(80, -260, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-
-                gfx.DrawString($"{personal.postalCode} {personal.city}", companyAndDebtor, XBrushes.Black,
-                    new XRect(80, -250, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-
-                gfx.DrawString($"Kunde Nr: {lease.debtorID}", companyAndDebtor, XBrushes.Black,
-                    new XRect(80, -230, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-            }
-
+            
             //FAKTURA---------------------------------------------------------------------------------------------------------------------------------------
             gfx.DrawString("FAKTURA", fakture, XBrushes.Black,
                 new XRect(80, -170, page.Width, page.Height),
@@ -190,8 +169,24 @@ namespace DelpinCore
                 new XRect(80, -100+lineSpace, page.Width, page.Height),
                 XStringFormats.CenterLeft);
 
+
+            if (business.CVR.Length == 8)
+            {
+                gfx.DrawString("Total: ", priceFat, XBrushes.Black,
+                    new XRect(400, -20 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+
+                gfx.DrawString($"Kr. {lease.GetTotalPrice()} ", companyAndDebtor, XBrushes.Black,
+                    new XRect(-60, -20 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterRight);
+
+                gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
+                    new XRect(400, -15 + lineSpace, page.Width, page.Height),
+                    XStringFormats.CenterLeft);
+            }
+
             //Hvis det er Privat person
-            if (personal.CPR.Length == 10)
+            else
             {
                 gfx.DrawString("Netto: ", companyAndDebtor, XBrushes.Black,
                new XRect(400, -20 + lineSpace, page.Width, page.Height),
@@ -221,22 +216,7 @@ namespace DelpinCore
                     new XRect(400, 15 + lineSpace, page.Width, page.Height),
                     XStringFormats.CenterLeft);
             }
-            //Hvis det er Erhvervs Kunde
-            if (business.CVR.Length==8)
-            {
-                gfx.DrawString("Total: ", priceFat, XBrushes.Black,
-                    new XRect(400, -20 + lineSpace, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-
-                gfx.DrawString($"Kr. {lease.GetTotalPrice()} ", companyAndDebtor, XBrushes.Black,
-                    new XRect(-60, -20 + lineSpace, page.Width, page.Height),
-                    XStringFormats.CenterRight);
-
-                gfx.DrawString("___________________________ ", smallHeadLine, XBrushes.Black,
-                    new XRect(400, -15 + lineSpace, page.Width, page.Height),
-                    XStringFormats.CenterLeft);
-            }
-
+            
             //Her Laves navnet på filen
             string filename = $"Faktura{lease.leaseID}.pdf";
 
