@@ -130,7 +130,7 @@ namespace DelpinUI
 
             if (isSuccess == "Success")
             {
-                MessageBox.Show("Lokation blev gemt.");
+                MessageBox.Show("Lokation blev gemt."); 
             }
         }
 
