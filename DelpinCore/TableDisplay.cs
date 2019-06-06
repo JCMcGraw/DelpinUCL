@@ -35,6 +35,9 @@ namespace DelpinCore
 
         public DataTable DisplayDeliveriesforNextNDays(int branchID, int daysInFuture)
         {
+            //query to find deliveries scheduled for next 2 days
+
+            //select columns to display
             string deliveriesSQL = $"Select " +
                 $"    Lease.LeaseID As Ordrenummer, " +
                 $"    AllDebtors.Navn, " +
@@ -43,6 +46,7 @@ namespace DelpinCore
                 $"From " +
                 $"    Lease Join " +
                 $"    LeaseOrder On LeaseOrder.LeaseID = Lease.LeaseID Join " +
+                //find all debtors
                 $"    (Select " +
                 $"         Business.CompanyName As Navn, " +
                 $"         Business.CVR As KundeID, " +
@@ -66,6 +70,7 @@ namespace DelpinCore
                 $"     From " +
                 $"         Debtor Inner Join " +
                 $"         Personal On Personal.CPR = Debtor.DebtorID) As AllDebtors On AllDebtors.KundeID = Lease.DebtorID " +
+                //where all leaseorders have startdate within the next 2 days
                 $"Where " +
                 $"    LeaseOrder.StartDate Between DateAdd(DAY, -1, GetDate()) And DateAdd(DAY, {daysInFuture}, GetDate()) " +
                 $"    and Lease.BranchID = {branchID} " +

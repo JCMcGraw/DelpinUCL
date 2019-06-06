@@ -23,6 +23,7 @@ namespace DelpinUI
             InitializeComponent();
             leaseStatus.SelectedIndex = 0;
             deliveryZoneComboBox.SelectedIndex = 0;
+            ReturnDate.Value = DateTime.Now.Date.AddDays(1);
         }
 
         public void OpenLeaseAutomatically(int leaseID)
