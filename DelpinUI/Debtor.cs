@@ -100,12 +100,6 @@ namespace DelpinUI
                 ShowPdebtor();
             }
         }
-        
-        private void Debtor_Load(object sender, EventArgs e) //Denne bliver ikke brugt Den skal fjernes Correct
-        {
-
-
-        }
 
         //create debtor and refreshes datagridview
         private void CreateBdeb_Click(object sender, EventArgs e)

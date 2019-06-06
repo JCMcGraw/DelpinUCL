@@ -335,7 +335,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debtor";
             this.Text = "Debitor";
-            this.Load += new System.EventHandler(this.Debtor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ViewDeb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
