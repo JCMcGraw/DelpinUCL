@@ -117,6 +117,11 @@ namespace DelpinUI
                     MessageBox.Show("Ugyldig E-mailadresse");
                     return;
                 }
+                if (Utility.CheckForValidPostCode(postalcodeText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldig postnummer");
+                    return;
+                }
 
                 string succes = controller.CreateBusinessDebtor(cvrText.Text, adressText.Text.Replace("'","''"), Convert.ToInt32(postalcodeText.Text), city.Text.Replace("'", "''"),
                 phoneText.Text, emailText.Text, cvrText.Text, BnameText.Text.Replace("'", "''"));
@@ -134,6 +139,11 @@ namespace DelpinUI
                 if (Utility.CheckForValidEmail(emailText.Text) == false)
                 {
                     MessageBox.Show("Ugyldigt E-mailadresse");
+                    return;
+                }
+                if (Utility.CheckForValidPostCode(postalcodeText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldig postnummer");
                     return;
                 }
 
@@ -253,6 +263,11 @@ namespace DelpinUI
                     MessageBox.Show("Ugyldigt E-mailadresse");
                     return;
                 }
+                if (Utility.CheckForValidPostCode(postalcodeText.Text) == false)
+                {
+                    MessageBox.Show("Ugyldig postnummer");
+                    return;
+                }
                 string message = "Vil du rette kunden?";
                 string caption = "Annuller";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -272,9 +287,9 @@ namespace DelpinUI
                     MessageBox.Show("Ugyldigt E-mailadresse");
                     return;
                 }
-                if (Utility.CheckForValidEmail(emailText.Text) == false)
+                if (Utility.CheckForValidPostCode(postalcodeText.Text) == false)
                 {
-                    MessageBox.Show("Ugyldigt E-mailadresse");
+                    MessageBox.Show("Ugyldig postnummer");
                     return;
                 }
                 string message = "Vil du rette kunden?";
