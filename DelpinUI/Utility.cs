@@ -52,6 +52,19 @@ namespace DelpinUI
             }
         }
 
+
+        static public bool CheckForValidNumber(string cvrNumber)
+        {
+            if (cvrNumber.All(char.IsNumber))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         static public bool CheckForValidEmail(string email)
         {
             if (Regex.IsMatch(email, @"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", RegexOptions.IgnoreCase))

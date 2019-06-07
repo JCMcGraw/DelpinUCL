@@ -212,9 +212,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(3, 126);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 38;
-            this.label8.Text = "Vægt";
+            this.label8.Text = "Vægt i kg";
             // 
             // Weight
             // 
@@ -522,6 +522,7 @@
             // 
             this.AddAccModel.Location = new System.Drawing.Point(6, 300);
             this.AddAccModel.Name = "AddAccModel";
+            this.AddAccModel.ReadOnly = true;
             this.AddAccModel.Size = new System.Drawing.Size(100, 20);
             this.AddAccModel.TabIndex = 68;
             // 
@@ -562,6 +563,7 @@
             // 
             this.AccModel.Location = new System.Drawing.Point(6, 148);
             this.AccModel.Name = "AccModel";
+            this.AccModel.ReadOnly = true;
             this.AccModel.Size = new System.Drawing.Size(100, 20);
             this.AccModel.TabIndex = 67;
             // 

@@ -240,6 +240,11 @@ namespace DelpinUI
 
         private void GetModel_Click(object sender, EventArgs e)
         {
+            if (Utility.CheckForValidNumber(ModelID.Text) == false)
+            {
+                MessageBox.Show("Ugyldig Modelnummer");
+                return;
+            }
             GetModelByModelID(Convert.ToInt32(ModelID.Text));
         }
 
@@ -286,6 +291,12 @@ namespace DelpinUI
 
         private void button1_Click(object sender, EventArgs e) 
         {
+            if (Utility.CheckForValidNumber(ressourceID.Text) == false)
+            {
+                MessageBox.Show("Ugyldig resurseID");
+                return;
+            }
+
             DataTable dataTable = controller.DisplaySpecificResources(Convert.ToInt32(ressourceID.Text));
             if (dataTable.Rows.Count == 0)
             {
