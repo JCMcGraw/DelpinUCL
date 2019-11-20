@@ -56,7 +56,7 @@ namespace DelpinCore
         {
             DataTable dataTable = new DataTable();
             dataTable = debtorManager.ReadBusinessDebtor(debtorID);
-
+                
             return dataTable;
         }
 

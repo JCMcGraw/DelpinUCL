@@ -378,6 +378,7 @@
             this.branchID.Name = "branchID";
             this.branchID.Size = new System.Drawing.Size(121, 21);
             this.branchID.TabIndex = 65;
+            this.branchID.SelectedIndexChanged += new System.EventHandler(this.BranchID_SelectedIndexChanged);
             // 
             // BranchLabel
             // 

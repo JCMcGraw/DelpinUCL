@@ -102,6 +102,7 @@
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(100, 20);
             this.phoneText.TabIndex = 9;
+            this.phoneText.TextChanged += new System.EventHandler(this.PhoneText_TextChanged);
             // 
             // emailText
             // 
@@ -268,6 +269,7 @@
             this.ViewDeb.ReadOnly = true;
             this.ViewDeb.Size = new System.Drawing.Size(812, 425);
             this.ViewDeb.TabIndex = 33;
+            this.ViewDeb.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ViewDeb_CellContentClick);
             this.ViewDeb.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ViewDeb_CellMouseClick);
             // 
             // GetBdeb

@@ -81,7 +81,10 @@ namespace DelpinUI
                 SubGroup.DisplayMember = "Category";
                 SubGroup.ValueMember = "SubGroupID";
             }
-            catch { }
+            catch
+            {
+
+            }
         }
 
         //Functions to find debtor by ID
@@ -790,6 +793,11 @@ namespace DelpinUI
                 deliveryCityTextBox.Text = billingCity.Text;
                 deliveryPostCodeTextBox.Text = billingPostCode.Text;
             }
+        }
+
+        private void SubGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

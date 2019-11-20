@@ -364,5 +364,15 @@ namespace DelpinUI
                 }
             }
         }
+
+        private void PhoneText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewDeb_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

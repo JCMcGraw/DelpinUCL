@@ -478,6 +478,11 @@ namespace DelpinUI
 
             }
         }
+
+        private void BranchID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -478,6 +478,7 @@
             this.SubGroup.Name = "SubGroup";
             this.SubGroup.Size = new System.Drawing.Size(159, 21);
             this.SubGroup.TabIndex = 128;
+            this.SubGroup.SelectedIndexChanged += new System.EventHandler(this.SubGroup_SelectedIndexChanged);
             this.SubGroup.TextChanged += new System.EventHandler(this.comboBoxSubGroup_TextChanged);
             // 
             // categoryLabel
